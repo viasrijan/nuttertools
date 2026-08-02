@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { CATEGORIES, GROUPS } from '../data/categories'
+import { tile, chipActive } from '../lib/style'
 import ToolCard from '../components/ToolCard'
 import Fuse from 'fuse.js'
 
@@ -35,19 +36,19 @@ export default function CategoryPage() {
         <span>{cat.name}</span>
       </nav>
 
-      <div className="pt-8 pb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+      <div className="pt-8 pb-9 flex flex-col md:flex-row md:items-end justify-between gap-5">
         <div className="flex items-center gap-4">
-          <span className="w-14 h-14 rounded-2xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 grid place-items-center text-[26px]">{cat.icon}</span>
+          <span className={`w-14 h-14 rounded-2xl grid place-items-center text-[26px] shadow-sm shrink-0 ${tile(cat.hue)}`}>{cat.icon}</span>
           <div>
-            <h1 className="text-[30px] md:text-[36px] font-[800] tracking-[-0.03em] leading-none">{cat.name}</h1>
-            <p className="text-zinc-500 mt-2 text-[15px]">{cat.blurb} — {cat.count} tools.</p>
+            <h1 className="text-[28px] md:text-[36px] font-[800] tracking-[-0.03em] leading-none text-balance">{cat.name}</h1>
+            <p className="text-zinc-500 mt-2 text-[14.5px] text-pretty">{cat.blurb} — {cat.count} tools.</p>
           </div>
         </div>
         {group && (
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 shrink-0">
             {group.categories.map((c) => (
               <Link key={c.slug} to={`/tools/${c.slug}`}
-                className={`px-4 h-9 rounded-full text-[13px] font-medium border grid place-items-center transition-colors ${c.slug === cat.slug ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 border-zinc-900 dark:border-white' : 'border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/80'}`}>
+                className={`px-4 h-9 rounded-full text-[13px] font-semibold grid place-items-center ring-1 transition-all ${c.slug === cat.slug ? `${chipActive(c.hue)} shadow-sm` : 'bg-white dark:bg-zinc-900 ring-zinc-200 dark:ring-zinc-800 text-zinc-600 dark:text-zinc-400 hover:ring-zinc-300 dark:hover:ring-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800/80'}`}>
                 {c.name}
               </Link>
             ))}
@@ -60,7 +61,7 @@ export default function CategoryPage() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder={`Search ${cat.name}…`}
-          className="w-full h-[46px] pl-[42px] pr-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[14px] focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder:text-zinc-400"
+          className="w-full h-[46px] pl-[42px] pr-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[14px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder:text-zinc-400"
         />
         <svg width="16" height="16" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400">
           <circle cx="8" cy="8" r="5.75" stroke="currentColor" strokeWidth="1.5" />
@@ -68,7 +69,7 @@ export default function CategoryPage() {
         </svg>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 pb-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 pb-20">
         {shown.map((t) => <ToolCard key={t.id} tool={t} />)}
       </div>
       {shown.length === 0 && <p className="text-zinc-500 py-16 text-center">No tools match “{q.trim()}”.</p>}

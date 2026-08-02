@@ -1,4 +1,5 @@
 import toolsData from './tools.json'
+import type { Hue } from '../lib/style'
 
 export type Category = {
   slug: string
@@ -7,6 +8,7 @@ export type Category = {
   icon: string
   blurb: string
   count: number
+  hue: Hue
 }
 
 export type Group = {
@@ -16,18 +18,18 @@ export type Group = {
 }
 
 const CATEGORY_META: Omit<Category, 'count'>[] = [
-  { slug: 'image-tools', name: 'Image Tools', group: 'images', icon: '🖼️', blurb: 'Compress, convert, resize and enhance images' },
-  { slug: 'pdf-tools', name: 'PDF Tools', group: 'documents', icon: '📄', blurb: 'Merge, split, compress and edit PDFs' },
-  { slug: 'developer-tools', name: 'Developer Tools', group: 'developer', icon: '💻', blurb: 'Format, validate and generate code' },
-  { slug: 'encoding-security', name: 'Encoding & Security', group: 'developer', icon: '🔐', blurb: 'Encode, hash and protect your data' },
-  { slug: 'text-writing', name: 'Text & Writing', group: 'textweb', icon: '✍️', blurb: 'Count, rewrite, summarize and polish text' },
-  { slug: 'color-design', name: 'Color & Design', group: 'images', icon: '🎨', blurb: 'Palettes, gradients and design assets' },
-  { slug: 'video-tools', name: 'Video Tools', group: 'media', icon: '🎬', blurb: 'Compress, convert and edit video' },
-  { slug: 'audio-tools', name: 'Audio Tools', group: 'media', icon: '🎧', blurb: 'Convert, trim and transcribe audio' },
-  { slug: 'file-tools', name: 'File Tools', group: 'documents', icon: '📦', blurb: 'Convert, archive and manage files' },
-  { slug: 'web-seo', name: 'Web & SEO', group: 'textweb', icon: '🌐', blurb: 'Meta tags, URLs and site helpers' },
-  { slug: 'everyday-utilities', name: 'Everyday Utilities', group: 'everyday', icon: '🛠️', blurb: 'Calculators, converters and daily tools' },
-  { slug: 'ai-tools', name: 'AI Tools', group: 'everyday', icon: '🤖', blurb: 'Smart helpers for everyday tasks' },
+  { slug: 'image-tools', name: 'Image Tools', group: 'images', icon: '🖼️', blurb: 'Compress, convert, resize and enhance images', hue: 'sky' },
+  { slug: 'pdf-tools', name: 'PDF Tools', group: 'documents', icon: '📄', blurb: 'Merge, split, compress and edit PDFs', hue: 'rose' },
+  { slug: 'developer-tools', name: 'Developer Tools', group: 'developer', icon: '💻', blurb: 'Format, validate and generate code', hue: 'indigo' },
+  { slug: 'encoding-security', name: 'Encoding & Security', group: 'developer', icon: '🔐', blurb: 'Encode, hash and protect your data', hue: 'emerald' },
+  { slug: 'text-writing', name: 'Text & Writing', group: 'textweb', icon: '✍️', blurb: 'Count, rewrite, summarize and polish text', hue: 'amber' },
+  { slug: 'color-design', name: 'Color & Design', group: 'images', icon: '🎨', blurb: 'Palettes, gradients and design assets', hue: 'fuchsia' },
+  { slug: 'video-tools', name: 'Video Tools', group: 'media', icon: '🎬', blurb: 'Compress, convert and edit video', hue: 'purple' },
+  { slug: 'audio-tools', name: 'Audio Tools', group: 'media', icon: '🎧', blurb: 'Convert, trim and transcribe audio', hue: 'cyan' },
+  { slug: 'file-tools', name: 'File Tools', group: 'documents', icon: '📦', blurb: 'Convert, archive and manage files', hue: 'lime' },
+  { slug: 'web-seo', name: 'Web & SEO', group: 'textweb', icon: '🌐', blurb: 'Meta tags, URLs and site helpers', hue: 'teal' },
+  { slug: 'everyday-utilities', name: 'Everyday Utilities', group: 'everyday', icon: '🛠️', blurb: 'Calculators, converters and daily tools', hue: 'orange' },
+  { slug: 'ai-tools', name: 'AI Tools', group: 'everyday', icon: '🤖', blurb: 'Smart helpers for everyday tasks', hue: 'violet' },
 ]
 
 const toolCount = (name: string) =>
