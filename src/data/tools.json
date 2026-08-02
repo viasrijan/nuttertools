@@ -1,0 +1,776 @@
+[
+  {
+    "id": "image-compressor",
+    "name": "Image Compressor",
+    "desc": "Compress JPG, PNG, WebP 80% smaller, bulk",
+    "category": "Image Tools",
+    "icon": "\ud83d\udddc\ufe0f",
+    "popular": true,
+    "implemented": true
+  },
+  {
+    "id": "heic-to-jpg",
+    "name": "HEIC to JPG",
+    "desc": "Convert iPhone HEIC to JPG/PNG offline",
+    "category": "Image Tools",
+    "icon": "\ud83c\udf4e",
+    "popular": true,
+    "implemented": true
+  },
+  {
+    "id": "format-converter",
+    "name": "Image Format Converter",
+    "desc": "Convert between JPG, PNG, WebP, AVIF",
+    "category": "Image Tools",
+    "icon": "\ud83d\udd04",
+    "popular": true,
+    "implemented": true
+  },
+  {
+    "id": "image-ocr",
+    "name": "Image to Text (OCR)",
+    "desc": "Extract text from images with AI",
+    "category": "Image Tools",
+    "icon": "\ud83d\udd24",
+    "popular": false,
+    "implemented": true
+  },
+  {
+    "id": "bg-remover",
+    "name": "Background Remover",
+    "desc": "Remove bg from any image - AI offline",
+    "category": "Image Tools",
+    "icon": "\u2702\ufe0f",
+    "popular": true,
+    "implemented": true
+  },
+  {
+    "id": "qr-generator",
+    "name": "QR Generator & Designer",
+    "desc": "Create QR with logo, colors, SVG/PNG",
+    "category": "Image Tools",
+    "icon": "\ud83d\udd33",
+    "popular": true,
+    "implemented": true
+  },
+  {
+    "id": "merge-pdf",
+    "name": "Merge PDF",
+    "desc": "Combine multiple PDFs into one",
+    "category": "PDF Tools",
+    "icon": "\ud83d\udcda",
+    "popular": true,
+    "implemented": true
+  },
+  {
+    "id": "split-pdf",
+    "name": "Split PDF",
+    "desc": "Split PDF by pages or range",
+    "category": "PDF Tools",
+    "icon": "\u2702\ufe0f",
+    "popular": true,
+    "implemented": true
+  },
+  {
+    "id": "images-to-pdf",
+    "name": "Images to PDF",
+    "desc": "Convert JPG/PNG to PDF",
+    "category": "PDF Tools",
+    "icon": "\ud83d\uddbc\ufe0f",
+    "popular": true,
+    "implemented": true
+  },
+  {
+    "id": "pdf-to-images",
+    "name": "PDF to Images",
+    "desc": "Convert PDF pages to JPG/PNG",
+    "category": "PDF Tools",
+    "icon": "\ud83d\udcf8",
+    "popular": true,
+    "implemented": true
+  },
+  {
+    "id": "json-formatter",
+    "name": "JSON Formatter",
+    "desc": "Format, minify, validate & tree view",
+    "category": "Developer Tools",
+    "icon": "{}",
+    "popular": true,
+    "implemented": true
+  },
+  {
+    "id": "base64-tool",
+    "name": "Base64 Encoder",
+    "desc": "Encode/decode text and files",
+    "category": "Encoding & Security",
+    "icon": "\ud83d\udd10",
+    "popular": true,
+    "implemented": true
+  },
+  {
+    "id": "word-counter",
+    "name": "Word Counter",
+    "desc": "Words, chars, reading time & more",
+    "category": "Text & Writing",
+    "icon": "\ud83d\udcdd",
+    "popular": false,
+    "implemented": true
+  },
+  {
+    "id": "password-generator",
+    "name": "Password Generator",
+    "desc": "Strong, secure random passwords",
+    "category": "Encoding & Security",
+    "icon": "\ud83d\udee1\ufe0f",
+    "popular": true,
+    "implemented": true
+  },
+  {
+    "id": "palette-extractor",
+    "name": "Palette Extractor",
+    "desc": "Get 5 colors from any image",
+    "category": "Color & Design",
+    "icon": "\ud83c\udfa8",
+    "popular": false,
+    "implemented": true
+  },
+  {
+    "id": "video-compressor",
+    "name": "Video Compressor",
+    "desc": "Compress MP4, WebM videos offline",
+    "category": "Video Tools",
+    "icon": "\ud83c\udfac",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "video-to-mp3",
+    "name": "Video to MP3",
+    "desc": "Extract audio from any video",
+    "category": "Video Tools",
+    "icon": "\ud83c\udfb5",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "video-to-gif",
+    "name": "Video to GIF",
+    "desc": "Convert video clips to GIF",
+    "category": "Video Tools",
+    "icon": "\ud83c\udf9e\ufe0f",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "mp4-to-webm",
+    "name": "MP4 to WebM",
+    "desc": "Convert video formats",
+    "category": "Video Tools",
+    "icon": "\ud83d\udd04",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "video-trimmer",
+    "name": "Video Trimmer",
+    "desc": "Cut and trim videos",
+    "category": "Video Tools",
+    "icon": "\u2702\ufe0f",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "video-muter",
+    "name": "Video Muter",
+    "desc": "Remove audio from video",
+    "category": "Video Tools",
+    "icon": "\ud83d\udd07",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "video-rotator",
+    "name": "Video Rotator",
+    "desc": "Rotate and flip videos",
+    "category": "Video Tools",
+    "icon": "\u21bb",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "video-speed",
+    "name": "Video Speed Changer",
+    "desc": "Slow-mo and fast-forward",
+    "category": "Video Tools",
+    "icon": "\u23e9",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "audio-converter",
+    "name": "Audio Converter",
+    "desc": "MP3, WAV, OGG, M4A converter",
+    "category": "Audio Tools",
+    "icon": "\ud83c\udfa7",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "audio-trimmer",
+    "name": "Audio Trimmer & Joiner",
+    "desc": "Cut and merge audio files",
+    "category": "Audio Tools",
+    "icon": "\u2702\ufe0f",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "voice-recorder",
+    "name": "Voice Recorder",
+    "desc": "Record and save as MP3",
+    "category": "Audio Tools",
+    "icon": "\ud83c\udf99\ufe0f",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "audio-transcriber",
+    "name": "Audio Transcriber",
+    "desc": "Whisper AI - speech to text offline",
+    "category": "Audio Tools",
+    "icon": "\ud83d\udcac",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "compress-pdf",
+    "name": "Compress PDF",
+    "desc": "Reduce PDF file size",
+    "category": "PDF Tools",
+    "icon": "\ud83d\udddc\ufe0f",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "rotate-pdf",
+    "name": "Rotate PDF",
+    "desc": "Rotate PDF pages",
+    "category": "PDF Tools",
+    "icon": "\u21bb",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "pdf-text-extract",
+    "name": "Extract PDF Text",
+    "desc": "Get all text from PDF",
+    "category": "PDF Tools",
+    "icon": "\ud83d\udcc4",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "pdf-page-numbers",
+    "name": "Add Page Numbers",
+    "desc": "Add numbers to PDF pages",
+    "category": "PDF Tools",
+    "icon": "\ud83d\udd22",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "pdf-watermark",
+    "name": "Watermark PDF",
+    "desc": "Add text/image watermark",
+    "category": "PDF Tools",
+    "icon": "\ud83d\udca7",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "pdf-protect",
+    "name": "Protect / Unlock PDF",
+    "desc": "Add or remove password",
+    "category": "PDF Tools",
+    "icon": "\ud83d\udd12",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "csv-json",
+    "name": "CSV <> JSON Converter",
+    "desc": "Convert CSV, JSON, Excel mutually",
+    "category": "File Tools",
+    "icon": "\ud83d\udcca",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "excel-to-pdf",
+    "name": "Excel to PDF",
+    "desc": "Convert XLSX to PDF",
+    "category": "File Tools",
+    "icon": "\ud83d\udcc8",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "zip-tool",
+    "name": "ZIP Creator & Extractor",
+    "desc": "Create and open ZIP files",
+    "category": "File Tools",
+    "icon": "\ud83d\udce6",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "bulk-renamer",
+    "name": "Bulk File Renamer",
+    "desc": "Rename 100 files at once",
+    "category": "File Tools",
+    "icon": "\u270f\ufe0f",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "case-converter",
+    "name": "Case Converter",
+    "desc": "UPPER, lower, Title Case",
+    "category": "Text & Writing",
+    "icon": "\ud83d\udd20",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "dedupe-lines",
+    "name": "Remove Duplicates",
+    "desc": "Dedupe and sort lines",
+    "category": "Text & Writing",
+    "icon": "\ud83e\uddf9",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "tts-stt",
+    "name": "Text to Speech",
+    "desc": "Speak any text, speech to text",
+    "category": "Text & Writing",
+    "icon": "\ud83d\udde3\ufe0f",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "lorem-generator",
+    "name": "Lorem Ipsum Generator",
+    "desc": "Generate placeholder text",
+    "category": "Text & Writing",
+    "icon": "\ud83d\udcd1",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "markdown-editor",
+    "name": "Markdown Editor",
+    "desc": "Live preview markdown",
+    "category": "Text & Writing",
+    "icon": "\ud83d\udcdd",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "diff-checker",
+    "name": "Diff Checker",
+    "desc": "Compare two texts side-by-side",
+    "category": "Text & Writing",
+    "icon": "\ud83d\udd0d",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "regex-tester",
+    "name": "Regex Tester",
+    "desc": "Test and explain regex",
+    "category": "Developer Tools",
+    "icon": "\ud83e\uddea",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "slug-generator",
+    "name": "Slug & URL Encoder",
+    "desc": "Create URL slugs, encode/decode",
+    "category": "Text & Writing",
+    "icon": "\ud83d\udd17",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "whitespace-cleaner",
+    "name": "Whitespace Cleaner",
+    "desc": "Clean extra spaces, tabs",
+    "category": "Text & Writing",
+    "icon": "\ud83e\uddfc",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "invoice-generator",
+    "name": "Invoice Generator",
+    "desc": "Create PDF invoices free",
+    "category": "Text & Writing",
+    "icon": "\ud83e\uddfe",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "resume-builder",
+    "name": "Resume Builder",
+    "desc": "Build resume, download PDF",
+    "category": "Text & Writing",
+    "icon": "\ud83d\udcc4",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "jwt-tool",
+    "name": "JWT Decoder",
+    "desc": "Decode and verify JWT tokens",
+    "category": "Developer Tools",
+    "icon": "\ud83c\udfab",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "html-jsx",
+    "name": "HTML to JSX",
+    "desc": "Convert HTML to React JSX",
+    "category": "Developer Tools",
+    "icon": "\u269b\ufe0f",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "css-tailwind",
+    "name": "CSS to Tailwind",
+    "desc": "Convert CSS to Tailwind classes",
+    "category": "Developer Tools",
+    "icon": "\ud83c\udfa8",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "minify-beautify",
+    "name": "Minify / Beautify",
+    "desc": "Minify HTML, CSS, JS, JSON",
+    "category": "Developer Tools",
+    "icon": "\u2728",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "cron-generator",
+    "name": "Cron Generator",
+    "desc": "Human to cron and reverse",
+    "category": "Developer Tools",
+    "icon": "\u23f0",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "hash-generator",
+    "name": "Hash Generator",
+    "desc": "MD5, SHA1, SHA256, SHA512",
+    "category": "Developer Tools",
+    "icon": "#\ufe0f\u20e3",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "uuid-generator",
+    "name": "UUID & Fake Data",
+    "desc": "Generate UUIDs and mock data",
+    "category": "Developer Tools",
+    "icon": "\ud83c\udd94",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "env-generator",
+    "name": ".env Generator",
+    "desc": "Generate .env.example",
+    "category": "Developer Tools",
+    "icon": "\u2699\ufe0f",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "readme-generator",
+    "name": "README Generator",
+    "desc": "GitHub README builder",
+    "category": "Developer Tools",
+    "icon": "\ud83d\udcd6",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "curl-to-fetch",
+    "name": "cURL to Fetch",
+    "desc": "Convert cURL to JS fetch",
+    "category": "Developer Tools",
+    "icon": "\ud83c\udf10",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "chmod-calc",
+    "name": "Chmod Calculator",
+    "desc": "Calculate chmod permissions",
+    "category": "Developer Tools",
+    "icon": "\ud83d\udd22",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "bcrypt-tool",
+    "name": "Bcrypt Generator",
+    "desc": "Hash and check bcrypt",
+    "category": "Encoding & Security",
+    "icon": "\ud83d\udd12",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "url-encoder",
+    "name": "URL Encoder",
+    "desc": "Encode/decode URLs",
+    "category": "Encoding & Security",
+    "icon": "\ud83d\udd17",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "morse-code",
+    "name": "Morse Code",
+    "desc": "Translate to morse code",
+    "category": "Encoding & Security",
+    "icon": "\ud83d\udce1",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "binary-converter",
+    "name": "Binary Converter",
+    "desc": "Binary, Hex, Octal converter",
+    "category": "Encoding & Security",
+    "icon": "01",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "color-picker",
+    "name": "Color Picker",
+    "desc": "Pick colors from image/screen",
+    "category": "Color & Design",
+    "icon": "\ud83d\udc41\ufe0f",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "hex-rgb",
+    "name": "HEX to RGB Converter",
+    "desc": "Convert color formats",
+    "category": "Color & Design",
+    "icon": "\ud83c\udf08",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "gradient-generator",
+    "name": "Gradient Generator",
+    "desc": "Create CSS gradients",
+    "category": "Color & Design",
+    "icon": "\ud83c\udf05",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "shadow-generator",
+    "name": "Shadow Generator",
+    "desc": "Box and text shadow maker",
+    "category": "Color & Design",
+    "icon": "\ud83d\udca1",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "contrast-checker",
+    "name": "Contrast Checker",
+    "desc": "WCAG accessibility checker",
+    "category": "Color & Design",
+    "icon": "\u267f",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "blob-maker",
+    "name": "Blob & Wave Maker",
+    "desc": "Create blob, wave SVGs",
+    "category": "Color & Design",
+    "icon": "\ud83d\udca7",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "meta-generator",
+    "name": "Meta Tag Generator",
+    "desc": "Generate meta tags for SEO",
+    "category": "Web & SEO",
+    "icon": "\ud83c\udff7\ufe0f",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "og-previewer",
+    "name": "OG Image Previewer",
+    "desc": "Preview how link looks on socials",
+    "category": "Web & SEO",
+    "icon": "\ud83d\udc40",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "og-generator",
+    "name": "OG Image Generator",
+    "desc": "Create social share images",
+    "category": "Web & SEO",
+    "icon": "\ud83d\uddbc\ufe0f",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "sitemap-gen",
+    "name": "Sitemap Generator",
+    "desc": "Generate sitemap.xml",
+    "category": "Web & SEO",
+    "icon": "\ud83d\uddfa\ufe0f",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "utm-builder",
+    "name": "UTM Builder",
+    "desc": "Create UTM tracking links",
+    "category": "Web & SEO",
+    "icon": "\ud83d\udcc8",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "ip-info",
+    "name": "My IP & Browser Info",
+    "desc": "See IP, browser, OS info",
+    "category": "Web & SEO",
+    "icon": "\ud83d\udcbb",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "unit-converter",
+    "name": "Unit Converter",
+    "desc": "Length, weight, temp, etc.",
+    "category": "Everyday Utilities",
+    "icon": "\ud83d\udccf",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "age-calc",
+    "name": "Age & Date Calculator",
+    "desc": "Age, date diff, timezone",
+    "category": "Everyday Utilities",
+    "icon": "\ud83d\udcc5",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "percent-calc",
+    "name": "EMI & Percent Calculator",
+    "desc": "Loan, percent, GST calc",
+    "category": "Everyday Utilities",
+    "icon": "\ud83e\uddee",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "screen-recorder",
+    "name": "Screen Recorder",
+    "desc": "Record screen in browser",
+    "category": "Everyday Utilities",
+    "icon": "\ud83d\udcf9",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "typing-test",
+    "name": "Typing Speed Test",
+    "desc": "Check your WPM",
+    "category": "Everyday Utilities",
+    "icon": "\u2328\ufe0f",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "pomodoro",
+    "name": "Pomodoro Timer",
+    "desc": "Focus timer + tasks",
+    "category": "Everyday Utilities",
+    "icon": "\ud83c\udf45",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "image-upscaler",
+    "name": "AI Image Upscaler",
+    "desc": "Upscale images 4x offline",
+    "category": "AI Tools",
+    "icon": "\ud83d\udd0d",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "image-captioner",
+    "name": "Image to Prompt",
+    "desc": "AI caption any image",
+    "category": "AI Tools",
+    "icon": "\ud83e\udd16",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "summarizer",
+    "name": "Text Summarizer",
+    "desc": "Summarize long articles offline",
+    "category": "AI Tools",
+    "icon": "\ud83d\udcdd",
+    "popular": true,
+    "implemented": false
+  },
+  {
+    "id": "translator",
+    "name": "Offline Translator",
+    "desc": "Translate text offline",
+    "category": "AI Tools",
+    "icon": "\ud83c\udf0d",
+    "popular": false,
+    "implemented": false
+  },
+  {
+    "id": "sentiment",
+    "name": "Sentiment Analyzer",
+    "desc": "Analyze text sentiment",
+    "category": "AI Tools",
+    "icon": "\ud83d\ude0a",
+    "popular": false,
+    "implemented": false
+  }
+]
