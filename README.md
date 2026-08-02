@@ -1,15 +1,14 @@
-# OmniTools - 95+ Privacy-First Tools
+# OmniTools — Every Useful Tool, All in One Place
 
-All-in-one static site with 95+ tools that work 100% offline in browser. Built for GitHub Pages.
+A collection of 86 useful tools — images, PDFs, code, media, text and everyday utilities — organized into sections.
 
 ## Live
 https://viasrijan.github.io/omnitools/
 
 ## Features
-- 15 fully working tools (image, pdf, dev)
-- 80 placeholder pages ready to implement
-- No backend, no uploads, files never leave device
-- Search, categories, dark mode, PWA
+- 15 fully working tools (image, pdf, dev), 71 more on the way
+- Tools organized into sections with dropdown navigation
+- Search, dark mode, PWA
 
 ## Quick Start
 npm install

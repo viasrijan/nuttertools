@@ -1,6 +1,7 @@
 {
-  "name": "OmniTools",
+  "name": "OmniTools — Every Useful Tool, All in One Place",
   "short_name": "OmniTools",
+  "description": "A collection of useful free tools: images, PDFs, code, media and more.",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fafaf9",
