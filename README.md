@@ -2,6 +2,9 @@
 
 All-in-one static site with 95+ tools that work 100% offline in browser. Built for GitHub Pages.
 
+## Live
+https://viasrijan.github.io/omnitools/
+
 ## Features
 - 15 fully working tools (image, pdf, dev)
 - 80 placeholder pages ready to implement
