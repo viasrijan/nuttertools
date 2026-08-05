@@ -77,8 +77,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
 
             <div className="flex items-center gap-2 shrink-0">
               <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-                className="w-9 h-9 shrink-0 rounded-full bg-black dark:bg-white grid place-items-center hover:scale-105 active:scale-90 transition-transform duration-300">
-                <Sun className="w-[16px] h-[16px] text-white dark:text-black" strokeWidth={2.2} />
+                className="w-7 h-7 shrink-0 rounded-full bg-black dark:bg-white grid place-items-center hover:scale-105 active:scale-90 transition-transform duration-300">
+                <Sun className="w-[13px] h-[13px] text-white dark:text-black" strokeWidth={2.4} />
               </button>
               <button onClick={() => setMOpen(!mOpen)} aria-label="Menu" className="lg:hidden w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-800 grid place-items-center">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">

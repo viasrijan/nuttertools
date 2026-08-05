@@ -15,12 +15,7 @@ export default function Home() {
 
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 animate-[omni-fade_0.3s_ease-out]">
-      <section className="relative pt-8 pb-8 md:pt-16 md:pb-14 text-center overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-28 left-1/2 -translate-x-1/2 w-[720px] h-[440px] bg-[radial-gradient(closest-side,rgba(56,189,248,0.28),transparent_70%)] blur-2xl" />
-          <div className="absolute top-8 right-[4%] w-[380px] h-[300px] bg-[radial-gradient(closest-side,rgba(244,114,182,0.18),transparent_70%)] blur-2xl" />
-          <div className="absolute top-20 left-[3%] w-[380px] h-[300px] bg-[radial-gradient(closest-side,rgba(129,140,248,0.18),transparent_70%)] blur-2xl" />
-        </div>
+      <section className="relative pt-8 pb-8 md:pt-16 md:pb-14 text-center">
         <div className="relative">
           <p className="inline-flex items-center gap-2 text-[12.5px] font-semibold text-zinc-900 dark:text-white bg-white/80 dark:bg-zinc-900/80 backdrop-blur border border-zinc-200 dark:border-zinc-800 px-3.5 py-1.5 mb-6 rounded-full shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-red-500 to-pink-500" />

@@ -21,12 +21,6 @@ export default function App() {
   }
   return (
     <div className="min-h-screen flex flex-col">
-      <div aria-hidden className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute -top-1/4 -left-[10%] w-[65vw] h-[65vw] rounded-full bg-pink-200/50 dark:bg-sky-500/15 blur-[120px] animate-[omni-drift-a_30s_ease-in-out_infinite]" />
-        <div className="absolute top-1/3 -right-[15%] w-[55vw] h-[55vw] rounded-full bg-amber-100/60 dark:bg-fuchsia-500/15 blur-[120px] animate-[omni-drift-b_36s_ease-in-out_infinite]" />
-        <div className="absolute -bottom-1/4 left-1/4 w-[60vw] h-[60vw] rounded-full bg-rose-200/45 dark:bg-indigo-500/15 blur-[130px] animate-[omni-drift-c_44s_ease-in-out_infinite]" />
-        <div className="absolute top-[15%] left-1/3 w-[40vw] h-[40vw] rounded-full bg-yellow-100/60 dark:bg-amber-500/10 blur-[110px] animate-[omni-drift-b_50s_ease-in-out_infinite]" />
-      </div>
       <div aria-hidden className="side-shadows fixed inset-0 -z-[5] pointer-events-none" />
       <div aria-hidden className="film-grain fixed inset-0 z-[90] pointer-events-none opacity-[0.09] mix-blend-overlay" />
       <Header dark={dark} toggle={toggle} />
