@@ -3,7 +3,6 @@ import Home from './pages/Home'
 import CategoryPage from './pages/CategoryPage'
 import ToolPage from './pages/ToolPage'
 import Header from './components/Header'
-import Logo from './components/Logo'
 import { useEffect, useState } from 'react'
 import { CATEGORIES } from './data/categories'
 
@@ -39,14 +38,17 @@ export default function App() {
               ))}
             </div>
             <div className="md:text-right">
-              <div className="flex items-center gap-2.5 md:justify-end">
-                <Logo size={34} />
-                <span className="font-extrabold text-[18px] tracking-[-0.03em] text-purple-600 dark:text-purple-400">OmniTools</span>
+              <div className="md:justify-end">
+                <span className="text-[18px] font-extrabold tracking-[-0.03em]">
+                  <span className="text-purple-600 dark:text-purple-400">OmniTools</span>{' '}
+                  <span className="font-semibold text-zinc-900 dark:text-white">by</span>{' '}
+                  <a href="https://github.com/viasrijan" target="_blank" rel="noreferrer" className="text-purple-600 dark:text-purple-400 hover:underline underline-offset-4">ViaSrijan</a>
+                </span>
               </div>
               <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 mt-4 px-4 h-9 text-[13px] font-bold bg-gradient-to-r from-red-600 to-pink-600 text-white hover:opacity-90 transition-opacity">
+                className="inline-flex items-center gap-1 mt-3 px-2.5 h-[18px] text-[10px] font-bold bg-gradient-to-r from-red-600 to-pink-600 text-white hover:opacity-90 transition-opacity">
                 Donate
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z" />
                 </svg>
               </a>

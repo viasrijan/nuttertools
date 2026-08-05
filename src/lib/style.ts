@@ -15,7 +15,7 @@ export type HueDef = {
 const H: Record<Hue, HueDef> = {
   sky: {
     tile: 'bg-sky-600 text-white',
-    tileDark: 'dark:from-sky-500/25 dark:to-blue-500/25 dark:ring-1 dark:ring-sky-400/30',
+    tileDark: 'dark:from-sky-500/40 dark:to-blue-500/40 dark:ring-1 dark:ring-sky-400/30',
     grad: 'from-sky-400 to-sky-700',
     chip: 'bg-sky-50 text-sky-700 ring-sky-200 dark:bg-sky-500/10 dark:text-sky-300 dark:ring-sky-500/30',
     soft: 'bg-sky-50 dark:bg-sky-500/10',
@@ -24,7 +24,7 @@ const H: Record<Hue, HueDef> = {
   },
   rose: {
     tile: 'bg-rose-700 text-white',
-    tileDark: 'dark:from-rose-500/25 dark:to-red-500/25 dark:ring-1 dark:ring-rose-400/30',
+    tileDark: 'dark:from-rose-500/40 dark:to-red-500/40 dark:ring-1 dark:ring-rose-400/30',
     grad: 'from-rose-400 to-rose-700',
     chip: 'bg-rose-50 text-rose-700 ring-rose-200 dark:bg-rose-500/10 dark:text-rose-300 dark:ring-rose-500/30',
     soft: 'bg-rose-50 dark:bg-rose-500/10',
@@ -33,7 +33,7 @@ const H: Record<Hue, HueDef> = {
   },
   indigo: {
     tile: 'bg-indigo-700 text-white',
-    tileDark: 'dark:from-indigo-500/25 dark:to-violet-500/25 dark:ring-1 dark:ring-indigo-400/30',
+    tileDark: 'dark:from-indigo-500/40 dark:to-violet-500/40 dark:ring-1 dark:ring-indigo-400/30',
     grad: 'from-indigo-400 to-indigo-700',
     chip: 'bg-indigo-50 text-indigo-700 ring-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-300 dark:ring-indigo-500/30',
     soft: 'bg-indigo-50 dark:bg-indigo-500/10',
@@ -42,7 +42,7 @@ const H: Record<Hue, HueDef> = {
   },
   emerald: {
     tile: 'bg-emerald-700 text-white',
-    tileDark: 'dark:from-emerald-500/25 dark:to-teal-500/25 dark:ring-1 dark:ring-emerald-400/30',
+    tileDark: 'dark:from-emerald-500/40 dark:to-teal-500/40 dark:ring-1 dark:ring-emerald-400/30',
     grad: 'from-emerald-400 to-emerald-700',
     chip: 'bg-emerald-50 text-emerald-700 ring-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-emerald-500/30',
     soft: 'bg-emerald-50 dark:bg-emerald-500/10',
@@ -51,7 +51,7 @@ const H: Record<Hue, HueDef> = {
   },
   amber: {
     tile: 'bg-amber-600 text-white',
-    tileDark: 'dark:from-amber-500/25 dark:to-orange-500/25 dark:ring-1 dark:ring-amber-400/30',
+    tileDark: 'dark:from-amber-500/40 dark:to-orange-500/40 dark:ring-1 dark:ring-amber-400/30',
     grad: 'from-amber-400 to-amber-700',
     chip: 'bg-amber-50 text-amber-700 ring-amber-200 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-amber-500/30',
     soft: 'bg-amber-50 dark:bg-amber-500/10',
@@ -60,7 +60,7 @@ const H: Record<Hue, HueDef> = {
   },
   fuchsia: {
     tile: 'bg-fuchsia-700 text-white',
-    tileDark: 'dark:from-fuchsia-500/25 dark:to-pink-500/25 dark:ring-1 dark:ring-fuchsia-400/30',
+    tileDark: 'dark:from-fuchsia-500/40 dark:to-pink-500/40 dark:ring-1 dark:ring-fuchsia-400/30',
     grad: 'from-fuchsia-400 to-fuchsia-700',
     chip: 'bg-fuchsia-50 text-fuchsia-700 ring-fuchsia-200 dark:bg-fuchsia-500/10 dark:text-fuchsia-300 dark:ring-fuchsia-500/30',
     soft: 'bg-fuchsia-50 dark:bg-fuchsia-500/10',
@@ -69,7 +69,7 @@ const H: Record<Hue, HueDef> = {
   },
   purple: {
     tile: 'bg-purple-700 text-white',
-    tileDark: 'dark:from-purple-500/25 dark:to-violet-500/25 dark:ring-1 dark:ring-purple-400/30',
+    tileDark: 'dark:from-purple-500/40 dark:to-violet-500/40 dark:ring-1 dark:ring-purple-400/30',
     grad: 'from-purple-400 to-purple-700',
     chip: 'bg-purple-50 text-purple-700 ring-purple-200 dark:bg-purple-500/10 dark:text-purple-300 dark:ring-purple-500/30',
     soft: 'bg-purple-50 dark:bg-purple-500/10',
@@ -78,7 +78,7 @@ const H: Record<Hue, HueDef> = {
   },
   cyan: {
     tile: 'bg-cyan-700 text-white',
-    tileDark: 'dark:from-cyan-500/25 dark:to-sky-500/25 dark:ring-1 dark:ring-cyan-400/30',
+    tileDark: 'dark:from-cyan-500/40 dark:to-sky-500/40 dark:ring-1 dark:ring-cyan-400/30',
     grad: 'from-cyan-400 to-cyan-700',
     chip: 'bg-cyan-50 text-cyan-700 ring-cyan-200 dark:bg-cyan-500/10 dark:text-cyan-300 dark:ring-cyan-500/30',
     soft: 'bg-cyan-50 dark:bg-cyan-500/10',
@@ -87,7 +87,7 @@ const H: Record<Hue, HueDef> = {
   },
   lime: {
     tile: 'bg-lime-700 text-white',
-    tileDark: 'dark:from-lime-500/25 dark:to-green-500/25 dark:ring-1 dark:ring-lime-400/30',
+    tileDark: 'dark:from-lime-500/40 dark:to-green-500/40 dark:ring-1 dark:ring-lime-400/30',
     grad: 'from-lime-400 to-lime-700',
     chip: 'bg-lime-50 text-lime-700 ring-lime-200 dark:bg-lime-500/10 dark:text-lime-300 dark:ring-lime-500/30',
     soft: 'bg-lime-50 dark:bg-lime-500/10',
@@ -96,7 +96,7 @@ const H: Record<Hue, HueDef> = {
   },
   teal: {
     tile: 'bg-teal-700 text-white',
-    tileDark: 'dark:from-teal-500/25 dark:to-cyan-500/25 dark:ring-1 dark:ring-teal-400/30',
+    tileDark: 'dark:from-teal-500/40 dark:to-cyan-500/40 dark:ring-1 dark:ring-teal-400/30',
     grad: 'from-teal-400 to-teal-700',
     chip: 'bg-teal-50 text-teal-700 ring-teal-200 dark:bg-teal-500/10 dark:text-teal-300 dark:ring-teal-500/30',
     soft: 'bg-teal-50 dark:bg-teal-500/10',
@@ -105,7 +105,7 @@ const H: Record<Hue, HueDef> = {
   },
   orange: {
     tile: 'bg-orange-700 text-white',
-    tileDark: 'dark:from-orange-500/25 dark:to-amber-500/25 dark:ring-1 dark:ring-orange-400/30',
+    tileDark: 'dark:from-orange-500/40 dark:to-amber-500/40 dark:ring-1 dark:ring-orange-400/30',
     grad: 'from-orange-400 to-orange-700',
     chip: 'bg-orange-50 text-orange-700 ring-orange-200 dark:bg-orange-500/10 dark:text-orange-300 dark:ring-orange-500/30',
     soft: 'bg-orange-50 dark:bg-orange-500/10',
@@ -114,7 +114,7 @@ const H: Record<Hue, HueDef> = {
   },
   violet: {
     tile: 'bg-violet-700 text-white',
-    tileDark: 'dark:from-violet-500/25 dark:to-purple-500/25 dark:ring-1 dark:ring-violet-400/30',
+    tileDark: 'dark:from-violet-500/40 dark:to-purple-500/40 dark:ring-1 dark:ring-violet-400/30',
     grad: 'from-violet-400 to-violet-700',
     chip: 'bg-violet-50 text-violet-700 ring-violet-200 dark:bg-violet-500/10 dark:text-violet-300 dark:ring-violet-500/30',
     soft: 'bg-violet-50 dark:bg-violet-500/10',

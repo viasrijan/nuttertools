@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { GROUPS } from '../data/categories'
-import { tile } from '../lib/style'
+import { tileGrad } from '../lib/style'
 import Logo from './Logo'
 import { CategoryIcon } from './Icon'
 
@@ -26,13 +26,13 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   }
 
   return (
-    <header className="sticky top-0 z-50 pt-3 sm:pt-4 px-2 sm:px-4">
+    <header className="sticky top-0 z-50 pt-2 sm:pt-3 px-2 sm:px-4">
       <div className="mx-auto max-w-[1180px]">
-        <div className="rounded-[28px] border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-xl shadow-lg shadow-zinc-900/[0.04] dark:shadow-black/30">
-          <div className="px-3 sm:px-5 h-[70px] flex items-center justify-between gap-3">
-            <Link to="/" className="flex items-center gap-3 shrink-0" onClick={() => setMOpen(false)}>
-              <Logo size={30} />
-              <span className="text-[24px] font-extrabold tracking-[-0.03em] hidden sm:block text-purple-600 dark:text-purple-400">
+        <div className="rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-xl shadow-lg shadow-zinc-900/[0.04] dark:shadow-black/30">
+          <div className="px-3 sm:px-5 h-[56px] flex items-center justify-between gap-3">
+            <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setMOpen(false)}>
+              <Logo size={24} />
+              <span className="text-[19px] font-extrabold tracking-[-0.03em] hidden sm:block text-purple-600 dark:text-purple-400">
                 OmniTools
               </span>
             </Link>
@@ -43,7 +43,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onMouseEnter={() => setOpen(g.id)}
                   onMouseLeave={() => setOpen((o) => (o === g.id ? null : o))}>
                   <button onClick={() => setOpen(open === g.id ? null : g.id)}
-                    className={`flex items-center gap-1.5 text-[13.5px] font-semibold px-3.5 py-2 transition-colors ${open === g.id ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-300 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'}`}>
+                    className={`flex items-center gap-1.5 text-[13px] font-semibold px-3 py-1.5 transition-colors ${open === g.id ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-300 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'}`}>
                     {g.label}
                     <svg width="9" height="9" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === g.id ? 'rotate-180' : ''}`}>
                       <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -57,7 +57,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                           {g.categories.map((c) => (
                             <Link key={c.slug} to={`/tools/${c.slug}`} onClick={() => setOpen(null)}
                               className="flex items-center gap-3 px-3 py-2.5 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
-                              <span className={`w-9 h-9 rounded-full grid place-items-center shrink-0 ${tile(c.hue)}`}>
+                              <span className={`w-9 h-9 rounded-full grid place-items-center shrink-0 ${tileGrad(c.hue)}`}>
                                 <CategoryIcon slug={c.slug} className="w-[18px] h-[18px] text-white" />
                               </span>
                               <span className="flex-1 min-w-0">
@@ -76,10 +76,10 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
 
             <div className="flex items-center gap-2 shrink-0">
               <button onClick={toggle} aria-label="Toggle theme"
-                className="w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-800 grid place-items-center text-[15px] hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:scale-105 active:scale-95 transition-all">
+                className="w-8 h-8 rounded-full border border-zinc-200 dark:border-zinc-800 grid place-items-center text-[13px] hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:scale-105 active:scale-95 transition-all">
                 {dark ? '☀️' : '🌙'}
               </button>
-              <button onClick={() => setMOpen(!mOpen)} aria-label="Menu" className="lg:hidden w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-800 grid place-items-center">
+              <button onClick={() => setMOpen(!mOpen)} aria-label="Menu" className="lg:hidden w-8 h-8 rounded-full border border-zinc-200 dark:border-zinc-800 grid place-items-center">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                   {mOpen ? <path d="M3 3L13 13M13 3L3 13" /> : <path d="M2 3.5h12M2 8h12M2 12.5h12" />}
                 </svg>
@@ -97,7 +97,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                       {g.categories.map((c) => (
                         <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}
                           className="flex items-center gap-3 px-2 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-left active:scale-[0.98] transition-transform">
-                          <span className={`w-9 h-9 rounded-full grid place-items-center shrink-0 ${tile(c.hue)}`}>
+                          <span className={`w-9 h-9 rounded-full grid place-items-center shrink-0 ${tileGrad(c.hue)}`}>
                             <CategoryIcon slug={c.slug} className="w-[18px] h-[18px] text-white" />
                           </span>
                           <span className="flex-1 min-w-0">
