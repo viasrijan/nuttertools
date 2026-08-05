@@ -89,18 +89,23 @@ export default function Home() {
 
           <section className="pb-16 md:pb-24">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-600 px-8 py-12 md:py-14 shadow-xl shadow-indigo-900/10">
+              <div className="relative overflow-hidden bg-gradient-to-br from-red-600 via-rose-600 to-pink-600 px-8 py-12 md:py-14 shadow-xl shadow-rose-900/10">
                 <div aria-hidden className="absolute top-[-80px] right-[-80px] w-[280px] h-[280px] bg-white/10 blur-2xl" />
-                <div className="relative">
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-indigo-100/90">Support</p>
+                <div className="relative pb-[15%]">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-rose-100/90">Support</p>
                   <h2 className="text-[26px] md:text-[32px] font-bold tracking-[-0.03em] mt-3 text-white text-balance">Love OmniTools?</h2>
-                  <p className="text-[15px] md:text-[16px] text-indigo-100 mt-3 max-w-sm leading-relaxed text-pretty">
+                  <p className="text-[15px] md:text-[16px] text-rose-100 mt-3 max-w-sm leading-relaxed text-pretty">
                     Every tool here is free and always will be. A small donation helps keep the lights on.
                   </p>
                   <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
-                    className="inline-flex items-center gap-2 mt-8 px-8 h-12 bg-white text-indigo-700 font-bold text-[16px] shadow-lg hover:scale-105 active:scale-95 transition-transform">
+                    className="inline-flex items-center gap-2 mt-8 px-8 h-12 bg-white text-rose-600 font-bold text-[16px] shadow-lg hover:scale-105 active:scale-95 transition-transform">
                     Donate with PayPal
                   </a>
+                </div>
+                <div aria-hidden className="absolute inset-x-0 bottom-0 h-[15%] opacity-20">
+                  <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 800 100">
+                    <path d="M0 60 C 100 20, 200 100, 300 60 S 500 20, 600 60 S 750 90, 800 55 L 800 100 L 0 100 Z" fill="#fff" />
+                  </svg>
                 </div>
               </div>
               <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-8 py-12 md:py-14">
@@ -114,7 +119,7 @@ export default function Home() {
                     ['Fresh tools, always', 'New utilities added all the time.'],
                   ].map(([t, d]) => (
                     <li key={t} className="flex gap-3.5">
-                      <span className="w-2 h-2 mt-2 shrink-0 bg-gradient-to-r from-indigo-500 to-fuchsia-500" />
+                      <span className="w-2 h-2 mt-2 shrink-0 bg-gradient-to-r from-red-500 to-pink-500" />
                       <div>
                         <p className="text-[15px] font-semibold">{t}</p>
                         <p className="text-[13.5px] text-zinc-500 mt-0.5 leading-relaxed">{d}</p>

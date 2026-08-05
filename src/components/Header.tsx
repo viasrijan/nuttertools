@@ -28,11 +28,11 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header className="sticky top-0 z-50 pt-3 sm:pt-4 px-2 sm:px-4">
       <div className="mx-auto max-w-[1180px]">
-        <div className={`border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-xl shadow-lg shadow-zinc-900/[0.04] dark:shadow-black/30 ${mOpen ? '' : ''}`}>
+        <div className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-xl shadow-lg shadow-zinc-900/[0.04] dark:shadow-black/30">
           <div className="px-3 sm:px-5 h-[70px] flex items-center justify-between gap-3">
             <Link to="/" className="flex items-center gap-3 shrink-0" onClick={() => setMOpen(false)}>
-              <Logo size={42} />
-              <span className="text-[24px] font-extrabold tracking-[-0.03em] hidden sm:block bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 dark:from-indigo-400 dark:via-violet-400 dark:to-fuchsia-400 bg-clip-text text-transparent">
+              <Logo size={30} />
+              <span className="text-[24px] font-extrabold tracking-[-0.03em] hidden sm:block text-indigo-600 dark:text-indigo-400">
                 OmniTools
               </span>
             </Link>
@@ -51,7 +51,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   </button>
                   {open === g.id && (
                     <div className="absolute left-0 top-full pt-2">
-                      <div className="w-[340px] border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl shadow-zinc-900/10 dark:shadow-black/50 p-2">
+                      <div className="w-[340px] rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl shadow-zinc-900/10 dark:shadow-black/50 p-2">
                         <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400 px-3 pt-1 pb-1.5">{g.label}</p>
                         <div className="flex flex-col gap-0.5">
                           {g.categories.map((c) => (
@@ -88,7 +88,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
           {mOpen && (
-            <div className="lg:hidden border-t border-zinc-200 dark:border-zinc-800 max-h-[calc(100dvh-110px)] overflow-y-auto">
+            <div className="lg:hidden border-t border-zinc-200 dark:border-zinc-800 max-h-[calc(100dvh-110px)] overflow-y-auto rounded-b-2xl">
               <div className="px-3 sm:px-5 py-3 space-y-4">
                 {GROUPS.map((g) => (
                   <div key={g.id}>

@@ -35,12 +35,12 @@ export default function App() {
           <div className="flex flex-col md:flex-row items-start justify-between gap-10">
             <div>
               <div className="flex items-center gap-2.5">
-                <Logo size={30} />
-                <span className="font-extrabold text-[18px] tracking-[-0.03em]">OmniTools</span>
+                <Logo size={21} />
+                <span className="font-extrabold text-[18px] tracking-[-0.03em] text-indigo-600 dark:text-indigo-400">OmniTools</span>
               </div>
               <p className="text-[13px] text-zinc-500 mt-3 max-w-xs leading-relaxed">A collection of useful free tools, all in one place.</p>
               <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 mt-4 px-4 h-9 text-[12.5px] font-semibold bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:opacity-90 transition-opacity">
+                className="inline-flex items-center gap-2 mt-4 px-4 h-9 text-[12.5px] font-semibold bg-gradient-to-r from-pink-600 to-rose-600 text-white hover:opacity-90 transition-opacity">
                 Donate with PayPal
               </a>
             </div>
