@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Sun } from 'lucide-react'
 import { GROUPS } from '../data/categories'
+import { textAccent } from '../lib/style'
 import Logo from './Logo'
 import { CutoutCategoryIcon } from './Icon'
 
@@ -26,9 +27,9 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   }
 
   return (
-    <header className="sticky top-0 z-50 pt-3 sm:pt-4 px-4 sm:px-6">
+    <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-4 sm:px-6">
       <div className="mx-auto max-w-[1200px]">
-        <div className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-gradient-to-r from-white/95 via-white/90 to-sky-100/70 dark:from-zinc-950/95 dark:via-zinc-950/90 dark:to-indigo-950/70 backdrop-blur-xl shadow-lg shadow-zinc-900/[0.04] dark:shadow-black/30">
+        <div className="rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl shadow-lg shadow-zinc-900/[0.04] dark:shadow-black/30">
           <div className="px-2.5 sm:px-5 h-[52px] sm:h-[56px] flex items-center justify-between gap-3">
             <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setMOpen(false)}>
               <Logo size={24} />
@@ -58,7 +59,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                             <Link key={c.slug} to={`/tools/${c.slug}`} onClick={() => setOpen(null)}
                               className="flex items-center gap-3 px-3 py-2.5 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
                               <span className="w-9 h-9 shrink-0">
-                                <CutoutCategoryIcon slug={c.slug} className="w-full h-full" />
+                                <CutoutCategoryIcon slug={c.slug} className="w-full h-full" tone={textAccent(c.hue)} />
                               </span>
                               <span className="flex-1 min-w-0">
                                 <span className="block text-[13.5px] font-semibold leading-tight truncate text-zinc-900 dark:text-white">{c.name}</span>
@@ -75,10 +76,11 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </nav>
 
             <div className="flex items-center gap-2 shrink-0">
-              <Sun className="w-[15px] h-[15px] text-sky-500 dark:text-sky-300" strokeWidth={2.2} aria-hidden="true" />
               <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-                className={`w-9 h-5 shrink-0 rounded-full transition-colors duration-300 ${dark ? 'bg-sky-400' : 'bg-zinc-300'} ring-1 ring-inset ring-black/10 dark:ring-white/20 hover:scale-105 active:scale-90 transition-transform`} />
-              <button onClick={() => setMOpen(!mOpen)} aria-label="Menu" className="lg:hidden w-8 h-8 rounded-full border border-zinc-200 dark:border-zinc-800 grid place-items-center">
+                className="w-9 h-9 shrink-0 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 grid place-items-center hover:scale-105 active:scale-90 transition-transform duration-300">
+                <Sun className="w-[16px] h-[16px] text-amber-500 dark:text-amber-300" strokeWidth={2.2} />
+              </button>
+              <button onClick={() => setMOpen(!mOpen)} aria-label="Menu" className="lg:hidden w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-800 grid place-items-center">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                   {mOpen ? <path d="M3 3L13 13M13 3L3 13" /> : <path d="M2 3.5h12M2 8h12M2 12.5h12" />}
                 </svg>
@@ -97,7 +99,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                         <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}
                           className="flex items-center gap-3 px-2 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-left active:scale-[0.98] transition-transform">
                           <span className="w-9 h-9 shrink-0">
-                            <CutoutCategoryIcon slug={c.slug} className="w-full h-full" />
+                            <CutoutCategoryIcon slug={c.slug} className="w-full h-full" tone={textAccent(c.hue)} />
                           </span>
                           <span className="flex-1 min-w-0">
                             <span className="block text-[13px] font-medium leading-tight truncate text-zinc-900 dark:text-white">{c.name}</span>

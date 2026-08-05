@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { CATEGORIES } from '../data/categories'
-import { hueFor, tileGrad } from '../lib/style'
+import { hueFor, textAccent, tileGrad } from '../lib/style'
 import { CutoutToolIcon, ToolIcon } from '../components/Icon'
 import registry from '../tools/registry'
 
@@ -73,7 +73,7 @@ export default function ToolPage() {
                   <Link key={t.id} to={`/tool/${t.id}`}
                     className="flex items-center gap-3 px-2 py-2  hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
                     <span className="w-9 h-9 shrink-0">
-                      <CutoutToolIcon id={t.id} className="w-full h-full" />
+                      <CutoutToolIcon id={t.id} className="w-full h-full" tone={textAccent(hueFor(t.category))} />
                     </span>
                     <span className="flex-1 text-[13.5px] font-medium truncate group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">{t.name}</span>
                   </Link>

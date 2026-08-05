@@ -154,26 +154,28 @@ export function CategoryIcon({ slug, className }: { slug: string, className?: st
   return <C className={className} strokeWidth={1.9} aria-hidden="true" />
 }
 
-export function CutoutIcon({ icon: C, className, strokeWidth = 2.2 }: { icon: LucideIcon, className?: string, strokeWidth?: number }) {
+export function CutoutIcon({ icon: C, className, tone = 'text-zinc-500 dark:text-zinc-300', strokeWidth = 2.2 }: { icon: LucideIcon, className?: string, tone?: string, strokeWidth?: number }) {
   const raw = useId()
   const id = `cutout-${raw.replace(/[^a-zA-Z0-9-]/g, '')}`
   return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+    <svg viewBox="0 0 24 24" className={`${className} ${tone}`} aria-hidden="true">
       <defs>
         <mask id={id}>
           <circle cx="12" cy="12" r="11" fill="#fff" />
           <C stroke="#000" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
         </mask>
       </defs>
+      <circle cx="12" cy="12" r="11" fill="currentColor" opacity="0.25" />
       <circle cx="12" cy="12" r="11" fill="#fff" mask={`url(#${id})`} />
+      <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" strokeOpacity="0.4" strokeWidth="0.8" />
     </svg>
   )
 }
 
-export function CutoutToolIcon({ id, className }: { id: string, className?: string }) {
-  return <CutoutIcon icon={TOOL_ICONS[id] || Wrench} className={className} />
+export function CutoutToolIcon({ id, className, tone }: { id: string, className?: string, tone?: string }) {
+  return <CutoutIcon icon={TOOL_ICONS[id] || Wrench} className={className} tone={tone} />
 }
 
-export function CutoutCategoryIcon({ slug, className }: { slug: string, className?: string }) {
-  return <CutoutIcon icon={CAT_ICONS[slug] || Wrench} className={className} />
+export function CutoutCategoryIcon({ slug, className, tone }: { slug: string, className?: string, tone?: string }) {
+  return <CutoutIcon icon={CAT_ICONS[slug] || Wrench} className={className} tone={tone} />
 }
