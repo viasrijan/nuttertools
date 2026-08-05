@@ -32,7 +32,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           <div className="px-3 sm:px-5 h-[70px] flex items-center justify-between gap-3">
             <Link to="/" className="flex items-center gap-3 shrink-0" onClick={() => setMOpen(false)}>
               <Logo size={30} />
-              <span className="text-[24px] font-extrabold tracking-[-0.03em] hidden sm:block text-indigo-600 dark:text-indigo-400">
+              <span className="text-[24px] font-extrabold tracking-[-0.03em] hidden sm:block bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 dark:from-indigo-400 dark:via-violet-400 dark:to-fuchsia-400 bg-clip-text text-transparent">
                 OmniTools
               </span>
             </Link>
@@ -43,7 +43,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onMouseEnter={() => setOpen(g.id)}
                   onMouseLeave={() => setOpen((o) => (o === g.id ? null : o))}>
                   <button onClick={() => setOpen(open === g.id ? null : g.id)}
-                    className={`flex items-center gap-1.5 text-[13.5px] font-semibold px-3.5 py-2 transition-colors ${open === g.id ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100' : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'}`}>
+                    className={`flex items-center gap-1.5 text-[13.5px] font-semibold px-3.5 py-2 transition-colors ${open === g.id ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100' : 'text-zinc-700 dark:text-zinc-100 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'}`}>
                     {g.label}
                     <svg width="9" height="9" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === g.id ? 'rotate-180' : ''}`}>
                       <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -61,7 +61,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                                 <CategoryIcon slug={c.slug} className="w-[18px] h-[18px] text-white" />
                               </span>
                               <span className="flex-1 min-w-0">
-                                <span className="block text-[13.5px] font-semibold leading-tight truncate">{c.name}</span>
+                                <span className="block text-[13.5px] font-semibold leading-tight truncate text-zinc-900 dark:text-zinc-100">{c.name}</span>
                                 <span className="block text-[11px] text-zinc-600 dark:text-zinc-400">{c.count} tools</span>
                               </span>
                             </Link>
@@ -101,7 +101,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                             <CategoryIcon slug={c.slug} className="w-[18px] h-[18px] text-white" />
                           </span>
                           <span className="flex-1 min-w-0">
-                            <span className="block text-[13px] font-medium leading-tight truncate">{c.name}</span>
+                            <span className="block text-[13px] font-medium leading-tight truncate text-zinc-900 dark:text-zinc-100">{c.name}</span>
                             <span className="block text-[11px] text-zinc-600 dark:text-zinc-400">{c.count}</span>
                           </span>
                         </button>
