@@ -122,3 +122,15 @@ p { text-wrap: pretty; }
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
     inset 0 -1px 0 rgba(0, 0, 0, 0.35);
 }
+
+.side-shadows {
+  box-shadow:
+    inset 28px 0 60px -24px rgba(0, 0, 0, 0.12),
+    inset -28px 0 60px -24px rgba(0, 0, 0, 0.12);
+}
+
+.dark .side-shadows {
+  box-shadow:
+    inset 28px 0 60px -24px rgba(0, 0, 0, 0.45),
+    inset -28px 0 60px -24px rgba(0, 0, 0, 0.45);
+}
