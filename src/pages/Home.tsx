@@ -29,10 +29,17 @@ export default function Home() {
           <h1 className="font-[800] tracking-[-0.035em] text-[clamp(22.5px,6.8vw,57.6px)] leading-[1.04] [filter:drop-shadow(0_3px_12px_rgba(0,0,0,0.12))]">
             All useful tools in{' '}
             <span className="relative inline-block whitespace-nowrap">
-              <span className="text-sky-400 dark:text-sky-300">one place</span>
-              <svg aria-hidden className="absolute left-0 -bottom-[0.1em] w-full h-[0.27em]" viewBox="0 0 200 20" preserveAspectRatio="none">
-                <path pathLength="1" className="[stroke-dasharray:1] [stroke-dashoffset:1] animate-[omni-draw_0.7s_ease-out_0.4s_both]" d="M2 10 L198 10" stroke="#38bdf8" strokeWidth="4" strokeLinecap="round" fill="none" />
+              <svg aria-hidden className="absolute left-0 top-[0.58em] w-full h-[0.24em]" viewBox="0 0 200 20" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="uline-grad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stopColor="#38bdf8" stopOpacity="0.8" />
+                    <stop offset="0.5" stopColor="#38bdf8" stopOpacity="1" />
+                    <stop offset="1" stopColor="#38bdf8" stopOpacity="0.8" />
+                  </linearGradient>
+                </defs>
+                <path pathLength="1" className="[stroke-dasharray:1] [stroke-dashoffset:1] animate-[omni-draw_0.7s_ease-out_0.4s_both]" d="M2 10 L198 10" stroke="url(#uline-grad)" strokeWidth="4" strokeLinecap="round" fill="none" />
               </svg>
+              <span className="relative text-sky-400 dark:text-sky-300">one place</span>
             </span>.
           </h1>
           <p className="mt-4 text-[15.5px] md:text-[18px] font-medium text-zinc-900 dark:text-white max-w-xl mx-auto leading-relaxed text-pretty">
@@ -81,18 +88,18 @@ export default function Home() {
 
           <section className="pb-12 md:pb-24">
             <div className="grid grid-cols-1 md:grid-cols-[6fr_4fr] gap-3 sm:gap-4 min-h-[380px] md:min-h-[480px]">
-              <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-6 md:px-8 py-9 md:py-10 flex flex-col justify-center soft-shadow">
+              <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-6 md:px-8 py-9 md:py-10 flex flex-col items-center justify-center text-center soft-shadow">
                 <p className="text-[16px] font-bold tracking-[-0.01em] text-sky-400 dark:text-sky-300">Why OmniTools?</p>
                 <h2 className="text-[22px] md:text-[26px] font-bold tracking-[-0.03em] mt-3 text-balance">Free. Private. No sign-up.</h2>
-                <ul className="mt-6 grid gap-x-10 gap-y-5 md:grid-cols-2">
+                <ul className="mt-6 grid gap-x-4 gap-y-5 md:grid-cols-2">
                   {[
                     ['100% free forever', 'No paywalls, no trials, no accounts.'],
                     ['Your files never leave your device', 'Everything runs locally in your browser.'],
                     ['Fast & lightweight', 'Every tool opens instantly, ready to use.'],
                     ['Fresh tools, always', 'New utilities added all the time.'],
                   ].map(([t, d]) => (
-                    <li key={t} className="flex gap-3">
-                      <span className="w-2.5 h-2.5 rounded-full mt-1.5 shrink-0 bg-gradient-to-r from-red-500 to-pink-500" />
+                    <li key={t} className="flex justify-center gap-2 text-center">
+                      <span className="w-[5px] h-[5px] rounded-full mt-2 shrink-0 bg-gradient-to-r from-red-500 to-pink-500" />
                       <div>
                         <p className="text-[13.5px] font-semibold">{t}</p>
                         <p className="text-[12.5px] font-medium text-zinc-900 dark:text-white mt-0.5 leading-relaxed">{d}</p>
@@ -115,12 +122,17 @@ export default function Home() {
                 </div>
                 <div className="relative flex flex-col items-center text-center">
                   <p className="text-[15px] font-bold tracking-[-0.01em] text-white/90">Support Us</p>
-                  <h2 className="text-[22px] md:text-[26px] font-bold tracking-[-0.03em] mt-3 text-white text-balance">Love OmniTools?</h2>
+                  <h2 className="text-[22px] md:text-[26px] font-bold tracking-[-0.03em] mt-3 text-white text-balance">Love ❤️ OmniTools?</h2>
                   <p className="text-[13.5px] font-medium text-white/90 mt-3 leading-relaxed text-pretty">
-                    Every tool here is free and always will be. A small donation helps keep the lights on.
+                    Every tool here is free and always will be.
+                    <br />
+                    A small donation helps keep the lights on.
                   </p>
                   <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
-                    className="inline-flex items-center gap-2 mt-7 px-6 h-10 bg-white text-pink-600 font-bold text-[13.5px] shadow-lg hover:scale-105 active:scale-95 transition-transform">
+                    className="inline-flex items-center gap-2 mt-7 px-6 h-10 bg-white text-pink-600 font-bold text-[13.5px] soft-shadow hover:scale-105 active:scale-95 transition-transform">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z" />
+                    </svg>
                     Donate with PayPal
                   </a>
                 </div>

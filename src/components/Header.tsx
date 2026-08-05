@@ -33,7 +33,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           <div className="px-2.5 sm:px-5 h-[52px] sm:h-[56px] flex items-center justify-between gap-3">
             <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setMOpen(false)}>
               <Logo size={24} />
-              <span className="text-[19px] font-extrabold tracking-[-0.03em] hidden sm:block text-sky-500 dark:text-sky-300">
+              <span className="text-[19px] font-extrabold tracking-[-0.03em] hidden sm:block text-black dark:text-white">
                 OmniTools
               </span>
             </Link>
@@ -77,8 +77,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
 
             <div className="flex items-center gap-2 shrink-0">
               <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-                className="w-9 h-9 shrink-0 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 grid place-items-center hover:scale-105 active:scale-90 transition-transform duration-300">
-                <Sun className="w-[16px] h-[16px] text-amber-500 dark:text-amber-300" strokeWidth={2.2} />
+                className="w-9 h-9 shrink-0 rounded-full bg-black dark:bg-white grid place-items-center hover:scale-105 active:scale-90 transition-transform duration-300">
+                <Sun className="w-[16px] h-[16px] text-white dark:text-black" strokeWidth={2.2} />
               </button>
               <button onClick={() => setMOpen(!mOpen)} aria-label="Menu" className="lg:hidden w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-800 grid place-items-center">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">

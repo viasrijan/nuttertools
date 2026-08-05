@@ -56,7 +56,7 @@ export default function App() {
                 <p className="text-[22px] font-extrabold tracking-[-0.03em] leading-none text-sky-500 dark:text-sky-300">OmniTools</p>
                 <p className="text-[13px] font-medium text-zinc-900 dark:text-white mt-1.5">
                   by{' '}
-                  <a href="https://github.com/viasrijan" target="_blank" rel="noreferrer" className="font-bold text-zinc-900 dark:text-white hover:text-sky-500 dark:hover:text-sky-300 hover:underline underline-offset-4">ViaSrijan</a>
+                  <a href="https://github.com/viasrijan" target="_blank" rel="noreferrer" className="font-bold text-zinc-900 dark:text-white hover:text-sky-500 dark:hover:text-sky-300">ViaSrijan</a>
                 </p>
               </div>
             </div>
