@@ -60,7 +60,7 @@ export default function ImageCompressor(){
         {files.map((f,i)=><div key={i} className="border p-2">
           <img src={f.out||f.url} className="w-full h-28 object-cover"/>
           <p className="text-[11px] mt-1 truncate">{f.file.name}</p>
-          <p className="text-[10px] text-zinc-500">{(f.file.size/1024).toFixed(0)}KB → {f.size? (f.size/1024).toFixed(0)+'KB' : '...'}</p>
+          <p className="text-[10px] font-medium text-zinc-900 dark:text-white">{(f.file.size/1024).toFixed(0)}KB → {f.size? (f.size/1024).toFixed(0)+'KB' : '...'}</p>
           {f.out && <a href={f.out} download={`compressed-${f.file.name}.jpg`} className="text-xs underline">Download</a>}
         </div>)}
       </div>

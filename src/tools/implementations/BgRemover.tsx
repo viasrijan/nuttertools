@@ -32,7 +32,7 @@ export default function BgRemover(){
     <div className="space-y-4">
       <DropZone onFiles={onFiles} accept="image/*" multiple={false}/>
       {loading && <p className="text-sm animate-pulse">Removing background with local AI... first run downloads model (~30MB)</p>}
-      {!loading && !out && orig && <p className="text-xs text-zinc-500">Install @imgly/background-removal for real AI removal: npm i @imgly/background-removal. For now showing original.</p>}
+      {!loading && !out && orig && <p className="text-xs font-medium text-zinc-900 dark:text-white">Install @imgly/background-removal for real AI removal: npm i @imgly/background-removal. For now showing original.</p>}
       <div className="grid grid-cols-2 gap-4">
         {orig && <div><p className="text-xs mb-1">Original</p><img src={orig} className="border"/></div>}
         {out && <div><p className="text-xs mb-1">No Background</p><div className="bg-[url('https://i.imgur.com/8Km9tLL.png')]"><img src={out} className="border"/></div><a href={out} download="no-bg.png" className="text-xs underline mt-2 block">Download PNG</a></div>}

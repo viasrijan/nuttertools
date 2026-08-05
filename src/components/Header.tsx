@@ -32,7 +32,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           <div className="px-3 sm:px-5 h-[70px] flex items-center justify-between gap-3">
             <Link to="/" className="flex items-center gap-3 shrink-0" onClick={() => setMOpen(false)}>
               <Logo size={30} />
-              <span className="text-[24px] font-extrabold tracking-[-0.03em] hidden sm:block bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 dark:from-indigo-400 dark:via-violet-400 dark:to-fuchsia-400 bg-clip-text text-transparent">
+              <span className="text-[24px] font-extrabold tracking-[-0.03em] hidden sm:block text-purple-600 dark:text-purple-400">
                 OmniTools
               </span>
             </Link>
@@ -43,7 +43,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onMouseEnter={() => setOpen(g.id)}
                   onMouseLeave={() => setOpen((o) => (o === g.id ? null : o))}>
                   <button onClick={() => setOpen(open === g.id ? null : g.id)}
-                    className={`flex items-center gap-1.5 text-[13.5px] font-semibold px-3.5 py-2 transition-colors ${open === g.id ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100' : 'text-zinc-700 dark:text-zinc-100 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'}`}>
+                    className={`flex items-center gap-1.5 text-[13.5px] font-semibold px-3.5 py-2 transition-colors ${open === g.id ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-300 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'}`}>
                     {g.label}
                     <svg width="9" height="9" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === g.id ? 'rotate-180' : ''}`}>
                       <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -52,17 +52,17 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   {open === g.id && (
                     <div className="absolute left-0 top-full pt-2">
                       <div className="w-[340px] rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl shadow-zinc-900/10 dark:shadow-black/50 p-2">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400 px-3 pt-1 pb-1.5">{g.label}</p>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-purple-600 dark:text-purple-400 px-3 pt-1 pb-1.5">{g.label}</p>
                         <div className="flex flex-col gap-0.5">
                           {g.categories.map((c) => (
                             <Link key={c.slug} to={`/tools/${c.slug}`} onClick={() => setOpen(null)}
                               className="flex items-center gap-3 px-3 py-2.5 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
-                              <span className={`w-9 h-9 grid place-items-center shrink-0 ${tile(c.hue)}`}>
+                              <span className={`w-9 h-9 rounded-full grid place-items-center shrink-0 ${tile(c.hue)}`}>
                                 <CategoryIcon slug={c.slug} className="w-[18px] h-[18px] text-white" />
                               </span>
                               <span className="flex-1 min-w-0">
-                                <span className="block text-[13.5px] font-semibold leading-tight truncate text-zinc-900 dark:text-zinc-100">{c.name}</span>
-                                <span className="block text-[11px] text-zinc-600 dark:text-zinc-400">{c.count} tools</span>
+                                <span className="block text-[13.5px] font-semibold leading-tight truncate text-zinc-900 dark:text-white">{c.name}</span>
+                                <span className="block text-[11px] font-medium text-zinc-900 dark:text-zinc-100">{c.count} tools</span>
                               </span>
                             </Link>
                           ))}
@@ -92,17 +92,17 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
               <div className="px-3 sm:px-5 py-3 space-y-4">
                 {GROUPS.map((g) => (
                   <div key={g.id}>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400 mb-1.5 px-1">{g.label}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-purple-600 dark:text-purple-400 mb-1.5 px-1">{g.label}</p>
                     <div className="flex flex-col gap-0.5">
                       {g.categories.map((c) => (
                         <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}
                           className="flex items-center gap-3 px-2 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-left active:scale-[0.98] transition-transform">
-                          <span className={`w-9 h-9 grid place-items-center shrink-0 ${tile(c.hue)}`}>
+                          <span className={`w-9 h-9 rounded-full grid place-items-center shrink-0 ${tile(c.hue)}`}>
                             <CategoryIcon slug={c.slug} className="w-[18px] h-[18px] text-white" />
                           </span>
                           <span className="flex-1 min-w-0">
-                            <span className="block text-[13px] font-medium leading-tight truncate text-zinc-900 dark:text-zinc-100">{c.name}</span>
-                            <span className="block text-[11px] text-zinc-600 dark:text-zinc-400">{c.count}</span>
+                            <span className="block text-[13px] font-medium leading-tight truncate text-zinc-900 dark:text-white">{c.name}</span>
+                            <span className="block text-[11px] font-medium text-zinc-900 dark:text-zinc-100">{c.count}</span>
                           </span>
                         </button>
                       ))}

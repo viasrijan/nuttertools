@@ -18,17 +18,6 @@ body {
 h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }
 
-:root {
-  --logo-1: #4f46e5;
-  --logo-2: #7c3aed;
-  --logo-3: #c026d3;
-}
-.dark {
-  --logo-1: #818cf8;
-  --logo-2: #a78bfa;
-  --logo-3: #e879f9;
-}
-
 ::selection {
   background: #e0e7ff;
   color: #1e1b4b;
@@ -47,6 +36,13 @@ p { text-wrap: pretty; }
   100% { transform: translateX(-50%); }
 }
 
+@keyframes omni-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(10%, -12%) scale(1.18); }
+  50% { transform: translate(-8%, 8%) scale(0.9); }
+  75% { transform: translate(8%, 12%) scale(1.1); }
+}
+
 @layer base {
   input, textarea, select {
     color-scheme: light;
@@ -62,7 +58,7 @@ p { text-wrap: pretty; }
   }
 
   input::placeholder, textarea::placeholder {
-    @apply text-zinc-400 dark:text-zinc-400;
+    @apply text-zinc-900/55 dark:text-zinc-100/55;
   }
 
   select {

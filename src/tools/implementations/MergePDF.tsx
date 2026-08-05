@@ -22,7 +22,7 @@ export default function MergePDF(){
   return (
     <div className="space-y-4">
       <DropZone onFiles={onFiles} accept="application/pdf" label="Drop PDFs to merge - order matters"/>
-      <div className="text-xs text-zinc-500">{files.map(f=>f.name).join(' + ')}</div>
+      <div className="text-xs font-medium text-zinc-900 dark:text-white">{files.map(f=>f.name).join(' + ')}</div>
       <button onClick={merge} disabled={files.length<2} className="px-4 py-2 bg-zinc-900 text-white text-sm disabled:opacity-30">Merge {files.length} PDFs</button>
       {out && <a href={out} download="merged.pdf" className="block mt-2 text-sm underline">Download Merged PDF</a>}
       <button onClick={()=>{setFiles([]); setOut("")}} className="text-xs underline">Clear</button>
