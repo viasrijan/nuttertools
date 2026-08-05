@@ -38,10 +38,10 @@ export default function App() {
               ))}
             </div>
             <div className="md:text-right">
-              <p className="text-[22px] font-extrabold tracking-[-0.03em] leading-none text-purple-600 dark:text-purple-400">OmniTools</p>
+              <p className="text-[22px] font-extrabold tracking-[-0.03em] leading-none text-sky-600 dark:text-sky-400">OmniTools</p>
               <p className="text-[13px] font-medium text-zinc-900 dark:text-white mt-1.5">
                 by{' '}
-                <a href="https://github.com/viasrijan" target="_blank" rel="noreferrer" className="font-bold text-zinc-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-300 hover:underline underline-offset-4">ViaSrijan</a>
+                <a href="https://github.com/viasrijan" target="_blank" rel="noreferrer" className="font-bold text-zinc-900 dark:text-white hover:text-sky-600 dark:hover:text-sky-300 hover:underline underline-offset-4">ViaSrijan</a>
               </p>
               <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
                 className="inline-flex items-center gap-1 mt-3 px-2.5 h-[18px] text-[10px] font-bold bg-gradient-to-r from-red-600 to-pink-600 text-white hover:opacity-90 transition-opacity">
@@ -54,7 +54,7 @@ export default function App() {
           </div>
           <div className="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100">© {new Date().getFullYear()} OmniTools</p>
-            <a href="https://github.com/viasrijan/omnitools" target="_blank" rel="noreferrer" className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">GitHub</a>
+            <a href="https://github.com/viasrijan/omnitools" target="_blank" rel="noreferrer" className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100 hover:text-sky-600 dark:hover:text-sky-400 transition-colors">GitHub</a>
           </div>
         </div>
       </footer>
@@ -64,6 +64,6 @@ export default function App() {
 
 function LinkFooter({ to, children }: { to: string, children: React.ReactNode }) {
   return (
-    <Link to={to} className="text-[13px] font-medium text-zinc-900 dark:text-zinc-100 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">{children}</Link>
+    <Link to={to} className="text-[13px] font-medium text-zinc-900 dark:text-zinc-100 hover:text-sky-600 dark:hover:text-sky-400 transition-colors">{children}</Link>
   )
 }

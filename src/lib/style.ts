@@ -145,7 +145,7 @@ export const tile = (h: Hue) => `bg-gradient-to-br ${H[h].tile} ${H[h].tileDark}
 
 export const tileGrad = (h: Hue) => `bg-gradient-to-br ${H[h].grad}`
 
-export const iconTile = (h: Hue) => `rounded-full bg-zinc-100 dark:bg-zinc-800 shadow-sm ${H[h].text}`
+export const iconTile = (h: Hue) => `rounded-full ${H[h].soft} ${H[h].text} shadow-sm`
 
 export const chip = (h: Hue) => `bg-white ring-1 ring-zinc-200 text-zinc-900 font-semibold dark:bg-zinc-900 dark:ring-zinc-800 dark:text-white hover:ring-zinc-300 dark:hover:ring-zinc-700`
 

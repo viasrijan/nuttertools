@@ -26,13 +26,13 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   }
 
   return (
-    <header className="sticky top-0 z-50 pt-2 sm:pt-3 px-2 sm:px-4">
+    <header className="sticky top-0 z-50 pt-4 sm:pt-6 px-2 sm:px-4">
       <div className="mx-auto max-w-[1180px]">
         <div className="rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-xl shadow-lg shadow-zinc-900/[0.04] dark:shadow-black/30">
           <div className="px-3 sm:px-5 h-[56px] flex items-center justify-between gap-3">
             <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setMOpen(false)}>
               <Logo size={24} />
-              <span className="text-[19px] font-extrabold tracking-[-0.03em] hidden sm:block text-purple-600 dark:text-purple-400">
+              <span className="text-[19px] font-extrabold tracking-[-0.03em] hidden sm:block text-sky-600 dark:text-sky-400">
                 OmniTools
               </span>
             </Link>
@@ -43,7 +43,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onMouseEnter={() => setOpen(g.id)}
                   onMouseLeave={() => setOpen((o) => (o === g.id ? null : o))}>
                   <button onClick={() => setOpen(open === g.id ? null : g.id)}
-                    className={`flex items-center gap-1.5 text-[13px] font-semibold px-3 py-1.5 transition-colors ${open === g.id ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-300 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'}`}>
+                    className={`flex items-center gap-1.5 text-[13px] font-semibold px-3 py-1.5 transition-colors ${open === g.id ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-900 dark:text-white hover:text-sky-600 dark:hover:text-sky-300 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'}`}>
                     {g.label}
                     <svg width="9" height="9" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === g.id ? 'rotate-180' : ''}`}>
                       <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -51,8 +51,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   </button>
                   {open === g.id && (
                     <div className="absolute left-0 top-full pt-2">
-                      <div className="w-[340px] rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl shadow-zinc-900/10 dark:shadow-black/50 p-2">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-purple-600 dark:text-purple-400 px-3 pt-1 pb-1.5">{g.label}</p>
+                      <div className="w-[340px] origin-top rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl shadow-zinc-900/10 dark:shadow-black/50 p-2 animate-[omni-drop_0.15s_ease-out]">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400 px-3 pt-1 pb-1.5">{g.label}</p>
                         <div className="flex flex-col gap-0.5">
                           {g.categories.map((c) => (
                             <Link key={c.slug} to={`/tools/${c.slug}`} onClick={() => setOpen(null)}
@@ -88,11 +88,11 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
           {mOpen && (
-            <div className="lg:hidden border-t border-zinc-200 dark:border-zinc-800 max-h-[calc(100dvh-110px)] overflow-y-auto rounded-b-[28px]">
+            <div className="lg:hidden border-t border-zinc-200 dark:border-zinc-800 max-h-[calc(100dvh-110px)] overflow-y-auto rounded-b-[28px] animate-[omni-drop_0.2s_ease-out]">
               <div className="px-3 sm:px-5 py-3 space-y-4">
                 {GROUPS.map((g) => (
                   <div key={g.id}>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-purple-600 dark:text-purple-400 mb-1.5 px-1">{g.label}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400 mb-1.5 px-1">{g.label}</p>
                     <div className="flex flex-col gap-0.5">
                       {g.categories.map((c) => (
                         <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}

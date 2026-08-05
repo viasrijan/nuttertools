@@ -5,6 +5,7 @@
 * { font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif; }
 
 html {
+  font-size: 17.5px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -31,18 +32,6 @@ p { text-wrap: pretty; }
 ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 999px; }
 .dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
 
-@keyframes omni-wave {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes omni-blob {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(10%, -12%) scale(1.18); }
-  50% { transform: translate(-8%, 8%) scale(0.9); }
-  75% { transform: translate(8%, 12%) scale(1.1); }
-}
-
 @keyframes omni-aurora-a {
   0%, 100% { transform: translate(-18%, -12%) scale(1); }
   33% { transform: translate(14%, 6%) scale(1.22); }
@@ -55,16 +44,24 @@ p { text-wrap: pretty; }
   66% { transform: translate(6%, -16%) scale(1.26); }
 }
 
-@keyframes omni-spin {
+@keyframes omni-rotate {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-@keyframes omni-rise {
-  0% { top: 105%; opacity: 0; }
-  12% { opacity: 0.8; }
-  85% { opacity: 0.55; }
-  100% { top: -6%; opacity: 0; }
+@keyframes omni-drop {
+  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes omni-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes omni-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
 }
 
 @layer base {
