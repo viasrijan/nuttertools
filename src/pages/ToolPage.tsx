@@ -20,7 +20,7 @@ export default function ToolPage() {
   if (!tool) {
     return (
       <div className="max-w-[1200px] mx-auto px-4 py-24 text-center">
-        <p className="text-zinc-500">Tool not found.</p>
+        <p className="text-zinc-600 dark:text-zinc-300">Tool not found.</p>
         <Link to="/" className="inline-block mt-3 text-indigo-600 dark:text-indigo-400 font-medium underline">Back to home</Link>
       </div>
     )
@@ -35,7 +35,7 @@ export default function ToolPage() {
 
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-      <nav className="flex items-center gap-2 text-[13px] text-zinc-500 pt-8">
+      <nav className="flex items-center gap-2 text-[13px] text-zinc-600 dark:text-zinc-300 pt-8">
         <Link to="/" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Home</Link>
         <span>/</span>
         {cat && <Link to={`/tools/${cat.slug}`} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">{cat.name}</Link>}
@@ -49,7 +49,7 @@ export default function ToolPage() {
         </span>
         <div className="min-w-0">
           <h1 className="text-[26px] md:text-[36px] font-[800] tracking-[-0.03em] leading-none text-balance">{tool.name}</h1>
-          <p className="text-zinc-500 mt-2.5 text-[14.5px] text-pretty">{tool.desc}</p>
+          <p className="text-zinc-600 dark:text-zinc-300 mt-2.5 text-[14.5px] text-pretty">{tool.desc}</p>
         </div>
       </div>
 
@@ -59,7 +59,7 @@ export default function ToolPage() {
             <div className="py-20 text-center">
               <div className="text-4xl">🚧</div>
               <h3 className="font-semibold mt-3">Coming Soon</h3>
-              <p className="text-sm text-zinc-500 mt-1 max-w-sm mx-auto">This tool is on its way. Check back soon.</p>
+              <p className="text-sm text-zinc-600 dark:text-zinc-300 mt-1 max-w-sm mx-auto">This tool is on its way. Check back soon.</p>
             </div>
           )}
         </div>
@@ -67,7 +67,7 @@ export default function ToolPage() {
         <aside className="space-y-6">
           {related.length > 0 && (
             <div>
-              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-zinc-400 mb-2.5">More in {tool.category}</h4>
+              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400 mb-2.5">More in {tool.category}</h4>
               <div className="space-y-0.5">
                 {related.map((t) => (
                   <Link key={t.id} to={`/tool/${t.id}`}
@@ -83,7 +83,7 @@ export default function ToolPage() {
           )}
           {cat && (
             <div className="pt-5 border-t border-zinc-100 dark:border-zinc-800">
-              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-zinc-400 mb-2.5">All sections</h4>
+              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400 mb-2.5">All sections</h4>
               <div className="flex flex-wrap gap-1.5">
                 {CATEGORIES.slice(0, 8).map((c) => (
                   <Link key={c.slug} to={`/tools/${c.slug}`}

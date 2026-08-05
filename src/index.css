@@ -31,6 +31,11 @@ p { text-wrap: pretty; }
 ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 999px; }
 .dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
 
+@keyframes omni-wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 @layer base {
   input, textarea, select {
     color-scheme: light;
@@ -46,7 +51,7 @@ p { text-wrap: pretty; }
   }
 
   input::placeholder, textarea::placeholder {
-    @apply text-zinc-400 dark:text-zinc-500;
+    @apply text-zinc-400 dark:text-zinc-400;
   }
 
   select {

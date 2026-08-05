@@ -38,9 +38,9 @@ export default function App() {
                 <Logo size={21} />
                 <span className="font-extrabold text-[18px] tracking-[-0.03em] text-indigo-600 dark:text-indigo-400">OmniTools</span>
               </div>
-              <p className="text-[13px] text-zinc-500 mt-3 max-w-xs leading-relaxed">A collection of useful free tools, all in one place.</p>
+              <p className="text-[13px] text-zinc-600 dark:text-zinc-400 mt-3 max-w-xs leading-relaxed">A collection of useful free tools, all in one place.</p>
               <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 mt-4 px-4 h-9 text-[12.5px] font-semibold bg-gradient-to-r from-pink-600 to-rose-600 text-white hover:opacity-90 transition-opacity">
+                className="inline-flex items-center gap-2 mt-4 px-4 h-9 text-[12.5px] font-semibold bg-gradient-to-r from-orange-500 to-yellow-400 text-white hover:opacity-90 transition-opacity">
                 Donate with PayPal
               </a>
             </div>
@@ -51,8 +51,8 @@ export default function App() {
             </div>
           </div>
           <div className="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className="text-[12px] text-zinc-400">© {new Date().getFullYear()} OmniTools</p>
-            <a href="https://github.com/viasrijan/omnitools" target="_blank" rel="noreferrer" className="text-[12px] text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">GitHub</a>
+            <p className="text-[12px] text-zinc-500 dark:text-zinc-400">© {new Date().getFullYear()} OmniTools</p>
+            <a href="https://github.com/viasrijan/omnitools" target="_blank" rel="noreferrer" className="text-[12px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors">GitHub</a>
           </div>
         </div>
       </footer>
@@ -62,6 +62,6 @@ export default function App() {
 
 function LinkFooter({ to, children }: { to: string, children: React.ReactNode }) {
   return (
-    <Link to={to} className="text-[13px] text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">{children}</Link>
+    <Link to={to} className="text-[13px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">{children}</Link>
   )
 }

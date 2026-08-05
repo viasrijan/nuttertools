@@ -11,7 +11,7 @@ export default function ToolCard({ tool }: { tool: any }) {
         <ToolIcon id={tool.id} className="w-5 h-5 text-white" />
       </span>
       <h3 className="font-semibold mt-4 text-[15px] tracking-[-0.01em]">{tool.name}</h3>
-      <p className="text-[13px] text-zinc-500 mt-1.5 leading-relaxed line-clamp-2 text-pretty">{tool.desc}</p>
+      <p className="text-[13px] text-zinc-600 dark:text-zinc-300 mt-1.5 leading-relaxed line-clamp-2 text-pretty">{tool.desc}</p>
     </Link>
   )
 }

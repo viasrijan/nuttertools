@@ -28,7 +28,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header className="sticky top-0 z-50 pt-3 sm:pt-4 px-2 sm:px-4">
       <div className="mx-auto max-w-[1180px]">
-        <div className="rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-xl shadow-lg shadow-zinc-900/[0.04] dark:shadow-black/30">
+        <div className="rounded-[28px] border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-xl shadow-lg shadow-zinc-900/[0.04] dark:shadow-black/30">
           <div className="px-3 sm:px-5 h-[70px] flex items-center justify-between gap-3">
             <Link to="/" className="flex items-center gap-3 shrink-0" onClick={() => setMOpen(false)}>
               <Logo size={30} />
@@ -51,8 +51,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   </button>
                   {open === g.id && (
                     <div className="absolute left-0 top-full pt-2">
-                      <div className="w-[340px] rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl shadow-zinc-900/10 dark:shadow-black/50 p-2">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400 px-3 pt-1 pb-1.5">{g.label}</p>
+                      <div className="w-[340px] rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl shadow-zinc-900/10 dark:shadow-black/50 p-2">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400 px-3 pt-1 pb-1.5">{g.label}</p>
                         <div className="flex flex-col gap-0.5">
                           {g.categories.map((c) => (
                             <Link key={c.slug} to={`/tools/${c.slug}`} onClick={() => setOpen(null)}
@@ -62,7 +62,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                               </span>
                               <span className="flex-1 min-w-0">
                                 <span className="block text-[13.5px] font-semibold leading-tight truncate">{c.name}</span>
-                                <span className="block text-[11px] text-zinc-500">{c.count} tools</span>
+                                <span className="block text-[11px] text-zinc-600 dark:text-zinc-400">{c.count} tools</span>
                               </span>
                             </Link>
                           ))}
@@ -76,10 +76,10 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
 
             <div className="flex items-center gap-2 shrink-0">
               <button onClick={toggle} aria-label="Toggle theme"
-                className="w-9 h-9 border border-zinc-200 dark:border-zinc-800 grid place-items-center text-[15px] hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:scale-105 active:scale-95 transition-all">
+                className="w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-800 grid place-items-center text-[15px] hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:scale-105 active:scale-95 transition-all">
                 {dark ? '☀️' : '🌙'}
               </button>
-              <button onClick={() => setMOpen(!mOpen)} aria-label="Menu" className="lg:hidden w-9 h-9 border border-zinc-200 dark:border-zinc-800 grid place-items-center">
+              <button onClick={() => setMOpen(!mOpen)} aria-label="Menu" className="lg:hidden w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-800 grid place-items-center">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                   {mOpen ? <path d="M3 3L13 13M13 3L3 13" /> : <path d="M2 3.5h12M2 8h12M2 12.5h12" />}
                 </svg>
@@ -88,11 +88,11 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
           {mOpen && (
-            <div className="lg:hidden border-t border-zinc-200 dark:border-zinc-800 max-h-[calc(100dvh-110px)] overflow-y-auto rounded-b-2xl">
+            <div className="lg:hidden border-t border-zinc-200 dark:border-zinc-800 max-h-[calc(100dvh-110px)] overflow-y-auto rounded-b-[28px]">
               <div className="px-3 sm:px-5 py-3 space-y-4">
                 {GROUPS.map((g) => (
                   <div key={g.id}>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400 mb-1.5 px-1">{g.label}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400 mb-1.5 px-1">{g.label}</p>
                     <div className="flex flex-col gap-0.5">
                       {g.categories.map((c) => (
                         <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}
@@ -102,7 +102,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                           </span>
                           <span className="flex-1 min-w-0">
                             <span className="block text-[13px] font-medium leading-tight truncate">{c.name}</span>
-                            <span className="block text-[11px] text-zinc-500">{c.count}</span>
+                            <span className="block text-[11px] text-zinc-600 dark:text-zinc-400">{c.count}</span>
                           </span>
                         </button>
                       ))}

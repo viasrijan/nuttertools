@@ -21,7 +21,7 @@ export default function CategoryPage() {
   if (!cat) {
     return (
       <div className="max-w-[1200px] mx-auto px-4 py-24 text-center">
-        <p className="text-zinc-500">Section not found.</p>
+        <p className="text-zinc-600 dark:text-zinc-300">Section not found.</p>
         <Link to="/" className="inline-block mt-3 text-indigo-600 dark:text-indigo-400 font-medium underline">Back to home</Link>
       </div>
     )
@@ -31,7 +31,7 @@ export default function CategoryPage() {
 
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-      <nav className="flex items-center gap-2 text-[13px] text-zinc-500 pt-8">
+      <nav className="flex items-center gap-2 text-[13px] text-zinc-600 dark:text-zinc-300 pt-8">
         <Link to="/" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Home</Link>
         <span>/</span>
         <span>{cat.name}</span>
@@ -44,7 +44,7 @@ export default function CategoryPage() {
           </span>
           <div>
             <h1 className="text-[28px] md:text-[38px] font-[800] tracking-[-0.03em] leading-none text-balance">{cat.name}</h1>
-            <p className="text-zinc-500 mt-2.5 text-[14.5px] text-pretty">{cat.blurb} — {cat.count} tools.</p>
+            <p className="text-zinc-600 dark:text-zinc-300 mt-2.5 text-[14.5px] text-pretty">{cat.blurb} — {cat.count} tools.</p>
           </div>
         </div>
         {group && (
@@ -75,7 +75,7 @@ export default function CategoryPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-24">
         {shown.map((t) => <ToolCard key={t.id} tool={t} />)}
       </div>
-      {shown.length === 0 && <p className="text-zinc-500 py-16 text-center">No tools match “{q.trim()}”.</p>}
+      {shown.length === 0 && <p className="text-zinc-600 dark:text-zinc-300 py-16 text-center">No tools match “{q.trim()}”.</p>}
     </div>
   )
 }
