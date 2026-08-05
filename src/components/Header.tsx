@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { GROUPS } from '../data/categories'
-import { tileGrad } from '../lib/style'
 import Logo from './Logo'
-import { CategoryIcon } from './Icon'
+import { CutoutCategoryIcon } from './Icon'
 
 export default function Header({ dark, toggle }: { dark: boolean, toggle: () => void }) {
   const [open, setOpen] = useState<string | null>(null)
@@ -26,10 +25,10 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   }
 
   return (
-    <header className="sticky top-0 z-50 pt-4 sm:pt-6 px-2 sm:px-4">
-      <div className="mx-auto max-w-[1180px]">
+    <header className="sticky top-0 z-50 pt-4 sm:pt-6 px-4 sm:px-6">
+      <div className="mx-auto max-w-[1200px]">
         <div className="rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-xl shadow-lg shadow-zinc-900/[0.04] dark:shadow-black/30">
-          <div className="px-3 sm:px-5 h-[56px] flex items-center justify-between gap-3">
+          <div className="px-2.5 sm:px-5 h-[52px] sm:h-[56px] flex items-center justify-between gap-3">
             <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setMOpen(false)}>
               <Logo size={24} />
               <span className="text-[19px] font-extrabold tracking-[-0.03em] hidden sm:block text-sky-600 dark:text-sky-400">
@@ -57,8 +56,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                           {g.categories.map((c) => (
                             <Link key={c.slug} to={`/tools/${c.slug}`} onClick={() => setOpen(null)}
                               className="flex items-center gap-3 px-3 py-2.5 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
-                              <span className={`w-9 h-9 rounded-full grid place-items-center shrink-0 ${tileGrad(c.hue)}`}>
-                                <CategoryIcon slug={c.slug} className="w-[18px] h-[18px] text-white" />
+                              <span className="w-9 h-9 shrink-0">
+                                <CutoutCategoryIcon slug={c.slug} className="w-full h-full" />
                               </span>
                               <span className="flex-1 min-w-0">
                                 <span className="block text-[13.5px] font-semibold leading-tight truncate text-zinc-900 dark:text-white">{c.name}</span>
@@ -76,8 +75,10 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
 
             <div className="flex items-center gap-2 shrink-0">
               <button onClick={toggle} aria-label="Toggle theme"
-                className="w-8 h-8 rounded-full border border-zinc-200 dark:border-zinc-800 grid place-items-center text-[13px] hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:scale-105 active:scale-95 transition-all">
-                {dark ? '☀️' : '🌙'}
+                className="relative w-[52px] h-[28px] shrink-0 rounded-full transition-colors duration-500 bg-zinc-200 dark:bg-sky-600 ring-1 ring-inset ring-zinc-300 dark:ring-sky-500/40 hover:scale-105 active:scale-95 transition-transform">
+                <span className={`absolute top-[3px] left-[3px] w-[22px] h-[22px] rounded-full bg-white shadow-md grid place-items-center text-[11px] leading-none transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${dark ? 'translate-x-[24px] rotate-[360deg]' : 'translate-x-0 rotate-0'}`}>
+                  {dark ? '🌙' : '☀️'}
+                </span>
               </button>
               <button onClick={() => setMOpen(!mOpen)} aria-label="Menu" className="lg:hidden w-8 h-8 rounded-full border border-zinc-200 dark:border-zinc-800 grid place-items-center">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
@@ -97,8 +98,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                       {g.categories.map((c) => (
                         <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}
                           className="flex items-center gap-3 px-2 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-left active:scale-[0.98] transition-transform">
-                          <span className={`w-9 h-9 rounded-full grid place-items-center shrink-0 ${tileGrad(c.hue)}`}>
-                            <CategoryIcon slug={c.slug} className="w-[18px] h-[18px] text-white" />
+                          <span className="w-9 h-9 shrink-0">
+                            <CutoutCategoryIcon slug={c.slug} className="w-full h-full" />
                           </span>
                           <span className="flex-1 min-w-0">
                             <span className="block text-[13px] font-medium leading-tight truncate text-zinc-900 dark:text-white">{c.name}</span>

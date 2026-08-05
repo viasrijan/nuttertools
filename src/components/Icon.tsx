@@ -12,6 +12,7 @@ import {
   Speaker, Table2, Tags, Terminal, TextQuote, Timer, Type, Video, VolumeX,
   Wand2, Waves, Weight, Wind, Wrench, ZoomIn,
 } from 'lucide-react'
+import { useId } from 'react'
 import type { LucideIcon } from 'lucide-react'
 
 const TOOL_ICONS: Record<string, LucideIcon> = {
@@ -151,4 +152,28 @@ export function ToolIcon({ id, className }: { id: string, className?: string }) 
 export function CategoryIcon({ slug, className }: { slug: string, className?: string }) {
   const C = CAT_ICONS[slug] || Wrench
   return <C className={className} strokeWidth={1.9} aria-hidden="true" />
+}
+
+export function CutoutIcon({ icon: C, className, strokeWidth = 2.2 }: { icon: LucideIcon, className?: string, strokeWidth?: number }) {
+  const raw = useId()
+  const id = `cutout-${raw.replace(/[^a-zA-Z0-9-]/g, '')}`
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <defs>
+        <mask id={id}>
+          <circle cx="12" cy="12" r="11" fill="#fff" />
+          <C stroke="#000" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
+        </mask>
+      </defs>
+      <circle cx="12" cy="12" r="11" fill="#fff" mask={`url(#${id})`} />
+    </svg>
+  )
+}
+
+export function CutoutToolIcon({ id, className }: { id: string, className?: string }) {
+  return <CutoutIcon icon={TOOL_ICONS[id] || Wrench} className={className} />
+}
+
+export function CutoutCategoryIcon({ slug, className }: { slug: string, className?: string }) {
+  return <CutoutIcon icon={CAT_ICONS[slug] || Wrench} className={className} />
 }

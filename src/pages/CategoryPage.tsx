@@ -29,23 +29,23 @@ export default function CategoryPage() {
 
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-      <nav className="flex items-center gap-2 text-[13px] font-medium text-zinc-900 dark:text-white pt-8">
+      <nav className="flex items-center gap-2 text-[13px] font-medium text-zinc-900 dark:text-white pt-6 md:pt-8">
         <Link to="/" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Home</Link>
         <span>/</span>
         <span>{cat.name}</span>
       </nav>
 
-      <div className="pt-10 pb-10 flex items-center gap-4">
-        <span className={`w-16 h-16 grid place-items-center shrink-0 rounded-full shadow-lg ${tileGrad(cat.hue)} text-zinc-900 dark:text-white`}>
-          <CategoryIcon slug={cat.slug} className="w-8 h-8" />
+      <div className="pt-8 pb-8 md:pt-10 md:pb-10 flex items-center gap-3 md:gap-4">
+        <span className={`w-14 h-14 md:w-16 md:h-16 grid place-items-center shrink-0 rounded-full shadow-lg ${tileGrad(cat.hue)} text-white`}>
+          <CategoryIcon slug={cat.slug} className="w-7 h-7 md:w-8 md:h-8" />
         </span>
         <div>
-          <h1 className="text-[28px] md:text-[38px] font-[800] tracking-[-0.03em] leading-none text-balance">{cat.name}</h1>
+          <h1 className="text-[22px] md:text-[38px] font-[800] tracking-[-0.03em] leading-none text-balance">{cat.name}</h1>
           <p className="text-zinc-900 dark:text-white mt-2.5 text-[14.5px] font-medium text-pretty">{cat.blurb} — {cat.count} tools.</p>
         </div>
       </div>
 
-      <div className="relative max-w-md mb-10">
+      <div className="relative max-w-md mb-8">
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}

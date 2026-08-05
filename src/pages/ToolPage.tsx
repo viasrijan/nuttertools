@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { CATEGORIES } from '../data/categories'
-import { hueFor, iconTile, tileGrad } from '../lib/style'
-import { ToolIcon } from '../components/Icon'
+import { hueFor, tileGrad } from '../lib/style'
+import { CutoutToolIcon, ToolIcon } from '../components/Icon'
 import registry from '../tools/registry'
 
 export default function ToolPage() {
@@ -35,7 +35,7 @@ export default function ToolPage() {
 
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-      <nav className="flex items-center gap-2 text-[13px] font-medium text-zinc-900 dark:text-white pt-8">
+      <nav className="flex items-center gap-2 text-[13px] font-medium text-zinc-900 dark:text-white pt-6 md:pt-8">
         <Link to="/" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Home</Link>
         <span>/</span>
         {cat && <Link to={`/tools/${cat.slug}`} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">{cat.name}</Link>}
@@ -43,12 +43,12 @@ export default function ToolPage() {
         <span className="text-zinc-900 dark:text-zinc-100 truncate max-w-[180px] sm:max-w-none">{tool.name}</span>
       </nav>
 
-      <div className="pt-10 pb-10 flex items-center gap-4">
-        <span className={`w-16 h-16 grid place-items-center shrink-0 rounded-full shadow-lg ${tileGrad(h)} text-zinc-900 dark:text-white`}>
-          <ToolIcon id={tool.id} className="w-8 h-8" />
+      <div className="pt-8 pb-8 md:pt-10 md:pb-10 flex items-center gap-3 md:gap-4">
+        <span className={`w-14 h-14 md:w-16 md:h-16 grid place-items-center shrink-0 rounded-full shadow-lg ${tileGrad(h)} text-white`}>
+          <ToolIcon id={tool.id} className="w-7 h-7 md:w-8 md:h-8" />
         </span>
         <div className="min-w-0">
-          <h1 className="text-[26px] md:text-[36px] font-[800] tracking-[-0.03em] leading-none text-balance">{tool.name}</h1>
+          <h1 className="text-[22px] md:text-[36px] font-[800] tracking-[-0.03em] leading-none text-balance">{tool.name}</h1>
           <p className="text-zinc-900 dark:text-white mt-2.5 text-[14.5px] font-medium text-pretty">{tool.desc}</p>
         </div>
       </div>
@@ -72,8 +72,8 @@ export default function ToolPage() {
                 {related.map((t) => (
                   <Link key={t.id} to={`/tool/${t.id}`}
                     className="flex items-center gap-3 px-2 py-2  hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
-                    <span className={`w-9 h-9 rounded-full grid place-items-center shrink-0 ${iconTile(hueFor(t.category))}`}>
-                      <ToolIcon id={t.id} className="w-[18px] h-[18px]" />
+                    <span className="w-9 h-9 shrink-0">
+                      <CutoutToolIcon id={t.id} className="w-full h-full" />
                     </span>
                     <span className="flex-1 text-[13.5px] font-medium truncate group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">{t.name}</span>
                   </Link>
