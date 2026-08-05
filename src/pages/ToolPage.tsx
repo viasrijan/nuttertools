@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { CATEGORIES } from '../data/categories'
 import { hueFor, tile } from '../lib/style'
+import { ToolIcon } from '../components/Icon'
 import registry from '../tools/registry'
 
 export default function ToolPage() {
@@ -34,7 +35,7 @@ export default function ToolPage() {
 
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-      <nav className="flex items-center gap-2 text-[13px] text-zinc-500 pt-6">
+      <nav className="flex items-center gap-2 text-[13px] text-zinc-500 pt-8">
         <Link to="/" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Home</Link>
         <span>/</span>
         {cat && <Link to={`/tools/${cat.slug}`} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">{cat.name}</Link>}
@@ -42,16 +43,18 @@ export default function ToolPage() {
         <span className="text-zinc-900 dark:text-zinc-100 truncate max-w-[180px] sm:max-w-none">{tool.name}</span>
       </nav>
 
-      <div className="pt-8 pb-9 flex items-center gap-4">
-        <span className={`w-14 h-14 rounded-2xl grid place-items-center text-[26px] shadow-sm shrink-0 ${tile(h)}`}>{tool.icon}</span>
+      <div className="pt-10 pb-10 flex items-center gap-4">
+        <span className={`w-16 h-16 rounded-2xl grid place-items-center shadow-sm shrink-0 ${tile(h)}`}>
+          <ToolIcon id={tool.id} className="w-8 h-8 text-white" />
+        </span>
         <div className="min-w-0">
-          <h1 className="text-[26px] md:text-[34px] font-[800] tracking-[-0.03em] leading-none text-balance">{tool.name}</h1>
-          <p className="text-zinc-500 mt-2 text-[14.5px] text-pretty">{tool.desc}</p>
+          <h1 className="text-[26px] md:text-[36px] font-[800] tracking-[-0.03em] leading-none text-balance">{tool.name}</h1>
+          <p className="text-zinc-500 mt-2.5 text-[14.5px] text-pretty">{tool.desc}</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 pb-20">
-        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-5 md:p-6 min-h-[400px]">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 pb-24">
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 md:p-8 min-h-[400px]">
           {Comp ? <Comp /> : (
             <div className="py-20 text-center">
               <div className="text-4xl">🚧</div>
@@ -69,7 +72,9 @@ export default function ToolPage() {
                 {related.map((t) => (
                   <Link key={t.id} to={`/tool/${t.id}`}
                     className="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
-                    <span className={`w-8 h-8 rounded-lg grid place-items-center text-[14px] shrink-0 ${tile(hueFor(t.category))}`}>{t.icon}</span>
+                    <span className={`w-9 h-9 rounded-lg grid place-items-center shrink-0 ${tile(hueFor(t.category))}`}>
+                      <ToolIcon id={t.id} className="w-[18px] h-[18px] text-white" />
+                    </span>
                     <span className="flex-1 text-[13.5px] font-medium truncate group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">{t.name}</span>
                   </Link>
                 ))}

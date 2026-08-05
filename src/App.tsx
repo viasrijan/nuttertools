@@ -31,22 +31,26 @@ export default function App() {
         </Routes>
       </main>
       <footer className="border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-950/40">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-10">
-          <div className="flex flex-col md:flex-row items-start justify-between gap-8">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 md:py-16">
+          <div className="flex flex-col md:flex-row items-start justify-between gap-10">
             <div>
-              <div className="flex items-center gap-2">
-                <Logo size={24} />
-                <span className="font-bold text-[16px] tracking-[-0.02em]">OmniTools</span>
+              <div className="flex items-center gap-2.5">
+                <Logo size={30} />
+                <span className="font-extrabold text-[18px] tracking-[-0.03em]">OmniTools</span>
               </div>
-              <p className="text-[13px] text-zinc-500 mt-2 max-w-xs leading-relaxed">A collection of useful free tools, all in one place.</p>
+              <p className="text-[13px] text-zinc-500 mt-3 max-w-xs leading-relaxed">A collection of useful free tools, all in one place.</p>
+              <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 mt-4 px-4 h-9 rounded-full text-[12.5px] font-semibold bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:opacity-90 transition-opacity">
+                Donate with PayPal
+              </a>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-2.5">
               {CATEGORIES.map((c) => (
                 <LinkFooter key={c.slug} to={`/tools/${c.slug}`}>{c.name}</LinkFooter>
               ))}
             </div>
           </div>
-          <div className="mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-[12px] text-zinc-400">© {new Date().getFullYear()} OmniTools</p>
             <a href="https://github.com/viasrijan/omnitools" target="_blank" rel="noreferrer" className="text-[12px] text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">GitHub</a>
           </div>

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { GROUPS } from '../data/categories'
 import { tile } from '../lib/style'
 import Logo from './Logo'
+import { CategoryIcon } from './Icon'
 
 export default function Header({ dark, toggle }: { dark: boolean, toggle: () => void }) {
   const [open, setOpen] = useState<string | null>(null)
@@ -25,13 +26,13 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   }
 
   return (
-    <header className="sticky top-0 z-50 pt-2 sm:pt-3 px-2 sm:px-4">
+    <header className="sticky top-0 z-50 pt-3 sm:pt-4 px-2 sm:px-4">
       <div className="mx-auto max-w-[1180px]">
         <div className={`rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-xl shadow-lg shadow-zinc-900/[0.04] dark:shadow-black/30 ${mOpen ? 'rounded-b-2xl' : ''}`}>
-          <div className="px-3 sm:px-4 h-14 flex items-center justify-between gap-3">
-            <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setMOpen(false)}>
-              <Logo size={30} />
-              <span className="font-bold text-[18px] tracking-[-0.02em] hidden sm:block">OmniTools</span>
+          <div className="px-3 sm:px-5 h-[70px] flex items-center justify-between gap-3">
+            <Link to="/" className="flex items-center gap-3 shrink-0" onClick={() => setMOpen(false)}>
+              <Logo size={42} />
+              <span className="font-extrabold text-[24px] tracking-[-0.03em] hidden sm:block">OmniTools</span>
             </Link>
 
             <nav ref={navRef} className="hidden lg:flex items-center gap-0.5">
@@ -40,7 +41,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onMouseEnter={() => setOpen(g.id)}
                   onMouseLeave={() => setOpen((o) => (o === g.id ? null : o))}>
                   <button onClick={() => setOpen(open === g.id ? null : g.id)}
-                    className={`flex items-center gap-1.5 text-[13.5px] font-medium px-3.5 py-2 rounded-full transition-colors ${open === g.id ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100' : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'}`}>
+                    className={`flex items-center gap-1.5 text-[13.5px] font-semibold px-3.5 py-2 rounded-full transition-colors ${open === g.id ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100' : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'}`}>
                     {g.label}
                     <svg width="9" height="9" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === g.id ? 'rotate-180' : ''}`}>
                       <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -48,14 +49,17 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   </button>
                   {open === g.id && (
                     <div className="absolute left-0 top-full pt-2">
-                      <div className="w-[400px] rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl shadow-zinc-900/10 dark:shadow-black/50 p-1.5">
-                        <div className="grid grid-cols-2 gap-1">
+                      <div className="w-[340px] rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl shadow-zinc-900/10 dark:shadow-black/50 p-2">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400 px-3 pt-1 pb-1.5">{g.label}</p>
+                        <div className="flex flex-col gap-0.5">
                           {g.categories.map((c) => (
                             <Link key={c.slug} to={`/tools/${c.slug}`} onClick={() => setOpen(null)}
-                              className="flex items-center gap-2.5 px-2.5 py-2 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
-                              <span className={`w-8 h-8 rounded-lg grid place-items-center text-[14px] ${tile(c.hue)}`}>{c.icon}</span>
+                              className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
+                              <span className={`w-9 h-9 rounded-lg grid place-items-center shrink-0 ${tile(c.hue)}`}>
+                                <CategoryIcon slug={c.slug} className="w-[18px] h-[18px] text-white" />
+                              </span>
                               <span className="flex-1 min-w-0">
-                                <span className="block text-[13px] font-semibold leading-tight truncate">{c.name}</span>
+                                <span className="block text-[13.5px] font-semibold leading-tight truncate">{c.name}</span>
                                 <span className="block text-[11px] text-zinc-500">{c.count} tools</span>
                               </span>
                             </Link>
@@ -82,16 +86,18 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
           {mOpen && (
-            <div className="lg:hidden border-t border-zinc-200 dark:border-zinc-800 max-h-[calc(100dvh-90px)] overflow-y-auto rounded-b-2xl">
-              <div className="px-3 sm:px-4 py-3 space-y-4">
+            <div className="lg:hidden border-t border-zinc-200 dark:border-zinc-800 max-h-[calc(100dvh-110px)] overflow-y-auto rounded-b-2xl">
+              <div className="px-3 sm:px-5 py-3 space-y-4">
                 {GROUPS.map((g) => (
                   <div key={g.id}>
                     <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-400 mb-1.5 px-1">{g.label}</p>
-                    <div className="grid grid-cols-2 gap-1">
+                    <div className="flex flex-col gap-0.5">
                       {g.categories.map((c) => (
                         <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}
-                          className="flex items-center gap-2.5 px-2 py-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-left active:scale-[0.98] transition-transform">
-                          <span className={`w-8 h-8 rounded-lg grid place-items-center text-[14px] shrink-0 ${tile(c.hue)}`}>{c.icon}</span>
+                          className="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-left active:scale-[0.98] transition-transform">
+                          <span className={`w-9 h-9 rounded-lg grid place-items-center shrink-0 ${tile(c.hue)}`}>
+                            <CategoryIcon slug={c.slug} className="w-[18px] h-[18px] text-white" />
+                          </span>
                           <span className="flex-1 min-w-0">
                             <span className="block text-[13px] font-medium leading-tight truncate">{c.name}</span>
                             <span className="block text-[11px] text-zinc-500">{c.count}</span>

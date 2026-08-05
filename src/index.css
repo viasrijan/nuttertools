@@ -30,3 +30,26 @@ p { text-wrap: pretty; }
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 999px; }
 .dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
+
+@layer base {
+  input, textarea, select {
+    color-scheme: light;
+    @apply bg-white dark:bg-zinc-800/80 text-zinc-900 dark:text-zinc-100 border-zinc-300 dark:border-zinc-700;
+  }
+
+  .dark input, .dark textarea, .dark select {
+    color-scheme: dark;
+  }
+
+  input:not([type=file]):not([type=checkbox]):not([type=radio]), textarea, select {
+    @apply border;
+  }
+
+  input::placeholder, textarea::placeholder {
+    @apply text-zinc-400 dark:text-zinc-500;
+  }
+
+  select {
+    @apply bg-white dark:bg-zinc-800;
+  }
+}

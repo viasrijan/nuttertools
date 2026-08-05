@@ -1,14 +1,15 @@
 # OmniTools — Every Useful Tool, All in One Place
 
-A collection of 86 useful tools — images, PDFs, code, media, text and everyday utilities — organized into sections.
+A collection of 111 useful tools — images, PDFs, code, media, text and everyday utilities — organized into sections.
 
 ## Live
 https://viasrijan.github.io/omnitools/
 
 ## Features
-- 15 fully working tools (image, pdf, dev), 71 more on the way
+- 111 tools listed (15 fully working, more on the way)
 - Tools organized into sections with dropdown navigation
 - Search, dark mode, PWA
+- Flat white SVG icons throughout, powered by lucide-react
 
 ## Quick Start
 npm install
@@ -19,6 +20,13 @@ npm run build
 npx gh-pages -d dist
 
 ## Stack
-Vite + React + Tailwind + pdf-lib + pdfjs-dist + tesseract.js + heic2any + qrcode + jszip
+Vite + React + Tailwind + lucide-react + pdf-lib + pdfjs-dist + tesseract.js + heic2any + qrcode + jszip
 
-Add new tool: create file in src/tools/implementations and register in src/tools/registry.tsx + add to src/data/tools.json with implemented:true
+## Donate
+https://www.paypal.me/iSrijan
+
+## Add new tool
+1. Add an entry to `src/data/tools.json` (id, name, desc, category, icon, implemented)
+2. Map the id to a lucide icon in `src/components/Icon.tsx`
+3. Create the implementation in `src/tools/implementations` and register it in `src/tools/registry.tsx`
+4. Set `implemented: true` in `tools.json`

@@ -17,7 +17,7 @@ export default function ImagesToPDF(){
       const page = pdf.addPage([img.width, img.height])
       page.drawImage(img, {x:0, y:0, width:img.width, height:img.height})
     }
-    const blob = new Blob([await pdf.save()], {type:'application/pdf'})
+    const blob = new Blob([await pdf.save() as BlobPart], {type:'application/pdf'})
     setOut(URL.createObjectURL(blob))
   }
 

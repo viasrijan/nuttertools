@@ -15,7 +15,7 @@ export default function MergePDF(){
       const pages = await merged.copyPages(pdf, pdf.getPageIndices())
       pages.forEach(p=>merged.addPage(p))
     }
-    const blob = new Blob([await merged.save()], {type:'application/pdf'})
+    const blob = new Blob([await merged.save() as BlobPart], {type:'application/pdf'})
     setOut(URL.createObjectURL(blob))
   }
 

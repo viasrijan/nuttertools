@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { CATEGORIES, GROUPS } from '../data/categories'
 import { tile, chipActive } from '../lib/style'
+import { CategoryIcon } from '../components/Icon'
 import ToolCard from '../components/ToolCard'
 import Fuse from 'fuse.js'
 
@@ -30,18 +31,20 @@ export default function CategoryPage() {
 
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-      <nav className="flex items-center gap-2 text-[13px] text-zinc-500 pt-6">
+      <nav className="flex items-center gap-2 text-[13px] text-zinc-500 pt-8">
         <Link to="/" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Home</Link>
         <span>/</span>
         <span>{cat.name}</span>
       </nav>
 
-      <div className="pt-8 pb-9 flex flex-col md:flex-row md:items-end justify-between gap-5">
+      <div className="pt-10 pb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="flex items-center gap-4">
-          <span className={`w-14 h-14 rounded-2xl grid place-items-center text-[26px] shadow-sm shrink-0 ${tile(cat.hue)}`}>{cat.icon}</span>
+          <span className={`w-16 h-16 rounded-2xl grid place-items-center shadow-sm shrink-0 ${tile(cat.hue)}`}>
+            <CategoryIcon slug={cat.slug} className="w-8 h-8 text-white" />
+          </span>
           <div>
-            <h1 className="text-[28px] md:text-[36px] font-[800] tracking-[-0.03em] leading-none text-balance">{cat.name}</h1>
-            <p className="text-zinc-500 mt-2 text-[14.5px] text-pretty">{cat.blurb} — {cat.count} tools.</p>
+            <h1 className="text-[28px] md:text-[38px] font-[800] tracking-[-0.03em] leading-none text-balance">{cat.name}</h1>
+            <p className="text-zinc-500 mt-2.5 text-[14.5px] text-pretty">{cat.blurb} — {cat.count} tools.</p>
           </div>
         </div>
         {group && (
@@ -56,12 +59,12 @@ export default function CategoryPage() {
         )}
       </div>
 
-      <div className="relative max-w-md mb-8">
+      <div className="relative max-w-md mb-10">
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder={`Search ${cat.name}…`}
-          className="w-full h-[46px] pl-[42px] pr-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[14px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder:text-zinc-400"
+          className="w-full h-[46px] pl-[42px] pr-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder:text-zinc-400"
         />
         <svg width="16" height="16" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400">
           <circle cx="8" cy="8" r="5.75" stroke="currentColor" strokeWidth="1.5" />
@@ -69,7 +72,7 @@ export default function CategoryPage() {
         </svg>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 pb-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-24">
         {shown.map((t) => <ToolCard key={t.id} tool={t} />)}
       </div>
       {shown.length === 0 && <p className="text-zinc-500 py-16 text-center">No tools match “{q.trim()}”.</p>}

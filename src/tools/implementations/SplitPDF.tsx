@@ -20,7 +20,7 @@ export default function SplitPDF(){
     })
     const pages = await dest.copyPages(src, parts)
     pages.forEach(p=>dest.addPage(p))
-    const blob = new Blob([await dest.save()], {type:'application/pdf'})
+    const blob = new Blob([await dest.save() as BlobPart], {type:'application/pdf'})
     setOut(URL.createObjectURL(blob))
   }
 
