@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
-import { CATEGORIES, GROUPS } from '../data/categories'
-import { chipActive, iconTile } from '../lib/style'
+import { CATEGORIES } from '../data/categories'
+import { tileGrad } from '../lib/style'
 import { CategoryIcon } from '../components/Icon'
 import ToolCard from '../components/ToolCard'
 import Fuse from 'fuse.js'
@@ -27,8 +27,6 @@ export default function CategoryPage() {
     )
   }
 
-  const group = GROUPS.find((g) => g.id === cat.group)
-
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
       <nav className="flex items-center gap-2 text-[13px] font-medium text-zinc-900 dark:text-white pt-8">
@@ -37,26 +35,14 @@ export default function CategoryPage() {
         <span>{cat.name}</span>
       </nav>
 
-      <div className="pt-10 pb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div className="flex items-center gap-4">
-          <span className={`w-16 h-16 grid place-items-center shrink-0 ${iconTile(cat.hue)}`}>
-            <CategoryIcon slug={cat.slug} className="w-8 h-8" />
-          </span>
-          <div>
-            <h1 className="text-[28px] md:text-[38px] font-[800] tracking-[-0.03em] leading-none text-balance">{cat.name}</h1>
-            <p className="text-zinc-900 dark:text-white mt-2.5 text-[14.5px] font-medium text-pretty">{cat.blurb} — {cat.count} tools.</p>
-          </div>
+      <div className="pt-10 pb-10 flex items-center gap-4">
+        <span className={`w-16 h-16 grid place-items-center shrink-0 rounded-full shadow-lg ${tileGrad(cat.hue)} text-zinc-900 dark:text-white`}>
+          <CategoryIcon slug={cat.slug} className="w-8 h-8" />
+        </span>
+        <div>
+          <h1 className="text-[28px] md:text-[38px] font-[800] tracking-[-0.03em] leading-none text-balance">{cat.name}</h1>
+          <p className="text-zinc-900 dark:text-white mt-2.5 text-[14.5px] font-medium text-pretty">{cat.blurb} — {cat.count} tools.</p>
         </div>
-        {group && (
-          <div className="flex flex-wrap gap-2 shrink-0">
-            {group.categories.map((c) => (
-              <Link key={c.slug} to={`/tools/${c.slug}`}
-                className={`px-4 h-9  text-[13px] font-semibold grid place-items-center ring-1 transition-all ${c.slug === cat.slug ? `${chipActive(c.hue)} shadow-sm` : 'bg-white dark:bg-zinc-900 ring-zinc-200 dark:ring-zinc-800 text-zinc-900 dark:text-white hover:ring-zinc-300 dark:hover:ring-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800/80'}`}>
-                {c.name}
-              </Link>
-            ))}
-          </div>
-        )}
       </div>
 
       <div className="relative max-w-md mb-10">
@@ -64,7 +50,7 @@ export default function CategoryPage() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder={`Search ${cat.name}…`}
-          className="w-full h-[46px] pl-[42px] pr-4  border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+          className="w-full h-[46px] pl-[42px] pr-4  border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
         />
         <svg width="16" height="16" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-sky-500 dark:text-sky-400">
           <circle cx="8" cy="8" r="5.75" stroke="currentColor" strokeWidth="1.5" />

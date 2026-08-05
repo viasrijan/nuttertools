@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { CATEGORIES } from '../data/categories'
-import { hueFor, iconTile } from '../lib/style'
+import { hueFor, iconTile, tileGrad } from '../lib/style'
 import { ToolIcon } from '../components/Icon'
 import registry from '../tools/registry'
 
@@ -44,7 +44,7 @@ export default function ToolPage() {
       </nav>
 
       <div className="pt-10 pb-10 flex items-center gap-4">
-        <span className={`w-16 h-16 grid place-items-center shrink-0 ${iconTile(h)}`}>
+        <span className={`w-16 h-16 grid place-items-center shrink-0 rounded-full shadow-lg ${tileGrad(h)} text-zinc-900 dark:text-white`}>
           <ToolIcon id={tool.id} className="w-8 h-8" />
         </span>
         <div className="min-w-0">
