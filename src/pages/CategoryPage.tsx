@@ -22,7 +22,7 @@ export default function CategoryPage() {
     return (
       <div className="max-w-[1200px] mx-auto px-4 py-24 text-center">
         <p className="text-zinc-900 dark:text-white font-medium">Section not found.</p>
-        <Link to="/" className="inline-block mt-3 text-indigo-600 dark:text-indigo-400 font-medium underline">Back to home</Link>
+        <Link to="/" className="inline-block mt-3 text-sky-500 dark:text-sky-300 font-medium underline">Back to home</Link>
       </div>
     )
   }
@@ -52,7 +52,7 @@ export default function CategoryPage() {
           placeholder={`Search ${cat.name}…`}
           className="w-full h-[46px] pl-[42px] pr-4  border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
         />
-        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-sky-500 dark:text-sky-400">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-sky-400 dark:text-sky-300">
           <circle cx="8" cy="8" r="5.75" stroke="currentColor" strokeWidth="1.5" />
           <path d="M12.5 12.5L16 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>

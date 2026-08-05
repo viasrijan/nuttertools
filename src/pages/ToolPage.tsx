@@ -21,7 +21,7 @@ export default function ToolPage() {
     return (
       <div className="max-w-[1200px] mx-auto px-4 py-24 text-center">
         <p className="text-zinc-900 dark:text-white font-medium">Tool not found.</p>
-        <Link to="/" className="inline-block mt-3 text-indigo-600 dark:text-indigo-400 font-medium underline">Back to home</Link>
+        <Link to="/" className="inline-block mt-3 text-sky-500 dark:text-sky-300 font-medium underline">Back to home</Link>
       </div>
     )
   }
@@ -67,7 +67,7 @@ export default function ToolPage() {
         <aside className="space-y-6">
           {related.length > 0 && (
             <div>
-              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-sky-600 dark:text-sky-400 mb-2.5">More in {tool.category}</h4>
+              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-sky-500 dark:text-sky-300 mb-2.5">More in {tool.category}</h4>
               <div className="space-y-0.5">
                 {related.map((t) => (
                   <Link key={t.id} to={`/tool/${t.id}`}
@@ -83,7 +83,7 @@ export default function ToolPage() {
           )}
           {cat && (
             <div className="pt-5 border-t border-zinc-100 dark:border-zinc-800">
-              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-sky-600 dark:text-sky-400 mb-2.5">All sections</h4>
+              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-sky-500 dark:text-sky-300 mb-2.5">All sections</h4>
               <div className="flex flex-wrap gap-1.5">
                 {CATEGORIES.slice(0, 8).map((c) => (
                   <Link key={c.slug} to={`/tools/${c.slug}`}
