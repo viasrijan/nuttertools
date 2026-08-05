@@ -54,7 +54,7 @@ export default function ToolPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 pb-24">
-        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800  p-6 md:p-8 min-h-[400px]">
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800  p-6 md:p-8 min-h-[400px] soft-shadow">
           {Comp ? <Comp /> : (
             <div className="py-20 text-center">
               <div className="text-4xl">🚧</div>

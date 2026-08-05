@@ -29,7 +29,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-4 sm:px-6">
       <div className="mx-auto max-w-[1200px]">
-        <div className="rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl shadow-lg shadow-zinc-900/[0.04] dark:shadow-black/30">
+        <div className="rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl soft-shadow">
           <div className="px-2.5 sm:px-5 h-[52px] sm:h-[56px] flex items-center justify-between gap-3">
             <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setMOpen(false)}>
               <Logo size={24} />
@@ -52,7 +52,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   </button>
                   {open === g.id && (
                     <div className="absolute left-0 top-full pt-2">
-                      <div className="w-[340px] origin-top rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl shadow-zinc-900/10 dark:shadow-black/50 p-2 animate-[omni-drop_0.15s_ease-out]">
+                      <div className="w-[340px] origin-top rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
                         <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-sky-500 dark:text-sky-300 px-3 pt-1 pb-1.5">{g.label}</p>
                         <div className="flex flex-col gap-0.5">
                           {g.categories.map((c) => (

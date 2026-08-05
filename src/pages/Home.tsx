@@ -43,7 +43,7 @@ export default function Home() {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search any tool…"
-              className="w-full h-[52px] pl-[46px] pr-4 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[15px] text-zinc-900 dark:text-zinc-100 shadow-lg shadow-zinc-900/5 dark:shadow-black/20 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+              className="w-full h-[52px] pl-[46px] pr-4 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[15px] text-zinc-900 dark:text-zinc-100 soft-shadow focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
             />
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-sky-400 dark:text-sky-300">
               <circle cx="8" cy="8" r="5.75" stroke="currentColor" strokeWidth="1.5" />
@@ -69,7 +69,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {CATEGORIES.map((c) => (
                 <Link key={c.slug} to={`/tools/${c.slug}`}
-                  className={`group relative overflow-hidden p-5 ${tileGrad(c.hue)} shadow-lg shadow-zinc-900/10 transition-all duration-200 hover:shadow-xl hover:shadow-zinc-900/20 hover:-translate-y-1 flex flex-col items-center text-center`}>
+                  className={`group relative overflow-hidden p-5 ${tileGrad(c.hue)} soft-shadow transition-all duration-200 hover:-translate-y-1 flex flex-col items-center text-center`}>
                   <div aria-hidden className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/15 blur-2xl group-hover:bg-white/25 transition-colors duration-200" />
                   <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-white/25" />
                   <span className="relative w-11 h-11 rounded-full bg-white/25 grid place-items-center text-[16px] font-bold text-white tabular-nums shadow-sm">{c.count}</span>
@@ -81,7 +81,7 @@ export default function Home() {
 
           <section className="pb-12 md:pb-24">
             <div className="grid grid-cols-1 md:grid-cols-[6fr_4fr] gap-3 sm:gap-4 min-h-[380px] md:min-h-[480px]">
-              <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-6 md:px-8 py-9 md:py-10 flex flex-col justify-center">
+              <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-6 md:px-8 py-9 md:py-10 flex flex-col justify-center soft-shadow">
                 <p className="text-[16px] font-bold tracking-[-0.01em] text-sky-400 dark:text-sky-300">Why OmniTools?</p>
                 <h2 className="text-[22px] md:text-[26px] font-bold tracking-[-0.03em] mt-3 text-balance">Free. Private. No sign-up.</h2>
                 <ul className="mt-6 grid gap-x-10 gap-y-5 md:grid-cols-2">
@@ -101,7 +101,7 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-              <div className="relative overflow-hidden bg-gradient-to-br from-red-800 via-rose-800 to-pink-700 px-6 py-9 md:py-10 shadow-xl shadow-red-900/10 flex flex-col justify-center">
+              <div className="relative overflow-hidden bg-gradient-to-br from-red-800 via-rose-800 to-pink-700 px-6 py-9 md:py-10 soft-shadow flex flex-col justify-center">
                 <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
                   <div className="absolute left-1/2 top-1/2 w-[240%] h-[360%] animate-[omni-rotate_24s_linear_infinite]">
                     <div className="w-full h-full bg-[conic-gradient(from_0deg_at_50%_50%,#ef4444_0%,#f43f5e_25%,#fb7185_45%,#ec4899_65%,#fda4af_85%,#ef4444_100%)] blur-2xl mix-blend-screen" />
