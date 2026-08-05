@@ -23,7 +23,20 @@ export default function Home() {
             {TOTAL_TOOLS} free tools, one place
           </p>
           <h1 className="font-[800] tracking-[-0.035em] text-[clamp(28px,8.5vw,72px)] leading-[1.04]">
-            All useful tools in <span className="text-purple-600 dark:text-purple-400">one place</span>.
+            All useful tools in{' '}
+            <span className="relative inline-block whitespace-nowrap">
+              <span className="text-purple-600 dark:text-purple-400">one place</span>
+              <svg aria-hidden className="absolute left-0 -bottom-[0.16em] w-full h-[0.34em]" viewBox="0 0 200 20" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="brush-grad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stopColor="#9333ea" />
+                    <stop offset="1" stopColor="#ec4899" />
+                  </linearGradient>
+                </defs>
+                <path d="M4 15 C 50 12, 110 10, 150 7.5" stroke="url(#brush-grad)" strokeWidth="9" strokeLinecap="round" fill="none" />
+                <path d="M60 13.5 C 110 11, 150 8.5, 196 5.5" stroke="url(#brush-grad)" strokeWidth="4" strokeLinecap="round" fill="none" />
+              </svg>
+            </span>.
           </h1>
           <p className="mt-4 text-[15.5px] md:text-[18px] font-medium text-zinc-900 dark:text-white max-w-xl mx-auto leading-relaxed text-pretty">
             Images, PDFs, code, media and everyday utilities — organized into clean sections, ready when you need them.
@@ -59,76 +72,49 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {CATEGORIES.map((c) => (
                 <Link key={c.slug} to={`/tools/${c.slug}`}
-                  className={`group relative overflow-hidden p-5 ${tileGrad(c.hue)} transition-all duration-200 hover:shadow-xl hover:shadow-zinc-900/15 hover:-translate-y-0.5`}>
-                  <span className="w-8 h-8 rounded-full border border-white/60 grid place-items-center text-[13px] text-white/90 tabular-nums">{c.count}</span>
-                  <h3 className="mt-4 font-semibold text-[15px] tracking-[-0.01em] text-white">{c.name}</h3>
-                  <p className="text-[12px] text-white/75 mt-1 leading-snug">{c.blurb}</p>
+                  className={`group relative overflow-hidden p-5 ${tileGrad(c.hue)} shadow-lg shadow-zinc-900/10 transition-all duration-200 hover:shadow-xl hover:shadow-zinc-900/20 hover:-translate-y-1`}>
+                  <div aria-hidden className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/15 blur-2xl group-hover:bg-white/25 transition-colors duration-200" />
+                  <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-white/25" />
+                  <span className="relative w-9 h-9 rounded-full bg-white/25 grid place-items-center text-[14px] font-bold text-white tabular-nums shadow-sm">{c.count}</span>
+                  <h3 className="relative mt-4 font-bold text-[16px] tracking-[-0.01em] text-white">{c.name}</h3>
+                  <p className="relative text-[12px] font-medium text-white/80 mt-1 leading-snug">{c.blurb}</p>
                 </Link>
               ))}
             </div>
           </section>
 
           <section className="pb-16 md:pb-24">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="relative overflow-hidden bg-gradient-to-br from-red-600 via-pink-600 to-pink-400 px-6 py-7 md:py-8 shadow-xl shadow-red-900/10"
+            <div className="grid grid-cols-1 md:grid-cols-[3fr_7fr] gap-4">
+              <div className="relative overflow-hidden bg-gradient-to-br from-red-600 via-pink-600 to-pink-400 px-5 py-7 md:py-8 shadow-xl shadow-red-900/10 flex flex-col justify-center"
                 onPointerMove={(e) => {
                   const r = e.currentTarget.getBoundingClientRect()
                   e.currentTarget.style.setProperty('--mx', (((e.clientX - r.left) / r.width) - 0.5).toFixed(3))
                   e.currentTarget.style.setProperty('--my', (((e.clientY - r.top) / r.height) - 0.5).toFixed(3))
                 }}>
-                <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(300px circle at calc(50% + var(--mx,0)*30%) calc(50% + var(--my,0)*30%), rgba(255,255,255,0.22), transparent 65%)' }}>
-                  <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-                    <defs>
-                      <linearGradient id="fluid-grad" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0" stopColor="#ef4444" stopOpacity="0.9" />
-                        <stop offset="0.55" stopColor="#db2777" stopOpacity="0.9" />
-                        <stop offset="1" stopColor="#f472b6" stopOpacity="0.9" />
-                      </linearGradient>
-                      <filter id="fluid-dist" x="-30%" y="-30%" width="160%" height="160%">
-                        <feTurbulence type="fractalNoise" baseFrequency="0.008 0.015" numOctaves="3" seed="7" result="n">
-                          <animate attributeName="baseFrequency" dur="26s" values="0.008 0.015;0.016 0.008;0.008 0.015" repeatCount="indefinite" />
-                        </feTurbulence>
-                        <feDisplacementMap in="SourceGraphic" in2="n" scale="80" xChannelSelector="R" yChannelSelector="G" />
-                      </filter>
-                      <filter id="fluid-dist-2" x="-30%" y="-30%" width="160%" height="160%">
-                        <feTurbulence type="turbulence" baseFrequency="0.02 0.03" numOctaves="2" seed="4" result="n2">
-                          <animate attributeName="baseFrequency" dur="14s" values="0.02 0.03;0.035 0.015;0.02 0.03" repeatCount="indefinite" />
-                        </feTurbulence>
-                        <feDisplacementMap in="SourceGraphic" in2="n2" scale="40" xChannelSelector="R" yChannelSelector="B" />
-                      </filter>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#fluid-grad)" filter="url(#fluid-dist)" />
-                  </svg>
-                  <svg className="absolute inset-0 w-full h-full opacity-25 mix-blend-overlay" preserveAspectRatio="none" viewBox="0 0 100 100">
-                    <rect width="100%" height="100%" fill="#fff" filter="url(#fluid-dist-2)" />
-                  </svg>
-                  <div className="absolute -top-14 -left-8 transition-transform duration-300 ease-out will-change-transform" style={{ transform: 'translate3d(calc(var(--mx,0)*60px), calc(var(--my,0)*40px), 0)' }}>
-                    <div className="w-56 h-56 rounded-[45%] bg-white/25 blur-2xl mix-blend-screen animate-[omni-blob_14s_ease-in-out_infinite]" />
+                <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <div className="absolute -top-1/3 -left-1/3 w-[80%] h-[160%] transition-transform duration-300 ease-out will-change-transform" style={{ transform: 'translate3d(calc(var(--mx,0)*30px), calc(var(--my,0)*20px), 0)' }}>
+                    <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.4),transparent_60%)] blur-2xl mix-blend-screen animate-[omni-aurora-a_16s_ease-in-out_infinite]" />
                   </div>
-                  <div className="absolute top-1/3 -right-10 transition-transform duration-300 ease-out will-change-transform" style={{ transform: 'translate3d(calc(var(--mx,0)*-50px), calc(var(--my,0)*-35px), 0)' }}>
-                    <div className="w-64 h-64 rounded-[55%] bg-pink-300/40 blur-3xl mix-blend-screen animate-[omni-blob_18s_ease-in-out_infinite_reverse]" />
+                  <div className="absolute -bottom-1/3 -right-1/3 w-[80%] h-[160%] transition-transform duration-300 ease-out will-change-transform" style={{ transform: 'translate3d(calc(var(--mx,0)*-25px), calc(var(--my,0)*-18px), 0)' }}>
+                    <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(244,114,182,0.5),transparent_60%)] blur-2xl mix-blend-screen animate-[omni-aurora-b_20s_ease-in-out_infinite]" />
                   </div>
-                  <div className="absolute -bottom-12 left-1/4 transition-transform duration-300 ease-out will-change-transform" style={{ transform: 'translate3d(calc(var(--mx,0)*40px), calc(var(--my,0)*-50px), 0)' }}>
-                    <div className="w-56 h-56 rounded-[40%] bg-red-400/40 blur-3xl mix-blend-screen animate-[omni-blob_12s_ease-in-out_infinite]" />
+                  <div className="absolute top-1/2 left-1/2 w-[170%] h-[320%] animate-[omni-spin_26s_linear_infinite]">
+                    <div className="w-full h-full bg-[conic-gradient(from_0deg,rgba(239,68,68,0.3),rgba(236,72,153,0.22),rgba(255,255,255,0.16),rgba(239,68,68,0.3))] blur-3xl mix-blend-screen" />
                   </div>
-                  <div className="absolute top-1/2 left-1/2 transition-transform duration-300 ease-out will-change-transform" style={{ transform: 'translate3d(calc(var(--mx,0)*-30px), calc(var(--my,0)*30px), 0)' }}>
-                    <div className="w-40 h-40 rounded-full bg-white/15 blur-2xl mix-blend-screen animate-[omni-blob_9s_ease-in-out_infinite] [animation-delay:-3s]" />
-                  </div>
-                  <div className="absolute -top-8 right-1/4 transition-transform duration-300 ease-out will-change-transform" style={{ transform: 'translate3d(calc(var(--mx,0)*35px), calc(var(--my,0)*25px), 0)' }}>
-                    <div className="w-36 h-36 rounded-[60%] bg-pink-400/30 blur-2xl mix-blend-screen animate-[omni-blob_16s_ease-in-out_infinite] [animation-delay:-7s]" />
-                  </div>
-                  <div className="absolute bottom-1/3 right-1/3 transition-transform duration-300 ease-out will-change-transform" style={{ transform: 'translate3d(calc(var(--mx,0)*-40px), calc(var(--my,0)*45px), 0)' }}>
-                    <div className="w-24 h-24 rounded-[30%] bg-red-300/30 blur-xl mix-blend-screen animate-[omni-blob_7s_ease-in-out_infinite] [animation-delay:-2s]" />
-                  </div>
+                  <div className="absolute inset-0" style={{ background: 'radial-gradient(260px circle at calc(50% + var(--mx,0)*30%) calc(50% + var(--my,0)*30%), rgba(255,255,255,0.2), transparent 65%)' }} />
+                  {[3, 11, 20, 29, 39, 50, 61, 72, 83, 92].map((l, i) => (
+                    <span key={l} className="absolute w-1.5 h-1.5 rounded-full bg-white/80 blur-[1px] animate-[omni-rise_9s_linear_infinite]"
+                      style={{ left: `${l}%`, animationDelay: `${-i * 1.2}s`, animationDuration: `${7 + (i % 5)}s` }} />
+                  ))}
                 </div>
-                <div className="relative">
-                  <p className="text-[15px] font-bold tracking-[-0.01em] text-white/90">Support Us</p>
-                  <h2 className="text-[20px] md:text-[24px] font-bold tracking-[-0.03em] mt-2 text-white text-balance">Love OmniTools?</h2>
-                  <p className="text-[13px] md:text-[13.5px] font-medium text-white/90 mt-2 max-w-sm leading-relaxed text-pretty">
+                <div className="relative flex flex-col items-center text-center">
+                  <p className="text-[14px] font-bold tracking-[-0.01em] text-white/90">Support Us</p>
+                  <h2 className="text-[19px] md:text-[22px] font-bold tracking-[-0.03em] mt-2 text-white text-balance">Love OmniTools?</h2>
+                  <p className="text-[12.5px] font-medium text-white/90 mt-2 leading-relaxed text-pretty">
                     Every tool here is free and always will be. A small donation helps keep the lights on.
                   </p>
                   <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
-                    className="inline-flex items-center gap-2 mt-5 px-6 h-10 bg-white text-red-600 font-bold text-[14px] shadow-lg hover:scale-105 active:scale-95 transition-transform">
+                    className="inline-flex items-center gap-2 mt-5 px-5 h-9 bg-white text-red-600 font-bold text-[13px] shadow-lg hover:scale-105 active:scale-95 transition-transform">
                     Donate with PayPal
                   </a>
                 </div>
@@ -136,7 +122,7 @@ export default function Home() {
               <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-6 py-7 md:py-8">
                 <p className="text-[15px] font-bold tracking-[-0.01em] text-purple-600 dark:text-purple-400">Why OmniTools?</p>
                 <h2 className="text-[20px] md:text-[24px] font-bold tracking-[-0.03em] mt-2 text-balance">Free. Private. No sign-up.</h2>
-                <ul className="mt-4 space-y-3">
+                <ul className="mt-4 grid gap-x-8 gap-y-3 md:grid-cols-2">
                   {[
                     ['100% free forever', 'No paywalls, no trials, no accounts.'],
                     ['Your files never leave your device', 'Everything runs locally in your browser.'],

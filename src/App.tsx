@@ -38,13 +38,11 @@ export default function App() {
               ))}
             </div>
             <div className="md:text-right">
-              <div className="md:justify-end">
-                <span className="text-[18px] font-extrabold tracking-[-0.03em]">
-                  <span className="text-purple-600 dark:text-purple-400">OmniTools</span>{' '}
-                  <span className="font-semibold text-zinc-900 dark:text-white">by</span>{' '}
-                  <a href="https://github.com/viasrijan" target="_blank" rel="noreferrer" className="text-purple-600 dark:text-purple-400 hover:underline underline-offset-4">ViaSrijan</a>
-                </span>
-              </div>
+              <p className="text-[22px] font-extrabold tracking-[-0.03em] leading-none text-purple-600 dark:text-purple-400">OmniTools</p>
+              <p className="text-[13px] font-medium text-zinc-900 dark:text-white mt-1.5">
+                by{' '}
+                <a href="https://github.com/viasrijan" target="_blank" rel="noreferrer" className="font-bold text-zinc-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-300 hover:underline underline-offset-4">ViaSrijan</a>
+              </p>
               <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
                 className="inline-flex items-center gap-1 mt-3 px-2.5 h-[18px] text-[10px] font-bold bg-gradient-to-r from-red-600 to-pink-600 text-white hover:opacity-90 transition-opacity">
                 Donate
