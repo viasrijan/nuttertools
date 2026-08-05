@@ -23,8 +23,8 @@ export default function ImageOCR(){
     <div className="space-y-4">
       <DropZone onFiles={onFiles} accept="image/*" multiple={false} label="Drop image to extract text"/>
       {loading && <p className="text-sm animate-pulse">Reading text with AI... (first time downloads ~2MB model)</p>}
-      <textarea value={text} onChange={e=>setText(e.target.value)} placeholder="Extracted text will appear here..." className="w-full h-[260px] border rounded-xl p-3 text-sm"/>
-      <button onClick={()=>navigator.clipboard.writeText(text)} className="px-4 py-2 bg-zinc-900 text-white rounded-full text-sm">Copy Text</button>
+      <textarea value={text} onChange={e=>setText(e.target.value)} placeholder="Extracted text will appear here..." className="w-full h-[260px] border p-3 text-sm"/>
+      <button onClick={()=>navigator.clipboard.writeText(text)} className="px-4 py-2 bg-zinc-900 text-white text-sm">Copy Text</button>
     </div>
   )
 }

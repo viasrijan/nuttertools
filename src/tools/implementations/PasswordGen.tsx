@@ -18,16 +18,16 @@ export default function PasswordGen(){
 
   return (
     <div className="space-y-4 max-w-md">
-      <div className="border rounded-xl p-4 flex items-center justify-between">
+      <div className="border p-4 flex items-center justify-between">
         <span className="font-mono text-lg">{pwd||"Click generate"}</span>
-        <button onClick={()=>navigator.clipboard.writeText(pwd)} className="text-xs border px-3 py-1 rounded-full">Copy</button>
+        <button onClick={()=>navigator.clipboard.writeText(pwd)} className="text-xs border px-3 py-1">Copy</button>
       </div>
       <div className="space-y-3">
         <div className="flex items-center justify-between"><label className="text-sm">Length {len}</label><input type="range" min={6} max={64} value={len} onChange={e=>setLen(parseInt(e.target.value))}/></div>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={upper} onChange={e=>setUpper(e.target.checked)}/>Uppercase</label>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={numbers} onChange={e=>setNumbers(e.target.checked)}/>Numbers</label>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={symbols} onChange={e=>setSymbols(e.target.checked)}/>Symbols</label>
-        <button onClick={gen} className="w-full h-10 bg-zinc-900 text-white rounded-full text-sm">Generate Password</button>
+        <button onClick={gen} className="w-full h-10 bg-zinc-900 text-white text-sm">Generate Password</button>
       </div>
     </div>
   )

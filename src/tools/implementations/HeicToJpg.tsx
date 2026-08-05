@@ -29,7 +29,7 @@ export default function HeicToJpg(){
       <DropZone onFiles={onFiles} accept=".heic,.heif,image/*" label="Drop HEIC files from iPhone"/>
       <p className="text-xs text-zinc-500">{status}</p>
       <div className="grid grid-cols-2 gap-3">
-        {items.map((it,i)=><div key={i} className="border rounded-xl p-2">
+        {items.map((it,i)=><div key={i} className="border p-2">
           {it.url ? <><img src={it.url} className="w-full h-32 object-cover rounded"/><a href={it.url} download={it.name} className="text-xs underline mt-1 block">{it.name} Download</a></> : <p className="text-xs text-red-500">{it.name}: {it.error}</p>}
         </div>)}
       </div>

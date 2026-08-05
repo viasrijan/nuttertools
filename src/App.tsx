@@ -40,7 +40,7 @@ export default function App() {
               </div>
               <p className="text-[13px] text-zinc-500 mt-3 max-w-xs leading-relaxed">A collection of useful free tools, all in one place.</p>
               <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 mt-4 px-4 h-9 rounded-full text-[12.5px] font-semibold bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:opacity-90 transition-opacity">
+                className="inline-flex items-center gap-2 mt-4 px-4 h-9 text-[12.5px] font-semibold bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:opacity-90 transition-opacity">
                 Donate with PayPal
               </a>
             </div>

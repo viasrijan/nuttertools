@@ -38,11 +38,11 @@ const toolCount = (name: string) =>
 export const CATEGORIES: Category[] = CATEGORY_META.map((c) => ({ ...c, count: toolCount(c.name) }))
 
 const GROUP_DEFS: { id: string; label: string; slugs: string[] }[] = [
+  { id: 'media', label: 'Video & Audio', slugs: ['video-tools', 'audio-tools'] },
+  { id: 'documents', label: 'PDF & Docs', slugs: ['pdf-tools', 'file-tools'] },
   { id: 'images', label: 'Images & Design', slugs: ['image-tools', 'color-design'] },
-  { id: 'documents', label: 'Documents & PDF', slugs: ['pdf-tools', 'file-tools'] },
-  { id: 'developer', label: 'Developer', slugs: ['developer-tools', 'encoding-security'] },
-  { id: 'media', label: 'Media', slugs: ['video-tools', 'audio-tools'] },
   { id: 'textweb', label: 'Text & Web', slugs: ['text-writing', 'web-seo'] },
+  { id: 'developer', label: 'Developer', slugs: ['developer-tools', 'encoding-security'] },
   { id: 'everyday', label: 'Everyday & AI', slugs: ['everyday-utilities', 'ai-tools'] },
 ]
 

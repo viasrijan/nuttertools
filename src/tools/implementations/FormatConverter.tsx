@@ -26,7 +26,7 @@ export default function FormatConverter(){
   return (
     <div className="space-y-4">
       <div className="flex gap-2">
-        <select value={format} onChange={e=>setFormat(e.target.value as any)} className="border rounded-full px-4 h-9 text-sm">
+        <select value={format} onChange={e=>setFormat(e.target.value as any)} className="border px-4 h-9 text-sm">
           <option value="image/webp">WebP</option>
           <option value="image/jpeg">JPG</option>
           <option value="image/png">PNG</option>
@@ -34,7 +34,7 @@ export default function FormatConverter(){
       </div>
       <DropZone onFiles={onFiles} accept="image/*" label={`Drop images to convert to ${format}`}/>
       <div className="grid grid-cols-2 gap-3">
-        {items.map((it,i)=><div key={i} className="border rounded-xl p-2"><img src={it.url} className="h-28 w-full object-cover rounded"/><a href={it.url} download={it.name} className="text-xs underline">{it.name}</a></div>)}
+        {items.map((it,i)=><div key={i} className="border p-2"><img src={it.url} className="h-28 w-full object-cover rounded"/><a href={it.url} download={it.name} className="text-xs underline">{it.name}</a></div>)}
       </div>
     </div>
   )

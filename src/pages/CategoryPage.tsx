@@ -39,7 +39,7 @@ export default function CategoryPage() {
 
       <div className="pt-10 pb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="flex items-center gap-4">
-          <span className={`w-16 h-16 rounded-2xl grid place-items-center shadow-sm shrink-0 ${tile(cat.hue)}`}>
+          <span className={`w-16 h-16  grid place-items-center shadow-sm shrink-0 ${tile(cat.hue)}`}>
             <CategoryIcon slug={cat.slug} className="w-8 h-8 text-white" />
           </span>
           <div>
@@ -51,7 +51,7 @@ export default function CategoryPage() {
           <div className="flex flex-wrap gap-2 shrink-0">
             {group.categories.map((c) => (
               <Link key={c.slug} to={`/tools/${c.slug}`}
-                className={`px-4 h-9 rounded-full text-[13px] font-semibold grid place-items-center ring-1 transition-all ${c.slug === cat.slug ? `${chipActive(c.hue)} shadow-sm` : 'bg-white dark:bg-zinc-900 ring-zinc-200 dark:ring-zinc-800 text-zinc-600 dark:text-zinc-400 hover:ring-zinc-300 dark:hover:ring-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800/80'}`}>
+                className={`px-4 h-9  text-[13px] font-semibold grid place-items-center ring-1 transition-all ${c.slug === cat.slug ? `${chipActive(c.hue)} shadow-sm` : 'bg-white dark:bg-zinc-900 ring-zinc-200 dark:ring-zinc-800 text-zinc-600 dark:text-zinc-400 hover:ring-zinc-300 dark:hover:ring-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800/80'}`}>
                 {c.name}
               </Link>
             ))}
@@ -64,7 +64,7 @@ export default function CategoryPage() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder={`Search ${cat.name}…`}
-          className="w-full h-[46px] pl-[42px] pr-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder:text-zinc-400"
+          className="w-full h-[46px] pl-[42px] pr-4  border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder:text-zinc-400"
         />
         <svg width="16" height="16" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400">
           <circle cx="8" cy="8" r="5.75" stroke="currentColor" strokeWidth="1.5" />

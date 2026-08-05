@@ -8,13 +8,13 @@ export default function WordCounter(){
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
-        <div className="border rounded-xl p-3 text-center"><div className="text-xl font-bold">{stats.words}</div><div className="text-[11px] text-zinc-500">Words</div></div>
-        <div className="border rounded-xl p-3 text-center"><div className="text-xl font-bold">{stats.chars}</div><div className="text-[11px] text-zinc-500">Characters</div></div>
-        <div className="border rounded-xl p-3 text-center"><div className="text-xl font-bold">{stats.charsNoSpace}</div><div className="text-[11px] text-zinc-500">No spaces</div></div>
-        <div className="border rounded-xl p-3 text-center"><div className="text-xl font-bold">{stats.lines}</div><div className="text-[11px] text-zinc-500">Lines</div></div>
-        <div className="border rounded-xl p-3 text-center"><div className="text-xl font-bold">{stats.reading}m</div><div className="text-[11px] text-zinc-500">Read time</div></div>
+        <div className="border p-3 text-center"><div className="text-xl font-bold">{stats.words}</div><div className="text-[11px] text-zinc-500">Words</div></div>
+        <div className="border p-3 text-center"><div className="text-xl font-bold">{stats.chars}</div><div className="text-[11px] text-zinc-500">Characters</div></div>
+        <div className="border p-3 text-center"><div className="text-xl font-bold">{stats.charsNoSpace}</div><div className="text-[11px] text-zinc-500">No spaces</div></div>
+        <div className="border p-3 text-center"><div className="text-xl font-bold">{stats.lines}</div><div className="text-[11px] text-zinc-500">Lines</div></div>
+        <div className="border p-3 text-center"><div className="text-xl font-bold">{stats.reading}m</div><div className="text-[11px] text-zinc-500">Read time</div></div>
       </div>
-      <textarea value={text} onChange={e=>setText(e.target.value)} className="w-full h-[300px] border rounded-xl p-3 text-sm"/>
+      <textarea value={text} onChange={e=>setText(e.target.value)} className="w-full h-[300px] border p-3 text-sm"/>
     </div>
   )
 }

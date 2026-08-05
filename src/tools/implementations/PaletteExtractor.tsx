@@ -33,9 +33,9 @@ export default function PaletteExtractor(){
   return (
     <div className="space-y-4">
       <DropZone onFiles={onFiles} accept="image/*" multiple={false} label="Drop image to extract palette"/>
-      {img && <img src={img} className="w-full max-h-[300px] object-contain border rounded-xl"/>}
+      {img && <img src={img} className="w-full max-h-[300px] object-contain border"/>}
       <div className="flex gap-2 flex-wrap">
-        {colors.map((c,i)=><div key={i} className="flex items-center gap-2 border rounded-full pl-1 pr-3 py-1"><div className="w-6 h-6 rounded-full border" style={{background:c}}/><span className="text-xs font-mono">{c}</span></div>)}
+        {colors.map((c,i)=><div key={i} className="flex items-center gap-2 border pl-1 pr-3 py-1"><div className="w-6 h-6 border" style={{background:c}}/><span className="text-xs font-mono">{c}</span></div>)}
       </div>
     </div>
   )

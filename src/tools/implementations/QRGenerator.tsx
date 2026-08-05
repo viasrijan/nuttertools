@@ -14,15 +14,15 @@ export default function QRGenerator(){
   return (
     <div className="grid md:grid-cols-2 gap-6">
       <div className="space-y-4">
-        <textarea value={text} onChange={e=>setText(e.target.value)} className="w-full h-28 border rounded-xl p-3 text-sm" placeholder="Enter URL or text"/>
+        <textarea value={text} onChange={e=>setText(e.target.value)} className="w-full h-28 border p-3 text-sm" placeholder="Enter URL or text"/>
         <div className="flex gap-3">
           <label className="text-xs">FG <input type="color" value={fg} onChange={e=>setFg(e.target.value)}/></label>
           <label className="text-xs">BG <input type="color" value={bg} onChange={e=>setBg(e.target.value)}/></label>
         </div>
       </div>
-      <div className="text-center border rounded-xl p-4 bg-white">
+      <div className="text-center border p-4 bg-white">
         {url && <img src={url} className="mx-auto w-[280px] h-[280px]"/>}
-        {url && <a href={url} download="qr.png" className="mt-3 inline-block px-4 py-2 bg-zinc-900 text-white rounded-full text-sm">Download PNG</a>}
+        {url && <a href={url} download="qr.png" className="mt-3 inline-block px-4 py-2 bg-zinc-900 text-white text-sm">Download PNG</a>}
       </div>
     </div>
   )

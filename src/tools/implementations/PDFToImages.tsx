@@ -37,7 +37,7 @@ export default function PDFToImages(){
       <DropZone onFiles={onFiles} accept="application/pdf" multiple={false} label="Drop PDF to convert to JPGs"/>
       {loading && <p className="text-sm animate-pulse">Rendering PDF pages...</p>}
       <div className="grid grid-cols-2 gap-3">
-        {imgs.map((src,i)=><div key={i} className="border rounded-xl p-2"><img src={src} className="w-full rounded"/><a href={src} download={`page-${i+1}.jpg`} className="text-xs underline">Download page {i+1}</a></div>)}
+        {imgs.map((src,i)=><div key={i} className="border p-2"><img src={src} className="w-full rounded"/><a href={src} download={`page-${i+1}.jpg`} className="text-xs underline">Download page {i+1}</a></div>)}
       </div>
     </div>
   )

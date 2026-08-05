@@ -24,7 +24,7 @@ export default function ImagesToPDF(){
   return (
     <div className="space-y-4">
       <DropZone onFiles={onFiles} accept="image/*" label="Drop images to make PDF"/>
-      <button onClick={convert} disabled={!files.length} className="px-4 py-2 bg-zinc-900 text-white rounded-full text-sm disabled:opacity-30">Convert {files.length} images to PDF</button>
+      <button onClick={convert} disabled={!files.length} className="px-4 py-2 bg-zinc-900 text-white text-sm disabled:opacity-30">Convert {files.length} images to PDF</button>
       {out && <a href={out} download="images.pdf" className="text-sm underline">Download PDF</a>}
     </div>
   )

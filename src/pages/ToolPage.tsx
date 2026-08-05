@@ -44,7 +44,7 @@ export default function ToolPage() {
       </nav>
 
       <div className="pt-10 pb-10 flex items-center gap-4">
-        <span className={`w-16 h-16 rounded-2xl grid place-items-center shadow-sm shrink-0 ${tile(h)}`}>
+        <span className={`w-16 h-16  grid place-items-center shadow-sm shrink-0 ${tile(h)}`}>
           <ToolIcon id={tool.id} className="w-8 h-8 text-white" />
         </span>
         <div className="min-w-0">
@@ -54,7 +54,7 @@ export default function ToolPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 pb-24">
-        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 md:p-8 min-h-[400px]">
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800  p-6 md:p-8 min-h-[400px]">
           {Comp ? <Comp /> : (
             <div className="py-20 text-center">
               <div className="text-4xl">🚧</div>
@@ -71,8 +71,8 @@ export default function ToolPage() {
               <div className="space-y-0.5">
                 {related.map((t) => (
                   <Link key={t.id} to={`/tool/${t.id}`}
-                    className="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
-                    <span className={`w-9 h-9 rounded-lg grid place-items-center shrink-0 ${tile(hueFor(t.category))}`}>
+                    className="flex items-center gap-3 px-2 py-2  hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
+                    <span className={`w-9 h-9  grid place-items-center shrink-0 ${tile(hueFor(t.category))}`}>
                       <ToolIcon id={t.id} className="w-[18px] h-[18px] text-white" />
                     </span>
                     <span className="flex-1 text-[13.5px] font-medium truncate group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">{t.name}</span>
@@ -87,7 +87,7 @@ export default function ToolPage() {
               <div className="flex flex-wrap gap-1.5">
                 {CATEGORIES.slice(0, 8).map((c) => (
                   <Link key={c.slug} to={`/tools/${c.slug}`}
-                    className="px-3 h-8 rounded-full text-[12px] font-medium bg-white dark:bg-zinc-900 ring-1 ring-zinc-200 dark:ring-zinc-800 grid place-items-center hover:ring-zinc-300 dark:hover:ring-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 transition-all">
+                    className="px-3 h-8  text-[12px] font-medium bg-white dark:bg-zinc-900 ring-1 ring-zinc-200 dark:ring-zinc-800 grid place-items-center hover:ring-zinc-300 dark:hover:ring-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 transition-all">
                     {c.name}
                   </Link>
                 ))}
