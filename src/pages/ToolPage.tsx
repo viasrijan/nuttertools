@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { CATEGORIES } from '../data/categories'
@@ -55,7 +55,15 @@ export default function ToolPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 pb-24">
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800  p-6 md:p-8 min-h-[400px] soft-shadow">
-          {Comp ? <Comp /> : (
+          {Comp ? (
+            <Suspense fallback={
+              <div className="flex items-center justify-center py-24">
+                <span className="w-10 h-10 rounded-full border-[3px] border-zinc-200 dark:border-zinc-700 border-t-sky-500 dark:border-t-sky-400 animate-spin" />
+              </div>
+            }>
+              <Comp />
+            </Suspense>
+          ) : (
             <div className="py-20 text-center">
               <div className="text-4xl">🚧</div>
               <h3 className="font-semibold mt-3">Coming Soon</h3>

@@ -1,34 +1,20 @@
-import ImageCompressor from './implementations/ImageCompressor'
-import HeicToJpg from './implementations/HeicToJpg'
-import FormatConverter from './implementations/FormatConverter'
-import ImageOCR from './implementations/ImageOCR'
-import BgRemover from './implementations/BgRemover'
-import QRGenerator from './implementations/QRGenerator'
-import MergePDF from './implementations/MergePDF'
-import SplitPDF from './implementations/SplitPDF'
-import ImagesToPDF from './implementations/ImagesToPDF'
-import PDFToImages from './implementations/PDFToImages'
-import JSONFormatter from './implementations/JSONFormatter'
-import Base64Tool from './implementations/Base64Tool'
-import WordCounter from './implementations/WordCounter'
-import PasswordGen from './implementations/PasswordGen'
-import PaletteExtractor from './implementations/PaletteExtractor'
+import { lazy } from 'react'
 
-const registry: Record<string, any> = {
-  "image-compressor": ImageCompressor,
-  "heic-to-jpg": HeicToJpg,
-  "format-converter": FormatConverter,
-  "image-ocr": ImageOCR,
-  "bg-remover": BgRemover,
-  "qr-generator": QRGenerator,
-  "merge-pdf": MergePDF,
-  "split-pdf": SplitPDF,
-  "images-to-pdf": ImagesToPDF,
-  "pdf-to-images": PDFToImages,
-  "json-formatter": JSONFormatter,
-  "base64-tool": Base64Tool,
-  "word-counter": WordCounter,
-  "password-generator": PasswordGen,
-  "palette-extractor": PaletteExtractor,
+const registry: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  "image-compressor": lazy(() => import('./implementations/ImageCompressor')),
+  "heic-to-jpg": lazy(() => import('./implementations/HeicToJpg')),
+  "format-converter": lazy(() => import('./implementations/FormatConverter')),
+  "image-ocr": lazy(() => import('./implementations/ImageOCR')),
+  "bg-remover": lazy(() => import('./implementations/BgRemover')),
+  "qr-generator": lazy(() => import('./implementations/QRGenerator')),
+  "merge-pdf": lazy(() => import('./implementations/MergePDF')),
+  "split-pdf": lazy(() => import('./implementations/SplitPDF')),
+  "images-to-pdf": lazy(() => import('./implementations/ImagesToPDF')),
+  "pdf-to-images": lazy(() => import('./implementations/PDFToImages')),
+  "json-formatter": lazy(() => import('./implementations/JSONFormatter')),
+  "base64-tool": lazy(() => import('./implementations/Base64Tool')),
+  "word-counter": lazy(() => import('./implementations/WordCounter')),
+  "password-generator": lazy(() => import('./implementations/PasswordGen')),
+  "palette-extractor": lazy(() => import('./implementations/PaletteExtractor')),
 }
 export default registry
