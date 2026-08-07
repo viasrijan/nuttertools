@@ -160,6 +160,10 @@ export const toolIconUrl = (id: string) => `${base}icons/${id}.png`
 
 export const catIconUrl = (slug: string) => `${base}icons/cat-${slug}.png`
 
+export const whiteToolIconUrl = (id: string) => `${base}icons/white/${id}.png`
+
+export const whiteCatIconUrl = (slug: string) => `${base}icons/white/cat-${slug}.png`
+
 export function CutoutToolIcon({ id, className, tone }: { id: string, className?: string, tone?: string }) {
   return <img src={toolIconUrl(id)} alt="" className={className} draggable={false} />
 }

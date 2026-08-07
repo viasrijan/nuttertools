@@ -27,13 +27,13 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   }
 
   return (
-    <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-4 sm:px-6">
+    <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-1.5 sm:px-3.5">
       <div className="mx-auto max-w-[1200px]">
         <div className="rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl soft-shadow">
           <div className="px-2.5 sm:px-5 h-[52px] sm:h-[56px] flex items-center justify-between gap-3">
             <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setMOpen(false)}>
               <Logo size={24} />
-              <span className="text-[19px] font-extrabold tracking-[-0.03em] hidden sm:block text-black dark:text-white">
+              <span className="text-[19px] font-extrabold tracking-[-0.03em] hidden sm:block text-green-600 dark:text-green-400">
                 NutterTools
               </span>
             </Link>
@@ -44,7 +44,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onMouseEnter={() => setOpen(g.id)}
                   onMouseLeave={() => setOpen((o) => (o === g.id ? null : o))}>
                   <button onClick={() => setOpen(open === g.id ? null : g.id)}
-                    className={`flex items-center gap-1.5 text-[13px] font-semibold px-3 py-1.5 transition-colors ${open === g.id ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-900 dark:text-white hover:text-sky-500 dark:hover:text-sky-300 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'}`}>
+                    className={`flex items-center gap-1.5 text-[13px] font-semibold px-3 py-1.5 transition-colors ${open === g.id ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white' : 'text-zinc-900 dark:text-white hover:text-green-600 dark:hover:text-green-400 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'}`}>
                     {g.label}
                     <svg width="9" height="9" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === g.id ? 'rotate-180' : ''}`}>
                       <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -53,7 +53,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   {open === g.id && (
                     <div className="absolute left-0 top-full pt-2">
                       <div className="w-[340px] origin-top rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-sky-500 dark:text-sky-300 px-3 pt-1 pb-1.5">{g.label}</p>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-green-600 dark:text-green-400 px-3 pt-1 pb-1.5">{g.label}</p>
                         <div className="flex flex-col gap-0.5">
                           {g.categories.map((c) => (
                             <Link key={c.slug} to={`/tools/${c.slug}`} onClick={() => setOpen(null)}
@@ -93,7 +93,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
               <div className="px-3 sm:px-5 py-3 space-y-4">
                 {GROUPS.map((g) => (
                   <div key={g.id}>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-sky-500 dark:text-sky-300 mb-1.5 px-1">{g.label}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-green-600 dark:text-green-400 mb-1.5 px-1">{g.label}</p>
                     <div className="flex flex-col gap-0.5">
                       {g.categories.map((c) => (
                         <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}

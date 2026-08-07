@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { CATEGORIES } from '../data/categories'
 import { tileGrad } from '../lib/style'
-import { catIconUrl } from '../components/Icon'
+import { whiteCatIconUrl } from '../components/Icon'
 import ToolCard from '../components/ToolCard'
 import Fuse from 'fuse.js'
 
@@ -22,7 +22,7 @@ export default function CategoryPage() {
     return (
       <div className="max-w-[1200px] mx-auto px-4 py-24 text-center">
         <p className="text-zinc-900 dark:text-white font-medium">Section not found.</p>
-        <Link to="/" className="inline-block mt-3 text-sky-500 dark:text-sky-300 font-medium underline">Back to home</Link>
+        <Link to="/" className="inline-block mt-3 text-green-600 dark:text-green-400 font-medium underline">Back to home</Link>
       </div>
     )
   }
@@ -36,7 +36,9 @@ export default function CategoryPage() {
       </nav>
 
       <div className="pt-8 pb-8 md:pt-10 md:pb-10 flex items-center gap-3 md:gap-4">
-        <img src={catIconUrl(cat.slug)} alt="" className="w-14 h-14 md:w-16 md:h-16 shrink-0 object-contain drop-shadow-md" />
+        <span className={`w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${tileGrad(cat.hue)} grid place-items-center shrink-0 shadow-lg ring-1 ring-black/10 dark:ring-white/20`}>
+          <img src={whiteCatIconUrl(cat.slug)} alt="" className="w-7 h-7 md:w-8 md:h-8" draggable={false} />
+        </span>
         <div>
           <h1 className="text-[22px] md:text-[38px] font-[800] tracking-[-0.03em] leading-none text-balance">{cat.name}</h1>
           <p className="text-zinc-900 dark:text-white mt-2.5 text-[14.5px] font-medium text-pretty">{cat.blurb} — {cat.count} tools.</p>
@@ -48,9 +50,9 @@ export default function CategoryPage() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder={`Search ${cat.name}…`}
-          className="w-full h-[46px] pl-[42px] pr-4  border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+          className="w-full h-[46px] pl-[42px] pr-4 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[14px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
         />
-        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-sky-400 dark:text-sky-300">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-green-600 dark:text-green-400">
           <circle cx="8" cy="8" r="5.75" stroke="currentColor" strokeWidth="1.5" />
           <path d="M12.5 12.5L16 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>

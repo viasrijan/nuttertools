@@ -125,14 +125,14 @@ p { text-wrap: pretty; }
 
 .side-shadows {
   box-shadow:
-    inset 44px 0 90px -34px rgba(0, 0, 0, 0.2),
-    inset -44px 0 90px -34px rgba(0, 0, 0, 0.2);
+    inset 64px 0 140px -44px rgba(0, 0, 0, 0.3),
+    inset -64px 0 140px -44px rgba(0, 0, 0, 0.3);
 }
 
 .dark .side-shadows {
   box-shadow:
-    inset 44px 0 90px -34px rgba(0, 0, 0, 0.62),
-    inset -44px 0 90px -34px rgba(0, 0, 0, 0.62);
+    inset 64px 0 140px -44px rgba(0, 0, 0, 0.78),
+    inset -64px 0 140px -44px rgba(0, 0, 0, 0.78);
 }
 
 /* ---- Modern controls ---- */
@@ -148,7 +148,7 @@ button:not(:disabled):active { transform: translateY(0) scale(0.97); }
 button:disabled { cursor: not-allowed; }
 
 button:focus-visible {
-  outline: 2px solid rgba(56, 189, 248, 0.9);
+  outline: 2px solid rgba(74, 222, 128, 0.9);
   outline-offset: 2px;
 }
 
@@ -186,15 +186,15 @@ input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='r
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: #0ea5e9;
-  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.18), inset 0 1px 2px rgba(0, 0, 0, 0.04);
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18), inset 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .dark input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']):focus,
 .dark textarea:focus,
 .dark select:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  border-color: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* ---- Logo ---- */

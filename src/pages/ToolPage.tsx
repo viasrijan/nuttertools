@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { CATEGORIES } from '../data/categories'
 import { hueFor, textAccent, tileGrad } from '../lib/style'
-import { CutoutToolIcon, toolIconUrl } from '../components/Icon'
+import { CutoutToolIcon, whiteToolIconUrl } from '../components/Icon'
 import registry from '../tools/registry'
 
 export default function ToolPage() {
@@ -21,7 +21,7 @@ export default function ToolPage() {
     return (
       <div className="max-w-[1200px] mx-auto px-4 py-24 text-center">
         <p className="text-zinc-900 dark:text-white font-medium">Tool not found.</p>
-        <Link to="/" className="inline-block mt-3 text-sky-500 dark:text-sky-300 font-medium underline">Back to home</Link>
+        <Link to="/" className="inline-block mt-3 text-green-600 dark:text-green-400 font-medium underline">Back to home</Link>
       </div>
     )
   }
@@ -44,7 +44,9 @@ export default function ToolPage() {
       </nav>
 
       <div className="pt-8 pb-8 md:pt-10 md:pb-10 flex items-center gap-3 md:gap-4">
-        <img src={toolIconUrl(tool.id)} alt="" className="w-14 h-14 md:w-16 md:h-16 shrink-0 object-contain drop-shadow-md" />
+        <span className={`w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${tileGrad(h)} grid place-items-center shrink-0 shadow-lg ring-1 ring-black/10 dark:ring-white/20`}>
+          <img src={whiteToolIconUrl(tool.id)} alt="" className="w-7 h-7 md:w-8 md:h-8" draggable={false} />
+        </span>
         <div className="min-w-0">
           <h1 className="text-[22px] md:text-[36px] font-[800] tracking-[-0.03em] leading-none text-balance">{tool.name}</h1>
           <p className="text-zinc-900 dark:text-white mt-2.5 text-[14.5px] font-medium text-pretty">{tool.desc}</p>
@@ -56,7 +58,7 @@ export default function ToolPage() {
           {Comp ? (
             <Suspense fallback={
               <div className="flex items-center justify-center py-24">
-                <span className="w-10 h-10 rounded-full border-[3px] border-zinc-200 dark:border-zinc-700 border-t-sky-500 dark:border-t-sky-400 animate-spin" />
+                <span className="w-10 h-10 rounded-full border-[3px] border-zinc-200 dark:border-zinc-700 border-t-green-500 dark:border-t-green-400 animate-spin" />
               </div>
             }>
               <Comp />
@@ -73,7 +75,7 @@ export default function ToolPage() {
         <aside className="space-y-6">
           {related.length > 0 && (
             <div>
-              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-sky-500 dark:text-sky-300 mb-2.5">More in {tool.category}</h4>
+              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-2.5">More in {tool.category}</h4>
               <div className="space-y-0.5">
                 {related.map((t) => (
                   <Link key={t.id} to={`/tool/${t.id}`}
@@ -89,7 +91,7 @@ export default function ToolPage() {
           )}
           {cat && (
             <div className="pt-5 border-t border-zinc-100 dark:border-zinc-800">
-              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-sky-500 dark:text-sky-300 mb-2.5">All sections</h4>
+              <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-2.5">All sections</h4>
               <div className="flex flex-wrap gap-1.5">
                 {CATEGORIES.slice(0, 8).map((c) => (
                   <Link key={c.slug} to={`/tools/${c.slug}`}

@@ -79,23 +79,31 @@ function nodesToSvg(nodes) {
   return nodes.map(([tag, o]) => `<${tag} ${attrs(o)} />`).join('')
 }
 
+function svgFor(nodes, stroke) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none" stroke="${stroke}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  ${nodesToSvg(nodes)}
+</svg>`
+}
+
 async function renderPng(nodes, out, [c1, c2]) {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none" stroke="url(#g)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none" stroke="url(#g)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="${c1}"/>
       <stop offset="1" stop-color="${c2}"/>
     </linearGradient>
-    <filter id="s" x="-60%" y="-60%" width="220%" height="220%">
-      <feDropShadow dx="0" dy="1.4" stdDeviation="1.8" flood-color="#000000" flood-opacity="0.3"/>
-    </filter>
   </defs>
-  <g filter="url(#s)">${nodesToSvg(nodes)}</g>
+  ${nodesToSvg(nodes)}
 </svg>`
   await sharp(Buffer.from(svg)).png().toFile(out)
 }
 
+async function renderWhite(nodes, out) {
+  await sharp(Buffer.from(svgFor(nodes, '#ffffff'))).png().toFile(out)
+}
+
 fs.mkdirSync(OUT, { recursive: true })
+fs.mkdirSync(path.join(OUT, 'white'), { recursive: true })
 const iconSrc = fs.readFileSync(path.join(ROOT, 'src', 'components', 'Icon.tsx'), 'utf8')
 const TOOL = parseBlock(iconSrc, 'TOOL_ICONS')
 const CAT = parseBlock(iconSrc, 'CAT_ICONS')
@@ -111,19 +119,21 @@ let ok = 0
 const missing = []
 for (const t of tools) {
   const comp = TOOL[t.id]
-  const { kebab, nodes } = await iconFor(comp)
+  const { file, nodes } = await iconFor(comp)
   if (!nodes) { missing.push(`${t.id} (${comp})`); continue }
   await renderPng(nodes, path.join(OUT, `${t.id}.png`), CAT_GRAD[t.category] || ['#6366f1', '#a855f7'])
+  await renderWhite(nodes, path.join(OUT, 'white', `${t.id}.png`))
   ok++
 }
 
 for (const slug of Object.keys(CAT)) {
   const comp = CAT[slug]
-  const { kebab, nodes } = await iconFor(comp)
+  const { file, nodes } = await iconFor(comp)
   if (!nodes) { missing.push(`cat-${slug} (${comp})`); continue }
   await renderPng(nodes, path.join(OUT, `cat-${slug}.png`), SLUG_GRAD[slug] || ['#6366f1', '#a855f7'])
+  await renderWhite(nodes, path.join(OUT, 'white', `cat-${slug}.png`))
   ok++
 }
 
-console.log(`generated ${ok} pngs -> public/icons`)
+console.log(`generated ${ok * 2} pngs -> public/icons (+ white variants)`)
 if (missing.length) console.log('MISSING:', missing.join(', '))
