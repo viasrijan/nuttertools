@@ -34,10 +34,10 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-1.5 sm:px-3.5">
       <div className="mx-auto max-w-[1200px]">
-        <div className="rounded-full border border-zinc-300/80 dark:border-zinc-700/80 bg-zinc-300/90 dark:bg-zinc-800/90 backdrop-blur-xl soft-shadow">
+        <div className="rounded-full border border-zinc-200/90 dark:border-zinc-200/90 bg-white/95 dark:bg-white/95 backdrop-blur-xl soft-shadow">
           <div className="px-2.5 sm:px-5 h-[52px] sm:h-[56px] flex items-center gap-3">
             <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
-              className="lg:hidden w-9 h-9 shrink-0 rounded-full border border-zinc-400/80 dark:border-zinc-600/80 grid place-items-center text-zinc-900 dark:text-white hover:bg-zinc-200/70 dark:hover:bg-zinc-700/70 transition-colors">
+              className="lg:hidden w-9 h-9 shrink-0 grid place-items-center text-zinc-900 dark:text-white hover:bg-zinc-200/70 dark:hover:bg-zinc-700/70 rounded-full transition-colors">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                 <path d="M2 3.5h12M2 8h12M2 12.5h12" />
               </svg>

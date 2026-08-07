@@ -83,8 +83,8 @@ export default function Home() {
 
           <section className="pb-12 md:pb-24 space-y-3 sm:space-y-4">
             <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-6 md:px-12 py-10 md:py-14 flex flex-col justify-center soft-shadow">
-              <p className="text-[20px] md:text-[22px] font-extrabold tracking-[-0.02em] text-green-600 dark:text-green-400 text-center">Why NutterTools?</p>
-              <h2 className="text-[30px] md:text-[40px] font-[800] tracking-[-0.03em] mt-3 text-balance text-center leading-[1.08]">Free. Private. No sign-up.</h2>
+              <p className="text-[20px] md:text-[22px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white text-center">Why NutterTools?</p>
+              <h2 className="text-[30px] md:text-[40px] font-[800] tracking-[-0.03em] mt-3 text-balance text-center leading-[1.08] text-pink-600 dark:text-pink-400">Free. Private. No sign-up.</h2>
               <ul className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
                 {[
                   ['100% free forever', 'No paywalls, no trials, no accounts.'],
@@ -93,7 +93,7 @@ export default function Home() {
                   ['Fresh tools, always', 'New utilities added all the time.'],
                 ].map(([t, d]) => (
                   <li key={t} className="flex gap-3.5 text-left">
-                    <span className="w-6 h-6 rounded-lg bg-gradient-to-br from-red-500 to-pink-500 grid place-items-center shrink-0 mt-0.5 shadow-sm">
+                      <span className="w-6 h-6 rounded-full bg-green-500 grid place-items-center shrink-0 mt-0.5 shadow-sm">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
                     </span>
                     <div className="min-w-0">
