@@ -58,7 +58,7 @@ export default function App() {
           </div>
           <div className="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100">© {new Date().getFullYear()} NutterTools</p>
-            <a href="https://github.com/viasrijan/omnitools" target="_blank" rel="noreferrer" className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100 hover:text-sky-500 dark:hover:text-sky-300 transition-colors">GitHub</a>
+            <a href="https://github.com/viasrijan/nuttertools" target="_blank" rel="noreferrer" className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100 hover:text-sky-500 dark:hover:text-sky-300 transition-colors">GitHub</a>
           </div>
         </div>
       </footer>

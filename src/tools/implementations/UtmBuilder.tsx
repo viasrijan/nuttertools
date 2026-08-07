@@ -3,7 +3,7 @@ import { useState } from 'react'
 const SOURCES = ['Website', 'Newsletter', 'Social', 'QR Code', 'Email', 'Referral', 'Paid Ad']
 
 export default function UtmBuilder() {
-  const [url, setUrl] = useState('https://viasrijan.github.io/omnitools/')
+  const [url, setUrl] = useState('https://viasrijan.github.io/nuttertools/')
   const [source, setSource] = useState('newsletter')
   const [medium, setMedium] = useState('email')
   const [campaign, setCampaign] = useState('launch_2026')

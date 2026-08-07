@@ -8,7 +8,7 @@ This is **live** markdown preview.
 
 - Edit the text on the left
 - See the preview on the right
-- [NutterTools](https://viasrijan.github.io/omnitools/)
+- [NutterTools](https://viasrijan.github.io/nuttertools/)
 
 \`\`\`js
 console.log('hi')

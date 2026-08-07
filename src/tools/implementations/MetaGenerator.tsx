@@ -4,8 +4,8 @@ export default function MetaGenerator() {
   const [d, setD] = useState({
     title: 'NutterTools — Every Useful Tool, All in One Place',
     desc: 'A collection of useful tools — images, PDFs, code, media, text and everyday utilities.',
-    url: 'https://viasrijan.github.io/omnitools/',
-    image: 'https://viasrijan.github.io/omnitools/og.png',
+    url: 'https://viasrijan.github.io/nuttertools/',
+    image: 'https://viasrijan.github.io/nuttertools/og.png',
     theme: '#1f2937',
     robots: 'index, follow',
     twitterHandle: '@iSrijan',

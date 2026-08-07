@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export default function OgPreviewer() {
-  const [url, setUrl] = useState('https://github.com/viasrijan/omnitools')
+  const [url, setUrl] = useState('https://github.com/viasrijan/nuttertools')
   const [meta, setMeta] = useState<{ title: string, desc: string, image: string, url: string, icon: string } | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
