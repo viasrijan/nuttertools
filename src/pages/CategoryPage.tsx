@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { CATEGORIES } from '../data/categories'
 import { tileGrad } from '../lib/style'
-import { CategoryIcon } from '../components/Icon'
+import { catIconUrl } from '../components/Icon'
 import ToolCard from '../components/ToolCard'
 import Fuse from 'fuse.js'
 
@@ -36,9 +36,7 @@ export default function CategoryPage() {
       </nav>
 
       <div className="pt-8 pb-8 md:pt-10 md:pb-10 flex items-center gap-3 md:gap-4">
-        <span className={`w-14 h-14 md:w-16 md:h-16 grid place-items-center shrink-0 rounded-full shadow-lg ${tileGrad(cat.hue)} text-white`}>
-          <CategoryIcon slug={cat.slug} className="w-7 h-7 md:w-8 md:h-8" />
-        </span>
+        <img src={catIconUrl(cat.slug)} alt="" className="w-14 h-14 md:w-16 md:h-16 shrink-0 object-contain drop-shadow-md" />
         <div>
           <h1 className="text-[22px] md:text-[38px] font-[800] tracking-[-0.03em] leading-none text-balance">{cat.name}</h1>
           <p className="text-zinc-900 dark:text-white mt-2.5 text-[14.5px] font-medium text-pretty">{cat.blurb} — {cat.count} tools.</p>

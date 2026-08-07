@@ -13,7 +13,6 @@ import {
   SwatchBook, Table2, Tags, Terminal, TextQuote, Timer, Type, Undo2, Video, VolumeX,
   Wand2, Waves, Weight, Wind, Wrench, ZoomIn,
 } from 'lucide-react'
-import { useId } from 'react'
 import type { LucideIcon } from 'lucide-react'
 
 const TOOL_ICONS: Record<string, LucideIcon> = {
@@ -155,29 +154,16 @@ export function CategoryIcon({ slug, className }: { slug: string, className?: st
   return <C className={className} strokeWidth={1.9} aria-hidden="true" />
 }
 
-export function CutoutIcon({ icon: C, className, tone = 'text-zinc-500 dark:text-zinc-300', strokeWidth = 2.4 }: { icon: LucideIcon, className?: string, tone?: string, strokeWidth?: number }) {
-  const raw = useId()
-  const id = `cutout-${raw.replace(/[^a-zA-Z0-9-]/g, '')}`
-  return (
-    <svg viewBox="0 0 24 24" className={`${className} ${tone} drop-shadow-sm`} aria-hidden="true">
-      <defs>
-        <mask id={id}>
-          <circle cx="12" cy="12" r="11.5" fill="#fff" />
-          <g transform="translate(12 12) scale(0.86) translate(-12 -12)">
-            <C stroke="#000" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
-          </g>
-        </mask>
-      </defs>
-      <circle cx="12" cy="12" r="11.5" fill="currentColor" opacity="0.2" />
-      <circle cx="12" cy="12" r="11.5" fill="#fff" mask={`url(#${id})`} />
-    </svg>
-  )
-}
+const base = new URL(import.meta.env.BASE_URL, window.location.href).toString()
+
+export const toolIconUrl = (id: string) => `${base}icons/${id}.png`
+
+export const catIconUrl = (slug: string) => `${base}icons/cat-${slug}.png`
 
 export function CutoutToolIcon({ id, className, tone }: { id: string, className?: string, tone?: string }) {
-  return <CutoutIcon icon={TOOL_ICONS[id] || Wrench} className={className} tone={tone} />
+  return <img src={toolIconUrl(id)} alt="" className={className} draggable={false} />
 }
 
 export function CutoutCategoryIcon({ slug, className, tone }: { slug: string, className?: string, tone?: string }) {
-  return <CutoutIcon icon={CAT_ICONS[slug] || Wrench} className={className} tone={tone} />
+  return <img src={catIconUrl(slug)} alt="" className={className} draggable={false} />
 }
