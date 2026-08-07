@@ -9,7 +9,7 @@ import Fuse from 'fuse.js'
 
 const TOOLS = toolsData as any[]
 
-const SECTION_LABEL = 'text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] text-[#4454c9] text-center'
+const SECTION_LABEL = 'text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] text-[#4454c9] dark:text-[#f26444] text-center'
 
 export default function Home() {
   const [q, setQ] = useState('')
@@ -37,8 +37,8 @@ export default function Home() {
                 </defs>
                 <path pathLength="1" className="[stroke-dasharray:1] [stroke-dashoffset:1] animate-[omni-draw_0.7s_ease-out_0.4s_both]" d="M2 10 L198 10" stroke="url(#uline-grad)" strokeWidth="4" strokeLinecap="round" fill="none" />
               </svg>
-              <span className="relative text-[#4454c9]">one place</span>
-            </span><span className="text-[#4454c9]">.</span>
+              <span className="relative text-[#4454c9] dark:text-[#f26444]">one place</span>
+            </span><span className="text-[#4454c9] dark:text-[#f26444]">.</span>
           </h1>
           <p className="mt-4 text-[15.5px] md:text-[18px] font-medium text-zinc-900 dark:text-white max-w-xl mx-auto leading-relaxed text-pretty">
             Images, PDFs, code, media and everyday utilities — organized into clean sections, ready when you need them.
