@@ -1,7 +1,7 @@
 export default function Logo({ size = 30, className = '' }: { size?: number; className?: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 256 256" aria-hidden="true" className={`drop-shadow-sm ${className}`}>
-      <circle cx="128" cy="128" r="118" fill="#4454c9" />
+      <circle cx="128" cy="128" r="128" fill="#4454c9" />
       <g transform="translate(46.1 46.1) scale(1.82)">
         <g className="logo-spin">
         <path

@@ -9,10 +9,10 @@ import Fuse from 'fuse.js'
 
 const TOOLS = toolsData as any[]
 
-const SECTION_LABEL_BASE = 'text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] text-center'
-const SECTION_LABEL = `${SECTION_LABEL_BASE} text-black dark:text-white`
-const SECTION_LABEL_WHY = `${SECTION_LABEL_BASE} text-green-600 dark:text-green-400`
-const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} text-pink-600 dark:text-pink-400`
+const SECTION_LABEL_BASE = 'inline-block px-6 py-2.5 rounded-lg text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em]'
+const SECTION_LABEL = `${SECTION_LABEL_BASE} bg-black text-white dark:bg-white dark:text-black`
+const SECTION_LABEL_WHY = `${SECTION_LABEL_BASE} bg-green-600 text-black dark:bg-green-400`
+const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} bg-pink-600 text-black dark:bg-pink-400`
 
 export default function Home() {
   const [q, setQ] = useState('')
@@ -27,7 +27,7 @@ export default function Home() {
             <span className="w-2 h-2 rounded-full bg-white" />
             {TOTAL_TOOLS} free tools, one place
           </p>
-          <h1 className="font-[800] tracking-[-0.035em] text-[clamp(22.5px,6.8vw,57.6px)] leading-[1.04] [filter:drop-shadow(0_3px_12px_rgba(0,0,0,0.12))] text-[#4454c9] dark:text-[#f26444]">
+          <h1 className="font-[800] tracking-[-0.035em] text-[clamp(22.5px,6.8vw,57.6px)] leading-[1.04] [filter:drop-shadow(0_3px_12px_rgba(0,0,0,0.12))] text-black">
             All useful tools in{' '}
             <span className="relative inline-block whitespace-nowrap">
               <svg aria-hidden className="absolute left-0 top-[0.58em] w-full h-[0.24em]" viewBox="0 0 200 20" preserveAspectRatio="none">
@@ -40,8 +40,8 @@ export default function Home() {
                 </defs>
                 <path pathLength="1" className="[stroke-dasharray:1] [stroke-dashoffset:1] animate-[omni-draw_0.7s_ease-out_0.4s_both]" d="M2 10 L198 10" stroke="url(#uline-grad)" strokeWidth="4" strokeLinecap="round" fill="none" />
               </svg>
-              <span className="relative text-[#f26444] dark:text-[#4454c9]">one place</span>
-            </span><span className="text-[#f26444] dark:text-[#4454c9]">.</span>
+              <span className="relative text-[#4454c9] dark:text-[#f26444]">one place</span>
+            </span><span className="text-[#4454c9] dark:text-[#f26444]">.</span>
           </h1>
           <p className="mt-4 text-[15.5px] md:text-[18px] font-medium text-zinc-900 dark:text-white max-w-xl mx-auto leading-relaxed text-pretty">
             Images, PDFs, code, media and everyday utilities — organized into clean sections, ready when you need them.
@@ -74,7 +74,7 @@ export default function Home() {
       {!q.trim() && (
         <>
           <section className="pb-12 md:pb-16">
-            <p className={`${SECTION_LABEL} mb-5 md:mb-6`}>Browse by Categories</p>
+            <p className={`${SECTION_LABEL} mb-5 md:mb-6 text-center`}>Browse by Categories</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {CATEGORIES.map((c) => (
                 <Link key={c.slug} to={`/tools/${c.slug}`}
@@ -89,14 +89,14 @@ export default function Home() {
           </section>
 
           <section className="pb-12 md:pb-16">
-            <p className={`${SECTION_LABEL} mb-5 md:mb-6`}>Popular Tools</p>
+            <p className={`${SECTION_LABEL} mb-5 md:mb-6 text-center`}>Popular Tools</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {POPULAR_TOOLS.slice(0, 12).map((t) => <ToolCard key={t.id} tool={t} />)}
             </div>
           </section>
 
           <section className="pb-12 md:pb-16">
-            <p className={`${SECTION_LABEL_WHY} mb-4 md:mb-5`}>Why NutterTools?</p>
+            <p className={`${SECTION_LABEL_WHY} mb-4 md:mb-5 text-center`}>Why NutterTools?</p>
             <div className="bg-white dark:bg-[#242424] border border-transparent px-6 md:px-12 py-8 md:py-10 flex flex-col justify-center soft-shadow">
               <h2 className="text-[30px] md:text-[40px] font-[800] tracking-[-0.03em] text-balance text-center leading-[1.08] text-zinc-900 dark:text-white">Free. Private. No sign-up.</h2>
               <ul className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -120,7 +120,7 @@ export default function Home() {
               </div>
             </section>
             <section className="pb-12 md:pb-16">
-              <p className={`${SECTION_LABEL_SUPPORT} mb-4 md:mb-5`}>Support Us</p>
+              <p className={`${SECTION_LABEL_SUPPORT} mb-4 md:mb-5 text-center`}>Support Us</p>
               <div className="relative overflow-hidden bg-gradient-to-br from-red-800 via-rose-800 to-pink-700 px-6 md:px-12 py-10 md:py-12 soft-shadow flex flex-col justify-center">
                 <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
                   <div className="absolute left-1/2 top-1/2 w-[240%] h-[360%] animate-[omni-rotate_24s_linear_infinite]">
