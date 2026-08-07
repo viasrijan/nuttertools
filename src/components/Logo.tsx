@@ -10,8 +10,8 @@ export default function Logo({ size = 30, className = '' }: { size?: number; cla
             <path d="M -10 0 L 10 0" strokeWidth="16" strokeLinecap="round" />
           </g>
           <g transform="rotate(-45)">
-            <path d="M -60 0 L 40 0" strokeWidth="14" strokeLinecap="round" />
-            <path d="M 43 -21 L 43 21" strokeWidth="18" strokeLinecap="butt" />
+            <path d="M -70 0 L 70 0" strokeWidth="14" strokeLinecap="round" />
+            <path d="M 70 -20 L 70 20" strokeWidth="18" strokeLinecap="butt" />
           </g>
         </g>
       </g>
