@@ -9,7 +9,7 @@ import Fuse from 'fuse.js'
 
 const TOOLS = toolsData as any[]
 
-const SECTION_LABEL_BASE = 'block w-fit mx-auto px-4 py-2 text-[20px] md:text-[22px] font-extrabold tracking-[-0.02em] text-white'
+const SECTION_LABEL_BASE = 'label-box block w-fit mx-auto px-4 py-2 text-[20px] md:text-[22px] font-extrabold tracking-[-0.02em] text-white'
 const SECTION_LABEL = `${SECTION_LABEL_BASE} bg-black dark:bg-[#f26444]`
 const SECTION_LABEL_WHY = `${SECTION_LABEL_BASE} bg-green-600`
 const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} bg-pink-600`
