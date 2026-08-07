@@ -12,7 +12,7 @@ const TOOLS = toolsData as any[]
 const SECTION_LABEL_BASE = 'text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] text-center'
 const SECTION_LABEL = `${SECTION_LABEL_BASE} text-black dark:text-white`
 const SECTION_LABEL_WHY = `${SECTION_LABEL_BASE} text-green-600 dark:text-green-400`
-const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} text-pink-700`
+const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} text-yellow-400`
 
 export default function Home() {
   const [q, setQ] = useState('')
