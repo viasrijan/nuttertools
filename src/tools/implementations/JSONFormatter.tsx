@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export default function JSONFormatter(){
-  const [input,setInput]=useState('{\"name\":\"OmniTools\",\"tools\":95}')
+  const [input,setInput]=useState('{\"name\":\"NutterTools\",\"tools\":95}')
   const [output,setOutput]=useState("")
   const [error,setError]=useState("")
 

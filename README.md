@@ -1,12 +1,12 @@
-# OmniTools — Every Useful Tool, All in One Place
+# NutterTools — Every Useful Tool, All in One Place
 
 A collection of 111 useful tools — images, PDFs, code, media, text and everyday utilities — organized into sections.
 
 ## Live
-https://viasrijan.github.io/omnitools/
+https://viasrijan.github.io/nuttertools/
 
 ## Features
-- 111 tools listed (15 fully working, more on the way)
+- 111 tools listed (all implemented)
 - Tools organized into sections with dropdown navigation
 - Search, dark mode, PWA
 - Flat white SVG icons throughout, powered by lucide-react

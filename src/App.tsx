@@ -48,7 +48,7 @@ export default function App() {
                 </svg>
               </a>
               <div>
-                <p className="text-[22px] font-extrabold tracking-[-0.03em] leading-none text-sky-500 dark:text-sky-300">OmniTools</p>
+                <p className="text-[22px] font-extrabold tracking-[-0.03em] leading-none text-sky-500 dark:text-sky-300">NutterTools</p>
                 <p className="text-[13px] font-medium text-zinc-900 dark:text-white mt-1.5">
                   by{' '}
                   <a href="https://github.com/viasrijan" target="_blank" rel="noreferrer" className="font-bold text-zinc-900 dark:text-white hover:text-sky-500 dark:hover:text-sky-300">ViaSrijan</a>
@@ -57,7 +57,7 @@ export default function App() {
             </div>
           </div>
           <div className="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100">© {new Date().getFullYear()} OmniTools</p>
+            <p className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100">© {new Date().getFullYear()} NutterTools</p>
             <a href="https://github.com/viasrijan/omnitools" target="_blank" rel="noreferrer" className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100 hover:text-sky-500 dark:hover:text-sky-300 transition-colors">GitHub</a>
           </div>
         </div>

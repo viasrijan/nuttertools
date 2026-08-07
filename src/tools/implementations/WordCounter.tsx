@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 export default function WordCounter(){
-  const [text,setText]=useState("Paste your text here to count words, characters, reading time. OmniTools is privacy-first.")
+  const [text,setText]=useState("Paste your text here to count words, characters, reading time. NutterTools is privacy-first.")
   const stats = useMemo(()=>{
     const words = text.trim()? text.trim().split(/\s+/).length : 0
     return {words, chars:text.length, charsNoSpace:text.replace(/\s/g,'').length, lines:text.split('\n').length, reading: Math.ceil(words/200)}

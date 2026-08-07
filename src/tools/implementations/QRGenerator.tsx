@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import QRCode from 'qrcode'
 
 export default function QRGenerator(){
-  const [text,setText]=useState("https://omnitools.example.com")
+  const [text,setText]=useState("https://nuttertools.example.com")
   const [url,setUrl]=useState("")
   const [fg,setFg]=useState("#000000")
   const [bg,setBg]=useState("#ffffff")

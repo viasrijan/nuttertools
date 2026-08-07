@@ -34,7 +34,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setMOpen(false)}>
               <Logo size={24} />
               <span className="text-[19px] font-extrabold tracking-[-0.03em] hidden sm:block text-black dark:text-white">
-                OmniTools
+                NutterTools
               </span>
             </Link>
 

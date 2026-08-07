@@ -125,7 +125,7 @@
     "desc": "Compress MP4, WebM videos offline",
     "category": "Video Tools",
     "icon": "🎬",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "mp4-to-webm",
@@ -133,7 +133,7 @@
     "desc": "Convert video formats",
     "category": "Video Tools",
     "icon": "🔄",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "video-muter",
@@ -141,7 +141,7 @@
     "desc": "Remove audio from video",
     "category": "Video Tools",
     "icon": "🔇",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "video-rotator",
@@ -149,7 +149,7 @@
     "desc": "Rotate and flip videos",
     "category": "Video Tools",
     "icon": "↻",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "video-speed",
@@ -157,7 +157,7 @@
     "desc": "Slow-mo and fast-forward",
     "category": "Video Tools",
     "icon": "⏩",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "video-trimmer",
@@ -165,7 +165,7 @@
     "desc": "Cut and trim videos",
     "category": "Video Tools",
     "icon": "✂️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "video-to-gif",
@@ -173,7 +173,7 @@
     "desc": "Convert video clips to GIF",
     "category": "Video Tools",
     "icon": "🎞️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "video-to-mp3",
@@ -181,7 +181,7 @@
     "desc": "Extract audio from any video",
     "category": "Video Tools",
     "icon": "🎵",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "audio-converter",
@@ -189,7 +189,7 @@
     "desc": "MP3, WAV, OGG, M4A converter",
     "category": "Audio Tools",
     "icon": "🎧",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "audio-transcriber",
@@ -197,7 +197,7 @@
     "desc": "Whisper AI - speech to text offline",
     "category": "Audio Tools",
     "icon": "💬",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "audio-trimmer",
@@ -205,7 +205,7 @@
     "desc": "Cut and merge audio files",
     "category": "Audio Tools",
     "icon": "✂️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "voice-recorder",
@@ -213,7 +213,7 @@
     "desc": "Record and save as MP3",
     "category": "Audio Tools",
     "icon": "🎙️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "pdf-page-numbers",
@@ -221,7 +221,7 @@
     "desc": "Add numbers to PDF pages",
     "category": "PDF Tools",
     "icon": "🔢",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "compress-pdf",
@@ -229,7 +229,7 @@
     "desc": "Reduce PDF file size",
     "category": "PDF Tools",
     "icon": "🗜️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "pdf-text-extract",
@@ -237,7 +237,7 @@
     "desc": "Get all text from PDF",
     "category": "PDF Tools",
     "icon": "📄",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "pdf-protect",
@@ -245,7 +245,7 @@
     "desc": "Add or remove password",
     "category": "PDF Tools",
     "icon": "🔒",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "rotate-pdf",
@@ -253,7 +253,7 @@
     "desc": "Rotate PDF pages",
     "category": "PDF Tools",
     "icon": "↻",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "pdf-watermark",
@@ -261,7 +261,7 @@
     "desc": "Add text/image watermark",
     "category": "PDF Tools",
     "icon": "💧",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "bulk-renamer",
@@ -269,7 +269,7 @@
     "desc": "Rename 100 files at once",
     "category": "File Tools",
     "icon": "✏️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "csv-json",
@@ -277,7 +277,7 @@
     "desc": "Convert CSV, JSON, Excel mutually",
     "category": "File Tools",
     "icon": "📊",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "excel-to-pdf",
@@ -285,7 +285,7 @@
     "desc": "Convert XLSX to PDF",
     "category": "File Tools",
     "icon": "📈",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "zip-tool",
@@ -293,7 +293,7 @@
     "desc": "Create and open ZIP files",
     "category": "File Tools",
     "icon": "📦",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "case-converter",
@@ -301,7 +301,7 @@
     "desc": "UPPER, lower, Title Case",
     "category": "Text & Writing",
     "icon": "🔠",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "diff-checker",
@@ -309,7 +309,7 @@
     "desc": "Compare two texts side-by-side",
     "category": "Text & Writing",
     "icon": "🔍",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "invoice-generator",
@@ -317,7 +317,7 @@
     "desc": "Create PDF invoices free",
     "category": "Text & Writing",
     "icon": "🧾",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "lorem-generator",
@@ -325,7 +325,7 @@
     "desc": "Generate placeholder text",
     "category": "Text & Writing",
     "icon": "📑",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "markdown-editor",
@@ -333,7 +333,7 @@
     "desc": "Live preview markdown",
     "category": "Text & Writing",
     "icon": "📝",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "dedupe-lines",
@@ -341,7 +341,7 @@
     "desc": "Dedupe and sort lines",
     "category": "Text & Writing",
     "icon": "🧹",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "resume-builder",
@@ -349,7 +349,7 @@
     "desc": "Build resume, download PDF",
     "category": "Text & Writing",
     "icon": "📄",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "slug-generator",
@@ -357,7 +357,7 @@
     "desc": "Create URL slugs, encode/decode",
     "category": "Text & Writing",
     "icon": "🔗",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "tts-stt",
@@ -365,7 +365,7 @@
     "desc": "Speak any text, speech to text",
     "category": "Text & Writing",
     "icon": "🗣️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "env-generator",
@@ -373,7 +373,7 @@
     "desc": "Generate .env.example",
     "category": "Developer Tools",
     "icon": "⚙️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "chmod-calc",
@@ -381,7 +381,7 @@
     "desc": "Calculate chmod permissions",
     "category": "Developer Tools",
     "icon": "🔢",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "cron-generator",
@@ -389,7 +389,7 @@
     "desc": "Human to cron and reverse",
     "category": "Developer Tools",
     "icon": "⏰",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "css-tailwind",
@@ -397,7 +397,7 @@
     "desc": "Convert CSS to Tailwind classes",
     "category": "Developer Tools",
     "icon": "🎨",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "curl-to-fetch",
@@ -405,7 +405,7 @@
     "desc": "Convert cURL to JS fetch",
     "category": "Developer Tools",
     "icon": "🌐",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "hash-generator",
@@ -413,7 +413,7 @@
     "desc": "MD5, SHA1, SHA256, SHA512",
     "category": "Developer Tools",
     "icon": "#️⃣",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "html-jsx",
@@ -421,7 +421,7 @@
     "desc": "Convert HTML to React JSX",
     "category": "Developer Tools",
     "icon": "⚛️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "minify-beautify",
@@ -429,7 +429,7 @@
     "desc": "Minify HTML, CSS, JS, JSON",
     "category": "Developer Tools",
     "icon": "✨",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "regex-tester",
@@ -437,7 +437,7 @@
     "desc": "Test and explain regex",
     "category": "Developer Tools",
     "icon": "🧪",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "whitespace-cleaner",
@@ -445,7 +445,7 @@
     "desc": "Clean extra spaces, tabs",
     "category": "Text & Writing",
     "icon": "🧼",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "jwt-tool",
@@ -453,7 +453,7 @@
     "desc": "Decode and verify JWT tokens",
     "category": "Developer Tools",
     "icon": "🎫",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "readme-generator",
@@ -461,7 +461,7 @@
     "desc": "GitHub README builder",
     "category": "Developer Tools",
     "icon": "📖",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "uuid-generator",
@@ -469,7 +469,7 @@
     "desc": "Generate UUIDs and mock data",
     "category": "Developer Tools",
     "icon": "🆔",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "bcrypt-tool",
@@ -477,7 +477,7 @@
     "desc": "Hash and check bcrypt",
     "category": "Encoding & Security",
     "icon": "🔒",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "binary-converter",
@@ -485,7 +485,7 @@
     "desc": "Binary, Hex, Octal converter",
     "category": "Encoding & Security",
     "icon": "01",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "morse-code",
@@ -493,7 +493,7 @@
     "desc": "Translate to morse code",
     "category": "Encoding & Security",
     "icon": "📡",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "url-encoder",
@@ -501,7 +501,7 @@
     "desc": "Encode/decode URLs",
     "category": "Encoding & Security",
     "icon": "🔗",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "blob-maker",
@@ -509,7 +509,7 @@
     "desc": "Create blob, wave SVGs",
     "category": "Color & Design",
     "icon": "💧",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "contrast-checker",
@@ -517,7 +517,7 @@
     "desc": "WCAG accessibility checker",
     "category": "Color & Design",
     "icon": "♿",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "gradient-generator",
@@ -525,7 +525,7 @@
     "desc": "Create CSS gradients",
     "category": "Color & Design",
     "icon": "🌅",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "hex-rgb",
@@ -533,7 +533,7 @@
     "desc": "Convert color formats",
     "category": "Color & Design",
     "icon": "🌈",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "color-picker",
@@ -541,7 +541,7 @@
     "desc": "Pick colors from image/screen",
     "category": "Color & Design",
     "icon": "👁️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "shadow-generator",
@@ -549,7 +549,7 @@
     "desc": "Box and text shadow maker",
     "category": "Color & Design",
     "icon": "💡",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "meta-generator",
@@ -557,7 +557,7 @@
     "desc": "Generate meta tags for SEO",
     "category": "Web & SEO",
     "icon": "🏷️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "ip-info",
@@ -565,7 +565,7 @@
     "desc": "See IP, browser, OS info",
     "category": "Web & SEO",
     "icon": "💻",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "og-generator",
@@ -573,7 +573,7 @@
     "desc": "Create social share images",
     "category": "Web & SEO",
     "icon": "🖼️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "og-previewer",
@@ -581,7 +581,7 @@
     "desc": "Preview how link looks on socials",
     "category": "Web & SEO",
     "icon": "👀",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "sitemap-gen",
@@ -589,7 +589,7 @@
     "desc": "Generate sitemap.xml",
     "category": "Web & SEO",
     "icon": "🗺️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "utm-builder",
@@ -597,7 +597,7 @@
     "desc": "Create UTM tracking links",
     "category": "Web & SEO",
     "icon": "📈",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "age-calc",
@@ -605,7 +605,7 @@
     "desc": "Age, date diff, timezone",
     "category": "Everyday Utilities",
     "icon": "📅",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "percent-calc",
@@ -613,7 +613,7 @@
     "desc": "Loan, percent, GST calc",
     "category": "Everyday Utilities",
     "icon": "🧮",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "pomodoro",
@@ -621,7 +621,7 @@
     "desc": "Focus timer + tasks",
     "category": "Everyday Utilities",
     "icon": "🍅",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "screen-recorder",
@@ -629,7 +629,7 @@
     "desc": "Record screen in browser",
     "category": "Everyday Utilities",
     "icon": "📹",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "typing-test",
@@ -637,7 +637,7 @@
     "desc": "Check your WPM",
     "category": "Everyday Utilities",
     "icon": "⌨️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "unit-converter",
@@ -645,7 +645,7 @@
     "desc": "Length, weight, temp, etc.",
     "category": "Everyday Utilities",
     "icon": "📏",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "image-upscaler",
@@ -653,7 +653,7 @@
     "desc": "Upscale images 4x offline",
     "category": "AI Tools",
     "icon": "🔍",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "image-captioner",
@@ -661,7 +661,7 @@
     "desc": "AI caption any image",
     "category": "AI Tools",
     "icon": "🤖",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "translator",
@@ -669,7 +669,7 @@
     "desc": "Translate text offline",
     "category": "AI Tools",
     "icon": "🌍",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "sentiment",
@@ -677,7 +677,7 @@
     "desc": "Analyze text sentiment",
     "category": "AI Tools",
     "icon": "😊",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "summarizer",
@@ -685,7 +685,7 @@
     "desc": "Summarize long articles offline",
     "category": "AI Tools",
     "icon": "📝",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "image-cropper",
@@ -693,7 +693,7 @@
     "desc": "Crop images to any size",
     "category": "Image Tools",
     "icon": "✂️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "image-filters",
@@ -701,7 +701,7 @@
     "desc": "Brightness, contrast, blur & more",
     "category": "Image Tools",
     "icon": "🎛️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "image-resizer",
@@ -709,7 +709,7 @@
     "desc": "Resize by %, pixels or presets",
     "category": "Image Tools",
     "icon": "🗙️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "pdf-to-word",
@@ -717,7 +717,7 @@
     "desc": "Convert PDF to editable DOCX",
     "category": "PDF Tools",
     "icon": "📥",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "pdf-viewer",
@@ -725,7 +725,7 @@
     "desc": "Read and annotate PDFs",
     "category": "PDF Tools",
     "icon": "📖",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "word-to-pdf",
@@ -733,7 +733,7 @@
     "desc": "Convert DOCX to PDF",
     "category": "PDF Tools",
     "icon": "📝",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "html-preview",
@@ -741,7 +741,7 @@
     "desc": "Live HTML & CSS preview",
     "category": "Developer Tools",
     "icon": "👁️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "sql-formatter",
@@ -749,7 +749,7 @@
     "desc": "Format and beautify SQL",
     "category": "Developer Tools",
     "icon": "🗄️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "yaml-json",
@@ -757,7 +757,7 @@
     "desc": "Convert between YAML and JSON",
     "category": "Developer Tools",
     "icon": "📜",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "caesar-cipher",
@@ -765,7 +765,7 @@
     "desc": "Encode/decode with Caesar shift",
     "category": "Encoding & Security",
     "icon": "🔠",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "text-encryptor",
@@ -773,7 +773,7 @@
     "desc": "AES encryption offline",
     "category": "Encoding & Security",
     "icon": "🔒",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "emoji-remover",
@@ -781,7 +781,7 @@
     "desc": "Strip emojis from text",
     "category": "Text & Writing",
     "icon": "🙁",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "text-reverser",
@@ -789,7 +789,7 @@
     "desc": "Reverse text, words or lines",
     "category": "Text & Writing",
     "icon": "🔄",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "css-color-converter",
@@ -797,7 +797,7 @@
     "desc": "Named, hex, rgb, hsl & more",
     "category": "Color & Design",
     "icon": "🌈",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "color-shades",
@@ -805,7 +805,7 @@
     "desc": "Tints, shades & tones generator",
     "category": "Color & Design",
     "icon": "🌅",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "gif-to-video",
@@ -813,7 +813,7 @@
     "desc": "Convert GIF to MP4/WebM",
     "category": "Video Tools",
     "icon": "🎞️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "tone-generator",
@@ -821,7 +821,7 @@
     "desc": "Generate tones & frequencies",
     "category": "Audio Tools",
     "icon": "📢",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "txt-to-pdf",
@@ -829,7 +829,7 @@
     "desc": "Convert text files to PDF",
     "category": "File Tools",
     "icon": "📃",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "http-status",
@@ -837,7 +837,7 @@
     "desc": "Reference for HTTP status codes",
     "category": "Web & SEO",
     "icon": "🚦",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "robots-txt",
@@ -845,7 +845,7 @@
     "desc": "Generate robots.txt rules",
     "category": "Web & SEO",
     "icon": "🤖",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "bmi-calculator",
@@ -853,7 +853,7 @@
     "desc": "Body mass index calculator",
     "category": "Everyday Utilities",
     "icon": "⚖️",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "random-number",
@@ -861,7 +861,7 @@
     "desc": "Random numbers, dice & more",
     "category": "Everyday Utilities",
     "icon": "🎲",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "tip-calculator",
@@ -869,7 +869,7 @@
     "desc": "Split bills and tips",
     "category": "Everyday Utilities",
     "icon": "💸",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "poem-generator",
@@ -877,7 +877,7 @@
     "desc": "Generate poems and haiku",
     "category": "AI Tools",
     "icon": "🪶",
-    "implemented": false
+    "implemented": true
   },
   {
     "id": "recipe-generator",
@@ -885,6 +885,6 @@
     "desc": "Generate recipes from ingredients",
     "category": "AI Tools",
     "icon": "🍳",
-    "implemented": false
+    "implemented": true
   }
 ]

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export default function Base64Tool(){
-  const [input,setInput]=useState("Hello OmniTools")
+  const [input,setInput]=useState("Hello NutterTools")
   const [output,setOutput]=useState("")
   const [fileOut,setFileOut]=useState("")
 
