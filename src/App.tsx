@@ -31,7 +31,7 @@ export default function App() {
           <Route path="/tool/:id" element={<ToolPage />} />
         </Routes>
       </main>
-      <footer className="border-t border-zinc-300 dark:border-zinc-800 bg-neutral-300/70 dark:bg-zinc-900/90">
+      <footer className="bg-gradient-to-b from-transparent to-neutral-400/60 dark:from-transparent dark:to-zinc-900">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 md:py-16">
           <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-2.5">

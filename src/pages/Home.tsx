@@ -71,7 +71,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {CATEGORIES.map((c) => (
                 <Link key={c.slug} to={`/tools/${c.slug}`}
-                  className={`group relative overflow-hidden p-5 ${tileGrad(c.hue)} soft-shadow transition-all duration-200 hover:-translate-y-1 flex flex-col items-center text-center`}>
+                  className={`group relative overflow-hidden p-5 ${tileGrad(c.hue)} soft-shadow transition-all duration-200 hover:scale-[1.03] flex flex-col items-center text-center`}>
                   <div aria-hidden className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/15 blur-2xl group-hover:bg-white/25 transition-colors duration-200" />
                   <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-white/25" />
                   <span className="relative w-11 h-11 rounded-full bg-white/25 grid place-items-center text-[16px] font-bold text-white tabular-nums shadow-sm">{c.count}</span>
