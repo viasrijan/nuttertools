@@ -3,8 +3,8 @@ export default function Logo({ size = 30 }: { size?: number }) {
     <svg width={size} height={size} viewBox="0 0 256 256" aria-hidden="true" className="logo-spin drop-shadow-sm">
       <defs>
         <linearGradient id="nutter-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#10b981" />
-          <stop offset="1" stopColor="#065f46" />
+          <stop offset="0" stopColor="#14b8a6" />
+          <stop offset="1" stopColor="#115e59" />
         </linearGradient>
       </defs>
       <g transform="translate(11.07 11.07) scale(2.6)">

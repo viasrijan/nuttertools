@@ -89,7 +89,7 @@ p { text-wrap: pretty; }
     color-scheme: dark;
   }
 
-  input:not([type=file]):not([type=checkbox]):not([type=radio]), textarea, select {
+  input:where(:not([type=file]):not([type=checkbox]):not([type=radio])), textarea, select {
     @apply border rounded-xl;
   }
 

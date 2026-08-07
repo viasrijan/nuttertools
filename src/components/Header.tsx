@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Lightbulb } from 'lucide-react'
 import { GROUPS } from '../data/categories'
@@ -35,7 +35,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-1.5 sm:px-3.5">
       <div className="mx-auto max-w-[1200px]">
-        <div className="rounded-full border border-zinc-200/90 bg-gradient-to-b from-white to-zinc-200 soft-shadow">
+        <div className="rounded-full border border-zinc-200/90 bg-gradient-to-b from-white to-[#ebebec] soft-shadow">
           <div className="px-3 sm:px-6 h-[64px] sm:h-[68px] flex items-center gap-3">
             <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
               className="lg:hidden w-10 h-10 shrink-0 grid place-items-center text-zinc-900 hover:bg-zinc-100 rounded-full transition-colors">
@@ -47,7 +47,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             <Link to="/" onClick={() => setMOpen(false)}
               className={`flex items-center gap-3 shrink-0 flex-1 justify-center lg:flex-none lg:justify-start ${mOpen ? 'invisible' : ''}`}>
               <Logo size={32} />
-              <span className="text-[25px] font-extrabold tracking-[-0.03em] bg-gradient-to-b from-emerald-500 to-emerald-800 bg-clip-text text-transparent">
+              <span className="text-[25px] font-extrabold tracking-[-0.03em] bg-gradient-to-b from-teal-500 to-teal-800 bg-clip-text text-transparent">
                 NutterTools
               </span>
             </Link>
@@ -104,7 +104,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           <div className="px-4 sm:px-6 pt-5 flex items-center justify-between gap-3">
             <span className="flex items-center gap-3">
               <Logo size={34} />
-              <span className="text-[26px] font-extrabold tracking-[-0.03em] bg-gradient-to-b from-emerald-500 to-emerald-800 bg-clip-text text-transparent">NutterTools</span>
+              <span className="text-[26px] font-extrabold tracking-[-0.03em] bg-gradient-to-b from-teal-500 to-teal-800 bg-clip-text text-transparent">NutterTools</span>
             </span>
             <button onClick={() => setMOpen(false)} aria-label="Close menu"
               className="w-10 h-10 shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center hover:scale-105 active:scale-95 transition-transform">

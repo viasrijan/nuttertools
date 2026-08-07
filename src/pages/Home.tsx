@@ -9,7 +9,7 @@ import Fuse from 'fuse.js'
 
 const TOOLS = toolsData as any[]
 
-const SECTION_LABEL = 'text-[40px] md:text-[44px] font-extrabold tracking-[-0.02em] bg-gradient-to-b from-emerald-500 to-emerald-800 bg-clip-text text-transparent text-center'
+const SECTION_LABEL = 'text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] bg-gradient-to-b from-teal-500 to-teal-800 bg-clip-text text-transparent text-center'
 
 export default function Home() {
   const [q, setQ] = useState('')
@@ -20,7 +20,7 @@ export default function Home() {
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 animate-[omni-fade_0.3s_ease-out]">
       <section className="relative pt-8 pb-8 md:pt-16 md:pb-14 text-center">
         <div className="relative">
-          <p className="inline-flex items-center gap-2 text-[15px] font-semibold text-white bg-gradient-to-b from-emerald-500 to-emerald-800 px-[18px] py-[9px] mb-6 rounded-full shadow-sm">
+          <p className="inline-flex items-center gap-2 text-[15px] font-semibold text-white bg-gradient-to-b from-teal-500 to-teal-800 px-[18px] py-[9px] mb-6 rounded-full shadow-sm">
             <span className="w-2 h-2 rounded-full bg-white" />
             {TOTAL_TOOLS} free tools, one place
           </p>
@@ -37,7 +37,7 @@ export default function Home() {
                 </defs>
                 <path pathLength="1" className="[stroke-dasharray:1] [stroke-dashoffset:1] animate-[omni-draw_0.7s_ease-out_0.4s_both]" d="M2 10 L198 10" stroke="url(#uline-grad)" strokeWidth="4" strokeLinecap="round" fill="none" />
               </svg>
-              <span className="relative bg-gradient-to-b from-emerald-500 to-emerald-800 bg-clip-text text-transparent">one place</span>
+              <span className="relative bg-gradient-to-b from-teal-500 to-teal-800 bg-clip-text text-transparent">one place</span>
             </span>.
           </h1>
           <p className="mt-4 text-[15.5px] md:text-[18px] font-medium text-zinc-900 dark:text-white max-w-xl mx-auto leading-relaxed text-pretty">
@@ -94,7 +94,7 @@ export default function Home() {
 
           <section className="pb-12 md:pb-16">
             <p className={`${SECTION_LABEL} mb-4 md:mb-5`}>Why NutterTools?</p>
-            <div className="bg-gradient-to-b from-white to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 border border-zinc-200 dark:border-zinc-700 px-6 md:px-12 py-8 md:py-10 flex flex-col justify-center soft-shadow">
+            <div className="bg-gradient-to-b from-white to-[#ebebec] dark:from-zinc-800 dark:to-[#1c1c1f] border border-zinc-200 dark:border-zinc-700 px-6 md:px-12 py-8 md:py-10 flex flex-col justify-center soft-shadow">
               <h2 className="text-[30px] md:text-[40px] font-[800] tracking-[-0.03em] text-balance text-center leading-[1.08] text-zinc-900 dark:text-white">Free. Private. No sign-up.</h2>
               <ul className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
                 {[
@@ -104,7 +104,7 @@ export default function Home() {
                   ['Fresh tools, always', 'New utilities added all the time.'],
                 ].map(([t, d]) => (
                   <li key={t} className="flex gap-3.5 text-left">
-                      <span className="w-6 h-6 rounded-full bg-gradient-to-b from-emerald-500 to-emerald-800 grid place-items-center shrink-0 mt-0.5 shadow-sm">
+                      <span className="w-6 h-6 rounded-full bg-gradient-to-b from-teal-500 to-teal-800 grid place-items-center shrink-0 mt-0.5 shadow-sm">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
                     </span>
                     <div className="min-w-0">
