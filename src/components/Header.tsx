@@ -37,7 +37,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
         <div className="rounded-full border border-zinc-200/90 dark:border-zinc-200/90 bg-white/95 dark:bg-white/95 backdrop-blur-xl soft-shadow">
           <div className="px-2.5 sm:px-5 h-[52px] sm:h-[56px] flex items-center gap-3">
             <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
-              className="lg:hidden w-9 h-9 shrink-0 grid place-items-center text-zinc-900 dark:text-white hover:bg-zinc-200/70 dark:hover:bg-zinc-700/70 rounded-full transition-colors">
+              className="lg:hidden w-9 h-9 shrink-0 grid place-items-center text-zinc-900 hover:bg-zinc-100 rounded-full transition-colors">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                 <path d="M2 3.5h12M2 8h12M2 12.5h12" />
               </svg>
@@ -46,7 +46,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             <Link to="/" onClick={() => setMOpen(false)}
               className={`flex items-center gap-2.5 shrink-0 flex-1 justify-center lg:flex-none lg:justify-start ${mOpen ? 'invisible' : ''}`}>
               <Logo size={24} />
-              <span className="text-[19px] font-extrabold tracking-[-0.03em] text-green-600 dark:text-green-400">
+              <span className="text-[19px] font-extrabold tracking-[-0.03em] text-green-600">
                 NutterTools
               </span>
             </Link>
@@ -57,7 +57,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onMouseEnter={() => setOpen(g.id)}
                   onMouseLeave={() => setOpen((o) => (o === g.id ? null : o))}>
                   <button onClick={() => setOpen(open === g.id ? null : g.id)}
-                    className={`flex items-center gap-1.5 text-[13px] font-semibold px-3 py-1.5 transition-colors ${open === g.id ? 'bg-zinc-200/80 dark:bg-zinc-700/80 text-zinc-900 dark:text-white' : 'text-zinc-900 dark:text-white hover:text-green-600 dark:hover:text-green-400 hover:bg-zinc-200/60 dark:hover:bg-zinc-700/60'}`}>
+                    className={`flex items-center gap-1.5 text-[13px] font-semibold px-3 py-1.5 transition-colors ${open === g.id ? 'bg-zinc-200/80 text-zinc-900' : 'text-zinc-900 hover:text-green-600 hover:bg-zinc-100'}`}>
                     {g.label}
                     <svg width="9" height="9" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === g.id ? 'rotate-180' : ''}`}>
                       <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -89,8 +89,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </nav>
 
             <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-              className="w-7 h-7 shrink-0 rounded-full bg-black dark:bg-white grid place-items-center hover:scale-105 active:scale-90 transition-transform duration-300">
-              <Sun className="w-[13px] h-[13px] text-white dark:text-black" strokeWidth={2.4} />
+              className="w-7 h-7 shrink-0 rounded-full bg-zinc-900 text-white grid place-items-center hover:scale-105 active:scale-90 transition-transform duration-300">
+              <Sun className="w-[13px] h-[13px]" strokeWidth={2.4} />
             </button>
           </div>
         </div>
