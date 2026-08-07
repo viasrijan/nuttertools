@@ -1,16 +1,10 @@
-export default function Logo({ size = 30 }: { size?: number }) {
+export default function Logo({ size = 30, className = '' }: { size?: number; className?: string }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 256 256" aria-hidden="true" className="logo-spin drop-shadow-sm">
-      <defs>
-        <linearGradient id="nutter-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#14b8a6" />
-          <stop offset="1" stopColor="#115e59" />
-        </linearGradient>
-      </defs>
+    <svg width={size} height={size} viewBox="0 0 256 256" aria-hidden="true" className={`logo-spin drop-shadow-sm ${className}`}>
       <g transform="translate(11.07 11.07) scale(2.6)">
         <path
           d="M 45 0 C 20.147 0 0 20.147 0 45 c 0 24.853 20.147 45 45 45 s 45 -20.147 45 -45 C 90 20.147 69.853 0 45 0 z M 69.669 69.669 c -1.18 1.18 -2.75 1.831 -4.42 1.831 c -1.669 0 -3.239 -0.65 -4.419 -1.831 L 39.027 47.866 c -5.578 2.104 -11.852 0.763 -16.085 -3.469 c -4.077 -4.077 -5.478 -10.021 -3.657 -15.512 c 0.064 -0.194 0.225 -0.34 0.423 -0.388 c 0.198 -0.047 0.408 0.012 0.552 0.157 l 6.894 6.894 c 1.145 1.144 2.672 1.767 4.286 1.738 c 1.618 -0.024 3.122 -0.688 4.234 -1.869 c 2.175 -2.31 2.032 -6.103 -0.321 -8.455 l -6.701 -6.701 c -0.144 -0.144 -0.204 -0.353 -0.157 -0.552 c 0.047 -0.199 0.194 -0.359 0.388 -0.423 c 5.492 -1.822 11.435 -0.421 15.512 3.657 c 4.233 4.233 5.574 10.507 3.469 16.085 L 69.669 60.83 c 1.18 1.18 1.831 2.75 1.831 4.419 C 71.5 66.919 70.85 68.489 69.669 69.669 z"
-          fill="url(#nutter-grad)"
+          fill="#4abdb3"
         />
       </g>
     </svg>
