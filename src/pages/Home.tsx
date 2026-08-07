@@ -9,10 +9,10 @@ import Fuse from 'fuse.js'
 
 const TOOLS = toolsData as any[]
 
-const SECTION_LABEL_BASE = 'inline-block px-6 py-2.5 rounded-lg text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em]'
-const SECTION_LABEL = `${SECTION_LABEL_BASE} bg-black text-white dark:bg-white dark:text-black`
-const SECTION_LABEL_WHY = `${SECTION_LABEL_BASE} bg-green-600 text-black dark:bg-green-400`
-const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} bg-pink-600 text-black dark:bg-pink-400`
+const SECTION_LABEL_BASE = 'inline-block px-3 py-1.5 text-[16px] md:text-[17.5px] font-extrabold tracking-[-0.02em] text-white'
+const SECTION_LABEL = `${SECTION_LABEL_BASE} bg-black dark:bg-[#f26444]`
+const SECTION_LABEL_WHY = `${SECTION_LABEL_BASE} bg-green-600`
+const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} bg-pink-600`
 
 export default function Home() {
   const [q, setQ] = useState('')
