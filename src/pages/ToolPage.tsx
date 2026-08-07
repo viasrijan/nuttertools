@@ -35,7 +35,7 @@ export default function ToolPage() {
 
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-      <nav className="flex items-center gap-2 text-[13px] font-medium text-zinc-900 dark:text-white pt-6 md:pt-8">
+      <nav className="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-[13px] font-medium text-zinc-900 dark:text-white pt-6 md:pt-8">
         <Link to="/" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Home</Link>
         <span>/</span>
         {cat && <Link to={`/tools/${cat.slug}`} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">{cat.name}</Link>}
@@ -43,7 +43,7 @@ export default function ToolPage() {
         <span className="text-zinc-900 dark:text-zinc-100 truncate max-w-[180px] sm:max-w-none">{tool.name}</span>
       </nav>
 
-      <div className="pt-8 pb-8 md:pt-10 md:pb-10 flex items-center gap-3 md:gap-4">
+      <div className="pt-8 pb-8 md:pt-10 md:pb-10 flex flex-col sm:flex-row items-center text-center sm:text-left gap-3 md:gap-4">
         <span className={`w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${tileGrad(h)} grid place-items-center shrink-0 shadow-lg ring-1 ring-black/10 dark:ring-white/20`}>
           <img src={whiteToolIconUrl(tool.id)} alt="" className="w-7 h-7 md:w-8 md:h-8" draggable={false} />
         </span>

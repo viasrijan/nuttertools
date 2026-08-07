@@ -31,15 +31,15 @@ export default function App() {
           <Route path="/tool/:id" element={<ToolPage />} />
         </Routes>
       </main>
-      <footer className="border-t border-zinc-200 dark:border-zinc-800 bg-neutral-200/40 dark:bg-zinc-950/40">
+      <footer className="border-t border-zinc-300 dark:border-zinc-800 bg-neutral-300/70 dark:bg-zinc-900/90">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 md:py-16">
-          <div className="flex flex-col-reverse md:flex-row items-start justify-between gap-10">
+          <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-2.5">
               {CATEGORIES.map((c) => (
                 <LinkFooter key={c.slug} to={`/tools/${c.slug}`}>{c.name}</LinkFooter>
               ))}
             </div>
-            <div className="md:text-right flex flex-col items-start md:items-end gap-3">
+            <div className="md:text-right flex flex-col items-center md:items-end gap-3">
               <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 h-[20px] text-[11px] font-bold bg-gradient-to-r from-red-600 to-pink-600 text-white hover:opacity-90 transition-opacity">
                 Donate
