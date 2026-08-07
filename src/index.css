@@ -90,7 +90,7 @@ p { text-wrap: pretty; }
   }
 
   input:not([type=file]):not([type=checkbox]):not([type=radio]), textarea, select {
-    @apply border;
+    @apply border rounded-xl;
   }
 
   input::placeholder, textarea::placeholder {
@@ -177,7 +177,6 @@ a.bg-zinc-900:active { filter: brightness(0.96); }
 input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']),
 textarea,
 select {
-  border-radius: 0.625rem;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
