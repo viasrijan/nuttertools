@@ -192,7 +192,7 @@ select:focus {
   100% { transform: rotate(360deg); }
 }
 
-.logo-spin { animation: omni-logo 14s linear infinite; will-change: transform; }
+.logo-spin { animation: omni-logo 11.2s linear infinite; transform-box: fill-box; transform-origin: center; will-change: transform; }
 
 @media (prefers-reduced-motion: reduce) {
   .logo-spin { animation: none !important; }
