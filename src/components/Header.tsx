@@ -35,7 +35,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-1.5 sm:px-3.5">
       <div className="mx-auto max-w-[1200px]">
-        <div className="rounded-full border border-zinc-200/90 bg-white dark:bg-[#242424] soft-shadow">
+        <div className="rounded-full border border-zinc-200/90 bg-white soft-shadow">
           <div className="px-2.5 sm:px-6 h-[56px] sm:h-[68px] flex items-center gap-2 sm:gap-3">
             <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
               className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 shrink-0 grid place-items-center text-zinc-900 hover:bg-zinc-100 rounded-full transition-colors">
@@ -100,7 +100,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
       </div>
 
       {mOpen && (
-        <div className="lg:hidden fixed inset-0 z-[60] bg-[#ededed] dark:bg-[#1f1f1f] overflow-y-auto animate-[omni-drop_0.2s_ease-out]">
+        <div className="lg:hidden fixed inset-0 z-[60] bg-[#f5f5f5] dark:bg-[#1a1a1a] overflow-y-auto animate-[omni-drop_0.2s_ease-out]">
           <div className="px-4 sm:px-6 pt-5 flex items-center justify-between gap-3">
             <span className="flex items-center gap-2.5">
               <Logo size={30} />
