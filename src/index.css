@@ -160,6 +160,7 @@ a.bg-zinc-900:active { filter: brightness(0.96); }
 input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']),
 textarea,
 select {
+  border-color: transparent;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 

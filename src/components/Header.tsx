@@ -35,7 +35,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-1.5 sm:px-3.5">
       <div className="mx-auto max-w-[1200px]">
-        <div className="rounded-full border border-zinc-200/90 bg-white soft-shadow">
+        <div className="rounded-full border border-transparent bg-white soft-shadow">
           <div className="px-2.5 sm:px-6 h-[56px] sm:h-[68px] flex items-center gap-2 sm:gap-3">
             <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
               className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 shrink-0 grid place-items-center text-zinc-900 hover:bg-zinc-100 rounded-full transition-colors">
@@ -47,7 +47,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             <Link to="/" onClick={() => setMOpen(false)}
               className={`flex items-center gap-2.5 sm:gap-3 shrink-0 flex-1 justify-center lg:flex-none lg:justify-start ${mOpen ? 'invisible' : ''}`}>
               <Logo size={28} className="w-7 h-7 sm:w-8 sm:h-8" />
-              <span className="text-[21px] sm:text-[25px] font-extrabold tracking-[-0.03em] text-[#4abdb3]">
+              <span className="text-[21px] sm:text-[25px] font-extrabold tracking-[-0.03em] text-[#4454c9]">
                 NutterTools
               </span>
             </Link>
@@ -68,7 +68,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   </button>
                   {open === g.id && (
                     <div className="absolute left-0 top-full pt-2">
-                      <div className="w-[360px] origin-top rounded-3xl border border-zinc-200 dark:border-transparent bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
+                      <div className="w-[360px] origin-top rounded-3xl border border-transparent bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
                         <div className="flex flex-col gap-0.5">
                           {popular.map((t) => (
                             <Link key={t.id} to={`/tool/${t.id}`} onClick={() => setOpen(null)}
@@ -104,7 +104,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           <div className="px-4 sm:px-6 pt-5 flex items-center justify-between gap-3">
             <span className="flex items-center gap-2.5">
               <Logo size={30} />
-              <span className="text-[23px] font-extrabold tracking-[-0.03em] text-[#4abdb3]">NutterTools</span>
+              <span className="text-[23px] font-extrabold tracking-[-0.03em] text-[#4454c9]">NutterTools</span>
             </span>
             <button onClick={() => setMOpen(false)} aria-label="Close menu"
               className="w-10 h-10 shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center hover:scale-105 active:scale-95 transition-transform">

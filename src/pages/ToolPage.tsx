@@ -54,7 +54,7 @@ export default function ToolPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 pb-24">
-        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-transparent  p-6 md:p-8 min-h-[400px] soft-shadow">
+        <div className="bg-white dark:bg-zinc-900 border border-transparent  p-6 md:p-8 min-h-[400px] soft-shadow">
           {Comp ? (
             <Suspense fallback={
               <div className="flex items-center justify-center py-24">

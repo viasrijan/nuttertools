@@ -40,7 +40,7 @@ export default function App() {
             </div>
             <div className="md:text-right flex flex-col items-center md:items-end gap-4">
               <div>
-                <p className="text-[33px] font-extrabold tracking-[-0.03em] leading-none text-[#4abdb3]">NutterTools</p>
+                <p className="text-[33px] font-extrabold tracking-[-0.03em] leading-none text-[#4454c9]">NutterTools</p>
                 <p className="text-[20px] font-medium text-zinc-900 dark:text-white mt-2">
                   by{' '}
                   <a href="https://github.com/viasrijan" target="_blank" rel="noreferrer" className="font-bold text-zinc-900 dark:text-white hover:text-green-600 dark:hover:text-green-400">ViaSrijan</a>
@@ -55,7 +55,7 @@ export default function App() {
               </a>
             </div>
           </div>
-          <div className="mt-10 pt-6 border-t border-zinc-200 dark:border-transparent flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="mt-10 pt-6 border-t border-transparent flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100">© {new Date().getFullYear()} NutterTools</p>
             <a href="https://github.com/viasrijan/nuttertools" target="_blank" rel="noreferrer" className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100 hover:text-green-600 dark:hover:text-green-400 transition-colors">GitHub</a>
           </div>

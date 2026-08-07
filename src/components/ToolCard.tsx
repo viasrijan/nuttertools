@@ -6,7 +6,7 @@ export default function ToolCard({ tool }: { tool: any }) {
   const h = hueFor(tool.category)
   return (
     <Link to={`/tool/${tool.id}`}
-      className={`group relative bg-white dark:bg-[#242424] border border-zinc-200 dark:border-transparent p-4 md:p-5 soft-shadow transition-all duration-200 hover:scale-[1.03] ${cardRing(h)}`}>
+      className={`group relative bg-white dark:bg-[#242424] border border-transparent p-4 md:p-5 soft-shadow transition-all duration-200 hover:scale-[1.03] ${cardRing(h)}`}>
       <span className="block w-9 h-9 mx-auto sm:mx-0 transition-transform duration-200 group-hover:scale-110">
         <CutoutToolIcon id={tool.id} className="w-full h-full" tone={textAccent(h)} />
       </span>

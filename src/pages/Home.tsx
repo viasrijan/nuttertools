@@ -9,7 +9,7 @@ import Fuse from 'fuse.js'
 
 const TOOLS = toolsData as any[]
 
-const SECTION_LABEL = 'text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] text-[#4abdb3] text-center'
+const SECTION_LABEL = 'text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] text-[#4454c9] text-center'
 
 export default function Home() {
   const [q, setQ] = useState('')
@@ -20,7 +20,7 @@ export default function Home() {
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 animate-[omni-fade_0.3s_ease-out]">
       <section className="relative pt-8 pb-8 md:pt-16 md:pb-14 text-center">
         <div className="relative">
-          <p className="inline-flex items-center gap-2 text-[15px] font-semibold text-white bg-[#4abdb3] px-[18px] py-[9px] mb-6 rounded-full shadow-sm">
+          <p className="inline-flex items-center gap-2 text-[15px] font-semibold text-white bg-[#4454c9] px-[18px] py-[9px] mb-6 rounded-full shadow-sm">
             <span className="w-2 h-2 rounded-full bg-white" />
             {TOTAL_TOOLS} free tools, one place
           </p>
@@ -30,15 +30,15 @@ export default function Home() {
               <svg aria-hidden className="absolute left-0 top-[0.58em] w-full h-[0.24em]" viewBox="0 0 200 20" preserveAspectRatio="none">
                 <defs>
                   <linearGradient id="uline-grad" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0" stopColor="#4abdb3" stopOpacity="0.8" />
-                    <stop offset="0.5" stopColor="#4abdb3" stopOpacity="1" />
-                    <stop offset="1" stopColor="#4abdb3" stopOpacity="0.8" />
+                    <stop offset="0" stopColor="#4454c9" stopOpacity="0.8" />
+                    <stop offset="0.5" stopColor="#4454c9" stopOpacity="1" />
+                    <stop offset="1" stopColor="#4454c9" stopOpacity="0.8" />
                   </linearGradient>
                 </defs>
                 <path pathLength="1" className="[stroke-dasharray:1] [stroke-dashoffset:1] animate-[omni-draw_0.7s_ease-out_0.4s_both]" d="M2 10 L198 10" stroke="url(#uline-grad)" strokeWidth="4" strokeLinecap="round" fill="none" />
               </svg>
-              <span className="relative text-[#4abdb3]">one place</span>
-            </span><span className="text-[#4abdb3]">.</span>
+              <span className="relative text-[#4454c9]">one place</span>
+            </span><span className="text-[#4454c9]">.</span>
           </h1>
           <p className="mt-4 text-[15.5px] md:text-[18px] font-medium text-zinc-900 dark:text-white max-w-xl mx-auto leading-relaxed text-pretty">
             Images, PDFs, code, media and everyday utilities — organized into clean sections, ready when you need them.
@@ -48,9 +48,9 @@ export default function Home() {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search any tool…"
-              className="w-full h-[52px] pl-[46px] pr-4 rounded-full border border-zinc-200 dark:border-transparent bg-white dark:bg-zinc-900 text-[15px] text-zinc-900 dark:text-zinc-100 soft-shadow focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="w-full h-[52px] pl-[46px] pr-4 rounded-full border border-transparent bg-white dark:bg-[#242424] text-[15px] text-zinc-900 dark:text-zinc-100 soft-shadow focus:outline-none focus:ring-2 focus:ring-[#4454c9] focus:border-transparent"
             />
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-green-600 dark:text-green-400">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-[#4454c9]">
               <circle cx="8" cy="8" r="5.75" stroke="currentColor" strokeWidth="1.5" />
               <path d="M12.5 12.5L16 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
@@ -94,7 +94,7 @@ export default function Home() {
 
           <section className="pb-12 md:pb-16">
             <p className={`${SECTION_LABEL} mb-4 md:mb-5`}>Why NutterTools?</p>
-            <div className="bg-white dark:bg-[#242424] border border-zinc-200 dark:border-transparent px-6 md:px-12 py-8 md:py-10 flex flex-col justify-center soft-shadow">
+            <div className="bg-white dark:bg-[#242424] border border-transparent px-6 md:px-12 py-8 md:py-10 flex flex-col justify-center soft-shadow">
               <h2 className="text-[30px] md:text-[40px] font-[800] tracking-[-0.03em] text-balance text-center leading-[1.08] text-zinc-900 dark:text-white">Free. Private. No sign-up.</h2>
               <ul className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
                 {[
@@ -104,7 +104,7 @@ export default function Home() {
                   ['Fresh tools, always', 'New utilities added all the time.'],
                 ].map(([t, d]) => (
                   <li key={t} className="flex gap-3.5 text-left">
-                      <span className="w-6 h-6 rounded-full bg-[#4abdb3] grid place-items-center shrink-0 mt-0.5 shadow-sm">
+                      <span className="w-6 h-6 rounded-full bg-[#4454c9] grid place-items-center shrink-0 mt-0.5 shadow-sm">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
                     </span>
                     <div className="min-w-0">
