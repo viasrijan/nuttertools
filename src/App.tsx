@@ -21,7 +21,6 @@ export default function App() {
   }
   return (
     <div className="min-h-screen flex flex-col">
-      <div aria-hidden className="side-shadows fixed inset-0 -z-[5] pointer-events-none" />
       <div aria-hidden className="film-grain fixed inset-0 z-[90] pointer-events-none opacity-[0.09] mix-blend-overlay" />
       <Header dark={dark} toggle={toggle} />
       <main className="flex-1">
@@ -56,7 +55,7 @@ export default function App() {
               </a>
             </div>
           </div>
-          <div className="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="mt-10 pt-6 border-t border-zinc-200 dark:border-transparent flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100">© {new Date().getFullYear()} NutterTools</p>
             <a href="https://github.com/viasrijan/nuttertools" target="_blank" rel="noreferrer" className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100 hover:text-green-600 dark:hover:text-green-400 transition-colors">GitHub</a>
           </div>

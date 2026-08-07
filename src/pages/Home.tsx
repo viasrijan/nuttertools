@@ -48,7 +48,7 @@ export default function Home() {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search any tool…"
-              className="w-full h-[52px] pl-[46px] pr-4 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-[15px] text-zinc-900 dark:text-zinc-100 soft-shadow focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="w-full h-[52px] pl-[46px] pr-4 rounded-full border border-zinc-200 dark:border-transparent bg-white dark:bg-zinc-900 text-[15px] text-zinc-900 dark:text-zinc-100 soft-shadow focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
             />
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-green-600 dark:text-green-400">
               <circle cx="8" cy="8" r="5.75" stroke="currentColor" strokeWidth="1.5" />
@@ -94,7 +94,7 @@ export default function Home() {
 
           <section className="pb-12 md:pb-16">
             <p className={`${SECTION_LABEL} mb-4 md:mb-5`}>Why NutterTools?</p>
-            <div className="bg-[#f0f0f0] dark:bg-[#242424] border border-zinc-200 dark:border-zinc-700 px-6 md:px-12 py-8 md:py-10 flex flex-col justify-center soft-shadow">
+            <div className="bg-white dark:bg-[#242424] border border-zinc-200 dark:border-transparent px-6 md:px-12 py-8 md:py-10 flex flex-col justify-center soft-shadow">
               <h2 className="text-[30px] md:text-[40px] font-[800] tracking-[-0.03em] text-balance text-center leading-[1.08] text-zinc-900 dark:text-white">Free. Private. No sign-up.</h2>
               <ul className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
                 {[

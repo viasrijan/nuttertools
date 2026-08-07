@@ -35,7 +35,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-1.5 sm:px-3.5">
       <div className="mx-auto max-w-[1200px]">
-        <div className="rounded-full border border-zinc-200/90 bg-[#f0f0f0] soft-shadow">
+        <div className="rounded-full border border-zinc-200/90 bg-white dark:bg-[#242424] soft-shadow">
           <div className="px-2.5 sm:px-6 h-[56px] sm:h-[68px] flex items-center gap-2 sm:gap-3">
             <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
               className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 shrink-0 grid place-items-center text-zinc-900 hover:bg-zinc-100 rounded-full transition-colors">
@@ -68,7 +68,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   </button>
                   {open === g.id && (
                     <div className="absolute left-0 top-full pt-2">
-                      <div className="w-[360px] origin-top rounded-3xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
+                      <div className="w-[360px] origin-top rounded-3xl border border-zinc-200 dark:border-transparent bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
                         <div className="flex flex-col gap-0.5">
                           {popular.map((t) => (
                             <Link key={t.id} to={`/tool/${t.id}`} onClick={() => setOpen(null)}
