@@ -47,7 +47,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             <Link to="/" onClick={() => setMOpen(false)}
               className={`flex items-center gap-2.5 sm:gap-3 shrink-0 flex-1 justify-center lg:flex-none lg:justify-start ${mOpen ? 'invisible' : ''}`}>
               <Logo size={32} className="w-8 h-8 sm:w-9 sm:h-9" />
-              <span className="text-[21px] sm:text-[25px] font-extrabold tracking-[-0.03em] text-[#4454c9] dark:text-[#f26444]">
+              <span className="text-[21px] sm:text-[25px] font-extrabold tracking-[-0.03em] text-[#4454c9]">
                 NutterTools
               </span>
             </Link>
@@ -104,7 +104,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           <div className="px-4 sm:px-6 pt-5 flex items-center justify-between gap-3">
             <span className="flex items-center gap-2.5">
               <Logo size={30} />
-              <span className="text-[23px] font-extrabold tracking-[-0.03em] text-[#4454c9] dark:text-[#f26444]">NutterTools</span>
+              <span className="text-[23px] font-extrabold tracking-[-0.03em] text-[#4454c9]">NutterTools</span>
             </span>
             <button onClick={() => setMOpen(false)} aria-label="Close menu"
               className="w-10 h-10 shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center hover:scale-105 active:scale-95 transition-transform">

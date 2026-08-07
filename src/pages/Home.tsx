@@ -9,7 +9,7 @@ import Fuse from 'fuse.js'
 
 const TOOLS = toolsData as any[]
 
-const SECTION_LABEL_BASE = 'inline-block px-3 py-1.5 text-[16px] md:text-[17.5px] font-extrabold tracking-[-0.02em] text-white'
+const SECTION_LABEL_BASE = 'block w-fit mx-auto px-3 py-1.5 text-[16px] md:text-[17.5px] font-extrabold tracking-[-0.02em] text-white'
 const SECTION_LABEL = `${SECTION_LABEL_BASE} bg-black dark:bg-[#f26444]`
 const SECTION_LABEL_WHY = `${SECTION_LABEL_BASE} bg-green-600`
 const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} bg-pink-600`
@@ -27,7 +27,7 @@ export default function Home() {
             <span className="w-2 h-2 rounded-full bg-white" />
             {TOTAL_TOOLS} free tools, one place
           </p>
-          <h1 className="font-[800] tracking-[-0.035em] text-[clamp(22.5px,6.8vw,57.6px)] leading-[1.04] [filter:drop-shadow(0_3px_12px_rgba(0,0,0,0.12))] text-black">
+          <h1 className="font-[800] tracking-[-0.035em] text-[clamp(22.5px,6.8vw,57.6px)] leading-[1.04] [filter:drop-shadow(0_3px_12px_rgba(0,0,0,0.12))] text-black dark:text-white">
             All useful tools in{' '}
             <span className="relative inline-block whitespace-nowrap">
               <svg aria-hidden className="absolute left-0 top-[0.58em] w-full h-[0.24em]" viewBox="0 0 200 20" preserveAspectRatio="none">
