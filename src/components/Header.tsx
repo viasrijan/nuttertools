@@ -37,10 +37,12 @@ const POPULAR_CATS = CATEGORIES
 export default function Header({ dark, toggle }: { dark: boolean, toggle: () => void }) {
   const [open, setOpen] = useState<string | null>(null)
   const [mOpen, setMOpen] = useState(false)
+  const [mSearch, setMSearch] = useState(false)
   const [sq, setSq] = useState('')
   const [focus, setFocus] = useState(false)
   const navRef = useRef<HTMLElement>(null)
   const searchRef = useRef<HTMLDivElement>(null)
+  const mSearchRef = useRef<HTMLDivElement>(null)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -50,6 +52,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   useEffect(() => {
     setOpen(null)
     setMOpen(false)
+    setMSearch(false)
     setSq('')
     setFocus(false)
   }, [location.pathname])
@@ -59,6 +62,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
       const t = e.target as Node
       if (navRef.current && !navRef.current.contains(t)) setOpen(null)
       if (searchRef.current && !searchRef.current.contains(t)) setFocus(false)
+      if (mSearchRef.current && !mSearchRef.current.contains(t)) setMSearch(false)
     }
     document.addEventListener('mousedown', h)
     return () => document.removeEventListener('mousedown', h)
@@ -72,6 +76,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   const go = (path: string) => {
     setOpen(null)
     setMOpen(false)
+    setMSearch(false)
     setSq('')
     setFocus(false)
     navigate(path)
@@ -80,9 +85,9 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   const catTools = (name: string) => TOOLS.filter((t) => t.category === name)
 
   return (
-    <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-1.5 sm:px-3.5">
-      <div className="mx-auto max-w-[1200px]">
-        <div className="rounded-full border border-transparent bg-white soft-shadow">
+    <header className="sticky top-0 z-50 pt-0 sm:pt-8 px-0 sm:px-3.5">
+      <div className="mx-auto max-w-[1200px] relative">
+        <div className="rounded-none sm:rounded-full border border-transparent bg-white soft-shadow">
           <div className="px-2.5 sm:px-6 h-[56px] sm:h-[68px] flex items-center gap-2 sm:gap-3">
             <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
               className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 shrink-0 grid place-items-center text-zinc-900 hover:bg-zinc-100 rounded-full transition-colors">
@@ -141,7 +146,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
               })}
             </nav>
 
-            <div ref={searchRef} className="relative shrink-0 w-[150px] sm:w-[210px] md:w-[250px] xl:w-[300px]">
+            <div ref={searchRef} className="relative shrink-0 hidden lg:block w-[150px] sm:w-[210px] md:w-[250px] xl:w-[300px]">
               <div className="flex items-center h-9 sm:h-10 border border-[#4454c9] bg-white dark:bg-white rounded-full overflow-hidden">
                 <Search className="w-4 h-4 ml-3 shrink-0 text-[#4454c9]" strokeWidth={2.2} />
                 <input
@@ -177,12 +182,53 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
               )}
             </div>
 
+            <div ref={mSearchRef} className="lg:hidden relative">
+              <button onClick={() => { setMSearch(!mSearch); setMOpen(false) }} aria-label="Search tools" aria-expanded={mSearch}
+                className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 grid place-items-center text-[#4454c9] hover:bg-zinc-100 rounded-full transition-colors">
+                <Search className="w-4 h-4" strokeWidth={2.2} />
+              </button>
+            </div>
+
             <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-yellow-400 text-white border border-zinc-300 dark:bg-black dark:text-white dark:border-transparent grid place-items-center transition-colors">
+              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
               <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2.4} />
             </button>
           </div>
         </div>
+
+        {mSearch && (
+          <div className="lg:hidden absolute left-2 right-2 sm:left-4 sm:right-4 top-full mt-2 bg-white border border-zinc-200 rounded-2xl soft-shadow p-2 z-10 animate-[omni-drop_0.15s_ease-out]">
+            <div className="flex items-center h-10 border border-[#4454c9] bg-white rounded-full overflow-hidden">
+              <Search className="w-4 h-4 ml-3 shrink-0 text-[#4454c9]" strokeWidth={2.2} />
+              <input
+                autoFocus
+                value={sq}
+                onChange={(e) => setSq(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`); if (e.key === 'Escape') setMSearch(false) }}
+                placeholder="Search any tool..."
+                className="flex-1 h-full bg-white border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
+              />
+            </div>
+            {sq.trim() && (
+              <div className="mt-2 flex flex-col max-h-[50vh] overflow-y-auto">
+                {results.length > 0 ? results.map((t) => (
+                  <Link key={t.id} to={`/tool/${t.id}`} onClick={() => go(`/tool/${t.id}`)}
+                    className="flex items-center gap-3 px-2 py-2.5 hover:bg-zinc-50 rounded-lg">
+                    <span className="w-8 h-8 shrink-0">
+                      <CutoutToolIcon id={t.id} className="w-full h-full" tone={textAccent(hueFor(t.category))} />
+                    </span>
+                    <span className="flex-1 min-w-0">
+                      <span className="block text-[14px] font-semibold leading-tight truncate text-zinc-900">{t.name}</span>
+                      <span className="block text-[12px] font-medium text-zinc-500 truncate">{t.category}</span>
+                    </span>
+                  </Link>
+                )) : (
+                  <p className="px-3 py-4 text-center text-[13px] font-medium text-zinc-500">No tools match “{sq}”</p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {mOpen && (
