@@ -133,7 +133,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </nav>
 
             <div ref={searchRef} className="relative shrink-0 w-[150px] sm:w-[210px] md:w-[250px] xl:w-[300px]">
-              <div className="flex items-center h-9 sm:h-10 border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 rounded-full overflow-hidden">
+              <div className="flex items-center h-9 sm:h-10 border border-zinc-200 bg-zinc-50 rounded-full overflow-hidden">
                 <Search className="w-4 h-4 ml-3 shrink-0 text-zinc-500" strokeWidth={2.2} />
                 <input
                   value={sq}
@@ -141,7 +141,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onFocus={() => setFocus(true)}
                   onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                   placeholder="Search tools…"
-                  className="flex-1 h-full bg-transparent border-none outline-none focus:outline-none px-2 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400"
+                  className="flex-1 h-full bg-transparent border-none outline-none focus:outline-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
                 />
               </div>
               {focus && sq.trim() && (
@@ -192,14 +192,14 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
           <div className="px-4 sm:px-6 pt-5">
-            <div className="flex items-center h-11 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 rounded-full overflow-hidden">
+            <div className="flex items-center h-11 border border-zinc-200 bg-zinc-50 rounded-full overflow-hidden">
               <Search className="w-4 h-4 ml-3 shrink-0 text-zinc-500" strokeWidth={2.2} />
               <input
                 value={sq}
                 onChange={(e) => setSq(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                 placeholder="Search tools…"
-                className="flex-1 h-full bg-transparent border-none outline-none focus:outline-none px-2 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400"
+                className="flex-1 h-full bg-transparent border-none outline-none focus:outline-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
               />
             </div>
             {results.length > 0 && (
