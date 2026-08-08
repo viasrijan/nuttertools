@@ -886,5 +886,445 @@
     "category": "AI Tools",
     "icon": "🍳",
     "implemented": true
+  },
+  {
+    "id": "llm-token-counter",
+    "name": "LLM Token Counter",
+    "desc": "Count tokens & estimate API cost",
+    "category": "Developer Tools",
+    "icon": "🔢",
+    "implemented": true
+  },
+  {
+    "id": "json-yaml",
+    "name": "JSON ↔ YAML",
+    "desc": "Convert between JSON and YAML",
+    "category": "Developer Tools",
+    "icon": "🔀",
+    "implemented": true
+  },
+  {
+    "id": "json-csv",
+    "name": "JSON ↔ CSV",
+    "desc": "Convert JSON to CSV and back",
+    "category": "Developer Tools",
+    "icon": "📊",
+    "implemented": true
+  },
+  {
+    "id": "json-schema-validator",
+    "name": "JSON Schema Validator",
+    "desc": "Validate data against JSON Schema",
+    "category": "Developer Tools",
+    "icon": "✅",
+    "implemented": true
+  },
+  {
+    "id": "csv-sql",
+    "name": "CSV to SQL",
+    "desc": "Generate CREATE + INSERT statements",
+    "category": "Developer Tools",
+    "icon": "🗄️",
+    "implemented": true
+  },
+  {
+    "id": "graphql-formatter",
+    "name": "GraphQL Formatter",
+    "desc": "Pretty-print GraphQL queries and SDL",
+    "category": "Developer Tools",
+    "icon": "🌿",
+    "implemented": true
+  },
+  {
+    "id": "hmac-generator",
+    "name": "HMAC Generator",
+    "desc": "HMAC-SHA signature generator",
+    "category": "Encoding & Security",
+    "icon": "🔐",
+    "implemented": true
+  },
+  {
+    "id": "html-entity-encoder",
+    "name": "HTML Entity Encoder",
+    "desc": "Encode & decode HTML entities",
+    "category": "Encoding & Security",
+    "icon": "🔣",
+    "implemented": true
+  },
+  {
+    "id": "file-hash",
+    "name": "File Hash (MD5/SHA)",
+    "desc": "Hash any file locally",
+    "category": "Encoding & Security",
+    "icon": "📁",
+    "implemented": true
+  },
+  {
+    "id": "email-validator",
+    "name": "Email Validator",
+    "desc": "Validate emails + MX records",
+    "category": "Encoding & Security",
+    "icon": "📧",
+    "implemented": true
+  },
+  {
+    "id": "card-validator",
+    "name": "Card Validator",
+    "desc": "Luhn check + brand detection",
+    "category": "Encoding & Security",
+    "icon": "💳",
+    "implemented": true
+  },
+  {
+    "id": "bin-lookup",
+    "name": "BIN Lookup",
+    "desc": "Identify card BIN/IIN issuer",
+    "category": "Encoding & Security",
+    "icon": "🏦",
+    "implemented": true
+  },
+  {
+    "id": "markdown-html",
+    "name": "Markdown to HTML",
+    "desc": "Convert Markdown to HTML",
+    "category": "Text & Writing",
+    "icon": "📝",
+    "implemented": true
+  },
+  {
+    "id": "toc-generator",
+    "name": "TOC Generator",
+    "desc": "Table of contents from headings",
+    "category": "Text & Writing",
+    "icon": "📑",
+    "implemented": true
+  },
+  {
+    "id": "reading-time",
+    "name": "Reading Time",
+    "desc": "Reading & speaking time estimate",
+    "category": "Text & Writing",
+    "icon": "⏱️",
+    "implemented": true
+  },
+  {
+    "id": "keyword-density",
+    "name": "Keyword Density",
+    "desc": "SEO keyword frequency analysis",
+    "category": "Text & Writing",
+    "icon": "🔎",
+    "implemented": true
+  },
+  {
+    "id": "paraphraser",
+    "name": "Paraphraser",
+    "desc": "Rewrite text with synonyms",
+    "category": "Text & Writing",
+    "icon": "✍️",
+    "implemented": true
+  },
+  {
+    "id": "photo-caption",
+    "name": "Photo Caption",
+    "desc": "Add text captions to photos",
+    "category": "Color & Design",
+    "icon": "🖼️",
+    "implemented": true
+  },
+  {
+    "id": "metadata-remover",
+    "name": "Metadata Remover",
+    "desc": "Strip EXIF & metadata from images",
+    "category": "Color & Design",
+    "icon": "🕵️",
+    "implemented": true
+  },
+  {
+    "id": "favicon-generator",
+    "name": "Favicon Generator",
+    "desc": "Make letter favicons in any color",
+    "category": "Color & Design",
+    "icon": "⭐",
+    "implemented": true
+  },
+  {
+    "id": "face-blur",
+    "name": "Face Blur",
+    "desc": "Blur or pixelate regions of a photo",
+    "category": "Color & Design",
+    "icon": "🙈",
+    "implemented": true
+  },
+  {
+    "id": "pdf-to-excel",
+    "name": "PDF to Excel",
+    "desc": "Extract PDF tables to XLSX",
+    "category": "PDF Tools",
+    "icon": "📈",
+    "implemented": true
+  },
+  {
+    "id": "pdf-annotator",
+    "name": "PDF Annotator",
+    "desc": "Draw, highlight & add text to PDFs",
+    "category": "PDF Tools",
+    "icon": "🖍️",
+    "implemented": true
+  },
+  {
+    "id": "pdf-crop",
+    "name": "PDF Crop",
+    "desc": "Crop margins of all pages",
+    "category": "PDF Tools",
+    "icon": "✂️",
+    "implemented": true
+  },
+  {
+    "id": "pdf-form-flattener",
+    "name": "PDF Form Flattener",
+    "desc": "Bake form values into PDF pages",
+    "category": "PDF Tools",
+    "icon": "📋",
+    "implemented": true
+  },
+  {
+    "id": "video-reverser",
+    "name": "Reverse Video",
+    "desc": "Play videos backwards",
+    "category": "Video Tools",
+    "icon": "⏪",
+    "implemented": true
+  },
+  {
+    "id": "video-bg-remover",
+    "name": "Video BG Remover",
+    "desc": "Remove video background (AI)",
+    "category": "Video Tools",
+    "icon": "🪄",
+    "implemented": true
+  },
+  {
+    "id": "burn-subtitles",
+    "name": "Burn Subtitles",
+    "desc": "Hardcode SRT into video",
+    "category": "Video Tools",
+    "icon": "💬",
+    "implemented": true
+  },
+  {
+    "id": "audio-enhancer",
+    "name": "Audio Enhancer",
+    "desc": "Loudness, EQ & clarity boost",
+    "category": "Audio Tools",
+    "icon": "⚡",
+    "implemented": true
+  },
+  {
+    "id": "audio-noise-remover",
+    "name": "Noise Remover",
+    "desc": "Remove hiss, hum & background noise",
+    "category": "Audio Tools",
+    "icon": "🌬️",
+    "implemented": true
+  },
+  {
+    "id": "stem-splitter",
+    "name": "Stem Splitter",
+    "desc": "Separate vocals, drums, bass (AI)",
+    "category": "Audio Tools",
+    "icon": "🎚️",
+    "implemented": true
+  },
+  {
+    "id": "audio-reverser",
+    "name": "Reverse Audio",
+    "desc": "Play audio backwards",
+    "category": "Audio Tools",
+    "icon": "↩️",
+    "implemented": true
+  },
+  {
+    "id": "speed-pitch",
+    "name": "Speed & Pitch",
+    "desc": "Change audio speed and pitch",
+    "category": "Audio Tools",
+    "icon": "🐢",
+    "implemented": true
+  },
+  {
+    "id": "voice-changer",
+    "name": "Voice Changer",
+    "desc": "Chipmunk, deep, robot & more",
+    "category": "Audio Tools",
+    "icon": "🎙️",
+    "implemented": true
+  },
+  {
+    "id": "llmstxt",
+    "name": "llms.txt Generator",
+    "desc": "Create llms.txt for AI crawlers",
+    "category": "Web & SEO",
+    "icon": "🤖",
+    "implemented": true
+  },
+  {
+    "id": "dns-lookup",
+    "name": "DNS Lookup",
+    "desc": "A, AAAA, MX, TXT & more records",
+    "category": "Web & SEO",
+    "icon": "📡",
+    "implemented": true
+  },
+  {
+    "id": "whois-lookup",
+    "name": "WHOIS Lookup",
+    "desc": "Domain registration via RDAP",
+    "category": "Web & SEO",
+    "icon": "🧑",
+    "implemented": true
+  },
+  {
+    "id": "cidr-calculator",
+    "name": "CIDR Calculator",
+    "desc": "Subnet, mask & host range",
+    "category": "Web & SEO",
+    "icon": "🌐",
+    "implemented": true
+  },
+  {
+    "id": "email-signature",
+    "name": "Email Signature",
+    "desc": "Professional HTML signatures",
+    "category": "Web & SEO",
+    "icon": "📮",
+    "implemented": true
+  },
+  {
+    "id": "batch-qr",
+    "name": "Batch QR Generator",
+    "desc": "Many QR codes in one click",
+    "category": "Web & SEO",
+    "icon": "🔳",
+    "implemented": true
+  },
+  {
+    "id": "compound-interest",
+    "name": "Compound Interest",
+    "desc": "Growth with contributions & table",
+    "category": "Everyday Utilities",
+    "icon": "📈",
+    "implemented": true
+  },
+  {
+    "id": "mortgage-calculator",
+    "name": "Mortgage Calculator",
+    "desc": "Payments & amortization schedule",
+    "category": "Everyday Utilities",
+    "icon": "🏠",
+    "implemented": true
+  },
+  {
+    "id": "gpa-calculator",
+    "name": "GPA Calculator",
+    "desc": "Weighted GPA in 4/5 scale",
+    "category": "Everyday Utilities",
+    "icon": "🎓",
+    "implemented": true
+  },
+  {
+    "id": "dice-roller",
+    "name": "Dice Roller",
+    "desc": "Roll any dice, any sides",
+    "category": "Everyday Utilities",
+    "icon": "🎯",
+    "implemented": true
+  },
+  {
+    "id": "barcode-generator",
+    "name": "Barcode Generator",
+    "desc": "EAN-13, UPC-A, EAN-8, Code 39",
+    "category": "Everyday Utilities",
+    "icon": "🔖",
+    "implemented": true
+  },
+  {
+    "id": "timezone-converter",
+    "name": "Timezone Converter",
+    "desc": "Convert time across timezones",
+    "category": "Everyday Utilities",
+    "icon": "🕒",
+    "implemented": true
+  },
+  {
+    "id": "password-strength",
+    "name": "Password Strength",
+    "desc": "Entropy & weakness check",
+    "category": "Everyday Utilities",
+    "icon": "🛡️",
+    "implemented": true
+  },
+  {
+    "id": "grammar-checker",
+    "name": "Grammar Checker",
+    "desc": "Fix common mistakes & typos",
+    "category": "AI Tools",
+    "icon": "📖",
+    "implemented": true
+  },
+  {
+    "id": "cover-letter",
+    "name": "Cover Letter Writer",
+    "desc": "Draft job cover letters",
+    "category": "AI Tools",
+    "icon": "✉️",
+    "implemented": true
+  },
+  {
+    "id": "memo-writer",
+    "name": "Memo Writer",
+    "desc": "Professional office memos",
+    "category": "AI Tools",
+    "icon": "🗒️",
+    "implemented": true
+  },
+  {
+    "id": "ai-content-detector",
+    "name": "AI Content Detector",
+    "desc": "Estimate AI-written likelihood",
+    "category": "AI Tools",
+    "icon": "📡",
+    "implemented": true
+  },
+  {
+    "id": "hashtag-generator",
+    "name": "Hashtag Generator",
+    "desc": "Hashtags for social posts",
+    "category": "AI Tools",
+    "icon": "🏷️",
+    "implemented": true
+  },
+  {
+    "id": "caption-generator",
+    "name": "Caption Generator",
+    "desc": "Instagram caption ideas",
+    "category": "AI Tools",
+    "icon": "💭",
+    "implemented": true
+  },
+  {
+    "id": "mindmap-generator",
+    "name": "Mindmap Generator",
+    "desc": "Text outline to visual map",
+    "category": "AI Tools",
+    "icon": "🧠",
+    "implemented": true
+  },
+  {
+    "id": "alt-text-generator",
+    "name": "Alt Text Generator",
+    "desc": "Describe images for accessibility",
+    "category": "AI Tools",
+    "icon": "♿",
+    "implemented": true
   }
 ]
