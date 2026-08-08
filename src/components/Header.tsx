@@ -120,8 +120,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                               </Link>
                             ))}
                             <Link to={`/tools/${c.slug}`} onClick={() => go(`/tools/${c.slug}`)}
-                              className="mt-1 px-3 py-2 text-[12.5px] font-bold text-green-600 dark:text-green-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/80">
-                              View all {tools.length} {c.name} →
+                              className="mt-1 px-3 py-2 text-[12.5px] font-bold text-yellow-500 dark:text-yellow-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/80">
+                              View all →
                             </Link>
                           </div>
                         </div>
@@ -133,15 +133,15 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </nav>
 
             <div ref={searchRef} className="relative shrink-0 w-[150px] sm:w-[210px] md:w-[250px] xl:w-[300px]">
-              <div className="flex items-center h-9 sm:h-10 border border-zinc-200 bg-white dark:bg-white rounded-full overflow-hidden">
-                <Search className="w-4 h-4 ml-3 shrink-0 text-zinc-500" strokeWidth={2.2} />
+              <div className="flex items-center h-9 sm:h-10 border border-[#4454c9] bg-white dark:bg-white rounded-full overflow-hidden focus-within:shadow-[0_0_0_3px_rgba(68,84,201,0.18)]">
+                <Search className="w-4 h-4 ml-3 shrink-0 text-[#4454c9]" strokeWidth={2.2} />
                 <input
                   value={sq}
                   onChange={(e) => setSq(e.target.value)}
                   onFocus={() => setFocus(true)}
                   onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
-                  placeholder="Search tools…"
-                  className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
+                  placeholder="Search any tools..."
+                  className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
                 />
               </div>
               {focus && sq.trim() && (
@@ -192,14 +192,14 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
           <div className="px-4 sm:px-6 pt-5">
-            <div className="flex items-center h-11 border border-zinc-200 bg-white dark:bg-white rounded-full overflow-hidden">
-              <Search className="w-4 h-4 ml-3 shrink-0 text-zinc-500" strokeWidth={2.2} />
+            <div className="flex items-center h-11 border border-[#4454c9] bg-white dark:bg-white rounded-full overflow-hidden focus-within:shadow-[0_0_0_3px_rgba(68,84,201,0.18)]">
+              <Search className="w-4 h-4 ml-3 shrink-0 text-[#4454c9]" strokeWidth={2.2} />
               <input
                 value={sq}
                 onChange={(e) => setSq(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
-                placeholder="Search tools…"
-                className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
+                placeholder="Search any tools..."
+                className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
               />
             </div>
             {results.length > 0 && (
