@@ -82,10 +82,10 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-1.5 sm:px-3.5">
       <div className="mx-auto max-w-[1200px]">
-        <div className="rounded-full border border-transparent bg-white dark:bg-[#242424] soft-shadow">
+        <div className="rounded-full border border-transparent bg-white soft-shadow">
           <div className="px-2.5 sm:px-6 h-[56px] sm:h-[68px] flex items-center gap-2 sm:gap-3">
             <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
-              className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 shrink-0 grid place-items-center text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-white/10 rounded-full transition-colors">
+              className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 shrink-0 grid place-items-center text-zinc-900 hover:bg-zinc-100 rounded-full transition-colors">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                 <path d="M2 3.5h12M2 8h12M2 12.5h12" />
               </svg>
@@ -107,7 +107,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                     onMouseEnter={() => setOpen(c.slug)}
                     onMouseLeave={() => setOpen((o) => (o === c.slug ? null : o))}>
                     <button onClick={() => setOpen(open === c.slug ? null : c.slug)}
-                      className="flex items-center gap-1 whitespace-nowrap text-[13px] font-semibold px-2 py-2 text-zinc-900 dark:text-white">
+                      className="flex items-center gap-1 whitespace-nowrap text-[13px] font-semibold px-2 py-2 text-zinc-900">
                       {NAV_LABELS[c.slug] || c.name}
                       <svg width="8" height="8" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === c.slug ? 'rotate-180' : ''}`}>
                         <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -178,7 +178,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </div>
 
             <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-white text-yellow-500 border border-zinc-200 dark:bg-yellow-400 dark:text-white dark:border-transparent grid place-items-center transition-colors">
+              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-yellow-400 text-white border border-zinc-300 dark:bg-white dark:text-yellow-500 dark:border-zinc-300 grid place-items-center transition-colors">
               <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2.4} />
             </button>
           </div>
