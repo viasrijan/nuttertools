@@ -86,16 +86,23 @@ function svgFor(nodes, stroke) {
 }
 
 async function renderPng(nodes, out, [c1, c2]) {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none" stroke="url(#g)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  const mk = (gradient) => `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none" stroke="url(#g)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="g"${gradient}>
       <stop offset="0" stop-color="${c1}"/>
       <stop offset="1" stop-color="${c2}"/>
     </linearGradient>
   </defs>
   ${nodesToSvg(nodes)}
 </svg>`
-  await sharp(Buffer.from(svg)).png().toFile(out)
+  let buf = await sharp(Buffer.from(mk(' x1="0" y1="0" x2="1" y2="1"'))).png().toBuffer()
+  const stats = await sharp(buf).ensureAlpha().stats()
+  const blank = stats.channels.every((c) => c.max === 0)
+  if (blank) {
+    console.log(`  blank render (straight-line librsvg bug), retrying with userSpaceOnUse: ${path.basename(out)}`)
+    buf = await sharp(Buffer.from(mk(' x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"'))).png().toBuffer()
+  }
+  fs.writeFileSync(out, buf)
 }
 
 async function renderWhite(nodes, out) {

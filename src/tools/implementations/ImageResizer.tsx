@@ -9,6 +9,8 @@ const PRESETS = [
   { label: 'Story 1080x1920', w: 1080, h: 1920 },
 ]
 
+type FileRes = { name: string, url: string, w: number, h: number }
+
 export default function ImageResizer() {
   const [img, setImg] = useState<{ url: string, w: number, h: number } | null>(null)
   const [mode, setMode] = useState<'percent' | 'pixels' | 'preset'>('percent')
@@ -17,41 +19,84 @@ export default function ImageResizer() {
   const [h, setH] = useState(600)
   const [quality, setQuality] = useState(0.9)
   const [out, setOut] = useState<string>('')
+  const [batch, setBatch] = useState<FileRes[] | null>(null)
+  const [busy, setBusy] = useState(false)
 
-  const onFiles = async (fl: FileList) => {
-    const file = fl[0]
-    if (!file || !file.type.startsWith('image/')) return
+  const loadOne = async (file: File) => {
     const url = URL.createObjectURL(file)
     const im = new Image()
     im.src = url
-    await new Promise(r => im.onload = r)
-    setImg({ url, w: im.naturalWidth, h: im.naturalHeight })
-    setW(im.naturalWidth); setH(im.naturalHeight)
-    setOut('')
+    await new Promise((r, j) => { im.onload = r; im.onerror = j })
+    return { url, w: im.naturalWidth, h: im.naturalHeight }
   }
 
-  const resize = () => {
-    if (!img) return
-    let nw = img.w, nh = img.h
-    if (mode === 'percent') { nw = Math.round(img.w * percent / 100); nh = Math.round(img.h * percent / 100) }
-    if (mode === 'pixels') {
-      const r = Math.min(w / img.w, h / img.h)
-      nw = Math.round(img.w * r); nh = Math.round(img.h * r)
+  const onFiles = async (fl: FileList) => {
+    const files = Array.from(fl).filter(f => f.type.startsWith('image/'))
+    if (!files.length) return
+    const first = await loadOne(files[0])
+    setImg({ ...first, url: URL.createObjectURL(files[0]) })
+    setW(first.w); setH(first.h)
+    setOut('')
+    if (files.length > 1) {
+      setBatch([])
+      setBusy(true)
+      try {
+        const results: FileRes[] = []
+        for (const f of files) {
+          const dims = await loadOne(f)
+          results.push({ name: f.name, ...dims })
+        }
+        setBatch(results)
+      } finally {
+        setBusy(false)
+      }
     }
-    if (mode === 'preset') { nw = w; nh = h }
+  }
+
+  const targetDims = (cur: { w: number, h: number }) => {
+    if (mode === 'percent') {
+      return { w: Math.round(cur.w * percent / 100), h: Math.round(cur.h * percent / 100) }
+    }
+    if (mode === 'pixels') {
+      const r = Math.min(w / cur.w, h / cur.h)
+      return { w: Math.round(cur.w * r), h: Math.round(cur.h * r) }
+    }
+    return { w, h }
+  }
+
+  const renderOne = (url: string, nw: number, nh: number): Promise<string> => new Promise((resolve) => {
     const c = document.createElement('canvas')
     c.width = nw; c.height = nh
     const ctx = c.getContext('2d')!
     ctx.imageSmoothingQuality = 'high'
     const im = new Image()
-    im.onload = () => { ctx.drawImage(im, 0, 0, nw, nh); setOut(c.toDataURL('image/jpeg', quality)) }
-    im.src = img.url
+    im.onload = () => { ctx.drawImage(im, 0, 0, nw, nh); resolve(c.toDataURL('image/jpeg', quality)) }
+    im.src = url
+  })
+
+  const resize = async () => {
+    if (!img) return
+    if (batch && batch.length > 0) {
+      setBusy(true)
+      try {
+        for (const b of batch) {
+          const d = targetDims(b)
+          b.url = await renderOne(b.url, d.w, d.h)
+        }
+      } finally {
+        setBusy(false)
+      }
+    } else {
+      const d = targetDims(img)
+      setOut(await renderOne(img.url, d.w, d.h))
+    }
   }
 
   return (
     <div className="space-y-4">
-      <DropZone onFiles={onFiles} accept="image/*" multiple={false} label="Drop an image to resize" />
-      {img && (
+      <DropZone onFiles={onFiles} accept="image/*" multiple={true} label="Drop one or more images to resize (multiple = batch)" />
+      {busy && <p className="text-sm animate-pulse">Processing…</p>}
+      {img && !batch && (
         <>
           <div className="text-sm text-zinc-600 dark:text-zinc-300">Original: {img.w} × {img.h}px</div>
           <div className="flex gap-2">
@@ -83,6 +128,32 @@ export default function ImageResizer() {
             {out && <a href={out} download="resized.jpg" className="text-sm underline">Download JPG</a>}
           </div>
           {out && <img src={out} className="max-h-[280px]" alt="Result" />}
+        </>
+      )}
+      {batch && (
+        <>
+          <div className="flex items-center gap-3">
+            <button onClick={resize} disabled={busy} className="px-4 h-9 bg-zinc-900 text-white text-sm disabled:opacity-50">Resize all ({batch.length})</button>
+            {batch.every(b => b.url.startsWith('data:')) && (
+              <button onClick={() => {
+                batch.forEach((b, i) => {
+                  const a = document.createElement('a')
+                  a.href = b.url
+                  a.download = b.name.replace(/\.[^.]+$/, '') + '-resized.jpg'
+                  a.click()
+                })
+              }} className="px-4 h-9 border text-sm">Download all</button>
+            )}
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {batch.map((b, i) => (
+              <div key={i} className="border p-2">
+                <img src={b.url} className="max-h-[140px] mx-auto" alt={b.name} />
+                <p className="text-[11px] truncate mt-1">{b.name}</p>
+                {b.url.startsWith('data:') && <a href={b.url} download={b.name.replace(/\.[^.]+$/, '') + '-resized.jpg'} className="text-xs underline">Download</a>}
+              </div>
+            ))}
+          </div>
         </>
       )}
     </div>

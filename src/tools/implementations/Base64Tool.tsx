@@ -8,11 +8,11 @@ export default function Base64Tool(){
   const encode = ()=> setOutput(btoa(input))
   const decode = ()=>{ try{ setOutput(atob(input)) }catch{ setOutput("Invalid base64") } }
 
-  const onFile = async (e:any)=>{
-    const file = e.target.files[0]
-    if(!file) return
+  const onFile = (files: FileList | null) => {
+    const file = files?.[0]
+    if (!file) return
     const reader = new FileReader()
-    reader.onload = ()=> setFileOut(reader.result as string)
+    reader.onload = () => setFileOut(reader.result as string)
     reader.readAsDataURL(file)
   }
 
@@ -26,7 +26,25 @@ export default function Base64Tool(){
       </div>
       <div className="border-t pt-4">
         <h4 className="text-sm font-semibold mb-2">File to Base64</h4>
-        <input type="file" onChange={onFile} className="text-sm"/>
+        <input type="file" onChange={e => onFile(e.target.files)} className="text-sm" />
+        <p className="text-xs text-zinc-500 mt-1">or copy an image and press Ctrl+V here</p>
+        <div tabIndex={0} onPaste={(e) => {
+          const items = e.clipboardData?.items
+          if (items) {
+            for (const it of Array.from(items)) {
+              if (it.kind === 'file') {
+                const f = it.getAsFile()
+                if (f) {
+                  e.preventDefault()
+                  const dt = new DataTransfer()
+                  dt.items.add(f)
+                  onFile(dt.files)
+                  return
+                }
+              }
+            }
+          }
+        }} className="border border-dashed border-zinc-300 dark:border-zinc-700 h-12 mt-2 rounded outline-none focus:border-[#4454c9]" />
         {fileOut && <textarea value={fileOut} readOnly className="w-full h-24 border p-2 text-[10px] mt-2"/>}
       </div>
     </div>

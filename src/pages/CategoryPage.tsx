@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { CATEGORIES } from '../data/categories'
@@ -13,6 +13,19 @@ export default function CategoryPage() {
   const { slug } = useParams()
   const cat = CATEGORIES.find((c) => c.slug === slug)
   const [q, setQ] = useState('')
+
+  useEffect(() => {
+    if (!cat) return
+    document.title = `${cat.name} - ${cat.count} free tools | NutterTools`
+    let meta = document.querySelector<HTMLMetaElement>('meta[name="description"]')
+    if (!meta) {
+      meta = document.createElement('meta')
+      meta.name = 'description'
+      document.head.appendChild(meta)
+    }
+    meta.content = `${cat.blurb}. ${cat.count} free, private tools — no sign-up needed.`
+    return () => { document.title = 'NutterTools - All useful tools in one place' }
+  }, [cat])
 
   const list = useMemo(() => (cat ? TOOLS.filter((t) => t.category === cat.name) : []), [cat])
   const fuse = useMemo(() => new Fuse(list, { keys: ['name', 'desc'], threshold: 0.3 }), [list])

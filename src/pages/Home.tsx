@@ -5,6 +5,7 @@ import { CATEGORIES, TOTAL_TOOLS } from '../data/categories'
 import { tileGrad } from '../lib/style'
 import ToolCard from '../components/ToolCard'
 import { POPULAR_TOOLS } from '../data/popular'
+import { toolIconUrl } from '../components/Icon'
 import Fuse from 'fuse.js'
 
 const TOOLS = toolsData as any[]
@@ -21,9 +22,25 @@ export default function Home() {
 
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 animate-[omni-fade_0.3s_ease-out]">
-      <section className="relative pt-8 pb-8 md:pt-16 md:pb-14 text-center">
+      <section className="relative pt-8 pb-8 md:pt-16 md:pb-14 text-center overflow-hidden">
+        <div aria-hidden className="absolute inset-0 pointer-events-none select-none">
+          {[
+            { id: 'qr-generator', cls: 'left-[2%] top-[16%] w-10 h-10 md:w-12 md:h-12 opacity-80 animate-[omni-drift-a_9s_ease-in-out_infinite]' },
+            { id: 'image-compressor', cls: 'right-[3%] top-[10%] w-11 h-11 md:w-14 md:h-14 opacity-80 animate-[omni-drift-b_11s_ease-in-out_infinite]' },
+            { id: 'pdf-to-word', cls: 'left-[6%] bottom-[8%] w-9 h-9 md:w-11 md:h-11 opacity-70 animate-[omni-drift-c_12s_ease-in-out_infinite]' },
+            { id: 'video-to-gif', cls: 'right-[8%] bottom-[18%] w-10 h-10 md:w-12 md:h-12 opacity-70 animate-[omni-drift-a_10s_ease-in-out_infinite_0.5s]' },
+            { id: 'json-formatter', cls: 'left-[16%] top-[34%] w-8 h-8 md:w-10 md:h-10 opacity-60 animate-[omni-drift-b_13s_ease-in-out_infinite_0.8s]' },
+            { id: 'palette-extractor', cls: 'right-[15%] top-[38%] w-8 h-8 md:w-10 md:h-10 opacity-60 animate-[omni-drift-c_9s_ease-in-out_infinite_0.3s]' },
+            { id: 'audio-converter', cls: 'left-[10%] top-[64%] w-9 h-9 md:w-11 md:h-11 opacity-60 animate-[omni-drift-a_12s_ease-in-out_infinite_1.2s]' },
+            { id: 'merge-pdf', cls: 'right-[4%] bottom-[6%] w-9 h-9 md:w-11 md:h-11 opacity-60 animate-[omni-drift-b_10s_ease-in-out_infinite_1.5s]' },
+            { id: 'uuid-generator', cls: 'left-[28%] top-[8%] w-8 h-8 md:w-9 md:h-9 opacity-50 animate-[omni-drift-c_11s_ease-in-out_infinite_2s]' },
+            { id: 'password-generator', cls: 'right-[26%] bottom-[6%] w-8 h-8 md:w-9 md:h-9 opacity-50 animate-[omni-drift-a_12s_ease-in-out_infinite_0.9s]' },
+          ].map((f) => (
+            <img key={f.id} src={toolIconUrl(f.id)} alt="" draggable={false} className={`hidden md:block absolute drop-shadow-[0_6px_14px_rgba(0,0,0,0.18)] ${f.cls}`} />
+          ))}
+        </div>
         <div className="relative">
-          <p className="inline-flex items-center gap-2 text-[15px] font-semibold text-white bg-[#f26444] dark:bg-[#4454c9] px-[18px] py-[9px] mb-6 rounded-full shadow-sm">
+          <p className="inline-flex items-center gap-2 text-[15px] font-semibold text-white bg-[#f26444] px-[18px] py-[9px] mb-6 rounded-full shadow-sm">
             <span className="w-2 h-2 rounded-full bg-white" />
             {TOTAL_TOOLS} free tools, one place
           </p>
@@ -40,8 +57,8 @@ export default function Home() {
                 </defs>
                 <path pathLength="1" className="[stroke-dasharray:1] [stroke-dashoffset:1] animate-[omni-draw_0.7s_ease-out_0.4s_both]" d="M2 10 L198 10" stroke="url(#uline-grad)" strokeWidth="4" strokeLinecap="round" fill="none" />
               </svg>
-              <span className="relative text-[#4454c9] dark:text-[#f26444]">one place</span>
-            </span><span className="text-[#4454c9] dark:text-[#f26444]">.</span>
+              <span className="relative text-[#4454c9]">one place</span>
+            </span><span className="text-[#4454c9]">.</span>
           </h1>
           <p className="mt-4 text-[15.5px] md:text-[18px] font-medium text-zinc-900 dark:text-white max-w-xl mx-auto leading-relaxed text-pretty">
             Images, PDFs, code, media and everyday utilities — organized into clean sections, ready when you need them.

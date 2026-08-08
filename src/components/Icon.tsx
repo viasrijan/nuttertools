@@ -155,14 +155,15 @@ export function CategoryIcon({ slug, className }: { slug: string, className?: st
 }
 
 const base = new URL(import.meta.env.BASE_URL, window.location.href).toString()
+const ICON_V = 2
 
-export const toolIconUrl = (id: string) => `${base}icons/${id}.png`
+export const toolIconUrl = (id: string) => `${base}icons/${id}.png?v=${ICON_V}`
 
-export const catIconUrl = (slug: string) => `${base}icons/cat-${slug}.png`
+export const catIconUrl = (slug: string) => `${base}icons/cat-${slug}.png?v=${ICON_V}`
 
-export const whiteToolIconUrl = (id: string) => `${base}icons/white/${id}.png`
+export const whiteToolIconUrl = (id: string) => `${base}icons/white/${id}.png?v=${ICON_V}`
 
-export const whiteCatIconUrl = (slug: string) => `${base}icons/white/cat-${slug}.png`
+export const whiteCatIconUrl = (slug: string) => `${base}icons/white/cat-${slug}.png?v=${ICON_V}`
 
 export function CutoutToolIcon({ id, className, tone }: { id: string, className?: string, tone?: string }) {
   return <img src={toolIconUrl(id)} alt="" className={className} draggable={false} />
