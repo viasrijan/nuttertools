@@ -82,7 +82,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header className="sticky top-0 z-50 pt-0 sm:pt-8 px-0 sm:px-3.5">
       <div className="mx-auto max-w-[1200px] relative">
-        <div className="rounded-none sm:rounded-full border border-transparent bg-white soft-shadow max-lg:dark:bg-[#242424]">
+        <div className={`rounded-none sm:rounded-full border border-transparent bg-[#f5f5f5] lg:bg-white soft-shadow max-lg:dark:bg-[#1a1a1a] ${mOpen ? 'max-lg:invisible' : ''}`}>
           <div className="px-4 sm:px-6 pt-5 lg:pt-0 lg:h-[68px] lg:flex lg:items-center lg:gap-3">
             <div className="flex items-center justify-between gap-3 lg:contents">
               <Link to="/" onClick={() => setMOpen(false)}
@@ -154,14 +154,14 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </nav>
 
             <div className="lg:hidden relative mt-5 pb-5">
-              <div className="flex items-center h-11 border border-zinc-200 bg-zinc-100 rounded-full overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] max-lg:dark:bg-[#242424] max-lg:dark:border-zinc-800">
+              <div className="flex items-center h-11 border border-zinc-200 bg-white rounded-full overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] max-lg:dark:bg-[#242424] max-lg:dark:border-zinc-800">
                 <Search className="w-4 h-4 ml-3 shrink-0 text-[#4454c9]" strokeWidth={2.2} />
                 <input
                   value={sq}
                   onChange={(e) => setSq(e.target.value)}
                   onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                   placeholder="Search any tool..."
-                  className="search-input-keep-light flex-1 h-full bg-zinc-100 border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400 dark:!bg-zinc-100 dark:!text-zinc-900 dark:placeholder:!text-zinc-400 max-lg:dark:!bg-[#242424] max-lg:dark:!text-white max-lg:dark:placeholder:!text-zinc-500"
+                  className="search-input-keep-light flex-1 h-full bg-white border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400 dark:bg-[#242424] dark:text-white dark:placeholder:text-zinc-500"
                 />
               </div>
               {sq.trim() && (
@@ -233,41 +233,65 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
         {mOpen && (
-          <div className="lg:hidden absolute inset-x-0 top-full mt-2 z-[60] rounded-3xl bg-[#f5f5f5] dark:bg-[#1a1a1a] soft-shadow overflow-y-auto max-h-[calc(100dvh-170px)] animate-[omni-drop_0.2s_ease-out]">
-            <div className="px-4 sm:px-6 pt-3 pb-1 flex flex-col">
-              {POPULAR_CATS.map((c) => (
-                <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}
-                  className="flex items-center gap-3 px-2 py-3.5 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-left transition-colors">
-                  <span className="w-10 h-10 shrink-0">
-                    <CutoutCategoryIcon slug={c.slug} className="w-full h-full" />
-                  </span>
-                  <span className="flex-1 min-w-0">
-                    <span className="block text-[15px] font-semibold leading-tight text-zinc-900 dark:text-white">{NAV_LABELS[c.slug] || c.name}</span>
-                    <span className="block text-[12px] font-medium text-zinc-900/70 dark:text-zinc-100/70 mt-0.5">{c.count} tools</span>
-                  </span>
+          <div className="lg:hidden fixed inset-0 z-[60] bg-[#f5f5f5] dark:bg-[#1a1a1a] overflow-y-auto animate-[omni-drop_0.2s_ease-out]">
+            <div className="flex items-center justify-between gap-3 px-4 sm:px-6 pt-5">
+              <Link to="/" onClick={() => setMOpen(false)}
+                className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+                <Logo size={30} className="w-[30px] h-[30px]" />
+                <span className="text-[23px] sm:text-[25px] font-extrabold tracking-[-0.03em] text-[#4454c9]">
+                  NutterTools
+                </span>
+              </Link>
+              <div className="flex items-center gap-3">
+                <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
+                  className="w-10 h-10 shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
+                  <Lightbulb className="w-4 h-4" strokeWidth={2.4} />
                 </button>
-              ))}
-              <button onClick={() => go('/tools')}
-                className="flex items-center gap-3 px-2 py-3.5 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-left transition-colors">
-                <span className="w-10 h-10 shrink-0 grid place-items-center bg-black dark:bg-white text-white dark:text-black rounded-full">
-                  <LayoutGrid className="w-5 h-5" strokeWidth={2.2} />
-                </span>
-                <span className="flex-1 min-w-0">
-                  <span className="block text-[15px] font-semibold leading-tight text-zinc-900 dark:text-white">All Tools</span>
-                  <span className="block text-[12px] font-medium text-zinc-900/70 dark:text-zinc-100/70 mt-0.5">Everything at once</span>
-                </span>
-              </button>
+                <button onClick={() => setMOpen(false)} aria-label="Close menu"
+                  className="w-10 h-10 shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center transition-colors">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                    <path d="M3 3L13 13M13 3L3 13" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
-            <div className="px-4 sm:px-6 pb-5 pt-3 flex items-center gap-3">
-              <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
-                className="flex-1 h-11 grid place-items-center bg-red-600 text-white text-[14px] font-bold hover:opacity-90 transition-opacity">
-                Donate
-              </a>
-              <a href="https://github.com/viasrijan/nuttertools" target="_blank" rel="noreferrer"
-                className="h-11 px-6 grid place-items-center border border-zinc-300 dark:border-zinc-700 text-[14px] font-semibold text-zinc-900 dark:text-white hover:bg-zinc-200/60 dark:hover:bg-zinc-800/60 transition-colors">
-                GitHub
-              </a>
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-8 pb-8 flex flex-col min-h-[calc(100dvh-120px)]">
+              <div className="flex flex-col">
+                {POPULAR_CATS.map((c) => (
+                  <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}
+                    className="flex items-center gap-3 px-2 py-3.5 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-left transition-colors">
+                    <span className="w-10 h-10 shrink-0">
+                      <CutoutCategoryIcon slug={c.slug} className="w-full h-full" />
+                    </span>
+                    <span className="flex-1 min-w-0">
+                      <span className="block text-[15px] font-semibold leading-tight text-zinc-900 dark:text-white">{NAV_LABELS[c.slug] || c.name}</span>
+                      <span className="block text-[12px] font-medium text-zinc-900/70 dark:text-zinc-100/70 mt-0.5">{c.count} tools</span>
+                    </span>
+                  </button>
+                ))}
+                <button onClick={() => go('/tools')}
+                  className="flex items-center gap-3 px-2 py-3.5 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-left transition-colors">
+                  <span className="w-10 h-10 shrink-0 grid place-items-center bg-black dark:bg-white text-white dark:text-black rounded-full">
+                    <LayoutGrid className="w-5 h-5" strokeWidth={2.2} />
+                  </span>
+                  <span className="flex-1 min-w-0">
+                    <span className="block text-[15px] font-semibold leading-tight text-zinc-900 dark:text-white">All Tools</span>
+                    <span className="block text-[12px] font-medium text-zinc-900/70 dark:text-zinc-100/70 mt-0.5">Everything at once</span>
+                  </span>
+                </button>
+              </div>
+
+              <div className="mt-auto pt-8 flex items-center gap-3">
+                <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
+                  className="flex-1 h-11 grid place-items-center bg-red-600 text-white text-[14px] font-bold hover:opacity-90 transition-opacity">
+                  Donate
+                </a>
+                <a href="https://github.com/viasrijan/nuttertools" target="_blank" rel="noreferrer"
+                  className="h-11 px-6 grid place-items-center border border-zinc-300 dark:border-zinc-700 text-[14px] font-semibold text-zinc-900 dark:text-white hover:bg-zinc-200/60 dark:hover:bg-zinc-800/60 transition-colors">
+                  GitHub
+                </a>
+              </div>
             </div>
           </div>
         )}
