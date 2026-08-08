@@ -153,4 +153,22 @@ export const chipActive = (h: Hue) => `bg-gradient-to-br ${H[h].tile} ${H[h].til
 
 export const textAccent = (h: Hue) => H[h].text
 
+export const hoverTextAccent = (h: Hue): string => {
+  const map: Record<Hue, string> = {
+    sky: 'hover:text-sky-600 hover:dark:text-sky-400',
+    rose: 'hover:text-rose-600 hover:dark:text-rose-400',
+    indigo: 'hover:text-indigo-600 hover:dark:text-indigo-400',
+    emerald: 'hover:text-emerald-600 hover:dark:text-emerald-400',
+    amber: 'hover:text-amber-600 hover:dark:text-amber-400',
+    fuchsia: 'hover:text-fuchsia-600 hover:dark:text-fuchsia-400',
+    purple: 'hover:text-purple-600 hover:dark:text-purple-400',
+    cyan: 'hover:text-cyan-600 hover:dark:text-cyan-400',
+    lime: 'hover:text-lime-600 hover:dark:text-lime-400',
+    teal: 'hover:text-teal-600 hover:dark:text-teal-400',
+    orange: 'hover:text-orange-600 hover:dark:text-orange-400',
+    violet: 'hover:text-violet-600 hover:dark:text-violet-400',
+  }
+  return map[h]
+}
+
 export const cardRing = (h: Hue) => H[h].cardRing

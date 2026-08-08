@@ -82,7 +82,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header className="sticky top-0 z-50 pt-0 sm:pt-8 px-0 sm:px-3.5">
       <div className="mx-auto max-w-[1200px] relative">
-        <div className="rounded-none sm:rounded-full border border-transparent bg-white soft-shadow">
+        <div className="rounded-none sm:rounded-full border border-transparent bg-white soft-shadow max-lg:dark:bg-[#242424]">
           <div className="px-4 sm:px-6 pt-5 lg:pt-0 lg:h-[68px] lg:flex lg:items-center lg:gap-3">
             <div className="flex items-center justify-between gap-3 lg:contents">
               <Link to="/" onClick={() => setMOpen(false)}
@@ -92,6 +92,10 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   NutterTools
                 </span>
               </Link>
+              <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
+                className="lg:hidden w-10 h-10 shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
+                <Lightbulb className="w-4 h-4" strokeWidth={2.4} />
+              </button>
               <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
                 className="lg:hidden w-10 h-10 shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center transition-colors">
                 {mOpen ? (
@@ -113,7 +117,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   <div key={c.slug} className="relative shrink-0"
                     onMouseEnter={() => setOpen(c.slug)}
                     onMouseLeave={() => setOpen((o) => (o === c.slug ? null : o))}>
-                    <button onClick={() => setOpen(open === c.slug ? null : c.slug)}
+                    <button onClick={() => go(`/tools/${c.slug}`)}
                       className="flex items-center whitespace-nowrap text-[13px] font-semibold px-3.5 py-2 text-zinc-900">
                       {NAV_LABELS[c.slug] || c.name}
                     </button>
@@ -150,14 +154,14 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </nav>
 
             <div className="lg:hidden relative mt-5 pb-5">
-              <div className="flex items-center h-11 border border-zinc-200 bg-zinc-100 rounded-full overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)]">
+              <div className="flex items-center h-11 border border-zinc-200 bg-zinc-100 rounded-full overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] max-lg:dark:bg-[#242424] max-lg:dark:border-zinc-800">
                 <Search className="w-4 h-4 ml-3 shrink-0 text-[#4454c9]" strokeWidth={2.2} />
                 <input
                   value={sq}
                   onChange={(e) => setSq(e.target.value)}
                   onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                   placeholder="Search any tool..."
-                  className="search-input-keep-light flex-1 h-full bg-zinc-100 border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400 dark:!bg-zinc-100 dark:!text-zinc-900 dark:placeholder:!text-zinc-400"
+                  className="search-input-keep-light flex-1 h-full bg-zinc-100 border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400 dark:!bg-zinc-100 dark:!text-zinc-900 dark:placeholder:!text-zinc-400 max-lg:dark:!bg-[#242424] max-lg:dark:!text-white max-lg:dark:placeholder:!text-zinc-500"
                 />
               </div>
               {sq.trim() && (
