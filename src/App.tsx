@@ -6,6 +6,7 @@ import ToolPage from './pages/ToolPage'
 import Header from './components/Header'
 import { useEffect, useState } from 'react'
 import { CATEGORIES } from './data/categories'
+import { textAccent } from './lib/style'
 
 export default function App() {
   const [dark, setDark] = useState(false)
@@ -37,7 +38,7 @@ export default function App() {
           <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-2.5">
               {CATEGORIES.map((c) => (
-                <LinkFooter key={c.slug} to={`/tools/${c.slug}`}>{c.name}</LinkFooter>
+                <LinkFooter key={c.slug} to={`/tools/${c.slug}`} className={textAccent(c.hue)}>{c.name}</LinkFooter>
               ))}
             </div>
             <div className="md:text-right flex flex-col items-center md:items-end gap-4">
@@ -67,8 +68,8 @@ export default function App() {
   )
 }
 
-function LinkFooter({ to, children }: { to: string, children: React.ReactNode }) {
+function LinkFooter({ to, children, className }: { to: string, children: React.ReactNode, className?: string }) {
   return (
-    <Link to={to} className="text-[13px] font-medium text-zinc-900 dark:text-zinc-100 hover:text-green-600 dark:hover:text-green-400 transition-colors">{children}</Link>
+    <Link to={to} className={`text-[13px] font-semibold ${className} hover:opacity-80 transition-opacity`}>{children}</Link>
   )
 }

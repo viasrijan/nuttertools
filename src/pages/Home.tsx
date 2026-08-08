@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { CATEGORIES, TOTAL_TOOLS } from '../data/categories'
+import { CATEGORIES } from '../data/categories'
 import { tileGrad } from '../lib/style'
 import ToolCard from '../components/ToolCard'
 import { POPULAR_TOOLS } from '../data/popular'
@@ -33,7 +33,7 @@ export default function Home() {
         <div className="relative">
           <p className="inline-flex items-center gap-2 text-[15px] font-semibold text-white bg-gradient-to-b from-[#ff7a55] to-[#d64525] px-[18px] py-[9px] mb-6 rounded-full shadow-sm">
             <span className="w-2 h-2 rounded-full bg-white" />
-            {TOTAL_TOOLS} free tools, one place
+            Your go to library for Internet tools
           </p>
           <h1 className="font-[800] tracking-[-0.035em] text-[clamp(22.5px,6.8vw,57.6px)] leading-[1.04] [filter:drop-shadow(0_3px_12px_rgba(0,0,0,0.12))] text-black dark:text-white">
             All useful tools in{' '}
