@@ -157,7 +157,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onChange={(e) => setSq(e.target.value)}
                   onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                   placeholder="Search any tool..."
-                  className="search-input-keep-light flex-1 h-full bg-zinc-100 border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400 dark:!bg-zinc-100 dark:!text-zinc-900 dark:!placeholder:text-zinc-400"
+                  className="search-input-keep-light flex-1 h-full bg-zinc-100 border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400 dark:!bg-zinc-100 dark:!text-zinc-900 dark:placeholder:!text-zinc-400"
                 />
               </div>
               {sq.trim() && (
@@ -193,7 +193,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onFocus={() => setFocus(true)}
                   onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                   placeholder="Search any tool..."
-                  className="search-input-keep-light flex-1 h-full bg-zinc-100 border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400 dark:!bg-zinc-100 dark:!text-zinc-900 dark:!placeholder:text-zinc-400"
+                  className="search-input-keep-light flex-1 h-full bg-zinc-100 border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400 dark:!bg-zinc-100 dark:!text-zinc-900 dark:placeholder:!text-zinc-400"
                 />
               </div>
               {focus && sq.trim() && (
