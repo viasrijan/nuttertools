@@ -133,7 +133,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </nav>
 
             <div ref={searchRef} className="relative shrink-0 w-[150px] sm:w-[210px] md:w-[250px] xl:w-[300px]">
-              <div className="flex items-center h-9 sm:h-10 border border-zinc-200 bg-zinc-50 rounded-full overflow-hidden">
+              <div className="flex items-center h-9 sm:h-10 border border-zinc-200 bg-white rounded-full overflow-hidden">
                 <Search className="w-4 h-4 ml-3 shrink-0 text-zinc-500" strokeWidth={2.2} />
                 <input
                   value={sq}
@@ -192,7 +192,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
           <div className="px-4 sm:px-6 pt-5">
-            <div className="flex items-center h-11 border border-zinc-200 bg-zinc-50 rounded-full overflow-hidden">
+            <div className="flex items-center h-11 border border-zinc-200 bg-white rounded-full overflow-hidden">
               <Search className="w-4 h-4 ml-3 shrink-0 text-zinc-500" strokeWidth={2.2} />
               <input
                 value={sq}

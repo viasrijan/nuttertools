@@ -25,19 +25,13 @@ export default function Home() {
       <section className="relative pt-8 pb-8 md:pt-16 md:pb-14 text-center overflow-hidden">
         <div aria-hidden className="absolute inset-0 pointer-events-none select-none overflow-hidden">
           {[
-            { id: 'qr-generator', cls: 'left-[8%] top-[14%] w-10 h-10 md:w-12 md:h-12', a: 'animate-[omni-drift-a_11s_ease-in-out_infinite]' },
-            { id: 'image-compressor', cls: 'right-[8%] top-[14%] w-10 h-10 md:w-14 md:h-14', a: 'animate-[omni-drift-b_13s_ease-in-out_infinite]' },
-            { id: 'hash-generator', cls: 'left-[8%] top-[24%] w-6 h-6 md:w-8 md:h-8', a: 'animate-[omni-drift-b_14s_ease-in-out_infinite]' },
-            { id: 'uuid-generator', cls: 'right-[8%] top-[24%] w-6 h-6 md:w-8 md:h-8', a: 'animate-[omni-drift-a_12s_ease-in-out_infinite]' },
-            { id: 'bg-remover', cls: 'left-[8%] top-[36%] w-9 h-9 md:w-11 md:h-11', a: 'animate-[omni-drift-c_15s_ease-in-out_infinite]' },
-            { id: 'palette-extractor', cls: 'right-[8%] top-[36%] w-9 h-9 md:w-11 md:h-11', a: 'animate-[omni-drift-a_10s_ease-in-out_infinite]' },
-            { id: 'audio-converter', cls: 'left-[8%] top-[50%] w-7 h-7 md:w-9 md:h-9', a: 'animate-[omni-drift-c_13s_ease-in-out_infinite]' },
-            { id: 'merge-pdf', cls: 'right-[8%] top-[50%] w-7 h-7 md:w-9 md:h-9', a: 'animate-[omni-drift-a_14s_ease-in-out_infinite]' },
-            { id: 'image-ocr', cls: 'left-[8%] top-[58%] w-8 h-8 md:w-10 md:h-10', a: 'animate-[omni-drift-b_12s_ease-in-out_infinite]' },
-            { id: 'compress-pdf', cls: 'right-[8%] top-[58%] w-8 h-8 md:w-10 md:h-10', a: 'animate-[omni-drift-c_11s_ease-in-out_infinite]' },
-            { id: 'base64-tool', cls: 'left-[8%] top-[66%] w-6 h-6 md:w-8 md:h-8', a: 'animate-[omni-drift-a_15s_ease-in-out_infinite]' },
-            { id: 'video-to-gif', cls: 'right-[8%] top-[66%] w-8 h-8 md:w-11 md:h-11', a: 'animate-[omni-drift-b_13s_ease-in-out_infinite]' },
-            { id: 'pdf-to-word', cls: 'left-[8%] top-[72%] w-10 h-10 md:w-12 md:h-12', a: 'animate-[omni-drift-a_12s_ease-in-out_infinite]' },
+            { id: 'qr-generator', cls: 'left-[8%] top-[30%] w-10 h-10 md:w-12 md:h-12', a: 'animate-[omni-drift-a_11s_ease-in-out_infinite]' },
+            { id: 'bg-remover', cls: 'left-[8%] top-[44%] w-9 h-9 md:w-11 md:h-11', a: 'animate-[omni-drift-c_15s_ease-in-out_infinite]' },
+            { id: 'image-ocr', cls: 'left-[8%] top-[58%] w-8 h-8 md:w-10 md:h-10', a: 'animate-[omni-drift-b_13s_ease-in-out_infinite]' },
+            { id: 'pdf-to-word', cls: 'left-[8%] top-[70%] w-10 h-10 md:w-12 md:h-12', a: 'animate-[omni-drift-a_12s_ease-in-out_infinite]' },
+            { id: 'image-compressor', cls: 'right-[8%] top-[34%] w-10 h-10 md:w-14 md:h-14', a: 'animate-[omni-drift-b_13s_ease-in-out_infinite]' },
+            { id: 'palette-extractor', cls: 'right-[8%] top-[48%] w-9 h-9 md:w-11 md:h-11', a: 'animate-[omni-drift-a_14s_ease-in-out_infinite]' },
+            { id: 'compress-pdf', cls: 'right-[8%] top-[60%] w-8 h-8 md:w-10 md:h-10', a: 'animate-[omni-drift-c_12s_ease-in-out_infinite]' },
             { id: 'video-to-mp3', cls: 'right-[8%] top-[72%] w-10 h-10 md:w-12 md:h-12', a: 'animate-[omni-drift-b_14s_ease-in-out_infinite]' },
           ].map((f) => (
             <img key={f.id} src={toolIconUrl(f.id)} alt="" draggable={false} className={`hidden lg:block absolute opacity-50 ${f.a} ${f.cls}`} />
