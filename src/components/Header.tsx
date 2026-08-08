@@ -178,7 +178,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </div>
 
             <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-yellow-400 text-white border border-zinc-300 dark:bg-white dark:text-yellow-500 dark:border-zinc-300 grid place-items-center transition-colors">
+              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-yellow-400 text-white border border-zinc-300 dark:bg-black dark:text-white dark:border-transparent grid place-items-center transition-colors">
               <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2.4} />
             </button>
           </div>
