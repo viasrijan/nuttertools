@@ -133,7 +133,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </nav>
 
             <div ref={searchRef} className="relative shrink-0 w-[150px] sm:w-[210px] md:w-[250px] xl:w-[300px]">
-              <div className="flex items-center h-9 sm:h-10 border border-zinc-200 bg-white rounded-full overflow-hidden">
+              <div className="flex items-center h-9 sm:h-10 border border-zinc-200 bg-white dark:bg-white rounded-full overflow-hidden">
                 <Search className="w-4 h-4 ml-3 shrink-0 text-zinc-500" strokeWidth={2.2} />
                 <input
                   value={sq}
@@ -141,22 +141,22 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onFocus={() => setFocus(true)}
                   onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                   placeholder="Search tools…"
-                  className="flex-1 h-full bg-transparent border-none outline-none focus:outline-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
+                  className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
                 />
               </div>
               {focus && sq.trim() && (
-                <div className="absolute right-0 top-full mt-2 w-72 sm:w-80 rounded-3xl border border-transparent bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
+                <div className="absolute right-0 top-full mt-2 w-72 sm:w-80 rounded-3xl border border-zinc-200 bg-white dark:bg-white soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
                   {results.length > 0 ? (
                     <div className="flex flex-col gap-0.5">
                       {results.map((t) => (
                         <Link key={t.id} to={`/tool/${t.id}`} onClick={() => go(`/tool/${t.id}`)}
-                          className="flex items-center gap-3 px-3 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
+                          className="flex items-center gap-3 px-3 py-2 hover:bg-zinc-50 group">
                           <span className="w-[18px] h-[18px] shrink-0">
                             <CutoutToolIcon id={t.id} className="w-full h-full" tone={textAccent(hueFor(t.category))} />
                           </span>
                           <span className="flex-1 min-w-0">
-                            <span className="block text-[13px] font-semibold leading-tight truncate text-zinc-900 dark:text-white">{t.name}</span>
-                            <span className="block text-[11px] font-medium text-zinc-900 dark:text-zinc-100 truncate">{t.category}</span>
+                            <span className="block text-[13px] font-semibold leading-tight truncate text-zinc-900">{t.name}</span>
+                            <span className="block text-[11px] font-medium text-zinc-500 truncate">{t.category}</span>
                           </span>
                         </Link>
                       ))}
@@ -192,14 +192,14 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
           <div className="px-4 sm:px-6 pt-5">
-            <div className="flex items-center h-11 border border-zinc-200 bg-white rounded-full overflow-hidden">
+            <div className="flex items-center h-11 border border-zinc-200 bg-white dark:bg-white rounded-full overflow-hidden">
               <Search className="w-4 h-4 ml-3 shrink-0 text-zinc-500" strokeWidth={2.2} />
               <input
                 value={sq}
                 onChange={(e) => setSq(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                 placeholder="Search tools…"
-                className="flex-1 h-full bg-transparent border-none outline-none focus:outline-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
+                className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
               />
             </div>
             {results.length > 0 && (
