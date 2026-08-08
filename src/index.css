@@ -182,6 +182,11 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(68, 84, 201, 0.25);
 }
 
+/* site search inputs stay light in dark mode */
+.dark input.search-input-keep-light {
+  color-scheme: light;
+}
+
 /* ---- Logo ---- */
 
 @keyframes omni-logo {
