@@ -1,19 +1,32 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Lightbulb, Search } from 'lucide-react'
-import { GROUPS } from '../data/categories'
+import { CATEGORIES, GROUPS } from '../data/categories'
 import { textAccent, hueFor } from '../lib/style'
 import Logo from './Logo'
 import { CutoutCategoryIcon, CutoutToolIcon } from './Icon'
-import { POPULAR_TOOLS } from '../data/popular'
 import toolsData from '../data/tools.json'
 import Fuse from 'fuse.js'
 
 const TOOLS = toolsData as any[]
 
-const POPULAR_NAV = POPULAR_TOOLS.slice(0, 6)
+const NAV_ORDER = ['developer-tools', 'pdf-tools', 'text-writing', 'image-tools', 'color-design', 'video-tools']
+
+const NAV_LABELS: Record<string, string> = {
+  'image-tools': 'Images',
+  'pdf-tools': 'PDFs',
+  'developer-tools': 'Dev',
+  'text-writing': 'Text',
+  'color-design': 'Design',
+  'video-tools': 'Video',
+}
+
+const POPULAR_CATS = CATEGORIES
+  .filter((c) => NAV_ORDER.includes(c.slug))
+  .sort((a, b) => NAV_ORDER.indexOf(a.slug) - NAV_ORDER.indexOf(b.slug))
 
 export default function Header({ dark, toggle }: { dark: boolean, toggle: () => void }) {
+  const [open, setOpen] = useState<string | null>(null)
   const [mOpen, setMOpen] = useState(false)
   const [sq, setSq] = useState('')
   const [focus, setFocus] = useState(false)
@@ -26,6 +39,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   const results = sq.trim() ? fuse.search(sq.trim()).map((r) => r.item).slice(0, 8) : []
 
   useEffect(() => {
+    setOpen(null)
     setMOpen(false)
     setSq('')
     setFocus(false)
@@ -34,6 +48,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   useEffect(() => {
     const h = (e: MouseEvent) => {
       const t = e.target as Node
+      if (navRef.current && !navRef.current.contains(t)) setOpen(null)
       if (searchRef.current && !searchRef.current.contains(t)) setFocus(false)
     }
     document.addEventListener('mousedown', h)
@@ -46,11 +61,14 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   }, [mOpen])
 
   const go = (path: string) => {
+    setOpen(null)
     setMOpen(false)
     setSq('')
     setFocus(false)
     navigate(path)
   }
+
+  const catTools = (name: string) => TOOLS.filter((t) => t.category === name)
 
   return (
     <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-1.5 sm:px-3.5">
@@ -72,16 +90,46 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
               </span>
             </Link>
 
-            <nav ref={navRef} className="hidden lg:flex items-center gap-1 flex-1 justify-center min-w-0">
-              {POPULAR_NAV.map((t) => (
-                <Link key={t.id} to={`/tool/${t.id}`}
-                  className="flex items-center gap-1.5 whitespace-nowrap text-[13px] font-semibold text-zinc-900 hover:text-green-600 px-2 py-2 transition-colors">
-                  <span className="w-[15px] h-[15px] shrink-0">
-                    <CutoutToolIcon id={t.id} className="w-full h-full" tone={textAccent(hueFor(t.category))} />
-                  </span>
-                  <span className="truncate">{t.name}</span>
-                </Link>
-              ))}
+            <nav ref={navRef} className="hidden lg:flex items-center gap-0.5 flex-1 justify-center min-w-0">
+              {POPULAR_CATS.map((c) => {
+                const tools = catTools(c.name)
+                return (
+                  <div key={c.slug} className="relative shrink-0"
+                    onMouseEnter={() => setOpen(c.slug)}
+                    onMouseLeave={() => setOpen((o) => (o === c.slug ? null : o))}>
+                    <button onClick={() => setOpen(open === c.slug ? null : c.slug)}
+                      className={`flex items-center gap-1 whitespace-nowrap text-[13px] font-semibold px-2 py-2 transition-colors ${open === c.slug ? 'bg-zinc-200/80 text-zinc-900' : 'text-zinc-900 hover:text-green-600 hover:bg-zinc-100'}`}>
+                      {NAV_LABELS[c.slug] || c.name}
+                      <svg width="8" height="8" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === c.slug ? 'rotate-180' : ''}`}>
+                        <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </button>
+                    {open === c.slug && (
+                      <div className="absolute left-0 top-full pt-2">
+                        <div className="w-[320px] origin-top rounded-3xl border border-transparent bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
+                          <div className="flex flex-col gap-0.5">
+                            {tools.slice(0, 8).map((t) => (
+                              <Link key={t.id} to={`/tool/${t.id}`} onClick={() => go(`/tool/${t.id}`)}
+                                className="flex items-center gap-3 px-3 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
+                                <span className="w-[18px] h-[18px] shrink-0">
+                                  <CutoutToolIcon id={t.id} className="w-full h-full" tone={textAccent(hueFor(t.category))} />
+                                </span>
+                                <span className="flex-1 min-w-0">
+                                  <span className="block text-[13px] font-semibold leading-tight truncate text-zinc-900 dark:text-white">{t.name}</span>
+                                </span>
+                              </Link>
+                            ))}
+                            <Link to={`/tools/${c.slug}`} onClick={() => go(`/tools/${c.slug}`)}
+                              className="mt-1 px-3 py-2 text-[12.5px] font-bold text-green-600 dark:text-green-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/80">
+                              View all {tools.length} {c.name} →
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
             </nav>
 
             <div ref={searchRef} className="relative shrink-0 w-[150px] sm:w-[210px] md:w-[250px] xl:w-[300px]">

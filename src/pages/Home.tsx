@@ -23,27 +23,26 @@ export default function Home() {
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 animate-[omni-fade_0.3s_ease-out]">
       <section className="relative pt-8 pb-8 md:pt-16 md:pb-14 text-center overflow-hidden">
-        <div aria-hidden className="absolute inset-0 pointer-events-none select-none">
+        <div aria-hidden className="absolute inset-0 pointer-events-none select-none overflow-hidden">
           {[
-            { id: 'qr-generator', cls: 'left-[3%] top-[16%] w-10 h-10 md:w-14 md:h-14', g: 'a' },
-            { id: 'image-compressor', cls: 'right-[3%] top-[14%] w-11 h-11 md:w-16 md:h-16', g: 'b' },
-            { id: 'json-formatter', cls: 'left-[26%] top-[12%] w-7 h-7 md:w-9 md:h-9', g: 'a' },
-            { id: 'video-to-gif', cls: 'right-[22%] top-[18%] w-8 h-8 md:w-11 md:h-11', g: 'b' },
-            { id: 'bg-remover', cls: 'left-[4%] top-[38%] w-9 h-9 md:w-11 md:h-11', g: 'a' },
-            { id: 'palette-extractor', cls: 'right-[5%] top-[40%] w-9 h-9 md:w-12 md:h-12', g: 'b' },
-            { id: 'image-ocr', cls: 'left-[17%] top-[58%] w-7 h-7 md:w-10 md:h-10', g: 'a' },
-            { id: 'compress-pdf', cls: 'right-[14%] top-[60%] w-8 h-8 md:w-11 md:h-11', g: 'b' },
-            { id: 'pdf-to-word', cls: 'left-[8%] top-[82%] w-8 h-8 md:w-12 md:h-12', g: 'a' },
-            { id: 'video-to-mp3', cls: 'right-[8%] top-[82%] w-9 h-9 md:w-12 md:h-12', g: 'b' },
-            { id: 'audio-converter', cls: 'left-[34%] top-[38%] w-7 h-7 md:w-9 md:h-9', g: 'a' },
-            { id: 'uuid-generator', cls: 'right-[35%] top-[80%] w-6 h-6 md:w-8 md:h-8', g: 'b' },
-            { id: 'merge-pdf', cls: 'left-[42%] top-[70%] w-6 h-6 md:w-8 md:h-8', g: 'a' },
-            { id: 'base64-tool', cls: 'right-[30%] top-[38%] w-6 h-6 md:w-8 md:h-8', g: 'b' },
-            { id: 'hash-generator', cls: 'left-[12%] top-[6%] w-6 h-6 md:w-8 md:h-8', g: 'a' },
-            { id: 'color-picker', cls: 'right-[12%] top-[6%] w-6 h-6 md:w-8 md:h-8', g: 'b' },
+            { id: 'qr-generator', cls: 'left-[13%] top-[20%] w-10 h-10 md:w-14 md:h-14', a: 'animate-[omni-drift-a_11s_ease-in-out_infinite]' },
+            { id: 'image-compressor', cls: 'right-[13%] top-[18%] w-11 h-11 md:w-16 md:h-16', a: 'animate-[omni-drift-b_13s_ease-in-out_infinite]' },
+            { id: 'hash-generator', cls: 'left-[22%] top-[15%] w-6 h-6 md:w-8 md:h-8', a: 'animate-[omni-drift-c_14s_ease-in-out_infinite]' },
+            { id: 'color-picker', cls: 'right-[22%] top-[15%] w-6 h-6 md:w-8 md:h-8', a: 'animate-[omni-drift-a_12s_ease-in-out_infinite]' },
+            { id: 'json-formatter', cls: 'left-[28%] top-[33%] w-7 h-7 md:w-9 md:h-9', a: 'animate-[omni-drift-b_15s_ease-in-out_infinite]' },
+            { id: 'base64-tool', cls: 'right-[28%] top-[33%] w-6 h-6 md:w-8 md:h-8', a: 'animate-[omni-drift-c_11s_ease-in-out_infinite]' },
+            { id: 'bg-remover', cls: 'left-[13%] top-[42%] w-9 h-9 md:w-11 md:h-11', a: 'animate-[omni-drift-a_12s_ease-in-out_infinite]' },
+            { id: 'palette-extractor', cls: 'right-[13%] top-[44%] w-9 h-9 md:w-12 md:h-12', a: 'animate-[omni-drift-b_10s_ease-in-out_infinite]' },
+            { id: 'image-ocr', cls: 'left-[19%] top-[62%] w-7 h-7 md:w-10 md:h-10', a: 'animate-[omni-drift-c_13s_ease-in-out_infinite]' },
+            { id: 'compress-pdf', cls: 'right-[19%] top-[63%] w-8 h-8 md:w-11 md:h-11', a: 'animate-[omni-drift-a_14s_ease-in-out_infinite]' },
+            { id: 'audio-converter', cls: 'left-[35%] top-[50%] w-7 h-7 md:w-9 md:h-9', a: 'animate-[omni-drift-b_12s_ease-in-out_infinite]' },
+            { id: 'uuid-generator', cls: 'right-[35%] top-[76%] w-6 h-6 md:w-8 md:h-8', a: 'animate-[omni-drift-c_15s_ease-in-out_infinite]' },
+            { id: 'merge-pdf', cls: 'left-[33%] top-[72%] w-6 h-6 md:w-8 md:h-8', a: 'animate-[omni-drift-a_13s_ease-in-out_infinite]' },
+            { id: 'video-to-gif', cls: 'right-[33%] top-[70%] w-8 h-8 md:w-11 md:h-11', a: 'animate-[omni-drift-b_11s_ease-in-out_infinite]' },
+            { id: 'pdf-to-word', cls: 'left-[13%] top-[78%] w-8 h-8 md:w-12 md:h-12', a: 'animate-[omni-drift-c_12s_ease-in-out_infinite]' },
+            { id: 'video-to-mp3', cls: 'right-[13%] top-[78%] w-9 h-9 md:w-12 md:h-12', a: 'animate-[omni-drift-a_14s_ease-in-out_infinite]' },
           ].map((f) => (
-            <img key={f.id} src={toolIconUrl(f.id)} alt="" draggable={false}
-              className={`hidden md:block absolute drop-shadow-[0_6px_14px_rgba(0,0,0,0.18)] ${f.cls} ${f.g === 'a' ? 'animate-[omni-zoom-a_18s_ease-in-out_infinite]' : 'animate-[omni-zoom-b_24s_ease-in-out_infinite]'}`} />
+            <img key={f.id} src={toolIconUrl(f.id)} alt="" draggable={false} className={`hidden md:block absolute opacity-50 ${f.a} ${f.cls}`} />
           ))}
         </div>
         <div className="relative">

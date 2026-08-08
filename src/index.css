@@ -79,16 +79,6 @@ p { text-wrap: pretty; }
   66% { transform: translate(-50px, -60px) scale(0.9); }
 }
 
-@keyframes omni-zoom-a {
-  0%, 100% { transform: scale(0.82); }
-  50% { transform: scale(1.12); }
-}
-
-@keyframes omni-zoom-b {
-  0%, 100% { transform: scale(0.92); }
-  50% { transform: scale(1.06); }
-}
-
 @layer base {
   input, textarea, select {
     color-scheme: light;
