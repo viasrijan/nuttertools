@@ -147,7 +147,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </nav>
 
             <div ref={searchRef} className="relative shrink-0 hidden lg:block w-[150px] sm:w-[210px] md:w-[250px] xl:w-[300px]">
-              <div className="flex items-center h-9 sm:h-10 border border-zinc-200 bg-zinc-100 rounded-full overflow-hidden">
+              <div className="flex items-center h-9 sm:h-10 border border-zinc-200 bg-zinc-100 rounded-full overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)]">
                 <Search className="w-4 h-4 ml-3 shrink-0 text-[#4454c9]" strokeWidth={2.2} />
                 <input
                   value={sq}
@@ -155,7 +155,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onFocus={() => setFocus(true)}
                   onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                   placeholder="Search any tool..."
-                  className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400 dark:placeholder:text-zinc-400"
+                  className="flex-1 h-full bg-zinc-100 border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
                 />
               </div>
               {focus && sq.trim() && (
@@ -206,7 +206,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                 onChange={(e) => setSq(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`); if (e.key === 'Escape') setMSearch(false) }}
                 placeholder="Search any tool..."
-                className="flex-1 h-full bg-transparent border-none outline-none focus:outline-none focus:!shadow-none px-3 text-sm text-zinc-900 placeholder:text-zinc-400"
+                className="flex-1 h-full bg-zinc-100 border-none outline-none focus:outline-none focus:!shadow-none px-3 text-sm text-zinc-900 placeholder:text-zinc-400"
               />
             </div>
             {sq.trim() && (
@@ -254,7 +254,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                 onChange={(e) => setSq(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                 placeholder="Search any tool..."
-                className="flex-1 h-full bg-transparent border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
+                className="flex-1 h-full bg-zinc-100 border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
               />
             </div>
             {results.length > 0 && (
