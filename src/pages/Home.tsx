@@ -1,14 +1,9 @@
-import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import toolsData from '../data/tools.json'
 import { CATEGORIES, TOTAL_TOOLS } from '../data/categories'
 import { tileGrad } from '../lib/style'
 import ToolCard from '../components/ToolCard'
 import { POPULAR_TOOLS } from '../data/popular'
 import { toolIconUrl } from '../components/Icon'
-import Fuse from 'fuse.js'
-
-const TOOLS = toolsData as any[]
 
 const SECTION_LABEL_BASE = 'text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] text-center'
 const SECTION_LABEL = `${SECTION_LABEL_BASE} text-black dark:text-white`
@@ -16,10 +11,6 @@ const SECTION_LABEL_WHY = `${SECTION_LABEL_BASE} text-green-600 dark:text-green-
 const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} text-yellow-400`
 
 export default function Home() {
-  const [q, setQ] = useState('')
-  const fuse = useMemo(() => new Fuse(TOOLS, { keys: ['name', 'desc', 'category'], threshold: 0.3 }), [])
-  const results = q.trim() ? fuse.search(q.trim()).map((r) => r.item) : []
-
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 animate-[omni-fade_0.3s_ease-out]">
       <section className="relative pt-8 pb-8 md:pt-16 md:pb-14 text-center overflow-hidden">
@@ -63,35 +54,11 @@ export default function Home() {
           <p className="mt-4 text-[15.5px] md:text-[18px] font-medium text-zinc-900 dark:text-white max-w-xl mx-auto leading-relaxed text-pretty">
             Images, PDFs, code, media and everyday utilities — organized into clean sections, ready when you need them.
           </p>
-          <div className="mt-8 relative max-w-lg mx-auto">
-            <input
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              placeholder="Search any tool…"
-              className="w-full h-[52px] pl-[46px] pr-4 rounded-full border border-transparent bg-white dark:bg-[#242424] text-[15px] text-zinc-900 dark:text-zinc-100 soft-shadow focus:outline-none focus:ring-2 focus:ring-[#4454c9] focus:border-transparent"
-            />
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-[#4454c9]">
-              <circle cx="8" cy="8" r="5.75" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M12.5 12.5L16 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          </div>
-
-          {q.trim() && (
-            <div className="mt-12 text-left">
-              <p className="text-[13px] font-medium text-zinc-900 dark:text-white mb-4">{results.length} result{results.length === 1 ? '' : 's'} for “{q.trim()}”</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {results.map((t) => <ToolCard key={t.id} tool={t} />)}
-              </div>
-              {results.length === 0 && <p className="text-zinc-900 dark:text-white py-10 text-center text-sm font-medium">No tools match “{q.trim()}”. Try “compress”, “pdf” or “qr”.</p>}
-            </div>
-          )}
         </div>
       </section>
 
-      {!q.trim() && (
-        <>
-          <section className="pb-12 md:pb-16">
-            <p className={`${SECTION_LABEL} mb-5 md:mb-6 text-center`}>Browse by Categories</p>
+      <section className="pb-12 md:pb-16">
+        <p className={`${SECTION_LABEL} mb-5 md:mb-6 text-center`}>Browse by Categories</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {CATEGORIES.map((c) => (
                 <Link key={c.slug} to={`/tools/${c.slug}`}
@@ -167,8 +134,6 @@ export default function Home() {
               </div>
               </div>
             </section>
-        </>
-      )}
     </div>
   )
 }

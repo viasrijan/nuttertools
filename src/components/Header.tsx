@@ -21,6 +21,15 @@ const NAV_LABELS: Record<string, string> = {
   'video-tools': 'Video',
 }
 
+const VIEW_ALL_LABELS: Record<string, string> = {
+  'developer-tools': 'dev',
+  'pdf-tools': 'pdf',
+  'text-writing': 'text',
+  'image-tools': 'image',
+  'color-design': 'design',
+  'video-tools': 'video',
+}
+
 const POPULAR_CATS = CATEGORIES
   .filter((c) => NAV_ORDER.includes(c.slug))
   .sort((a, b) => NAV_ORDER.indexOf(a.slug) - NAV_ORDER.indexOf(b.slug))
@@ -73,10 +82,10 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-1.5 sm:px-3.5">
       <div className="mx-auto max-w-[1200px]">
-        <div className="rounded-full border border-transparent bg-white soft-shadow">
+        <div className="rounded-full border border-transparent bg-white dark:bg-[#242424] soft-shadow">
           <div className="px-2.5 sm:px-6 h-[56px] sm:h-[68px] flex items-center gap-2 sm:gap-3">
             <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
-              className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 shrink-0 grid place-items-center text-zinc-900 hover:bg-zinc-100 rounded-full transition-colors">
+              className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 shrink-0 grid place-items-center text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-white/10 rounded-full transition-colors">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                 <path d="M2 3.5h12M2 8h12M2 12.5h12" />
               </svg>
@@ -98,7 +107,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                     onMouseEnter={() => setOpen(c.slug)}
                     onMouseLeave={() => setOpen((o) => (o === c.slug ? null : o))}>
                     <button onClick={() => setOpen(open === c.slug ? null : c.slug)}
-                      className={`flex items-center gap-1 whitespace-nowrap text-[13px] font-semibold px-2 py-2 transition-colors ${open === c.slug ? 'bg-zinc-200/80 text-zinc-900' : 'text-zinc-900 hover:text-green-600 hover:bg-zinc-100'}`}>
+                      className={`flex items-center gap-1 whitespace-nowrap text-[13px] font-semibold px-2 py-2 text-zinc-900 dark:text-white ${open === c.slug ? 'bg-zinc-200/80 dark:bg-white/10' : ''}`}>
                       {NAV_LABELS[c.slug] || c.name}
                       <svg width="8" height="8" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === c.slug ? 'rotate-180' : ''}`}>
                         <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -120,8 +129,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                               </Link>
                             ))}
                             <Link to={`/tools/${c.slug}`} onClick={() => go(`/tools/${c.slug}`)}
-                              className="mt-1 px-3 py-2 text-[12.5px] font-bold text-yellow-500 dark:text-yellow-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/80">
-                              View all →
+                              className="mt-1 px-3 py-2 text-[12.5px] font-bold text-[#4454c9] dark:text-[#8f98f2] hover:bg-zinc-50 dark:hover:bg-zinc-800/80">
+                              View all {VIEW_ALL_LABELS[c.slug] || c.name.toLowerCase()} tools →
                             </Link>
                           </div>
                         </div>
@@ -133,14 +142,14 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </nav>
 
             <div ref={searchRef} className="relative shrink-0 w-[150px] sm:w-[210px] md:w-[250px] xl:w-[300px]">
-              <div className="flex items-center h-9 sm:h-10 border border-[#4454c9] bg-white dark:bg-white rounded-full overflow-hidden focus-within:shadow-[0_0_0_3px_rgba(68,84,201,0.18)]">
+              <div className="flex items-center h-9 sm:h-10 border border-[#4454c9] bg-white dark:bg-white rounded-full overflow-hidden">
                 <Search className="w-4 h-4 ml-3 shrink-0 text-[#4454c9]" strokeWidth={2.2} />
                 <input
                   value={sq}
                   onChange={(e) => setSq(e.target.value)}
                   onFocus={() => setFocus(true)}
                   onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
-                  placeholder="Search any tools..."
+                  placeholder="Search any tool..."
                   className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
                 />
               </div>
@@ -169,7 +178,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </div>
 
             <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-yellow-400 dark:bg-black text-white grid place-items-center hover:brightness-95 transition-colors">
+              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-white text-yellow-500 border border-zinc-200 dark:bg-yellow-400 dark:text-white dark:border-transparent grid place-items-center transition-colors">
               <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2.4} />
             </button>
           </div>
@@ -192,13 +201,13 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
           <div className="px-4 sm:px-6 pt-5">
-            <div className="flex items-center h-11 border border-[#4454c9] bg-white dark:bg-white rounded-full overflow-hidden focus-within:shadow-[0_0_0_3px_rgba(68,84,201,0.18)]">
+            <div className="flex items-center h-11 border border-[#4454c9] bg-white dark:bg-white rounded-full overflow-hidden">
               <Search className="w-4 h-4 ml-3 shrink-0 text-[#4454c9]" strokeWidth={2.2} />
               <input
                 value={sq}
                 onChange={(e) => setSq(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
-                placeholder="Search any tools..."
+                placeholder="Search any tool..."
                 className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
               />
             </div>
