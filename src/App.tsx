@@ -1,5 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
+import AllToolsPage from './pages/AllToolsPage'
 import CategoryPage from './pages/CategoryPage'
 import ToolPage from './pages/ToolPage'
 import Header from './components/Header'
@@ -26,6 +27,7 @@ export default function App() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/tools" element={<AllToolsPage />} />
           <Route path="/tools/:slug" element={<CategoryPage />} />
           <Route path="/tool/:id" element={<ToolPage />} />
         </Routes>

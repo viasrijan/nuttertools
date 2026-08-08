@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Lightbulb, Search } from 'lucide-react'
-import { CATEGORIES, GROUPS } from '../data/categories'
+import { LayoutGrid, Lightbulb, Search } from 'lucide-react'
+import { CATEGORIES } from '../data/categories'
 import { textAccent, hueFor } from '../lib/style'
 import Logo from './Logo'
 import { CutoutCategoryIcon, CutoutToolIcon } from './Icon'
@@ -90,8 +90,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
         <div className="rounded-none sm:rounded-full border border-transparent bg-white soft-shadow">
           <div className="px-2.5 sm:px-6 h-[56px] sm:h-[68px] flex items-center gap-2 sm:gap-3">
             <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
-              className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 shrink-0 grid place-items-center text-zinc-900 hover:bg-zinc-100 rounded-full transition-colors">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+              className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center transition-colors">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                 <path d="M2 3.5h12M2 8h12M2 12.5h12" />
               </svg>
             </button>
@@ -104,7 +104,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
               </span>
             </Link>
 
-            <nav ref={navRef} className="hidden lg:flex items-center gap-0.5 flex-1 justify-center min-w-0">
+            <nav ref={navRef} className="hidden lg:flex items-center gap-1 flex-1 justify-center min-w-0">
               {POPULAR_CATS.map((c) => {
                 const tools = catTools(c.name)
                 return (
@@ -112,11 +112,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                     onMouseEnter={() => setOpen(c.slug)}
                     onMouseLeave={() => setOpen((o) => (o === c.slug ? null : o))}>
                     <button onClick={() => setOpen(open === c.slug ? null : c.slug)}
-                      className="flex items-center gap-1 whitespace-nowrap text-[13px] font-semibold px-2 py-2 text-zinc-900">
+                      className="flex items-center whitespace-nowrap text-[13px] font-semibold px-3.5 py-2 text-zinc-900">
                       {NAV_LABELS[c.slug] || c.name}
-                      <svg width="8" height="8" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === c.slug ? 'rotate-180' : ''}`}>
-                        <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
                     </button>
                     {open === c.slug && (
                       <div className="absolute left-0 top-full pt-2">
@@ -141,9 +138,13 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                         </div>
                       </div>
                     )}
-                  </div>
-                )
-              })}
+                    </div>
+                  )
+                })}
+              <Link to="/tools" onClick={() => go('/tools')}
+                className="flex items-center whitespace-nowrap text-[13px] font-semibold px-3.5 py-2 text-zinc-900">
+                All Tools
+              </Link>
             </nav>
 
             <div ref={searchRef} className="relative shrink-0 hidden lg:block w-[150px] sm:w-[210px] md:w-[250px] xl:w-[300px]">
@@ -189,10 +190,6 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
               </button>
             </div>
 
-            <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
-              <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2.4} />
-            </button>
           </div>
         </div>
 
@@ -275,29 +272,29 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             )}
           </div>
 
-          <div className="px-4 sm:px-6 py-6 space-y-8">
-            {GROUPS.map((g) => (
-              <div key={g.id}>
-                <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-green-600 dark:text-green-400 mb-2 px-1">{g.label}</p>
-                <div className="flex flex-col">
-                  {g.categories.map((c) => (
-                    <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}
-                      className="flex items-center gap-3 px-2 py-3 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-left transition-colors">
-                      <span className="w-10 h-10 shrink-0">
-                        <CutoutCategoryIcon slug={c.slug} className="w-full h-full" />
-                      </span>
-                      <span className="flex-1 min-w-0">
-                        <span className="block text-[15px] font-semibold leading-tight text-zinc-900 dark:text-white">{c.name}</span>
-                        <span className="block text-[12px] font-medium text-zinc-900/70 dark:text-zinc-100/70 mt-0.5">{c.count} tools</span>
-                      </span>
-                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="text-zinc-900/50 dark:text-zinc-100/50 shrink-0">
-                        <path d="M6 3.5L10.5 8L6 12.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                  ))}
-                </div>
-              </div>
+          <div className="px-4 sm:px-6 py-6 flex flex-col">
+            {POPULAR_CATS.map((c) => (
+              <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}
+                className="flex items-center gap-3 px-2 py-3.5 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-left transition-colors">
+                <span className="w-10 h-10 shrink-0">
+                  <CutoutCategoryIcon slug={c.slug} className="w-full h-full" />
+                </span>
+                <span className="flex-1 min-w-0">
+                  <span className="block text-[15px] font-semibold leading-tight text-zinc-900 dark:text-white">{NAV_LABELS[c.slug] || c.name}</span>
+                  <span className="block text-[12px] font-medium text-zinc-900/70 dark:text-zinc-100/70 mt-0.5">{c.count} tools</span>
+                </span>
+              </button>
             ))}
+            <button onClick={() => go('/tools')}
+              className="flex items-center gap-3 px-2 py-3.5 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-left transition-colors">
+              <span className="w-10 h-10 shrink-0 grid place-items-center bg-black dark:bg-white text-white dark:text-black rounded-full">
+                <LayoutGrid className="w-5 h-5" strokeWidth={2.2} />
+              </span>
+              <span className="flex-1 min-w-0">
+                <span className="block text-[15px] font-semibold leading-tight text-zinc-900 dark:text-white">All Tools</span>
+                <span className="block text-[12px] font-medium text-zinc-900/70 dark:text-zinc-100/70 mt-0.5">Everything at once</span>
+              </span>
+            </button>
           </div>
 
           <div className="px-4 sm:px-6 pb-10 flex items-center gap-3">
@@ -310,8 +307,13 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
               GitHub
             </a>
           </div>
-        </div>
-      )}
-    </header>
-  )
+      </div>
+    )}
+
+    <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
+      className={`fixed bottom-5 right-5 z-[70] w-11 h-11 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center shadow-lg transition-all hover:scale-105 active:scale-95 ${mOpen ? 'hidden' : ''}`}>
+      <Lightbulb className="w-5 h-5" strokeWidth={2.4} />
+    </button>
+  </header>
+)
 }
