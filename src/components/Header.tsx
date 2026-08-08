@@ -94,7 +94,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             <Link to="/" onClick={() => setMOpen(false)}
               className={`flex items-center gap-2.5 sm:gap-3 shrink-0 flex-1 justify-center lg:flex-none lg:justify-start ${mOpen ? 'invisible' : ''}`}>
               <Logo size={32} className="w-8 h-8 sm:w-9 sm:h-9" />
-              <span className="text-[21px] sm:text-[25px] font-extrabold tracking-[-0.03em] text-[#4454c9]">
+              <span className="text-[21px] sm:text-[25px] font-extrabold tracking-[-0.03em] text-[#4454c9] dark:text-white">
                 NutterTools
               </span>
             </Link>
@@ -129,7 +129,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                               </Link>
                             ))}
                             <Link to={`/tools/${c.slug}`} onClick={() => go(`/tools/${c.slug}`)}
-                              className="mt-1 px-3 py-2 text-[12.5px] font-bold text-[#4454c9] dark:text-[#8f98f2] hover:bg-zinc-50 dark:hover:bg-zinc-800/80">
+                              className="mt-1 px-3 py-2 text-[12.5px] font-bold text-green-700 dark:text-green-600 hover:bg-zinc-50 dark:hover:bg-zinc-800/80">
                               View all {VIEW_ALL_LABELS[c.slug] || c.name.toLowerCase()} tools →
                             </Link>
                           </div>
@@ -150,7 +150,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   onFocus={() => setFocus(true)}
                   onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                   placeholder="Search any tool..."
-                  className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
+                  className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400 dark:placeholder:text-zinc-400"
                 />
               </div>
               {focus && sq.trim() && (
@@ -178,7 +178,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </div>
 
             <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-white text-yellow-500 border border-zinc-200 dark:bg-yellow-400 dark:text-white dark:border-transparent grid place-items-center transition-colors">
+              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-yellow-400 text-white dark:bg-white dark:text-yellow-500 grid place-items-center transition-colors">
               <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2.4} />
             </button>
           </div>
@@ -190,7 +190,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           <div className="px-4 sm:px-6 pt-5 flex items-center justify-between gap-3">
             <span className="flex items-center gap-2.5">
               <Logo size={30} />
-              <span className="text-[23px] font-extrabold tracking-[-0.03em] text-[#4454c9]">NutterTools</span>
+              <span className="text-[23px] font-extrabold tracking-[-0.03em] text-[#4454c9] dark:text-white">NutterTools</span>
             </span>
             <button onClick={() => setMOpen(false)} aria-label="Close menu"
               className="w-10 h-10 shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center transition-colors">
@@ -208,7 +208,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                 onChange={(e) => setSq(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                 placeholder="Search any tool..."
-                className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400"
+                className="flex-1 h-full bg-white dark:bg-white border-none outline-none focus:outline-none focus:!shadow-none px-2 text-sm text-zinc-900 placeholder:text-zinc-400 dark:placeholder:text-zinc-400"
               />
             </div>
             {results.length > 0 && (

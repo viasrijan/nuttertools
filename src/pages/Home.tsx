@@ -31,7 +31,7 @@ export default function Home() {
           ))}
         </div>
         <div className="relative">
-          <p className="inline-flex items-center gap-2 text-[15px] font-semibold text-white bg-[#f26444] px-[18px] py-[9px] mb-6 rounded-full shadow-sm">
+          <p className="inline-flex items-center gap-2 text-[15px] font-semibold text-white bg-gradient-to-b from-[#ff7a55] to-[#d64525] px-[18px] py-[9px] mb-6 rounded-full shadow-sm">
             <span className="w-2 h-2 rounded-full bg-white" />
             {TOTAL_TOOLS} free tools, one place
           </p>
