@@ -1,36 +1,22 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Lightbulb, Search, X } from 'lucide-react'
-import { CATEGORIES, GROUPS } from '../data/categories'
+import { Lightbulb, Search } from 'lucide-react'
+import { GROUPS } from '../data/categories'
 import { textAccent, hueFor } from '../lib/style'
 import Logo from './Logo'
 import { CutoutCategoryIcon, CutoutToolIcon } from './Icon'
-import { popularToolsForGroup } from '../data/popular'
+import { POPULAR_TOOLS } from '../data/popular'
 import toolsData from '../data/tools.json'
 import Fuse from 'fuse.js'
 
 const TOOLS = toolsData as any[]
 
-const NAV_LABELS: Record<string, string> = {
-  'image-tools': 'Images',
-  'pdf-tools': 'PDFs',
-  'developer-tools': 'Dev',
-  'encoding-security': 'Security',
-  'text-writing': 'Text',
-  'color-design': 'Design',
-  'video-tools': 'Video',
-  'audio-tools': 'Audio',
-  'file-tools': 'Files',
-  'web-seo': 'Web',
-  'everyday-utilities': 'Utilities',
-  'ai-tools': 'AI',
-}
+const POPULAR_NAV = POPULAR_TOOLS.slice(0, 6)
 
 export default function Header({ dark, toggle }: { dark: boolean, toggle: () => void }) {
-  const [open, setOpen] = useState<string | null>(null)
   const [mOpen, setMOpen] = useState(false)
-  const [sOpen, setSOpen] = useState(false)
   const [sq, setSq] = useState('')
+  const [focus, setFocus] = useState(false)
   const navRef = useRef<HTMLElement>(null)
   const searchRef = useRef<HTMLDivElement>(null)
   const navigate = useNavigate()
@@ -40,17 +26,15 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   const results = sq.trim() ? fuse.search(sq.trim()).map((r) => r.item).slice(0, 8) : []
 
   useEffect(() => {
-    setOpen(null)
-    setSOpen(false)
     setMOpen(false)
     setSq('')
+    setFocus(false)
   }, [location.pathname])
 
   useEffect(() => {
     const h = (e: MouseEvent) => {
       const t = e.target as Node
-      if (navRef.current && !navRef.current.contains(t)) setOpen(null)
-      if (searchRef.current && !searchRef.current.contains(t)) setSOpen(false)
+      if (searchRef.current && !searchRef.current.contains(t)) setFocus(false)
     }
     document.addEventListener('mousedown', h)
     return () => document.removeEventListener('mousedown', h)
@@ -62,14 +46,11 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   }, [mOpen])
 
   const go = (path: string) => {
-    setOpen(null)
     setMOpen(false)
-    setSOpen(false)
     setSq('')
+    setFocus(false)
     navigate(path)
   }
-
-  const catTools = (name: string) => TOOLS.filter((t) => t.category === name)
 
   return (
     <header className="sticky top-0 z-50 pt-5 sm:pt-8 px-1.5 sm:px-3.5">
@@ -91,76 +72,36 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
               </span>
             </Link>
 
-            <nav ref={navRef} className="hidden lg:flex items-center gap-0.5 flex-1 justify-center min-w-0">
-              {CATEGORIES.map((c) => {
-                const tools = catTools(c.name)
-                return (
-                  <div key={c.slug} className="relative shrink-0"
-                    onMouseEnter={() => setOpen(c.slug)}
-                    onMouseLeave={() => setOpen((o) => (o === c.slug ? null : o))}>
-                    <button onClick={() => setOpen(open === c.slug ? null : c.slug)}
-                      className={`flex items-center gap-1 whitespace-nowrap text-[13px] font-semibold px-2 py-2 transition-colors ${open === c.slug ? 'bg-zinc-200/80 text-zinc-900' : 'text-zinc-900 hover:text-green-600 hover:bg-zinc-100'}`}>
-                      {NAV_LABELS[c.slug] || c.name}
-                      <svg width="8" height="8" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === c.slug ? 'rotate-180' : ''}`}>
-                        <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                    {open === c.slug && (
-                      <div className="absolute left-0 top-full pt-2">
-                        <div className="w-[320px] origin-top rounded-3xl border border-transparent bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
-                          <div className="flex flex-col gap-0.5">
-                            {tools.slice(0, 8).map((t) => (
-                              <Link key={t.id} to={`/tool/${t.id}`} onClick={() => setOpen(null)}
-                                className="flex items-center gap-3 px-3 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
-                                <span className="w-[18px] h-[18px] shrink-0">
-                                  <CutoutToolIcon id={t.id} className="w-full h-full" tone={textAccent(hueFor(t.category))} />
-                                </span>
-                                <span className="flex-1 min-w-0">
-                                  <span className="block text-[13px] font-semibold leading-tight truncate text-zinc-900 dark:text-white">{t.name}</span>
-                                </span>
-                              </Link>
-                            ))}
-                            <Link to={`/tools/${c.slug}`} onClick={() => setOpen(null)}
-                              className="mt-1 px-3 py-2 text-[12.5px] font-bold text-green-600 dark:text-green-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/80">
-                              View all {tools.length} {c.name} →
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
+            <nav ref={navRef} className="hidden lg:flex items-center gap-1 flex-1 justify-center min-w-0">
+              {POPULAR_NAV.map((t) => (
+                <Link key={t.id} to={`/tool/${t.id}`}
+                  className="flex items-center gap-1.5 whitespace-nowrap text-[13px] font-semibold text-zinc-900 hover:text-green-600 px-2 py-2 transition-colors">
+                  <span className="w-[15px] h-[15px] shrink-0">
+                    <CutoutToolIcon id={t.id} className="w-full h-full" tone={textAccent(hueFor(t.category))} />
+                  </span>
+                  <span className="truncate">{t.name}</span>
+                </Link>
+              ))}
             </nav>
 
-            <div ref={searchRef} className={`relative shrink-0 flex items-center transition-all duration-200 overflow-hidden ${sOpen ? 'w-56 sm:w-72' : 'w-9 sm:w-10'}`}>
-              {sOpen ? (
-                <div className="flex items-center w-full h-9 sm:h-10 border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800">
-                  <Search className="w-4 h-4 ml-3 shrink-0 text-zinc-500" strokeWidth={2.2} />
-                  <input
-                    autoFocus
-                    value={sq}
-                    onChange={(e) => setSq(e.target.value)}
-                    onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`); if (e.key === 'Escape') { setSOpen(false); setSq('') } }}
-                    placeholder="Search tools…"
-                    className="flex-1 h-full bg-transparent border-none outline-none px-2 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400"
-                  />
-                  <button onClick={() => { setSOpen(false); setSq('') }} aria-label="Close search" className="w-9 h-full shrink-0 grid place-items-center text-zinc-500 hover:text-zinc-900">
-                    <X className="w-4 h-4" strokeWidth={2.2} />
-                  </button>
-                </div>
-              ) : (
-                <button onClick={() => setSOpen(true)} aria-label="Search tools" aria-expanded={false}
-                  className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 grid place-items-center text-zinc-900 hover:bg-zinc-100 rounded-full transition-colors">
-                  <Search className="w-4 h-4" strokeWidth={2.2} />
-                </button>
-              )}
-              {sOpen && sq.trim() && (
+            <div ref={searchRef} className="relative shrink-0 w-[150px] sm:w-[210px] md:w-[250px] xl:w-[300px]">
+              <div className="flex items-center h-9 sm:h-10 border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 rounded-full overflow-hidden">
+                <Search className="w-4 h-4 ml-3 shrink-0 text-zinc-500" strokeWidth={2.2} />
+                <input
+                  value={sq}
+                  onChange={(e) => setSq(e.target.value)}
+                  onFocus={() => setFocus(true)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
+                  placeholder="Search tools…"
+                  className="flex-1 h-full bg-transparent border-none outline-none focus:outline-none px-2 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400"
+                />
+              </div>
+              {focus && sq.trim() && (
                 <div className="absolute right-0 top-full mt-2 w-72 sm:w-80 rounded-3xl border border-transparent bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
                   {results.length > 0 ? (
                     <div className="flex flex-col gap-0.5">
                       {results.map((t) => (
-                        <Link key={t.id} to={`/tool/${t.id}`} onClick={() => { setSOpen(false); setSq('') }}
+                        <Link key={t.id} to={`/tool/${t.id}`} onClick={() => go(`/tool/${t.id}`)}
                           className="flex items-center gap-3 px-3 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
                           <span className="w-[18px] h-[18px] shrink-0">
                             <CutoutToolIcon id={t.id} className="w-full h-full" tone={textAccent(hueFor(t.category))} />
@@ -203,14 +144,14 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
           <div className="px-4 sm:px-6 pt-5">
-            <div className="flex items-center h-11 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800">
+            <div className="flex items-center h-11 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 rounded-full overflow-hidden">
               <Search className="w-4 h-4 ml-3 shrink-0 text-zinc-500" strokeWidth={2.2} />
               <input
                 value={sq}
                 onChange={(e) => setSq(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter' && results[0]) go(`/tool/${results[0].id}`) }}
                 placeholder="Search tools…"
-                className="flex-1 h-full bg-transparent border-none outline-none px-2 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400"
+                className="flex-1 h-full bg-transparent border-none outline-none focus:outline-none px-2 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400"
               />
             </div>
             {results.length > 0 && (
