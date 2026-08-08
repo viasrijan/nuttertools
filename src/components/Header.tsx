@@ -94,7 +94,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             <Link to="/" onClick={() => setMOpen(false)}
               className={`flex items-center gap-2.5 sm:gap-3 shrink-0 flex-1 justify-center lg:flex-none lg:justify-start ${mOpen ? 'invisible' : ''}`}>
               <Logo size={32} className="w-8 h-8 sm:w-9 sm:h-9" />
-              <span className="text-[21px] sm:text-[25px] font-extrabold tracking-[-0.03em] text-[#4454c9] dark:text-white">
+              <span className="text-[21px] sm:text-[25px] font-extrabold tracking-[-0.03em] text-[#4454c9]">
                 NutterTools
               </span>
             </Link>
@@ -107,7 +107,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                     onMouseEnter={() => setOpen(c.slug)}
                     onMouseLeave={() => setOpen((o) => (o === c.slug ? null : o))}>
                     <button onClick={() => setOpen(open === c.slug ? null : c.slug)}
-                      className={`flex items-center gap-1 whitespace-nowrap text-[13px] font-semibold px-2 py-2 text-zinc-900 dark:text-white ${open === c.slug ? 'bg-zinc-200/80 dark:bg-white/10' : ''}`}>
+                      className="flex items-center gap-1 whitespace-nowrap text-[13px] font-semibold px-2 py-2 text-zinc-900 dark:text-white">
                       {NAV_LABELS[c.slug] || c.name}
                       <svg width="8" height="8" viewBox="0 0 10 10" fill="none" className={`transition-transform ${open === c.slug ? 'rotate-180' : ''}`}>
                         <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -178,7 +178,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </div>
 
             <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-yellow-400 text-white dark:bg-white dark:text-yellow-500 grid place-items-center transition-colors">
+              className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-white text-yellow-500 border border-zinc-200 dark:bg-yellow-400 dark:text-white dark:border-transparent grid place-items-center transition-colors">
               <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2.4} />
             </button>
           </div>
@@ -190,7 +190,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           <div className="px-4 sm:px-6 pt-5 flex items-center justify-between gap-3">
             <span className="flex items-center gap-2.5">
               <Logo size={30} />
-              <span className="text-[23px] font-extrabold tracking-[-0.03em] text-[#4454c9] dark:text-white">NutterTools</span>
+              <span className="text-[23px] font-extrabold tracking-[-0.03em] text-[#4454c9]">NutterTools</span>
             </span>
             <button onClick={() => setMOpen(false)} aria-label="Close menu"
               className="w-10 h-10 shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center transition-colors">
