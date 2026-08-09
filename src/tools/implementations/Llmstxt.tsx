@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 
 export default function Llmstxt() {
   const [title, setTitle] = useState('NutterTools')
-  const [desc, setDesc] = useState('Free, privacy-first internet tools that run entirely in your browser.')
+  const [desc, setDesc] = useState('Free internet tools for everyday tasks - images, PDFs, audio, video and more.')
   const [sections, setSections] = useState('Tools\n- PDF Tools: https://nutter.tools/tools/pdf-tools\n- Image Tools: https://nutter.tools/tools/image-tools\n- AI Tools: https://nutter.tools/tools/ai-tools\n\nAbout\n- About NutterTools: https://nutter.tools/about\n- Privacy: https://nutter.tools/privacy')
 
   const out = useMemo(() => {

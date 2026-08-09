@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 export default function TtsStt() {
-  const [text, setText] = useState('Hello! I am your offline text to speech tool.')
+  const [text, setText] = useState('Hello! I am your text to speech tool.')
   const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null)
   const [rate, setRate] = useState(1)
   const [pitch, setPitch] = useState(1)

@@ -2,7 +2,7 @@
   {
     "id": "bg-remover",
     "name": "Background Remover",
-    "desc": "Remove bg from any image - AI offline",
+    "desc": "Remove bg from any image - AI",
     "category": "Image Tools",
     "icon": "✂️",
     "implemented": true
@@ -650,7 +650,7 @@
   {
     "id": "image-upscaler",
     "name": "AI Image Upscaler",
-    "desc": "Upscale images 4x offline",
+    "desc": "Upscale images 2x offline",
     "category": "AI Tools",
     "icon": "🔍",
     "implemented": true
@@ -665,8 +665,8 @@
   },
   {
     "id": "translator",
-    "name": "Offline Translator",
-    "desc": "Translate text offline",
+    "name": "Translator",
+    "desc": "Translate text",
     "category": "AI Tools",
     "icon": "🌍",
     "implemented": true
@@ -682,7 +682,7 @@
   {
     "id": "summarizer",
     "name": "Text Summarizer",
-    "desc": "Summarize long articles offline",
+    "desc": "Summarize long articles",
     "category": "AI Tools",
     "icon": "📝",
     "implemented": true
