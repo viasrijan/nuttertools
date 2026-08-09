@@ -28,7 +28,7 @@ export default function ToolPage() {
       document.head.appendChild(meta)
     }
     meta.content = `${tool.desc}. 100% free, private and no sign-up needed.`
-    return () => { document.title = 'NutterTools - All useful tools in one place' }
+    return () => { document.title = 'NutterTools' }
   }, [tool])
 
   if (!tool) {

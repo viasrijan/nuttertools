@@ -24,7 +24,7 @@ export default function CategoryPage() {
       document.head.appendChild(meta)
     }
     meta.content = `${cat.blurb}. ${cat.count} free, private tools — no sign-up needed.`
-    return () => { document.title = 'NutterTools - All useful tools in one place' }
+    return () => { document.title = 'NutterTools' }
   }, [cat])
 
   const list = useMemo(() => (cat ? TOOLS.filter((t) => t.category === cat.name) : []), [cat])
