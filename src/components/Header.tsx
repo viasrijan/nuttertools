@@ -59,6 +59,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   const [focus, setFocus] = useState(false)
   const navRef = useRef<HTMLElement>(null)
   const searchRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLElement>(null)
+  const [menuTop, setMenuTop] = useState(0)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -87,6 +89,18 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
     return () => { document.body.style.overflow = '' }
   }, [mOpen])
 
+  useEffect(() => {
+    if (!mOpen) return
+    const measure = () => { if (headerRef.current) setMenuTop(headerRef.current.getBoundingClientRect().bottom) }
+    measure()
+    window.addEventListener('resize', measure)
+    window.addEventListener('scroll', measure)
+    return () => {
+      window.removeEventListener('resize', measure)
+      window.removeEventListener('scroll', measure)
+    }
+  }, [mOpen])
+
   const go = (path: string) => {
     setOpen(null)
     setMOpen(false)
@@ -98,9 +112,9 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   const catTools = (name: string) => TOOLS.filter((t) => t.category === name)
 
   return (
-    <header className="sticky top-0 z-50 pt-0 sm:pt-8 px-0 sm:px-3.5">
+    <header ref={headerRef} className="sticky top-0 z-50 pt-0 sm:pt-8 px-0 sm:px-3.5">
       <div className="mx-auto max-w-[1200px] relative">
-        <div className={`rounded-none sm:rounded-full border border-transparent bg-[#f5f5f5] lg:bg-white soft-shadow max-lg:dark:bg-[#1a1a1a] ${mOpen ? 'max-lg:invisible' : ''}`}>
+        <div className="rounded-none sm:rounded-full border border-transparent bg-[#f5f5f5] lg:bg-white soft-shadow max-lg:dark:bg-[#1a1a1a]">
           <div className="px-4 sm:px-6 pt-3 sm:pt-4 lg:pt-0 lg:h-[68px] lg:flex lg:items-center lg:gap-3">
             <div className="flex items-center justify-between gap-3 lg:contents">
               <Link to="/" onClick={() => setMOpen(false)}
@@ -110,22 +124,24 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   NutterTools
                 </span>
               </Link>
-              <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-                className="lg:hidden w-[30px] h-[30px] shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
-                <Lightbulb className="w-3.5 h-3.5" strokeWidth={2.4} />
-              </button>
-              <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
-                className="lg:hidden w-[30px] h-[30px] shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center transition-colors">
-                {mOpen ? (
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-                    <path d="M3 3L13 13M13 3L3 13" />
-                  </svg>
-                ) : (
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-                    <path d="M2 3.5h12M2 8h12M2 12.5h12" />
-                  </svg>
-                )}
-              </button>
+              <div className="flex items-center gap-1">
+                <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
+                  className="lg:hidden w-[30px] h-[30px] shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
+                  <Lightbulb className="w-3.5 h-3.5" strokeWidth={2.4} />
+                </button>
+                <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
+                  className="lg:hidden w-[30px] h-[30px] shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center transition-colors">
+                  {mOpen ? (
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                      <path d="M3 3L13 13M13 3L3 13" />
+                    </svg>
+                  ) : (
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                      <path d="M2 3.5h12M2 8h12M2 12.5h12" />
+                    </svg>
+                  )}
+                </button>
+              </div>
             </div>
 
             <nav ref={navRef} className="hidden lg:flex items-center gap-1 flex-1 justify-center min-w-0">
@@ -183,24 +199,24 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                 />
               </div>
               {sq.trim() && (
-                <div className="absolute left-0 right-0 top-full mt-2 z-[70] rounded-3xl border border-zinc-200 bg-white dark:bg-white soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
+                <div className="absolute left-0 right-0 top-full mt-2 z-[70] rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#242424] soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
                   {results.length > 0 ? (
                     <div className="flex flex-col gap-0.5">
                       {results.map((t) => (
                         <Link key={t.id} to={`/tool/${t.id}`} onClick={() => go(`/tool/${t.id}`)}
-                          className="flex items-center gap-3 px-3 py-2 hover:bg-zinc-50 group">
+                          className="flex items-center gap-3 px-3 py-2 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 group">
                           <span className="w-[18px] h-[18px] shrink-0">
                             <CutoutToolIcon id={t.id} className="w-full h-full" tone={textAccent(hueFor(t.category))} />
                           </span>
                           <span className="flex-1 min-w-0">
-                            <span className="block text-[13px] font-semibold leading-tight truncate text-zinc-900">{t.name}</span>
-                            <span className="block text-[11px] font-medium text-zinc-500 truncate">{t.category}</span>
+                            <span className="block text-[13px] font-semibold leading-tight truncate text-zinc-900 dark:text-white">{t.name}</span>
+                            <span className="block text-[11px] font-medium text-zinc-500 dark:text-zinc-400 truncate">{t.category}</span>
                           </span>
                         </Link>
                       ))}
                     </div>
                   ) : (
-                    <p className="px-3 py-4 text-center text-[13px] font-medium text-zinc-500">No tools match “{sq}”</p>
+                    <p className="px-3 py-4 text-center text-[13px] font-medium text-zinc-500 dark:text-zinc-400">No tools match “{sq}”</p>
                   )}
                 </div>
               )}
@@ -251,30 +267,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
         {mOpen && (
-          <div className="lg:hidden fixed inset-0 z-[60] bg-[#f5f5f5] dark:bg-[#1a1a1a] overflow-hidden animate-[omni-drop_0.2s_ease-out]">
-            <div className="flex items-center justify-between gap-3 px-4 sm:px-6 pt-3 sm:pt-4">
-              <Link to="/" onClick={() => setMOpen(false)}
-                className="flex items-center gap-2.5 sm:gap-3 shrink-0">
-                <Logo size={30} className="w-[30px] h-[30px]" />
-                <span className={`text-[23px] sm:text-[25px] font-extrabold tracking-[-0.03em] ${TITLE_GRAD}`}>
-                  NutterTools
-                </span>
-              </Link>
-              <div className="flex items-center gap-2">
-                <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-                  className="w-[30px] h-[30px] shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
-                  <Lightbulb className="w-3.5 h-3.5" strokeWidth={2.4} />
-                </button>
-                <button onClick={() => setMOpen(false)} aria-label="Close menu"
-                  className="w-[30px] h-[30px] shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center transition-colors">
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-                    <path d="M3 3L13 13M13 3L3 13" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-4 pb-4 flex flex-col h-[calc(100dvh-54px)]">
+          <div className="lg:hidden fixed inset-x-0 z-[60] bg-[#f5f5f5] dark:bg-[#1a1a1a] overflow-hidden animate-[omni-drop_0.2s_ease-out]" style={{ top: menuTop }}>
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-3 pb-4 flex flex-col h-full">
               <div className="flex flex-col flex-1 min-h-0 justify-center">
                 {POPULAR_CATS.map((c) => (
                   <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}
@@ -302,11 +296,11 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
 
               <div className="flex items-center gap-3">
                 <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
-                  className="flex-1 h-11 grid place-items-center bg-red-600 text-white text-[14px] font-bold hover:opacity-90 transition-opacity">
+                  className="flex-1 h-11 grid place-items-center bg-gradient-to-r from-red-600 to-pink-600 text-white text-[14px] font-bold hover:opacity-90 transition-opacity">
                   Donate
                 </a>
                 <a href="https://github.com/viasrijan/nuttertools" target="_blank" rel="noreferrer"
-                  className="h-11 px-6 grid place-items-center border border-zinc-300 dark:border-zinc-700 text-[14px] font-semibold text-zinc-900 dark:text-white hover:bg-zinc-200/60 dark:hover:bg-zinc-800/60 transition-colors">
+                  className="flex-1 h-11 grid place-items-center border border-zinc-300 dark:border-zinc-700 text-[14px] font-semibold text-zinc-900 dark:text-white hover:bg-zinc-200/60 dark:hover:bg-zinc-800/60 transition-colors">
                   GitHub
                 </a>
               </div>
