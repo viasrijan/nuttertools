@@ -44,7 +44,7 @@ export default function Base64Tool(){
               }
             }
           }
-        }} className="border border-dashed border-zinc-300 dark:border-zinc-700 h-12 mt-2 rounded outline-none focus:border-[#4454c9]" />
+        }} className="border border-dashed border-zinc-300 dark:border-zinc-700 h-12 mt-2 rounded outline-none focus:border-indigo-600" />
         {fileOut && <textarea value={fileOut} readOnly className="w-full h-24 border p-2 text-[10px] mt-2"/>}
       </div>
     </div>

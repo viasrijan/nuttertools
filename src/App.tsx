@@ -43,7 +43,7 @@ export default function App() {
             </div>
             <div className="md:text-right flex flex-col items-center md:items-end gap-4">
               <div>
-                <p className="text-[33px] font-extrabold tracking-[-0.03em] leading-none text-[#4454c9]">NutterTools</p>
+                <p className="text-[33px] font-extrabold tracking-[-0.03em] leading-none bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent">NutterTools</p>
                 <p className="text-[20px] font-medium text-zinc-900 dark:text-white mt-2">
                   by{' '}
                   <a href="https://github.com/viasrijan" target="_blank" rel="noreferrer" className="font-bold text-zinc-900 dark:text-white hover:text-green-600 dark:hover:text-green-400">ViaSrijan</a>

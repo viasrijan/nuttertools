@@ -31,7 +31,7 @@ export default function DropZone({ onFiles, accept, multiple = true, label = "Dr
       onDragOver={(e) => e.preventDefault()}
       onDrop={(e) => { e.preventDefault(); if (e.dataTransfer.files) onFiles(e.dataTransfer.files) }}
       onPaste={handlePaste}
-      className="border-2 border-dashed border-zinc-300 dark:border-zinc-700 p-8 text-center cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-900 transition outline-none focus:border-[#4454c9] focus:ring-2 focus:ring-[#4454c9]/30"
+      className="border-2 border-dashed border-zinc-300 dark:border-zinc-700 p-8 text-center cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-900 transition outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/30"
     >
       <div className="text-3xl mb-2">📁</div>
       <p className="text-sm font-medium">{label}</p>

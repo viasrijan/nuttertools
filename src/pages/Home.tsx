@@ -41,15 +41,15 @@ export default function Home() {
               <svg aria-hidden className="absolute left-0 top-[0.58em] w-full h-[0.24em]" viewBox="0 0 200 20" preserveAspectRatio="none">
                 <defs>
                   <linearGradient id="uline-grad" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0" stopColor="#4454c9" stopOpacity="0.8" />
-                    <stop offset="0.5" stopColor="#4454c9" stopOpacity="1" />
-                    <stop offset="1" stopColor="#4454c9" stopOpacity="0.8" />
+                    <stop offset="0" stopColor="#6366f1" stopOpacity="0.8" />
+                    <stop offset="0.5" stopColor="#3730a3" stopOpacity="1" />
+                    <stop offset="1" stopColor="#6366f1" stopOpacity="0.8" />
                   </linearGradient>
                 </defs>
                 <path pathLength="1" className="[stroke-dasharray:1] [stroke-dashoffset:1] animate-[omni-draw_0.7s_ease-out_0.4s_both]" d="M2 10 L198 10" stroke="url(#uline-grad)" strokeWidth="4" strokeLinecap="round" fill="none" />
               </svg>
-              <span className="relative text-[#4454c9]">one place</span>
-            </span><span className="text-[#4454c9]">.</span>
+              <span className="relative bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent">one place</span>
+            </span><span className="bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent">.</span>
           </h1>
           <p className="mt-4 text-[15.5px] md:text-[18px] font-medium text-zinc-900 dark:text-white max-w-xl mx-auto leading-relaxed text-pretty">
             Images, PDFs, code, media and everyday utilities — organized into clean sections, ready when you need them.
@@ -59,7 +59,7 @@ export default function Home() {
 
       <section className="pb-12 md:pb-16">
         <p className={`${SECTION_LABEL} mb-5 md:mb-6 text-center`}>Browse by Categories</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {CATEGORIES.map((c) => (
                 <Link key={c.slug} to={`/tools/${c.slug}`}
                   className={`group relative overflow-hidden p-5 ${tileGrad(c.hue)} soft-shadow transition-all duration-200 hover:scale-[1.03] flex flex-col items-center text-center`}>
@@ -74,7 +74,7 @@ export default function Home() {
 
           <section className="pb-12 md:pb-16">
             <p className={`${SECTION_LABEL} mb-5 md:mb-6 text-center`}>Popular Tools</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {POPULAR_TOOLS.slice(0, 12).map((t) => <ToolCard key={t.id} tool={t} />)}
             </div>
           </section>

@@ -7,7 +7,7 @@ export default function EmailSignature() {
   const [email, setEmail] = useState('dev@nutter.tools')
   const [phone, setPhone] = useState('+1 555 0100')
   const [website, setWebsite] = useState('nutter.tools')
-  const [color, setColor] = useState('#4454c9')
+  const [color, setColor] = useState('#4f46e5')
 
   const sig = useMemo(() => {
     const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')

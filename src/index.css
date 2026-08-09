@@ -171,15 +171,15 @@ input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='r
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: #4454c9;
-  box-shadow: 0 0 0 3px rgba(68, 84, 201, 0.18);
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
 }
 
 .dark input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']):focus,
 .dark textarea:focus,
 .dark select:focus {
-  border-color: #4454c9;
-  box-shadow: 0 0 0 3px rgba(68, 84, 201, 0.25);
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
 }
 
 /* site search inputs stay light in dark mode */

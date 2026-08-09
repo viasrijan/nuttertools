@@ -88,7 +88,7 @@ export default function ToolPage() {
       {related.length > 0 && (
         <section className="pb-12">
           <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-4">More in {tool.category}</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {related.map((t) => <ToolCard key={t.id} tool={t} />)}
           </div>
         </section>
@@ -100,7 +100,7 @@ export default function ToolPage() {
           <div className="flex flex-wrap gap-1.5">
             {CATEGORIES.map((c) => (
               <Link key={c.slug} to={`/tools/${c.slug}`}
-                className={`px-3 h-8 text-[12px] font-medium bg-white dark:bg-zinc-900 ring-1 ring-zinc-200 dark:ring-zinc-800 grid place-items-center hover:ring-zinc-300 dark:hover:ring-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 transition-all ${c.slug === cat.slug ? 'ring-[#4454c9] text-[#4454c9]' : ''}`}>
+                className={`px-3 h-8 text-[12px] font-medium bg-white dark:bg-zinc-900 ring-1 ring-zinc-200 dark:ring-zinc-800 grid place-items-center hover:ring-zinc-300 dark:hover:ring-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 transition-all ${c.slug === cat.slug ? 'ring-indigo-600 bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent' : ''}`}>
                 {c.name}
               </Link>
             ))}

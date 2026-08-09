@@ -53,7 +53,7 @@ export default function MindmapGenerator() {
       const x = node.x!, y = node.y!
       const isRoot = node === root
       ctx.beginPath()
-      ctx.strokeStyle = 'rgba(68,84,201,0.4)'
+      ctx.strokeStyle = 'rgba(79,70,229,0.4)'
       ctx.lineWidth = 2
       ctx.moveTo(x, y)
       const parent = node.px as number
@@ -67,13 +67,16 @@ export default function MindmapGenerator() {
       ctx.beginPath()
       ctx.roundRect(x0, y - h / 2, w, h, 8)
       if (isRoot) {
-        ctx.fillStyle = '#4454c9'
+        const grad = ctx.createLinearGradient(x0, y - h / 2, x0 + w, y + h / 2)
+        grad.addColorStop(0, '#6366f1')
+        grad.addColorStop(1, '#3730a3')
+        ctx.fillStyle = grad
         ctx.fill()
         ctx.fillStyle = '#fff'
       } else {
         ctx.fillStyle = '#ffffff'
         ctx.fill()
-        ctx.strokeStyle = '#4454c9'
+        ctx.strokeStyle = '#4f46e5'
         ctx.stroke()
         ctx.fillStyle = '#1e293b'
       }

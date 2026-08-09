@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, useId } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { LayoutGrid, Lightbulb, Search } from 'lucide-react'
+import { LayoutGrid, Lightbulb } from 'lucide-react'
 import { CATEGORIES } from '../data/categories'
 import { textAccent, hueFor } from '../lib/style'
 import Logo from './Logo'
@@ -33,6 +33,24 @@ const VIEW_ALL_LABELS: Record<string, string> = {
 const POPULAR_CATS = CATEGORIES
   .filter((c) => NAV_ORDER.includes(c.slug))
   .sort((a, b) => NAV_ORDER.indexOf(a.slug) - NAV_ORDER.indexOf(b.slug))
+
+const TITLE_GRAD = 'bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent'
+
+function GradientSearchIcon({ className = '' }: { className?: string }) {
+  const gid = useId()
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={className}>
+      <defs>
+        <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#6366f1" />
+          <stop offset="1" stopColor="#3730a3" />
+        </linearGradient>
+      </defs>
+      <circle cx="11" cy="11" r="8" stroke={`url(#${gid})`} />
+      <path d="m21 21-4.3-4.3" stroke={`url(#${gid})`} />
+    </svg>
+  )
+}
 
 export default function Header({ dark, toggle }: { dark: boolean, toggle: () => void }) {
   const [open, setOpen] = useState<string | null>(null)
@@ -83,27 +101,27 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
     <header className="sticky top-0 z-50 pt-0 sm:pt-8 px-0 sm:px-3.5">
       <div className="mx-auto max-w-[1200px] relative">
         <div className={`rounded-none sm:rounded-full border border-transparent bg-[#f5f5f5] lg:bg-white soft-shadow max-lg:dark:bg-[#1a1a1a] ${mOpen ? 'max-lg:invisible' : ''}`}>
-          <div className="px-4 sm:px-6 pt-5 lg:pt-0 lg:h-[68px] lg:flex lg:items-center lg:gap-3">
+          <div className="px-4 sm:px-6 pt-3 sm:pt-4 lg:pt-0 lg:h-[68px] lg:flex lg:items-center lg:gap-3">
             <div className="flex items-center justify-between gap-3 lg:contents">
               <Link to="/" onClick={() => setMOpen(false)}
                 className="flex items-center gap-2.5 sm:gap-3 shrink-0">
                 <Logo size={30} className="w-[30px] h-[30px] lg:w-8 lg:h-8" />
-                <span className="text-[23px] sm:text-[25px] font-extrabold tracking-[-0.03em] text-[#4454c9]">
+                <span className={`text-[23px] sm:text-[25px] font-extrabold tracking-[-0.03em] ${TITLE_GRAD}`}>
                   NutterTools
                 </span>
               </Link>
               <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-                className="lg:hidden w-10 h-10 shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
-                <Lightbulb className="w-4 h-4" strokeWidth={2.4} />
+                className="lg:hidden w-[30px] h-[30px] shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
+                <Lightbulb className="w-3.5 h-3.5" strokeWidth={2.4} />
               </button>
               <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
-                className="lg:hidden w-10 h-10 shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center transition-colors">
+                className="lg:hidden w-[30px] h-[30px] shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center transition-colors">
                 {mOpen ? (
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                     <path d="M3 3L13 13M13 3L3 13" />
                   </svg>
                 ) : (
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                     <path d="M2 3.5h12M2 8h12M2 12.5h12" />
                   </svg>
                 )}
@@ -153,9 +171,9 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
               </Link>
             </nav>
 
-            <div className="lg:hidden relative mt-5 pb-5">
-              <div className="flex items-center h-11 border border-zinc-200 bg-white rounded-full overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] max-lg:dark:bg-[#242424] max-lg:dark:border-zinc-800">
-                <Search className="w-4 h-4 ml-3 shrink-0 text-[#4454c9]" strokeWidth={2.2} />
+            <div className="lg:hidden relative mt-2.5 pb-2.5">
+              <div className="flex items-center h-9 border border-zinc-200 bg-white rounded-full overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] max-lg:dark:bg-[#242424] max-lg:dark:border-zinc-800">
+                <GradientSearchIcon className="w-3.5 h-3.5 ml-3 shrink-0" />
                 <input
                   value={sq}
                   onChange={(e) => setSq(e.target.value)}
@@ -190,7 +208,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
 
             <div ref={searchRef} className="relative shrink-0 hidden lg:block w-[150px] sm:w-[210px] md:w-[250px] xl:w-[300px]">
               <div className="flex items-center h-9 sm:h-10 border border-zinc-200 bg-zinc-100 rounded-full overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)]">
-                <Search className="w-4 h-4 ml-3 shrink-0 text-[#4454c9]" strokeWidth={2.2} />
+                <GradientSearchIcon className="w-4 h-4 ml-3 shrink-0" />
                 <input
                   value={sq}
                   onChange={(e) => setSq(e.target.value)}
@@ -233,34 +251,34 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
         {mOpen && (
-          <div className="lg:hidden fixed inset-0 z-[60] bg-[#f5f5f5] dark:bg-[#1a1a1a] overflow-y-auto animate-[omni-drop_0.2s_ease-out]">
-            <div className="flex items-center justify-between gap-3 px-4 sm:px-6 pt-5">
+          <div className="lg:hidden fixed inset-0 z-[60] bg-[#f5f5f5] dark:bg-[#1a1a1a] overflow-hidden animate-[omni-drop_0.2s_ease-out]">
+            <div className="flex items-center justify-between gap-3 px-4 sm:px-6 pt-3 sm:pt-4">
               <Link to="/" onClick={() => setMOpen(false)}
                 className="flex items-center gap-2.5 sm:gap-3 shrink-0">
                 <Logo size={30} className="w-[30px] h-[30px]" />
-                <span className="text-[23px] sm:text-[25px] font-extrabold tracking-[-0.03em] text-[#4454c9]">
+                <span className={`text-[23px] sm:text-[25px] font-extrabold tracking-[-0.03em] ${TITLE_GRAD}`}>
                   NutterTools
                 </span>
               </Link>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-                  className="w-10 h-10 shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
-                  <Lightbulb className="w-4 h-4" strokeWidth={2.4} />
+                  className="w-[30px] h-[30px] shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
+                  <Lightbulb className="w-3.5 h-3.5" strokeWidth={2.4} />
                 </button>
                 <button onClick={() => setMOpen(false)} aria-label="Close menu"
-                  className="w-10 h-10 shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center transition-colors">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                  className="w-[30px] h-[30px] shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center transition-colors">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                     <path d="M3 3L13 13M13 3L3 13" />
                   </svg>
                 </button>
               </div>
             </div>
 
-            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-8 pb-8 flex flex-col min-h-[calc(100dvh-120px)]">
-              <div className="flex flex-col">
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-4 pb-4 flex flex-col h-[calc(100dvh-54px)]">
+              <div className="flex flex-col flex-1 min-h-0 justify-center">
                 {POPULAR_CATS.map((c) => (
                   <button key={c.slug} onClick={() => go(`/tools/${c.slug}`)}
-                    className="flex items-center gap-3 px-2 py-3.5 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-left transition-colors">
+                    className="flex items-center gap-3 px-2 py-2.5 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-left transition-colors">
                     <span className="w-10 h-10 shrink-0">
                       <CutoutCategoryIcon slug={c.slug} className="w-full h-full" />
                     </span>
@@ -271,7 +289,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   </button>
                 ))}
                 <button onClick={() => go('/tools')}
-                  className="flex items-center gap-3 px-2 py-3.5 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-left transition-colors">
+                  className="flex items-center gap-3 px-2 py-2.5 hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 text-left transition-colors">
                   <span className="w-10 h-10 shrink-0 grid place-items-center bg-black dark:bg-white text-white dark:text-black rounded-full">
                     <LayoutGrid className="w-5 h-5" strokeWidth={2.2} />
                   </span>
@@ -282,7 +300,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                 </button>
               </div>
 
-              <div className="mt-auto pt-8 flex items-center gap-3">
+              <div className="flex items-center gap-3">
                 <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
                   className="flex-1 h-11 grid place-items-center bg-red-600 text-white text-[14px] font-bold hover:opacity-90 transition-opacity">
                   Donate

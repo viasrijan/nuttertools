@@ -1,7 +1,16 @@
+import { useId } from 'react'
+
 export default function Logo({ size = 30, className = '' }: { size?: number; className?: string }) {
+  const gid = useId()
   return (
     <svg width={size} height={size} viewBox="0 0 256 256" aria-hidden="true" className={`drop-shadow-sm ${className}`}>
-      <circle cx="128" cy="128" r="128" fill="#4454c9" />
+      <defs>
+        <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#6366f1" />
+          <stop offset="1" stopColor="#3730a3" />
+        </linearGradient>
+      </defs>
+      <circle cx="128" cy="128" r="128" fill={`url(#${gid})`} />
       <g transform="translate(128 128)">
         <g className="logo-spin">
           <g transform="scale(0.225) translate(-256 -256)">

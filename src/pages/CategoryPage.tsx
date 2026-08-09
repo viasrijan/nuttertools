@@ -63,15 +63,21 @@ export default function CategoryPage() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder={`Search ${cat.name}…`}
-          className="w-full h-[46px] pl-[42px] pr-4 rounded-full border border-transparent bg-white dark:bg-[#242424] text-[14px] text-zinc-900 dark:text-zinc-100 soft-shadow focus:outline-none focus:ring-2 focus:ring-[#4454c9] focus:border-transparent"
+          className="w-full h-[46px] pl-[42px] pr-4 rounded-full border border-transparent bg-white dark:bg-[#242424] text-[14px] text-zinc-900 dark:text-zinc-100 soft-shadow focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
         />
-        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2 text-[#4454c9]">
-          <circle cx="8" cy="8" r="5.75" stroke="currentColor" strokeWidth="1.5" />
-          <path d="M12.5 12.5L16 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2">
+          <defs>
+            <linearGradient id="cat-search-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#6366f1" />
+              <stop offset="1" stopColor="#3730a3" />
+            </linearGradient>
+          </defs>
+          <circle cx="8" cy="8" r="5.75" stroke="url(#cat-search-grad)" strokeWidth="1.5" />
+          <path d="M12.5 12.5L16 16" stroke="url(#cat-search-grad)" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-24">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-24">
         {shown.map((t) => <ToolCard key={t.id} tool={t} />)}
       </div>
       {shown.length === 0 && <p className="text-zinc-900 dark:text-white font-medium py-16 text-center">No tools match “{q.trim()}”.</p>}

@@ -3,7 +3,7 @@ import { saveBlob } from '../../lib/download'
 
 export default function FaviconGenerator() {
   const [text, setText] = useState('N')
-  const [bg, setBg] = useState('#4454c9')
+  const [bg, setBg] = useState('#4f46e5')
   const [fg, setFg] = useState('#ffffff')
   const [radius, setRadius] = useState(0)
   const [previews, setPreviews] = useState<string[]>([])
