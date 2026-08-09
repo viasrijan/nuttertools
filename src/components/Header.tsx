@@ -182,7 +182,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   )
                 })}
               <Link to="/tools" onClick={() => go('/tools')}
-                className="flex items-center whitespace-nowrap text-[13px] font-semibold px-3.5 py-2 text-zinc-900">
+                className="flex items-center whitespace-nowrap text-[13px] font-semibold px-3.5 py-2 text-green-700 dark:text-green-600">
                 All Tools
               </Link>
             </nav>
