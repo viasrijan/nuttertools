@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
 
-const PROXY = '/.netlify/functions/proxy?service=removebg'
+const PROXY = '/api/proxy?service=removebg'
 
 export default function BgRemover(){
   const [orig,setOrig]=useState<string>("")

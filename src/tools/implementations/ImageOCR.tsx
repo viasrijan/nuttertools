@@ -14,7 +14,7 @@ export default function ImageOCR() {
   })
 
   const proxyOcr = async (file: File): Promise<string> => {
-    const res = await fetch('/.netlify/functions/proxy?service=ocrspace', {
+    const res = await fetch('/api/proxy?service=ocrspace', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ image: await fileToBase64(file), language: 'eng', mime: file.type }),
