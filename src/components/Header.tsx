@@ -267,7 +267,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
         {mOpen && (
-          <div className="lg:hidden fixed inset-x-0 z-[60] bg-[#f5f5f5] dark:bg-[#1a1a1a] overflow-hidden animate-[omni-drop_0.2s_ease-out]" style={{ top: menuTop }}>
+          <div className="lg:hidden fixed inset-0 z-[60] bg-[#f5f5f5] dark:bg-[#1a1a1a] overflow-hidden animate-[omni-drop_0.2s_ease-out]" style={{ top: menuTop }}>
             <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-3 pb-4 flex flex-col h-full">
               <div className="flex flex-col flex-1 min-h-0 justify-center">
                 {POPULAR_CATS.map((c) => (
