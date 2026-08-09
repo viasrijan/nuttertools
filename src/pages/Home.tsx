@@ -86,7 +86,7 @@ export default function Home() {
               <ul className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
                 {[
                   ['100% free forever', 'No paywalls, no trials, no accounts.'],
-                  ['Your files never leave your device', 'Everything runs locally in your browser.'],
+                  ['Works on any device', 'Desktop, tablet or phone — the same tools, anywhere you are.'],
                   ['Fast & lightweight', 'Every tool opens instantly, ready to use.'],
                   ['Fresh tools, always', 'New utilities added all the time.'],
                 ].map(([t, d]) => (

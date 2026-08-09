@@ -36,7 +36,7 @@ export default function DropZone({ onFiles, accept, multiple = true, label = "Dr
       <div className="text-3xl mb-2">📁</div>
       <p className="text-sm font-medium">{label}</p>
       <p className="text-xs font-medium text-zinc-900 dark:text-white mt-1">Click, drop, or press Ctrl+V to paste</p>
-      <p className="text-xs font-medium text-zinc-900 dark:text-white mt-0.5 opacity-60">Files never leave your browser</p>
+      <p className="text-xs font-medium text-zinc-900 dark:text-white mt-0.5 opacity-60">Works on desktop, tablet and phone</p>
       <input ref={ref} type="file" accept={accept} multiple={multiple} className="hidden" onChange={(e) => e.target.files && onFiles(e.target.files)} />
     </div>
   )
