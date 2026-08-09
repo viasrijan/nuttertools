@@ -11,7 +11,7 @@ export default function AllToolsPage() {
 
   return (
     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-8 md:pt-12 pb-16 animate-[omni-fade_0.3s_ease-out]">
-      <h1 className="text-center text-[32px] md:text-[38px] font-[800] tracking-[-0.02em] text-zinc-900 dark:text-white">All Tools</h1>
+      <h1 className="text-center text-[32px] md:text-[38px] font-[800] tracking-[-0.02em] text-green-700 dark:text-green-600">All Tools</h1>
       <p className="text-center mt-2 text-[15.5px] font-medium text-zinc-900 dark:text-white">
         Every one of the {TOOLS.length} tools — free, private, no sign-up.
       </p>
