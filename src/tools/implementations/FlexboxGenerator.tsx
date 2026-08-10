@@ -58,7 +58,7 @@ export default function FlexboxGenerator() {
             className="w-full border px-2 py-2 bg-transparent text-zinc-900 dark:text-white outline-none text-sm" />
         </label>
       </div>
-      <div className="border p-4 bg-[#f5f5f5] dark:bg-[#1a1a1a]">
+      <div className="border p-4 bg-[#ececec] dark:bg-[#1a1a1a]">
         <div className="border border-dashed border-zinc-300 dark:border-zinc-700 p-4 min-h-[180px]"
           style={{ display: 'flex', flexDirection: direction, justifyContent: justify, alignItems: align, flexWrap: wrap, gap }}>
           {Array.from({ length: count }, (_, i) => (

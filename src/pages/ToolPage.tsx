@@ -68,7 +68,7 @@ export default function ToolPage() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-zinc-900 border border-transparent p-6 md:p-8 min-h-[400px] soft-shadow mb-12">
+      <div className="bg-white dark:bg-[#242424] border border-transparent p-6 md:p-8 min-h-[400px] soft-shadow mb-12">
         {Comp ? (
           <Suspense fallback={
             <div className="flex items-center justify-center py-24">
@@ -93,12 +93,12 @@ export default function ToolPage() {
           <section className="pb-14 max-w-3xl">
             <div className="space-y-8">
               <div>
-                <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-2.5">What is {tool.name}?</h4>
+                <h4 className="text-[20px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-3">What is {tool.name}?</h4>
                 <p className="text-[14.5px] font-medium text-zinc-900 dark:text-white leading-relaxed">{info.whatIs}</p>
               </div>
               {info.howTo.length > 0 && (
                 <div>
-                  <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-2.5">How to use {tool.name}</h4>
+                  <h4 className="text-[20px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-3">How to use {tool.name}</h4>
                   <ol className="space-y-2.5">
                     {info.howTo.map((step, i) => (
                       <li key={i} className="flex gap-3 text-[14.5px] font-medium text-zinc-900 dark:text-white leading-relaxed">
@@ -111,7 +111,7 @@ export default function ToolPage() {
               )}
               {info.faqs && info.faqs.length > 0 && (
                 <div>
-                  <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-2.5">Frequently asked questions</h4>
+                  <h4 className="text-[20px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-3">Frequently asked questions</h4>
                   <div className="divide-y divide-zinc-200 dark:divide-zinc-800 border-y border-zinc-200 dark:border-zinc-800">
                     {info.faqs.map((f, i) => (
                       <details key={i} className="group">
@@ -132,7 +132,7 @@ export default function ToolPage() {
 
       {related.length > 0 && (
         <section className="pb-12">
-          <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-4">More in {tool.category}</h4>
+          <h4 className="text-[16px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">More in {tool.category}</h4>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {related.map((t) => <ToolCard key={t.id} tool={t} />)}
           </div>
@@ -141,7 +141,7 @@ export default function ToolPage() {
 
       {cat && (
         <section className="pb-24">
-          <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-4">All sections</h4>
+          <h4 className="text-[16px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">All sections</h4>
           <div className="flex flex-wrap gap-1.5">
             {CATEGORIES.map((c) => (
               <Link key={c.slug} to={`/tools/${c.slug}`}

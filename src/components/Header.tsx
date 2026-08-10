@@ -114,7 +114,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   return (
     <header ref={headerRef} className="sticky top-0 z-50 pt-0 sm:pt-8 px-0 sm:px-3.5">
       <div className="mx-auto max-w-[1200px] relative">
-        <div className="rounded-none sm:rounded-full border border-transparent bg-[#f5f5f5] lg:bg-white soft-shadow max-lg:dark:bg-[#1a1a1a]">
+        <div className="rounded-none sm:rounded-full border border-transparent bg-[#ececec] lg:bg-white soft-shadow max-lg:dark:bg-[#1a1a1a]">
           <div className="px-4 sm:px-6 pt-3 sm:pt-4 lg:pt-0 lg:h-[68px] lg:flex lg:items-center lg:gap-3">
             <div className="flex items-center justify-between gap-3 lg:contents">
               <Link to="/" onClick={() => setMOpen(false)}
@@ -267,7 +267,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
         {mOpen && (
-          <div className="lg:hidden fixed inset-0 z-[60] bg-[#f5f5f5] dark:bg-[#1a1a1a] overflow-hidden animate-[omni-drop_0.2s_ease-out]" style={{ top: menuTop }}>
+          <div className="lg:hidden fixed inset-0 z-[60] bg-[#ececec] dark:bg-[#1a1a1a] overflow-hidden animate-[omni-drop_0.2s_ease-out]" style={{ top: menuTop }}>
             <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-3 pb-4 flex flex-col h-full">
               <div className="flex flex-col flex-1 min-h-0 justify-center">
                 {POPULAR_CATS.map((c) => (
