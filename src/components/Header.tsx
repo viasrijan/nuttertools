@@ -22,12 +22,12 @@ const NAV_LABELS: Record<string, string> = {
 }
 
 const VIEW_ALL_LABELS: Record<string, string> = {
-  'developer-tools': 'dev',
-  'pdf-tools': 'pdf',
-  'text-writing': 'text',
-  'image-tools': 'image',
-  'color-design': 'design',
-  'video-tools': 'video',
+  'developer-tools': 'Dev',
+  'pdf-tools': 'PDF',
+  'text-writing': 'Text',
+  'image-tools': 'Image',
+  'color-design': 'Design',
+  'video-tools': 'Video',
 }
 
 const POPULAR_CATS = CATEGORIES
@@ -171,7 +171,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                               </Link>
                             ))}
                             <Link to={`/tools/${c.slug}`} onClick={() => go(`/tools/${c.slug}`)}
-                              className="mt-1 px-3 py-2 text-[12.5px] font-bold text-green-700 dark:text-green-600 hover:bg-zinc-50 dark:hover:bg-zinc-800/80">
+                              className="mt-1 px-3 py-2 text-[12.5px] font-bold text-orange-700 dark:text-orange-600 hover:bg-zinc-50 dark:hover:bg-zinc-800/80">
                               View all {VIEW_ALL_LABELS[c.slug] || c.name.toLowerCase()} tools →
                             </Link>
                           </div>
@@ -182,7 +182,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                   )
                 })}
               <Link to="/tools" onClick={() => go('/tools')}
-                className="flex items-center whitespace-nowrap text-[13px] font-semibold px-3.5 py-2 text-green-700 dark:text-green-600">
+                className="flex items-center whitespace-nowrap text-[13px] font-semibold px-3.5 py-2 text-orange-700 dark:text-orange-600">
                 All Tools
               </Link>
             </nav>
