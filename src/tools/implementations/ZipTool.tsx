@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import JSZip from 'jszip'
 import { saveBlob } from '../../lib/download'
 
@@ -64,12 +65,12 @@ export default function ZipTool() {
       {mode === 'zip' ? (
         <>
           <DropZone onFiles={makeZip} multiple label="Drop files to add to a zip" />
-          {busy && <p className="text-sm animate-pulse">Zipping…</p>}
+          {busy && <Progress label="Zipping files…" />}
         </>
       ) : (
         <>
           <DropZone onFiles={openZip} accept=".zip,application/zip" multiple={false} label="Drop a zip to extract" />
-          {busy && <p className="text-sm animate-pulse">Reading…</p>}
+          {busy && <Progress label="Reading zip…" />}
           {entries.length > 0 && (
             <>
               <p className="text-sm font-medium">{entries.length} files in zip ({(zipSize / 1024).toFixed(0)} KB)</p>

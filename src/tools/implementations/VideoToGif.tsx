@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
 
@@ -27,6 +28,7 @@ export default function VideoToGif() {
         <label className="text-sm font-semibold">Width ({width}px)<input type="range" min={160} max={960} step={16} value={width} onChange={e => setWidth(parseInt(e.target.value))} className="w-full mt-2" /></label>
       </div>
       <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Converting…' : 'Convert & download'}</button>
+      {busy && <Progress label="Converting video to GIF…" />}
       <p className="text-[11px] font-medium text-zinc-500">Tip: lower FPS and width produce much smaller GIFs.</p>
     </div>
   )

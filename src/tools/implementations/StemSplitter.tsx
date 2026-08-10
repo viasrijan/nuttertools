@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import * as ort from 'onnxruntime-web'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { encodeWav } from '../../lib/wav'
 import { saveBlob } from '../../lib/download'
 
@@ -117,14 +118,7 @@ export default function StemSplitter() {
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop a song — vocals, drums, bass and everything else get separated" />
       {file && <p className="text-xs text-zinc-500">{file.name} — first run downloads the model once (165 MB), then everything is processed on your device.</p>}
       <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Separating…' : 'Separate stems'}</button>
-      {busy && (
-        <div className="space-y-1">
-          <div className="h-2 bg-zinc-200 dark:bg-zinc-800 rounded-sm overflow-hidden">
-            <div className="h-full bg-zinc-900 dark:bg-white transition-all" style={{ width: `${progress}%` }} />
-          </div>
-          <p className="text-xs text-zinc-500">{stage} {progress}%</p>
-        </div>
-      )}
+      {busy && <Progress label={stage} percent={progress} />}
       {results.length > 0 && (
         <div className="space-y-2">
           {results.map((r, i) => (

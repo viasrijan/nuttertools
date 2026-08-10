@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import * as pdfjs from 'pdfjs-dist'
 import * as XLSX from 'xlsx'
 import { saveBlob } from '../../lib/download'
@@ -50,7 +51,7 @@ export default function PdfToExcel() {
   return (
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={convert} accept="application/pdf" multiple={false} label="Drop a PDF — tables become Excel sheets" />
-      {busy && <p className="text-sm animate-pulse">{status}</p>}
+      {busy && <Progress label={status} />}
       {!busy && status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Extracts text line-by-line using each line&apos;s position in the document. Scanned (image) PDFs yield no text — run Image OCR first for those.</p>
     </div>

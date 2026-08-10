@@ -44,6 +44,12 @@ p { text-wrap: pretty; }
   66% { transform: translate(6%, -16%) scale(1.26); }
 }
 
+@keyframes omni-progress {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(200%); }
+  100% { transform: translateX(300%); }
+}
+
 @keyframes omni-rotate {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 
 function resample(data: Float32Array, fromRate: number, toRate: number) {
   if (fromRate === toRate) return data
@@ -15,7 +16,7 @@ function getPipeline() {
     pipelinePromise = (async () => {
       const { pipeline, env } = await import('@huggingface/transformers')
       env.allowLocalModels = false
-      const t = await pipeline('automatic-speech-recognition', 'onnx-community/whisper-tiny')
+      const t = await pipeline('automatic-speech-recognition', 'onnx-community/whisper-tiny', { device: 'wasm' })
       return t
     })()
   }
@@ -54,7 +55,7 @@ export default function AudioTranscriber() {
   return (
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={transcribe} accept="audio/*" multiple={false} label="Drop an audio file to transcribe" />
-      {busy && <p className="text-sm animate-pulse">{status}</p>}
+      {busy && <Progress label={status} />}
       {error && <p className="text-xs text-red-500">{error}</p>}
       {result && (
         <div className="space-y-3">

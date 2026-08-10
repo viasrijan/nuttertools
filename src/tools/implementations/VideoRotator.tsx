@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
 
@@ -37,6 +38,7 @@ export default function VideoRotator() {
         {[90, 180, 270].map(a => <button key={a} onClick={() => setAngle(a)} className={`px-4 h-9 text-sm border ${angle === a ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{a}°</button>)}
       </div>
       <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Rotating…' : 'Rotate & download'}</button>
+      {busy && <Progress label="Rotating video…" />}
     </div>
   )
 }

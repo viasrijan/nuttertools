@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { getFFmpeg } from '../../lib/ffmpeg'
 import { removeBackground } from '@imgly/background-removal'
 import { saveBlob } from '../../lib/download'
@@ -59,7 +60,7 @@ export default function VideoBgRemover() {
         ))}
       </div>
       <button onClick={run} disabled={busy || !video} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Processing…' : 'Remove background & download'}</button>
-      {busy && <p className="text-sm animate-pulse">{status}</p>}
+      {busy && <Progress label={status} />}
       {!busy && status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Best for short clips (&lt;8s): {fps} fps → ~{fps * 8} frames, a few minutes per second of video. Output is a transparent WebM — use an editor to place it over any background. First run downloads the AI model once (~40 MB).</p>
     </div>

@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import QRCode from 'qrcode'
 import JSZip from 'jszip'
+import Progress from '../../components/Progress'
 import { saveBlob } from '../../lib/download'
 
 export default function BatchQr() {
@@ -54,6 +55,7 @@ export default function BatchQr() {
         <button onClick={gen} disabled={busy || !items.length} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Generating…' : `Generate ${items.length || ''} QR codes`}</button>
         {generated && <button onClick={downloadZip} className="px-5 h-10 border text-sm">Download ZIP</button>}
       </div>
+      {busy && <Progress label="Generating QR codes…" />}
       <div ref={containerRef} className="grid grid-cols-2 md:grid-cols-4 gap-3" />
       <p className="text-[11px] text-zinc-500">Tip: use <code>WIFI:S:NETWORK;T:WPA;P:PASSWORD;;</code> lines to make Wi-Fi login QR codes.</p>
     </div>

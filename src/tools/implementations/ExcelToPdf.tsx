@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import * as XLSX from 'xlsx'
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
@@ -64,7 +65,7 @@ export default function ExcelToPdf() {
   return (
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={convert} accept=".xlsx,.xls,.csv" multiple={false} label="Drop an Excel file to convert to PDF" />
-      {busy && <p className="text-sm animate-pulse">Rendering spreadsheet…</p>}
+      {busy && <Progress label="Rendering spreadsheet…" />}
       {error && <p className="text-xs text-red-500">{error}</p>}
       <p className="text-[11px] font-medium text-zinc-500">Each sheet becomes a section; wide sheets get wider pages. Cell values are truncated to 40 chars.</p>
     </div>

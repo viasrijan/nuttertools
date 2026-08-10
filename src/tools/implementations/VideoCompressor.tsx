@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
 
@@ -28,6 +29,7 @@ export default function VideoCompressor() {
       {file && <p className="text-xs font-medium text-zinc-500">{file.name} · {(file.size / 1024 / 1024).toFixed(1)} MB</p>}
       <label className="block text-sm font-semibold">Quality (CRF {crf} — higher = smaller):<input type="range" min={18} max={40} value={crf} onChange={e => setCrf(parseInt(e.target.value))} className="w-full mt-2" /></label>
       <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Compressing…' : 'Compress & download'}</button>
+      {busy && <Progress label="Compressing video…" />}
       {pct !== null && <p className="text-sm">Saved <b className="text-emerald-600">{pct}%</b></p>}
       <p className="text-[11px] font-medium text-zinc-500">First run downloads the ffmpeg engine (~32 MB) — afterwards it works offline.</p>
     </div>

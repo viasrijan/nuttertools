@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
 
@@ -24,6 +25,7 @@ export default function AudioReverser() {
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop an audio file to play it backwards" />
       <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Reversing…' : 'Reverse & download'}</button>
+      {busy && <Progress label="Reversing audio…" />}
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Fun for Easter eggs, hidden messages and creative remixes. Fully offline.</p>
     </div>

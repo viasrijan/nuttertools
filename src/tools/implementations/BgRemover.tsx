@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 
 const PROXY = '/api/proxy?service=removebg'
 
@@ -62,7 +63,7 @@ export default function BgRemover(){
   return (
     <div className="space-y-4">
       <DropZone onFiles={onFiles} accept="image/*" multiple={false} />
-      {loading && <p className="text-sm animate-pulse">{engine === 'server' ? 'Removing background...' : 'Removing background with local AI... first run downloads the model (~40MB)'}</p>}
+      {loading && <Progress label={engine === 'server' ? 'Removing background…' : 'Removing background with local AI… first run downloads the model (~40 MB)'} />}
       {error && <p className="text-sm text-red-500 font-medium">{error}</p>}
       <div className="grid grid-cols-2 gap-4">
         {orig && <div><p className="text-xs mb-1">Original</p><img src={orig} className="border bg-zinc-200" /></div>}

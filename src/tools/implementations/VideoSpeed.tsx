@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
 
@@ -35,6 +36,7 @@ export default function VideoSpeed() {
         <span className="text-sm font-semibold w-16 text-center">{speed}×</span>
       </div>
       <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Processing…' : 'Change speed & download'}</button>
+      {busy && <Progress label="Changing video speed…" />}
     </div>
   )
 }

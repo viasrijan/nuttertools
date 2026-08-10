@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import * as pdfjs from 'pdfjs-dist'
 import { PDFDocument } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
@@ -77,7 +78,7 @@ export default function PdfViewer() {
   return (
     <div className="space-y-4">
       <DropZone onFiles={load} accept="application/pdf" multiple={false} label="Drop a PDF to view and annotate" />
-      {busy && <p className="text-sm animate-pulse">Rendering…</p>}
+      {busy && <Progress label="Rendering…" />}
       {error && <p className="text-xs text-red-500">{error}</p>}
       <div id="pdfviewer-layers" className="space-y-3 max-h-[70vh] overflow-auto border p-3" />
       {layersRef.current.length > 0 && (

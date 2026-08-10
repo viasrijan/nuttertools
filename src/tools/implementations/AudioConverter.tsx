@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
 
@@ -34,6 +35,7 @@ export default function AudioConverter() {
         {Object.keys(FORMATS).map(k => <button key={k} onClick={() => setFmt(k)} className={`px-4 h-9 text-sm uppercase border ${fmt === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</button>)}
       </div>
       <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Converting…' : 'Convert & download'}</button>
+      {busy && <Progress label="Converting audio…" />}
     </div>
   )
 }

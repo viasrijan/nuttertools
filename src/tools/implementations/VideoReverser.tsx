@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
 
@@ -25,6 +26,7 @@ export default function VideoReverser() {
       <DropZone onFiles={fl => setFile(fl[0])} accept="video/*" multiple={false} label="Drop a video to play it backwards" />
       {file && <p className="text-xs text-zinc-500">{file.name} · {Math.round(file.size / 1024 / 1024)} MB — keep clips under ~30s; reversing needs the whole clip in memory.</p>}
       <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Reversing…' : 'Reverse & download'}</button>
+      {busy && <Progress label="Reversing video…" />}
       {status && <p className="text-sm text-zinc-600">{status}</p>}
     </div>
   )

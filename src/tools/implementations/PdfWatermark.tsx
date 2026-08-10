@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { PDFDocument, StandardFonts, rgb, degrees } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
 
@@ -51,6 +52,7 @@ export default function PdfWatermark() {
       </div>
       <label className="text-sm font-semibold flex items-center gap-3">Color <input type="color" value={color} onChange={e => setColor(e.target.value)} className="w-14 h-10 border" /></label>
       <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Adding watermark…' : 'Add watermark & download'}</button>
+      {busy && <Progress label="Adding watermark…" />}
     </div>
   )
 }

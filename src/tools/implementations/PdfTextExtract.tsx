@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import * as pdfjs from 'pdfjs-dist'
 
 export default function PdfTextExtract() {
@@ -31,7 +32,7 @@ export default function PdfTextExtract() {
   return (
     <div className="space-y-4">
       <DropZone onFiles={extract} accept="application/pdf" multiple={false} label="Drop a PDF to extract its text" />
-      {loading && <p className="text-sm animate-pulse">Extracting text…</p>}
+      {loading && <Progress label="Extracting text…" />}
       {error && <p className="text-xs text-red-500">{error}</p>}
       {pages.length > 0 && (
         <>

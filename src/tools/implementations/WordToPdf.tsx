@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import mammoth from 'mammoth'
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
@@ -50,7 +51,7 @@ export default function WordToPdf() {
   return (
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={convert} accept=".docx,.doc" multiple={false} label="Drop a Word document to convert to PDF" />
-      {busy && <p className="text-sm animate-pulse">Converting…</p>}
+      {busy && <Progress label="Converting Word to PDF…" />}
       {error && <p className="text-xs text-red-500">{error}</p>}
       <p className="text-[11px] font-medium text-zinc-500">Extracts the text (formatting like fonts and images is not preserved) and generates a clean A4 PDF.</p>
     </div>

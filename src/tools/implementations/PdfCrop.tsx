@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { PDFDocument } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
 
@@ -58,7 +59,7 @@ export default function PdfCrop() {
           <button key={u} onClick={() => setUnit(u)} className={`px-4 h-9 border ${unit === u ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{u === 'mm' ? 'Millimeters' : 'Percent of page'}</button>
         ))}
       </div>
-      {busy && <p className="text-sm animate-pulse">{status}</p>}
+      {busy && <Progress label={status} />}
       {!busy && status && <p className="text-sm text-zinc-600">{status}</p>}
     </div>
   )

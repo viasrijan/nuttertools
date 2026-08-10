@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import * as pdfjs from 'pdfjs-dist'
 import { PDFDocument } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
@@ -45,6 +46,7 @@ export default function CompressPdf() {
       <label className="block text-sm font-semibold">Image quality: {Math.round(quality * 100)}%<input type="range" min={0.1} max={1} step={0.05} value={quality} onChange={e => setQuality(parseFloat(e.target.value))} className="w-full mt-2" /></label>
       <label className="block text-sm font-semibold">Resolution: {scale}×<input type="range" min={0.5} max={3} step={0.1} value={scale} onChange={e => setScale(parseFloat(e.target.value))} className="w-full mt-2" /></label>
       <button onClick={compress} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Compressing…' : 'Compress & download'}</button>
+      {busy && <Progress label="Compressing PDF…" />}
       {stats && (
         <div className="border p-3 text-sm">
           <b>{Math.round(stats.before / 1024)} KB</b> → <b className="text-emerald-600">{Math.round(stats.after / 1024)} KB</b>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
 
@@ -37,6 +38,7 @@ export default function VideoTrimmer() {
         <label className="text-sm">To <input type="text" value={end} onChange={e => setEnd(e.target.value)} className="border px-2 h-9 w-28 font-mono text-sm" placeholder="00:30" /></label>
       </div>
       <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Trimming…' : 'Trim & download'}</button>
+      {busy && <Progress label="Trimming video…" />}
       <p className="text-[11px] font-medium text-zinc-500">Use HH:MM or MM:SS format.</p>
     </div>
   )

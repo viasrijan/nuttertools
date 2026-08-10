@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
 
@@ -46,7 +47,7 @@ export default function TxtToPdf() {
   return (
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={convert} accept=".txt,text/plain" multiple={false} label="Drop a .txt file to convert to PDF" />
-      {busy && <p className="text-sm animate-pulse">Converting…</p>}
+      {busy && <Progress label="Converting text to PDF…" />}
       {error && <p className="text-xs text-red-500">{error}</p>}
     </div>
   )

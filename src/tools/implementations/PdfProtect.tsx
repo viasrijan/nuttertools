@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { encryptPDF } from '@pdfsmaller/pdf-encrypt'
 import { decryptPDF } from '@pdfsmaller/pdf-decrypt'
 import { saveBlob, bytesToBlob } from '../../lib/download'
@@ -44,6 +45,7 @@ export default function PdfProtect() {
       <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm disabled:opacity-40">
         {busy ? 'Working…' : action === 'protect' ? 'Encrypt & download' : 'Unlock & download'}
       </button>
+      {busy && <Progress label={action === 'protect' ? 'Encrypting PDF…' : 'Unlocking PDF…'} />}
       <p className="text-[11px] font-medium text-zinc-500">Uses AES-256 (PDF 2.0) encryption via the Web Crypto API — everything happens in your browser.</p>
     </div>
   )

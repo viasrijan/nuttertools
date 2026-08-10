@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { PDFDocument } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
 
@@ -28,7 +29,7 @@ export default function PdfFormFlattener() {
   return (
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={flatten} accept="application/pdf" multiple={false} label="Drop a fillable PDF form" />
-      {busy && <p className="text-sm animate-pulse">{status}</p>}
+      {busy && <Progress label={status} />}
       {!busy && status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Bakes all filled values into the page so fields can&apos;t be edited afterwards — ideal before sending forms for signature or archiving.</p>
     </div>

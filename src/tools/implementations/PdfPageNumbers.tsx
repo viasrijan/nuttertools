@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
 
@@ -49,6 +50,7 @@ export default function PdfPageNumbers() {
           {POSITIONS.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}
         </select>
         <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Working…' : 'Add numbers & download'}</button>
+        {busy && <Progress label="Adding page numbers…" />}
       </div>
     </div>
   )

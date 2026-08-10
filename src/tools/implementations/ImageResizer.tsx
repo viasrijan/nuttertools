@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 
 const PRESETS = [
   { label: 'Icon 256px', w: 256, h: 256 },
@@ -95,7 +96,7 @@ export default function ImageResizer() {
   return (
     <div className="space-y-4">
       <DropZone onFiles={onFiles} accept="image/*" multiple={true} label="Drop one or more images to resize (multiple = batch)" />
-      {busy && <p className="text-sm animate-pulse">Processing…</p>}
+      {busy && <Progress label="Processing…" />}
       {img && !batch && (
         <>
           <div className="text-sm text-zinc-600 dark:text-zinc-300">Original: {img.w} × {img.h}px</div>

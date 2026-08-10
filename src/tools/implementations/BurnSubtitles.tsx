@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { getFFmpeg } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
 
@@ -68,6 +69,7 @@ export default function BurnSubtitles() {
         <input type="number" value={size} onChange={e => setSize(+e.target.value)} className="border px-2 py-2 w-20" />
       </div>
       <button onClick={run} disabled={busy || !video} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Burning…' : 'Burn subtitles & download'}</button>
+      {busy && <Progress label="Burning subtitles into video…" />}
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Subtitles are hard-baked into the video (no soft track). Videos and subtitles never leave your device.</p>
     </div>

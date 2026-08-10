@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 
 export default function ImageOCR() {
   const [text, setText] = useState('')
@@ -76,7 +77,7 @@ export default function ImageOCR() {
   return (
     <div className="space-y-4">
       <DropZone onFiles={onFiles} accept="image/*" multiple={false} label="Drop image to extract text" />
-      {loading && <p className="text-sm animate-pulse">{mode === 'web' ? 'Reading text via web OCR…' : 'Reading text…'}</p>}
+      {loading && <Progress label={mode === 'web' ? 'Reading text via web OCR…' : 'Reading text…'} />}
       <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Extracted text will appear here..." className="w-full h-[260px] border p-3 text-sm" />
       <div className="flex items-center gap-3">
         <button onClick={() => navigator.clipboard.writeText(text)} className="px-4 py-2 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy Text</button>

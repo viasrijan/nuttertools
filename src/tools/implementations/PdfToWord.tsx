@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import * as pdfjs from 'pdfjs-dist'
 import JSZip from 'jszip'
 import { saveBlob } from '../../lib/download'
@@ -47,7 +48,7 @@ export default function PdfToWord() {
   return (
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={convert} accept="application/pdf" multiple={false} label="Drop a PDF to convert to Word" />
-      {busy && <p className="text-sm animate-pulse">Converting…</p>}
+      {busy && <Progress label="Converting PDF to Word…" />}
       {error && <p className="text-xs text-red-500">{error}</p>}
       <p className="text-[11px] font-medium text-zinc-500">Extracts the text layer into a .docx file. Page layouts are not preserved.</p>
     </div>

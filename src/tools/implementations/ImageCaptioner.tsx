@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 
 let pipePromise: Promise<any> | null = null
 function getPipe() {
@@ -7,7 +8,7 @@ function getPipe() {
     pipePromise = (async () => {
       const { pipeline, env } = await import('@huggingface/transformers')
       env.allowLocalModels = false
-      return pipeline('image-to-text', 'Xenova/vit-gpt2-image-captioning')
+      return pipeline('image-to-text', 'Xenova/vit-gpt2-image-captioning', { device: 'wasm' })
     })()
   }
   return pipePromise
@@ -40,7 +41,7 @@ export default function ImageCaptioner() {
   return (
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={captionImg} accept="image/*" multiple={false} label="Drop an image to describe" />
-      {busy && <p className="text-sm animate-pulse">{status}</p>}
+      {busy && <Progress label={status} />}
       {error && <p className="text-xs text-red-500">{error}</p>}
       {caption && (
         <div className="space-y-3">

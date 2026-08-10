@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
 
@@ -41,6 +42,7 @@ export default function VoiceChanger() {
         ))}
       </div>
       <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Processing…' : 'Change voice & download'}</button>
+      {busy && <Progress label="Applying voice effect…" />}
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Pitch and formant tricks applied with FFmpeg — great for videos, podcasts and prank calls. All offline.</p>
     </div>

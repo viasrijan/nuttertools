@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
 
@@ -30,6 +31,7 @@ export default function AudioNoiseRemover() {
         <span className="font-mono text-xs">{strength} dB</span>
       </div>
       <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Denoising…' : 'Remove noise & download'}</button>
+      {busy && <Progress label="Denoising audio…" />}
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">FFT-based noise reduction (afftdn) plus non-local denoising. Gentle settings (-30 to -40 dB) keep music intact; strong settings are for speech.</p>
     </div>

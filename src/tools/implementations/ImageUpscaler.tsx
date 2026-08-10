@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
+import Progress from '../../components/Progress'
 import { saveBlob } from '../../lib/download'
 
 let pipePromise: Promise<any> | null = null
@@ -8,7 +9,7 @@ function getPipe() {
     pipePromise = (async () => {
       const { pipeline, env } = await import('@huggingface/transformers')
       env.allowLocalModels = false
-      return pipeline('image-to-image', 'Xenova/swin2SR-classical-sr-x2-64')
+      return pipeline('image-to-image', 'Xenova/swin2SR-classical-sr-x2-64', { device: 'wasm' })
     })()
   }
   return pipePromise
@@ -61,7 +62,7 @@ export default function ImageUpscaler() {
   return (
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={upscale} accept="image/*" multiple={false} label="Drop an image to upscale 2×" />
-      {busy && <p className="text-sm animate-pulse">{status}</p>}
+      {busy && <Progress label={status} />}
       {error && <p className="text-xs text-red-500">{error}</p>}
       {file && result && (
         <div className="grid grid-cols-2 gap-3">
