@@ -6,13 +6,17 @@ let pipePromise: Promise<any> | null = null
 function getPipe() {
   if (!pipePromise) {
     pipePromise = (async () => {
-      const { pipeline, env } = await import('@huggingface/transformers')
+      const { AutoModelForImageTextToText, AutoProcessor, env } = await import('@huggingface/transformers')
       env.allowLocalModels = false
-      return pipeline('image-to-text', 'onnx-community/Florence-2-base-ft', {
-        device: 'wasm',
-        dtype: { vision_encoder: 'fp32', encoder_model: 'q8', decoder_model_merged: 'q8' },
-        session_options: { graphOptimizationLevel: 'basic' },
-      })
+      const [model, processor] = await Promise.all([
+        AutoModelForImageTextToText.from_pretrained('onnx-community/Florence-2-base-ft', {
+          device: 'wasm',
+          dtype: { vision_encoder: 'fp32', encoder_model: 'q8', decoder_model_merged: 'q8' },
+          session_options: { graphOptimizationLevel: 'basic' },
+        }),
+        AutoProcessor.from_pretrained('onnx-community/Florence-2-base-ft'),
+      ])
+      return { model, processor }
     })()
     pipePromise.catch(() => { pipePromise = null })
   }
@@ -31,12 +35,14 @@ export default function ImageCaptioner() {
     setBusy(true); setError(''); setCaption('')
     try {
       setStatus('Downloading Florence-2 model (~350 MB on first run)…')
-      const pipe = await getPipe()
+      const { model, processor } = await getPipe()
       setStatus('Describing image…')
       const { RawImage } = await import('@huggingface/transformers')
-      const out: any = await pipe(await RawImage.fromBlob(f), '<MORE_DETAILED_CAPTION>', { max_new_tokens: 64 })
+      const inputs: any = await processor(await RawImage.fromBlob(f), '<MORE_DETAILED_CAPTION>')
+      const output: any = await model.generate({ ...inputs, max_new_tokens: 64 })
       setStatus('')
-      setCaption((out?.[0]?.generated_text ?? '').replace(/^\s+/, ''))
+      const text = processor.batch_decode(output, { skip_special_tokens: true })[0]
+      setCaption(String(text ?? '').trim())
     } catch (e: any) {
       setError('Captioning failed: ' + e.message)
     }
