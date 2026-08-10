@@ -55,7 +55,7 @@ export default function PdfCrop() {
       </div>
       <div className="flex gap-2 text-sm">
         {(['mm', 'pct'] as const).map(u => (
-          <button key={u} onClick={() => setUnit(u)} className={`px-4 h-9 border ${unit === u ? 'bg-zinc-900 text-white' : ''}`}>{u === 'mm' ? 'Millimeters' : 'Percent of page'}</button>
+          <button key={u} onClick={() => setUnit(u)} className={`px-4 h-9 border ${unit === u ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{u === 'mm' ? 'Millimeters' : 'Percent of page'}</button>
         ))}
       </div>
       {busy && <p className="text-sm animate-pulse">{status}</p>}

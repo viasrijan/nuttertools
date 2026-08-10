@@ -81,7 +81,7 @@ export default function PdfViewer() {
       {error && <p className="text-xs text-red-500">{error}</p>}
       <div id="pdfviewer-layers" className="space-y-3 max-h-[70vh] overflow-auto border p-3" />
       {layersRef.current.length > 0 && (
-        <button onClick={download} className="px-5 h-10 bg-zinc-900 text-white text-sm">Download annotated PDF</button>
+        <button onClick={download} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download annotated PDF</button>
       )}
       <p className="text-[11px] font-medium text-zinc-500">Drag on the pages to highlight. Drawing is baked into the downloaded PDF.</p>
     </div>

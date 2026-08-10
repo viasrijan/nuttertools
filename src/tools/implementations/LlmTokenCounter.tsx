@@ -44,7 +44,7 @@ export default function LlmTokenCounter() {
       </div>
       <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Paste text to count tokens…" className="w-full h-[240px] border p-3 text-sm" />
       <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(String(stats.tokens))} className="px-5 h-10 bg-zinc-900 text-white text-sm">Copy count</button>
+        <button onClick={() => navigator.clipboard.writeText(String(stats.tokens))} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy count</button>
         <button onClick={() => setText('')} className="px-5 h-10 border text-sm">Clear</button>
       </div>
       <p className="text-xs text-zinc-500">Estimate uses ~{MODELS[model].perToken} chars per token. Actual count varies by tokenizer.</p>

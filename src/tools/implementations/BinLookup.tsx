@@ -47,7 +47,7 @@ export default function BinLookup() {
     <div className="space-y-4 max-w-xl">
       <div className="flex gap-2">
         <input value={bin} onChange={e => setBin(e.target.value.replace(/\D/g, '').slice(0, 8))} placeholder="First 6–8 digits (BIN/IIN)" className="flex-1 border px-3 py-2 text-sm font-mono" />
-        <button onClick={lookup} className="px-5 h-10 bg-zinc-900 text-white text-sm">Lookup</button>
+        <button onClick={lookup} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Lookup</button>
       </div>
       {state === 'loading' && <p className="text-xs text-zinc-500">Looking up…</p>}
       {state === 'fail' && <p className="text-sm text-red-600">Enter exactly 6 digits.</p>}

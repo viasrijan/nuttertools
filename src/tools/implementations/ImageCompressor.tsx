@@ -53,7 +53,7 @@ export default function ImageCompressor(){
       <div className="flex items-center gap-3">
         <label className="text-sm">Quality {Math.round(quality*100)}%</label>
         <input type="range" min={0.1} max={1} step={0.05} value={quality} onChange={e=>setQuality(parseFloat(e.target.value))} className="flex-1"/>
-        <button onClick={compressAll} className="px-4 py-2 bg-zinc-900 text-white text-sm">Compress</button>
+        <button onClick={compressAll} className="px-4 py-2 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Compress</button>
         {files.some(f=>f.out) && <button onClick={downloadZip} className="px-4 py-2 border text-sm">Download ZIP</button>}
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">

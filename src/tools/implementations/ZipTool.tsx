@@ -58,8 +58,8 @@ export default function ZipTool() {
   return (
     <div className="space-y-4 max-w-xl">
       <div className="flex gap-2">
-        <button onClick={() => setMode('zip')} className={`px-4 h-9 text-sm border ${mode === 'zip' ? 'bg-zinc-900 text-white' : ''}`}>Create zip</button>
-        <button onClick={() => setMode('unzip')} className={`px-4 h-9 text-sm border ${mode === 'unzip' ? 'bg-zinc-900 text-white' : ''}`}>Extract zip</button>
+        <button onClick={() => setMode('zip')} className={`px-4 h-9 text-sm border ${mode === 'zip' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Create zip</button>
+        <button onClick={() => setMode('unzip')} className={`px-4 h-9 text-sm border ${mode === 'unzip' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Extract zip</button>
       </div>
       {mode === 'zip' ? (
         <>
@@ -76,7 +76,7 @@ export default function ZipTool() {
               <div className="border max-h-64 overflow-auto divide-y">
                 {entries.map((e, i) => <div key={i} className="px-3 py-1.5 text-sm flex justify-between"><span className="truncate">{e.name}</span><span className="text-zinc-400 text-xs">{(e.size / 1024).toFixed(1)} KB</span></div>)}
               </div>
-              <button onClick={extractAll} className="px-5 h-10 bg-zinc-900 text-white text-sm">Extract all</button>
+              <button onClick={extractAll} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Extract all</button>
             </>
           )}
         </>

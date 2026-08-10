@@ -26,8 +26,8 @@ export default function BulkRenamer() {
       {files.length > 0 && (
         <>
           <div className="flex flex-wrap gap-2">
-            <button onClick={() => setMode('prefix')} className={`px-3 h-9 text-sm border ${mode === 'prefix' ? 'bg-zinc-900 text-white' : ''}`}>Prefix name</button>
-            <button onClick={() => setMode('number')} className={`px-3 h-9 text-sm border ${mode === 'number' ? 'bg-zinc-900 text-white' : ''}`}>Numbered</button>
+            <button onClick={() => setMode('prefix')} className={`px-3 h-9 text-sm border ${mode === 'prefix' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Prefix name</button>
+            <button onClick={() => setMode('number')} className={`px-3 h-9 text-sm border ${mode === 'number' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Numbered</button>
           </div>
           {mode === 'prefix' ? (
             <input value={prefix} onChange={e => setPrefix(e.target.value)} className="w-full border px-3 h-10 text-sm" placeholder="Prefix" />
@@ -46,7 +46,7 @@ export default function BulkRenamer() {
               </div>
             ))}
           </div>
-          <button onClick={downloadAll} className="px-5 h-10 bg-zinc-900 text-white text-sm">Download {files.length} renamed files</button>
+          <button onClick={downloadAll} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download {files.length} renamed files</button>
           <p className="text-[11px] font-medium text-zinc-500">The browser will trigger one download per file.</p>
         </>
       )}

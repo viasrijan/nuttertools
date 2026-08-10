@@ -25,7 +25,7 @@ export default function HashGenerator() {
   return (
     <div className="space-y-4 max-w-3xl">
       <textarea value={text} onChange={e => setText(e.target.value)} className="w-full border p-3 h-24 text-sm" />
-      <button onClick={run} className="px-5 h-10 bg-zinc-900 text-white text-sm">Hash</button>
+      <button onClick={run} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Hash</button>
       <div className="space-y-2">
         {rows.map(([name, value, desc]) => (
           <div key={name} className="border p-3">

@@ -20,7 +20,7 @@ export default function TipCalculator() {
         <input type="range" min={0} max={40} value={tipPct} onChange={e => setTipPct(parseInt(e.target.value))} className="w-full mt-2" />
         <div className="flex flex-wrap gap-1.5 mt-2">
           {[10, 15, 18, 20, 25].map(t => (
-            <button key={t} onClick={() => setTipPct(t)} className={`px-3 h-8 border text-sm ${tipPct === t ? 'bg-zinc-900 text-white' : ''}`}>{t}%</button>
+            <button key={t} onClick={() => setTipPct(t)} className={`px-3 h-8 border text-sm ${tipPct === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t}%</button>
           ))}
         </div>
       </div>

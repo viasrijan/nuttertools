@@ -72,7 +72,7 @@ export default function TextEncryptor() {
       </div>
       {error && <p className="text-xs text-red-500">{error}</p>}
       <div className="flex gap-2">
-        <button onClick={encrypt} disabled={busy} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? '…' : 'Encrypt'}</button>
+        <button onClick={encrypt} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? '…' : 'Encrypt'}</button>
         <button onClick={decrypt} disabled={busy} className="px-5 h-10 border text-sm">{busy ? '…' : 'Decrypt'}</button>
         {out && <button onClick={() => navigator.clipboard.writeText(out)} className="px-5 h-10 border text-sm">Copy</button>}
       </div>

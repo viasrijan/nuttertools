@@ -22,8 +22,8 @@ export default function MorseCode() {
   return (
     <div className="space-y-4 max-w-3xl">
       <div className="flex gap-2">
-        <button onClick={() => setMode('t2m')} className={`px-4 h-9 text-sm border ${mode === 't2m' ? 'bg-zinc-900 text-white' : ''}`}>Text → Morse</button>
-        <button onClick={() => setMode('m2t')} className={`px-4 h-9 text-sm border ${mode === 'm2t' ? 'bg-zinc-900 text-white' : ''}`}>Morse → Text</button>
+        <button onClick={() => setMode('t2m')} className={`px-4 h-9 text-sm border ${mode === 't2m' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Text → Morse</button>
+        <button onClick={() => setMode('m2t')} className={`px-4 h-9 text-sm border ${mode === 'm2t' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Morse → Text</button>
         <button onClick={() => navigator.clipboard.writeText(morse)} className="px-4 h-9 border text-sm">Copy</button>
       </div>
       {mode === 't2m' ? (
@@ -37,7 +37,7 @@ export default function MorseCode() {
           <textarea value={text} readOnly className="w-full h-44 border p-3 text-sm bg-zinc-50 dark:bg-zinc-800" />
         </div>
       )}
-      <button onClick={() => { if (mode === 't2m') setMorse(toMorse(text)); else setText(fromMorse(morse)) }} className="px-4 h-9 bg-zinc-900 text-white text-sm">Convert</button>
+      <button onClick={() => { if (mode === 't2m') setMorse(toMorse(text)); else setText(fromMorse(morse)) }} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Convert</button>
     </div>
   )
 }

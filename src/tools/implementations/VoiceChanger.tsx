@@ -37,10 +37,10 @@ export default function VoiceChanger() {
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop a voice recording to disguise" />
       <div className="flex flex-wrap gap-2">
         {Object.keys(VOICES).map(v => (
-          <button key={v} onClick={() => setVoice(v)} className={`px-4 h-9 text-sm border capitalize ${voice === v ? 'bg-zinc-900 text-white' : ''}`}>{v}</button>
+          <button key={v} onClick={() => setVoice(v)} className={`px-4 h-9 text-sm border capitalize ${voice === v ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{v}</button>
         ))}
       </div>
-      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Processing…' : 'Change voice & download'}</button>
+      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Processing…' : 'Change voice & download'}</button>
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Pitch and formant tricks applied with FFmpeg — great for videos, podcasts and prank calls. All offline.</p>
     </div>

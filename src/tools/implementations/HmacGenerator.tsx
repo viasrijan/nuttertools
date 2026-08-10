@@ -36,15 +36,15 @@ export default function HmacGenerator() {
       <div className="flex flex-wrap gap-2 text-sm items-center">
         <label className="font-semibold text-zinc-900 dark:text-white">Algorithm</label>
         {['SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'].map(h => (
-          <button key={h} onClick={() => setHash(h)} className={`px-3 h-9 text-xs border ${hash === h ? 'bg-zinc-900 text-white' : ''}`}>{h}</button>
+          <button key={h} onClick={() => setHash(h)} className={`px-3 h-9 text-xs border ${hash === h ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{h}</button>
         ))}
         <label className="font-semibold text-zinc-900 dark:text-white ml-2">Output</label>
         {(['hex', 'b64'] as const).map(f => (
-          <button key={f} onClick={() => setFormat(f)} className={`px-3 h-9 text-xs border ${format === f ? 'bg-zinc-900 text-white' : ''}`}>{f === 'hex' ? 'Hex' : 'Base64'}</button>
+          <button key={f} onClick={() => setFormat(f)} className={`px-3 h-9 text-xs border ${format === f ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{f === 'hex' ? 'Hex' : 'Base64'}</button>
         ))}
       </div>
       <pre className="border p-3 text-xs break-all whitespace-pre-wrap font-mono">{out || 'Generating…'}</pre>
-      <button onClick={() => navigator.clipboard.writeText(out)} className="px-5 h-10 bg-zinc-900 text-white text-sm">Copy</button>
+      <button onClick={() => navigator.clipboard.writeText(out)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy</button>
     </div>
   )
 }

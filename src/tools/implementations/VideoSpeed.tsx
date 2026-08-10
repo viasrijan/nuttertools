@@ -34,7 +34,7 @@ export default function VideoSpeed() {
         <input type="range" min={0.25} max={4} step={0.25} value={speed} onChange={e => setSpeed(parseFloat(e.target.value))} className="flex-1" />
         <span className="text-sm font-semibold w-16 text-center">{speed}×</span>
       </div>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Processing…' : 'Change speed & download'}</button>
+      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Processing…' : 'Change speed & download'}</button>
     </div>
   )
 }

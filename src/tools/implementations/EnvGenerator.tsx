@@ -42,7 +42,7 @@ export default function EnvGenerator() {
     <div className="space-y-4 max-w-3xl">
       <div className="flex flex-wrap gap-2">
         {Object.keys(TEMPLATES).map(k => (
-          <button key={k} onClick={() => select(k)} className={`px-3 h-9 text-sm border ${tpl === k ? 'bg-zinc-900 text-white' : ''}`}>{k}</button>
+          <button key={k} onClick={() => select(k)} className={`px-3 h-9 text-sm border ${tpl === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</button>
         ))}
       </div>
       <div className="space-y-2">
@@ -55,7 +55,7 @@ export default function EnvGenerator() {
         ))}
         <button onClick={() => setRows([...rows, { key: 'NEW_KEY', desc: '', value: '' }])} className="px-3 h-8 border text-sm">+ Add key</button>
       </div>
-      <button onClick={gen} className="px-5 h-10 bg-zinc-900 text-white text-sm">Generate .env</button>
+      <button onClick={gen} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Generate .env</button>
       {out && (
         <>
           <textarea value={out} readOnly className="w-full h-40 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />

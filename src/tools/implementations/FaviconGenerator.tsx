@@ -48,7 +48,7 @@ export default function FaviconGenerator() {
         ))}
       </div>
       <div className="flex gap-2">
-        <button onClick={() => saveBlob(dataUrlToBlob(draw(64)), 'favicon-64.png')} className="px-5 h-10 bg-zinc-900 text-white text-sm">Download 64px PNG</button>
+        <button onClick={() => saveBlob(dataUrlToBlob(draw(64)), 'favicon-64.png')} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download 64px PNG</button>
         <button onClick={() => saveBlob(dataUrlToBlob(draw(180)), 'favicon-180.png')} className="px-5 h-10 border text-sm">Download 180px</button>
       </div>
       <p className="text-[11px] text-zinc-500">Tip: also run this letter into the <b>Color Picker</b> or use the <b>Icon Resizer</b> for other sizes. For a full favicon pack, download 16, 32, 48 and 180 then upload to your host.</p>

@@ -89,17 +89,17 @@ export default function FaceBlur() {
       <DropZone onFiles={fl => setFile(fl[0])} accept="image/*" multiple={false} label="Drop a photo — drag a box over faces or objects to hide" />
       <div className="flex flex-wrap gap-2 text-sm items-center">
         {(['blur', 'pixelate'] as const).map(m => (
-          <button key={m} onClick={() => setMode(m)} className={`px-4 h-9 border capitalize ${mode === m ? 'bg-zinc-900 text-white' : ''}`}>{m}</button>
+          <button key={m} onClick={() => setMode(m)} className={`px-4 h-9 border capitalize ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{m}</button>
         ))}
         <label className="font-semibold text-zinc-900 dark:text-white ml-2 text-xs">Intensity</label>
         <input type="range" min="4" max="40" value={intensity} onChange={e => setIntensity(+e.target.value)} className="w-32" />
-        {box && <button onClick={applyEffect} className="px-4 h-9 bg-zinc-900 text-white text-sm">Apply</button>}
+        {box && <button onClick={applyEffect} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Apply</button>}
         {box && <button onClick={clear} className="px-4 h-9 border text-sm">Clear</button>}
       </div>
       {img && (
         <>
           <canvas ref={canvasRef} className="max-w-full border cursor-crosshair" onMouseDown={onDown} onMouseMove={onMove} onMouseUp={onUp} onMouseLeave={onUp} />
-          <button onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, file?.name.replace(/\.[^.]+$/, '') + '-blurred.png'), 'image/png')} className="px-5 h-10 bg-zinc-900 text-white text-sm">Download PNG</button>
+          <button onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, file?.name.replace(/\.[^.]+$/, '') + '-blurred.png'), 'image/png')} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download PNG</button>
         </>
       )}
       <p className="text-[11px] text-zinc-500">Everything runs locally in your browser — no photo leaves your device.</p>

@@ -40,7 +40,7 @@ export default function DedupeLines() {
         <label className="flex items-center gap-2"><input type="checkbox" checked={sort} onChange={e => setSort(e.target.checked)} />Sort A–Z</label>
         <label className="flex items-center gap-2"><input type="checkbox" checked={ignoreCase} onChange={e => setIgnoreCase(e.target.checked)} />Ignore case</label>
         <label className="flex items-center gap-2"><input type="checkbox" checked={trim} onChange={e => setTrim(e.target.checked)} />Trim spaces</label>
-        <button onClick={run} className="px-4 h-9 bg-zinc-900 text-white text-sm">Dedupe</button>
+        <button onClick={run} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Dedupe</button>
         {out && <button onClick={() => navigator.clipboard.writeText(out)} className="px-4 h-9 border text-sm">Copy</button>}
       </div>
       <div className="grid md:grid-cols-2 gap-3">

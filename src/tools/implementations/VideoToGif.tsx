@@ -26,7 +26,7 @@ export default function VideoToGif() {
         <label className="text-sm font-semibold">FPS ({fps})<input type="range" min={5} max={30} value={fps} onChange={e => setFps(parseInt(e.target.value))} className="w-full mt-2" /></label>
         <label className="text-sm font-semibold">Width ({width}px)<input type="range" min={160} max={960} step={16} value={width} onChange={e => setWidth(parseInt(e.target.value))} className="w-full mt-2" /></label>
       </div>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Converting…' : 'Convert & download'}</button>
+      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Converting…' : 'Convert & download'}</button>
       <p className="text-[11px] font-medium text-zinc-500">Tip: lower FPS and width produce much smaller GIFs.</p>
     </div>
   )

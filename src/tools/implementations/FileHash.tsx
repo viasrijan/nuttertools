@@ -60,10 +60,10 @@ export default function FileHash() {
       <div className="flex flex-wrap gap-2 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white self-center">Algorithm</label>
         {['MD5', 'SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'].map(a => (
-          <button key={a} onClick={() => setAlg(a)} className={`px-3 h-9 text-xs border ${alg === a ? 'bg-zinc-900 text-white' : ''}`}>{a}</button>
+          <button key={a} onClick={() => setAlg(a)} className={`px-3 h-9 text-xs border ${alg === a ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{a}</button>
         ))}
       </div>
-      <button onClick={run} disabled={!files.length} className="px-5 h-10 bg-zinc-900 text-white text-sm">Hash files</button>
+      <button onClick={run} disabled={!files.length} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Hash files</button>
       {results.map((r, i) => (
         <div key={i} className="border p-3 text-xs">
           <div className="flex justify-between mb-1"><span className="font-semibold">{r.name}</span><span className="text-zinc-500">{r.size}</span></div>

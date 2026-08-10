@@ -42,7 +42,7 @@ export default function UtmBuilder() {
         <input value={built()} readOnly className="w-full border px-3 h-10 mt-1 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />
       </label>
       <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(built())} className="px-4 h-9 bg-zinc-900 text-white text-sm">Copy link</button>
+        <button onClick={() => navigator.clipboard.writeText(built())} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy link</button>
         <a href={built()} target="_blank" rel="noreferrer" className="px-4 h-9 border text-sm inline-flex items-center">Open</a>
       </div>
       <div className="border p-3 text-xs text-zinc-500 bg-zinc-50 dark:bg-zinc-800">

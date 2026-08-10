@@ -11,7 +11,7 @@ export default function UrlEncoder() {
         <label className="text-sm font-semibold">Original text</label>
         <textarea value={input} onChange={e => { setInput(e.target.value); setEncode(encodeURIComponent(e.target.value)); setDecode('') }} className="w-full border p-3 h-24 text-sm mt-1" />
         <div className="flex flex-wrap gap-2 mt-2">
-          <button onClick={() => navigator.clipboard.writeText(encodeURIComponent(input))} className="px-4 h-9 bg-zinc-900 text-white text-sm">Encode</button>
+          <button onClick={() => navigator.clipboard.writeText(encodeURIComponent(input))} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Encode</button>
           <button onClick={() => navigator.clipboard.writeText(encodeURIComponent(input))} className="px-4 h-9 border text-sm">Copy encoded</button>
         </div>
         <code className="block mt-3 border p-3 font-mono text-xs break-all bg-zinc-50 dark:bg-zinc-800">{encodeURIComponent(input)}</code>

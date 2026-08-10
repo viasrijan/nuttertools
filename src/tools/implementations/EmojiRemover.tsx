@@ -9,7 +9,7 @@ export default function EmojiRemover() {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-3">
-        <button onClick={() => navigator.clipboard.writeText(clean)} className="px-4 h-9 bg-zinc-900 text-white text-sm">Copy cleaned</button>
+        <button onClick={() => navigator.clipboard.writeText(clean)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy cleaned</button>
         <span className="text-sm font-medium text-zinc-500">{emojis.length} emoji found</span>
         {emojis.length > 0 && <div className="text-lg">{emojis.join(' ')}</div>}
       </div>

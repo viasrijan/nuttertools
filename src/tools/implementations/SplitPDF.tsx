@@ -29,7 +29,7 @@ export default function SplitPDF(){
       <DropZone onFiles={onFiles} accept="application/pdf" multiple={false}/>
       <div className="flex gap-2 items-center">
         <input value={range} onChange={e=>setRange(e.target.value)} placeholder="1-2,4,6-8" className="border px-3 h-9 text-sm w-40"/>
-        <button onClick={split} className="px-4 h-9 bg-zinc-900 text-white text-sm">Split</button>
+        <button onClick={split} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Split</button>
       </div>
       {out && <a href={out} download="split.pdf" className="text-sm underline">Download Split PDF</a>}
     </div>

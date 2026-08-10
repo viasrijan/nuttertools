@@ -50,7 +50,7 @@ export default function VoiceRecorder() {
 
   return (
     <div className="space-y-4 max-w-xl">
-      <button onClick={toggle} className={`px-6 h-12 text-sm rounded-full ${recording ? 'bg-red-600 text-white animate-pulse' : 'bg-zinc-900 text-white'}`}>
+      <button onClick={toggle} className={`px-6 h-12 text-sm rounded-full ${recording ? 'bg-red-600 text-white animate-pulse' : 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600'}`}>
         {recording ? `● Recording ${seconds}s — click to stop` : 'Start recording'}
       </button>
       {url && (
@@ -58,7 +58,7 @@ export default function VoiceRecorder() {
           <audio controls src={url} className="w-full" />
           <div className="flex gap-2">
             <button onClick={() => blob && saveBlob(blob, 'recording.webm')} className="px-4 h-9 border text-sm">Download WebM</button>
-            <button onClick={toMp3} disabled={converting} className="px-4 h-9 bg-zinc-900 text-white text-sm">{converting ? 'Converting…' : 'Download MP3'}</button>
+            <button onClick={toMp3} disabled={converting} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{converting ? 'Converting…' : 'Download MP3'}</button>
           </div>
         </div>
       )}

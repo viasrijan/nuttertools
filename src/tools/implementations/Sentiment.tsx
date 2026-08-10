@@ -44,7 +44,7 @@ export default function Sentiment() {
   return (
     <div className="space-y-4 max-w-xl">
       <textarea value={text} onChange={e => setText(e.target.value)} className="w-full border p-3 h-32 text-sm" placeholder="How does this text feel?…" />
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Analyzing…' : 'Analyze'}</button>
+      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Analyzing…' : 'Analyze'}</button>
       {error && <p className="text-xs text-zinc-500">{error}</p>}
       {res && (
         <div className="border p-4 flex items-center gap-4">

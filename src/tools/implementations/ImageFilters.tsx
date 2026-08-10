@@ -96,9 +96,9 @@ export default function ImageFilters() {
       ) : (
         <>
           <div className="flex flex-wrap gap-2">
-            <button onClick={download} className="px-4 h-9 bg-zinc-900 text-white text-sm">Download</button>
+            <button onClick={download} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download</button>
             {batch.length > 0 && (
-              <button onClick={downloadAll} disabled={busy} className="px-4 h-9 bg-zinc-900 text-white text-sm disabled:opacity-50">
+              <button onClick={downloadAll} disabled={busy} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm disabled:opacity-50">
                 {busy ? 'Applying…' : `Download selected (${batch.filter(b => b.checked).length})`}
               </button>
             )}

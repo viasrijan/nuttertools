@@ -110,7 +110,7 @@ export default function MindmapGenerator() {
         </div>
         <div>
           <canvas ref={canvasRef} width={1100} height={600} className="border max-w-full" />
-          <button onClick={download} className="px-5 h-10 bg-zinc-900 text-white text-sm mt-2">Download PNG</button>
+          <button onClick={download} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm mt-2">Download PNG</button>
         </div>
       </div>
     </div>

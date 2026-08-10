@@ -93,7 +93,7 @@ export default function CssTailwind() {
         <div>
           <p className="text-sm font-semibold mb-1">Tailwind classes</p>
           <div className="w-full h-64 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800 overflow-auto whitespace-pre-wrap">{convertCss(css)}</div>
-          <button onClick={() => navigator.clipboard.writeText(convertCss(css))} className="px-4 h-9 bg-zinc-900 text-white text-sm mt-2">Copy classes</button>
+          <button onClick={() => navigator.clipboard.writeText(convertCss(css))} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm mt-2">Copy classes</button>
         </div>
       </div>
       <div className="border p-4">

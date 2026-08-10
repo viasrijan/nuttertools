@@ -55,10 +55,10 @@ export default function VideoBgRemover() {
       <div className="flex items-center gap-2 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white">Frame rate</label>
         {[5, 10, 15].map(f => (
-          <button key={f} onClick={() => setFps(f)} className={`px-3 h-9 text-xs border ${fps === f ? 'bg-zinc-900 text-white' : ''}`}>{f} fps</button>
+          <button key={f} onClick={() => setFps(f)} className={`px-3 h-9 text-xs border ${fps === f ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{f} fps</button>
         ))}
       </div>
-      <button onClick={run} disabled={busy || !video} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Processing…' : 'Remove background & download'}</button>
+      <button onClick={run} disabled={busy || !video} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Processing…' : 'Remove background & download'}</button>
       {busy && <p className="text-sm animate-pulse">{status}</p>}
       {!busy && status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Best for short clips (&lt;8s): {fps} fps → ~{fps * 8} frames, a few minutes per second of video. Output is a transparent WebM — use an editor to place it over any background. First run downloads the AI model once (~40 MB).</p>

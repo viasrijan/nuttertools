@@ -42,7 +42,7 @@ export default function CaptionGenerator() {
           </div>
         ))}
       </div>
-      <button onClick={() => setVariants(generate())} className="px-5 h-10 bg-zinc-900 text-white text-sm">Shuffle again</button>
+      <button onClick={() => setVariants(generate())} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Shuffle again</button>
     </div>
   )
 }

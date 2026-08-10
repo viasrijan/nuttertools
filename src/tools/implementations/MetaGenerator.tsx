@@ -56,7 +56,7 @@ export default function MetaGenerator() {
         <label className="flex items-center gap-2"><input type="checkbox" checked={d.canonical} onChange={e => set('canonical', e.target.checked)} />Canonical</label>
         <input value={d.twitterHandle} onChange={e => set('twitterHandle', e.target.value)} className="border px-3 h-9 text-sm flex-1 min-w-[140px]" placeholder="Twitter handle" />
       </div>
-      <button onClick={() => navigator.clipboard.writeText(gen())} className="px-5 h-10 bg-zinc-900 text-white text-sm">Copy meta tags</button>
+      <button onClick={() => navigator.clipboard.writeText(gen())} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy meta tags</button>
       <textarea value={gen()} readOnly className="w-full h-64 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />
     </div>
   )

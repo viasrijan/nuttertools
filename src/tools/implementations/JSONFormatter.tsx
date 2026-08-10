@@ -19,7 +19,7 @@ export default function JSONFormatter(){
   return (
     <div className="space-y-3">
       <div className="flex gap-2">
-        <button onClick={format} className="px-4 h-8 bg-zinc-900 text-white text-sm">Format</button>
+        <button onClick={format} className="px-4 h-8 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Format</button>
         <button onClick={minify} className="px-4 h-8 border text-sm">Minify</button>
         <button onClick={()=>navigator.clipboard.writeText(output)} className="px-4 h-8 border text-sm">Copy</button>
       </div>

@@ -46,7 +46,7 @@ export default function HashtagGenerator() {
           <button key={i} onClick={() => navigator.clipboard.writeText('#' + t)} className="text-sm text-blue-600 dark:text-blue-400 hover:underline">#{t.replace(/[^a-z0-9]/gi, '')}</button>
         ))}
       </div>
-      <button onClick={() => navigator.clipboard.writeText(text)} className="px-5 h-10 bg-zinc-900 text-white text-sm">Copy all hashtags</button>
+      <button onClick={() => navigator.clipboard.writeText(text)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy all hashtags</button>
       <p className="text-[11px] text-zinc-500">Mix of your keywords + a small built-in thesaurus. Click any tag to copy it alone.</p>
     </div>
   )

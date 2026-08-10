@@ -27,7 +27,7 @@ export default function PercentCalc() {
     <div className="space-y-4 max-w-xl">
       <div className="flex flex-wrap gap-2">
         {(['percent', 'change', 'gst', 'emi'] as const).map(t => (
-          <button key={t} onClick={() => setTab(t)} className={`px-3 h-9 text-sm border capitalize ${tab === t ? 'bg-zinc-900 text-white' : ''}`}>{t}</button>
+          <button key={t} onClick={() => setTab(t)} className={`px-3 h-9 text-sm border capitalize ${tab === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t}</button>
         ))}
       </div>
       {tab === 'percent' && (

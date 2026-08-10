@@ -29,7 +29,7 @@ export default function Summarizer() {
     <div className="space-y-4 max-w-xl">
       <textarea value={text} onChange={e => setText(e.target.value)} className="w-full border p-3 h-48 text-sm" placeholder="Paste a long article or document…" />
       <p className="text-xs text-zinc-500">{count} words</p>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Summarizing…' : 'Summarize'}</button>
+      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Summarizing…' : 'Summarize'}</button>
       {error && <p className="text-xs text-zinc-500">{error}</p>}
       {res && (
         <div className="space-y-2">

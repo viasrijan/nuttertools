@@ -46,7 +46,7 @@ export default function SpeedPitch() {
           ))}
         </div>
       </div>
-      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Processing…' : 'Process & download'}</button>
+      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Processing…' : 'Process & download'}</button>
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Speed keeps pitch intact; pitch keeps speed intact. Great for learning languages, transcribing or remixing.</p>
     </div>

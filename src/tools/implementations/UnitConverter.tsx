@@ -57,7 +57,7 @@ export default function UnitConverter() {
     <div className="space-y-4 max-w-xl">
       <div className="flex flex-wrap gap-2">
         {Object.keys(GROUPS).map(k => (
-          <button key={k} onClick={() => setGroup(k)} className={`px-3 h-9 text-sm border ${group === k ? 'bg-zinc-900 text-white' : ''}`}>{k}</button>
+          <button key={k} onClick={() => setGroup(k)} className={`px-3 h-9 text-sm border ${group === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</button>
         ))}
       </div>
       <div className="grid grid-cols-2 gap-3 items-end">

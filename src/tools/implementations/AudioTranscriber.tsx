@@ -59,7 +59,7 @@ export default function AudioTranscriber() {
       {result && (
         <div className="space-y-3">
           <p className="text-sm whitespace-pre-wrap border p-3">{result}</p>
-          <button onClick={() => navigator.clipboard.writeText(result)} className="px-4 h-9 bg-zinc-900 text-white text-sm">Copy</button>
+          <button onClick={() => navigator.clipboard.writeText(result)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy</button>
         </div>
       )}
       <p className="text-[11px] font-medium text-zinc-500">Runs Whisper (tiny) fully in your browser — audio never leaves your device. Needs internet on first run to download the model.</p>

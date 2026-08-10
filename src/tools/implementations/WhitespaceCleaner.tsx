@@ -30,7 +30,7 @@ export default function WhitespaceCleaner() {
       <p className="text-xs font-medium text-zinc-500">Saved {Math.max(0, before - after)} characters ({before} → {after})</p>
       <textarea value={input} onChange={e => setInput(e.target.value)} className="w-full h-40 border p-3 font-mono text-xs" />
       <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(clean())} className="px-4 h-9 bg-zinc-900 text-white text-sm">Copy cleaned</button>
+        <button onClick={() => navigator.clipboard.writeText(clean())} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy cleaned</button>
       </div>
       <div className="border p-3 font-mono text-xs whitespace-pre-wrap bg-zinc-50 dark:bg-zinc-800">{clean()}</div>
     </div>

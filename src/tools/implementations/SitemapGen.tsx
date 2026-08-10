@@ -42,7 +42,7 @@ export default function SitemapGen() {
           <input type="date" value={lastmod} onChange={e => setLastmod(e.target.value)} className="w-full border px-2 h-9 mt-1 text-sm" /></label>
       </div>
       <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(gen())} className="px-4 h-9 bg-zinc-900 text-white text-sm">Copy sitemap</button>
+        <button onClick={() => navigator.clipboard.writeText(gen())} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy sitemap</button>
         <a href={`data:text/xml;charset=utf-8,${encodeURIComponent(gen())}`} download="sitemap.xml" className="px-4 h-9 border text-sm inline-flex items-center">Download sitemap.xml</a>
       </div>
       <textarea value={gen()} readOnly className="w-full h-64 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />

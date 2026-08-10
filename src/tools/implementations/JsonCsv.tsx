@@ -65,8 +65,8 @@ export default function JsonCsv() {
     <div className="space-y-4">
       <textarea value={input} onChange={e => setInput(e.target.value)} placeholder="Paste JSON (array of objects) or CSV with header row…" className="w-full h-[220px] border p-3 text-sm font-mono" />
       <div className="flex flex-wrap gap-2">
-        <button onClick={() => { setError(''); navigator.clipboard.writeText(toJson()) }} className="px-5 h-10 bg-zinc-900 text-white text-sm">CSV → JSON</button>
-        <button onClick={() => { setError(''); navigator.clipboard.writeText(toJsonRaw()) }} className="px-5 h-10 bg-zinc-900 text-white text-sm">CSV → JSON (array)</button>
+        <button onClick={() => { setError(''); navigator.clipboard.writeText(toJson()) }} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">CSV → JSON</button>
+        <button onClick={() => { setError(''); navigator.clipboard.writeText(toJsonRaw()) }} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">CSV → JSON (array)</button>
         <button onClick={() => { setError(''); navigator.clipboard.writeText(fromJson()) }} className="px-5 h-10 border text-sm">JSON → CSV</button>
       </div>
       {error && <p className="text-sm text-red-600">{error}</p>}

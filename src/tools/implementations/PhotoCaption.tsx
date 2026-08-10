@@ -55,13 +55,13 @@ export default function PhotoCaption() {
       </div>
       <div className="flex gap-2 text-sm">
         {(['top', 'center', 'bottom'] as const).map(p => (
-          <button key={p} onClick={() => setPos(p)} className={`px-4 h-9 border capitalize ${pos === p ? 'bg-zinc-900 text-white' : ''}`}>{p}</button>
+          <button key={p} onClick={() => setPos(p)} className={`px-4 h-9 border capitalize ${pos === p ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{p}</button>
         ))}
       </div>
       {img && (
         <>
           <canvas ref={canvasRef} className="max-w-full border" />
-          <button onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, file?.name.replace(/\.[^.]+$/, '') + '-captioned.png'), 'image/png')} className="px-5 h-10 bg-zinc-900 text-white text-sm">Download PNG</button>
+          <button onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, file?.name.replace(/\.[^.]+$/, '') + '-captioned.png'), 'image/png')} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download PNG</button>
         </>
       )}
     </div>

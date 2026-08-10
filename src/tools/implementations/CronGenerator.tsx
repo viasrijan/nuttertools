@@ -60,7 +60,7 @@ export default function CronGenerator() {
       <div>
         <label className="text-sm font-semibold">Decode a cron expression</label>
         <input value={input} onChange={e => setInput(e.target.value)} className="w-full border px-3 h-10 font-mono text-sm mt-1" placeholder="*/5 * * * *" />
-        <button onClick={() => { const p = input.split(/\s+/); if (p.length === 5) setFields({ min: p[0], hour: p[1], dom: p[2], mon: p[3], dow: p[4] }) }} className="px-4 h-9 bg-zinc-900 text-white text-sm mt-2">Decode</button>
+        <button onClick={() => { const p = input.split(/\s+/); if (p.length === 5) setFields({ min: p[0], hour: p[1], dom: p[2], mon: p[3], dow: p[4] }) }} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm mt-2">Decode</button>
       </div>
     </div>
   )

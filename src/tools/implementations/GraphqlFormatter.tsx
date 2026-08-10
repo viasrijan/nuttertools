@@ -58,7 +58,7 @@ export default function GraphqlFormatter() {
     <div className="space-y-4">
       <textarea value={input} onChange={e => setInput(e.target.value)} placeholder="Paste GraphQL query / SDL…" className="w-full h-[240px] border p-3 text-sm font-mono" />
       <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(out)} className="px-5 h-10 bg-zinc-900 text-white text-sm">Format & copy</button>
+        <button onClick={() => navigator.clipboard.writeText(out)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Format & copy</button>
         <button onClick={() => setInput(out)} className="px-5 h-10 border text-sm">Use output</button>
       </div>
       <pre className="border p-3 text-xs max-h-[300px] overflow-auto whitespace-pre-wrap">{out}</pre>

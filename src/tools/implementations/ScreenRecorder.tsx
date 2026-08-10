@@ -40,13 +40,13 @@ export default function ScreenRecorder() {
         </p>
         {!recording
           ? <button onClick={start} className="px-6 h-11 bg-red-600 text-white text-sm font-semibold">Start recording</button>
-          : <button onClick={stop} className="px-6 h-11 bg-zinc-900 text-white text-sm font-semibold animate-pulse">■ Stop & save</button>}
+          : <button onClick={stop} className="px-6 h-11 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold animate-pulse">■ Stop & save</button>}
       </div>
       {url && (
         <div className="space-y-2">
           <video src={url} controls className="w-full border rounded-lg" />
           <div className="flex gap-2">
-            <button onClick={async () => saveBlob(await awaitBlob(url), `recording-${Date.now()}.webm`)} className="px-4 h-9 bg-zinc-900 text-white text-sm">Download</button>
+            <button onClick={async () => saveBlob(await awaitBlob(url), `recording-${Date.now()}.webm`)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download</button>
             <a href={url} download="recording.webm" className="px-4 h-9 border text-sm inline-flex items-center">Save</a>
           </div>
         </div>

@@ -48,7 +48,7 @@ export default function PdfPageNumbers() {
         <select value={pos} onChange={e => setPos(e.target.value)} className="border px-2 h-9 text-sm bg-transparent">
           {POSITIONS.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}
         </select>
-        <button onClick={run} disabled={busy} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Working…' : 'Add numbers & download'}</button>
+        <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Working…' : 'Add numbers & download'}</button>
       </div>
     </div>
   )

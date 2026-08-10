@@ -116,7 +116,7 @@ export default function StemSplitter() {
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop a song — vocals, drums, bass and everything else get separated" />
       {file && <p className="text-xs text-zinc-500">{file.name} — first run downloads the model once (165 MB), then everything is processed on your device.</p>}
-      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Separating…' : 'Separate stems'}</button>
+      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Separating…' : 'Separate stems'}</button>
       {busy && (
         <div className="space-y-1">
           <div className="h-2 bg-zinc-200 dark:bg-zinc-800 rounded-sm overflow-hidden">

@@ -29,7 +29,7 @@ export default function OgPreviewer() {
     <div className="space-y-5 max-w-2xl">
       <div className="flex gap-2">
         <input value={url} onChange={e => setUrl(e.target.value)} className="flex-1 border px-3 h-10 text-sm" placeholder="https://example.com" />
-        <button onClick={preview} disabled={loading} className="px-4 h-10 bg-zinc-900 text-white text-sm">{loading ? 'Loading…' : 'Preview'}</button>
+        <button onClick={preview} disabled={loading} className="px-4 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{loading ? 'Loading…' : 'Preview'}</button>
       </div>
       {error && <p className="text-xs text-red-500">{error}</p>}
       {meta && (

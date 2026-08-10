@@ -36,7 +36,7 @@ export default function WhoisLookup() {
     <div className="space-y-4 max-w-xl">
       <div className="flex gap-2">
         <input value={domain} onChange={e => setDomain(e.target.value)} onKeyDown={e => e.key === 'Enter' && lookup()} placeholder="example.com" className="flex-1 border px-3 py-2 text-sm" />
-        <button onClick={lookup} className="px-5 h-10 bg-zinc-900 text-white text-sm">Whois</button>
+        <button onClick={lookup} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Whois</button>
       </div>
       {state === 'loading' && <p className="text-xs text-zinc-500">Querying RDAP registry…</p>}
       {state === 'err' && <p className="text-sm text-zinc-500">No registration data found (domain may be unregistered) or the registry is unreachable.</p>}

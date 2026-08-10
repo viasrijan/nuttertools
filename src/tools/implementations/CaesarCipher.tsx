@@ -21,7 +21,7 @@ export default function CaesarCipher() {
         <label className="text-sm">Shift</label>
         <input type="range" min={-25} max={25} value={shift} onChange={e => setShift(parseInt(e.target.value))} className="flex-1" />
         <span className="font-mono text-sm font-bold">{shift >= 0 ? `+${shift}` : shift}</span>
-        <button onClick={() => { setOut(cipher(text, shift)); setText(cipher(text, shift)) }} className="px-4 h-9 bg-zinc-900 text-white text-sm">Apply</button>
+        <button onClick={() => { setOut(cipher(text, shift)); setText(cipher(text, shift)) }} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Apply</button>
         <button onClick={() => navigator.clipboard.writeText(out)} className="px-4 h-9 border text-sm">Copy</button>
       </div>
       <textarea value={out} onChange={e => setOut(e.target.value)} className="w-full border p-3 h-24 text-sm bg-zinc-50 dark:bg-zinc-800" />

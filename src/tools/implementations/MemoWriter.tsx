@@ -25,7 +25,7 @@ export default function MemoWriter() {
       <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Action required</label><input value={action} onChange={e => setAction(e.target.value)} className="w-full border px-2 py-2 text-sm mt-1" /></div>
       <pre className="border p-4 text-sm whitespace-pre-wrap">{memo}</pre>
       <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(memo)} className="px-5 h-10 bg-zinc-900 text-white text-sm">Copy memo</button>
+        <button onClick={() => navigator.clipboard.writeText(memo)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy memo</button>
       </div>
     </div>
   )

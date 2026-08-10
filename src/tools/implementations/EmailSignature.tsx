@@ -44,7 +44,7 @@ export default function EmailSignature() {
       </div>
       <div className="border p-4 overflow-x-auto" dangerouslySetInnerHTML={{ __html: sig }} />
       <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(sig)} className="px-5 h-10 bg-zinc-900 text-white text-sm">Copy HTML signature</button>
+        <button onClick={() => navigator.clipboard.writeText(sig)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy HTML signature</button>
         <a href={`data:text/html;charset=utf-8,${encodeURIComponent(sig)}`} download="signature.html" className="px-5 h-10 border text-sm inline-flex items-center">Download .html</a>
       </div>
       <p className="text-[11px] text-zinc-500">In Gmail: Settings → Signature → paste with formatting. In Outlook: insert signature as HTML file.</p>

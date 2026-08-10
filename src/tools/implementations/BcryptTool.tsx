@@ -29,7 +29,7 @@ export default function BcryptTool() {
         <div className="flex flex-wrap gap-2 items-center">
           <input value={password} onChange={e => setPassword(e.target.value)} className="border px-3 h-9 text-sm flex-1 min-w-[160px]" placeholder="Password" />
           <label className="text-sm">Rounds <input type="number" min={4} max={15} value={rounds} onChange={e => setRounds(parseInt(e.target.value) || 10)} className="border px-2 h-9 w-16 text-sm" /></label>
-          <button onClick={gen} disabled={busy} className="px-4 h-9 bg-zinc-900 text-white text-sm">{busy ? '…' : 'Hash'}</button>
+          <button onClick={gen} disabled={busy} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? '…' : 'Hash'}</button>
         </div>
         {hash && (
           <>
@@ -43,7 +43,7 @@ export default function BcryptTool() {
         <div className="flex flex-wrap gap-2 items-center">
           <input value={checkPassword} onChange={e => setCheckPassword(e.target.value)} className="border px-3 h-9 text-sm flex-1 min-w-[140px]" placeholder="Password" />
           <input value={checkHash} onChange={e => setCheckHash(e.target.value)} className="border px-3 h-9 text-sm flex-[2] min-w-[180px] font-mono text-xs" placeholder="Hash" />
-          <button onClick={check} className="px-4 h-9 bg-zinc-900 text-white text-sm">Check</button>
+          <button onClick={check} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Check</button>
         </div>
         {result !== null && (
           <div className={`mt-2 border p-3 text-sm font-semibold ${result ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300' : 'bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-300'}`}>

@@ -51,7 +51,7 @@ export default function BatchQr() {
         <select value={size} onChange={e => { setSize(+e.target.value); setGenerated(false) }} className="border px-2 py-2">
           {[256, 512, 1024].map(s => <option key={s} value={s}>{s}px</option>)}
         </select>
-        <button onClick={gen} disabled={busy || !items.length} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Generating…' : `Generate ${items.length || ''} QR codes`}</button>
+        <button onClick={gen} disabled={busy || !items.length} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Generating…' : `Generate ${items.length || ''} QR codes`}</button>
         {generated && <button onClick={downloadZip} className="px-5 h-10 border text-sm">Download ZIP</button>}
       </div>
       <div ref={containerRef} className="grid grid-cols-2 md:grid-cols-4 gap-3" />

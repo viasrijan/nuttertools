@@ -51,7 +51,7 @@ export default function UuidGenerator() {
         <select value={version} onChange={e => setVersion(e.target.value as any)} className="border px-2 h-9 text-sm bg-transparent"><option value="v4">UUID v4 (random)</option><option value="v1">UUID v1 (time)</option></select>
         <label className="flex items-center gap-1.5 text-sm"><input type="checkbox" checked={upper} onChange={e => setUpper(e.target.checked)} />Uppercase</label>
         <label className="flex items-center gap-1.5 text-sm"><input type="checkbox" checked={noHyphen} onChange={e => setNoHyphen(e.target.checked)} />No hyphens</label>
-        <button onClick={gen} className="px-4 h-9 bg-zinc-900 text-white text-sm">Generate</button>
+        <button onClick={gen} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Generate</button>
         {ids.length > 0 && <button onClick={() => navigator.clipboard.writeText(ids.join('\n'))} className="px-4 h-9 border text-sm">Copy</button>}
       </div>
       <div className="border divide-y divide-zinc-100 dark:divide-zinc-800 max-h-64 overflow-auto">

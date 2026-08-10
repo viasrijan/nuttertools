@@ -102,7 +102,7 @@ export default function ImageResizer() {
           <div className="flex gap-2">
             {(['percent', 'pixels', 'preset'] as const).map(m => (
               <button key={m} onClick={() => setMode(m)}
-                className={`px-4 h-9 text-sm border ${mode === m ? 'bg-zinc-900 text-white' : ''}`}>{m}</button>
+                className={`px-4 h-9 text-sm border ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{m}</button>
             ))}
           </div>
           {mode === 'percent' && (
@@ -124,7 +124,7 @@ export default function ImageResizer() {
             </div>
           )}
           <div className="flex items-center gap-3">
-            <button onClick={resize} className="px-4 h-9 bg-zinc-900 text-white text-sm">Resize</button>
+            <button onClick={resize} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Resize</button>
             {out && <a href={out} download="resized.jpg" className="text-sm underline">Download JPG</a>}
           </div>
           {out && <img src={out} className="max-h-[280px]" alt="Result" />}
@@ -133,7 +133,7 @@ export default function ImageResizer() {
       {batch && (
         <>
           <div className="flex items-center gap-3">
-            <button onClick={resize} disabled={busy} className="px-4 h-9 bg-zinc-900 text-white text-sm disabled:opacity-50">Resize all ({batch.length})</button>
+            <button onClick={resize} disabled={busy} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm disabled:opacity-50">Resize all ({batch.length})</button>
             {batch.every(b => b.url.startsWith('data:')) && (
               <button onClick={() => {
                 batch.forEach((b, i) => {

@@ -122,12 +122,12 @@ export default function PdfAnnotator() {
         <>
           <div className="flex flex-wrap gap-2 text-sm items-center">
             {(['rect', 'highlight', 'text'] as const).map(t => (
-              <button key={t} onClick={() => setTool(t)} className={`px-4 h-9 border capitalize ${tool === t ? 'bg-zinc-900 text-white' : ''}`}>{t === 'rect' ? '□ Box' : t === 'highlight' ? '🟡 Highlight' : '🅣 Text'}</button>
+              <button key={t} onClick={() => setTool(t)} className={`px-4 h-9 border capitalize ${tool === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t === 'rect' ? '□ Box' : t === 'highlight' ? '🟡 Highlight' : '🅣 Text'}</button>
             ))}
             <span className="text-xs text-zinc-500 mx-2">Page {pageNum}/{numPages}</span>
             <button onClick={() => setPageNum(p => Math.max(1, p - 1))} className="px-3 h-9 border text-sm">←</button>
             <button onClick={() => setPageNum(p => Math.min(numPages, p + 1))} className="px-3 h-9 border text-sm">→</button>
-            <button onClick={exportPdf} className="px-5 h-10 bg-zinc-900 text-white text-sm ml-auto">Download annotated PDF</button>
+            <button onClick={exportPdf} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm ml-auto">Download annotated PDF</button>
           </div>
           <canvas ref={canvasRef} className="max-w-full border bg-white" onMouseDown={onDown} onMouseMove={onMove} onMouseUp={onUp} onMouseLeave={onUp} />
         </>

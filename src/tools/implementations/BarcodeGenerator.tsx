@@ -97,7 +97,7 @@ export default function BarcodeGenerator() {
     <div className="space-y-4 max-w-xl">
       <div className="flex flex-wrap gap-2 text-sm">
         {([['ean13', 'EAN-13'], ['ean8', 'EAN-8'], ['upca', 'UPC-A'], ['code39', 'Code 39']] as const).map(([k, l]) => (
-          <button key={k} onClick={() => setFormat(k)} className={`px-4 h-9 border ${format === k ? 'bg-zinc-900 text-white' : ''}`}>{l}</button>
+          <button key={k} onClick={() => setFormat(k)} className={`px-4 h-9 border ${format === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{l}</button>
         ))}
       </div>
       <div className="flex flex-wrap gap-2 text-sm items-center">
@@ -111,7 +111,7 @@ export default function BarcodeGenerator() {
         <>
           <canvas ref={canvasRef} className="border bg-white max-w-full" />
           <button onClick={draw} className="px-4 h-9 border text-sm">Redraw</button>
-          <button onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, `barcode-${format}.png`))} className="px-5 h-10 bg-zinc-900 text-white text-sm">Download PNG</button>
+          <button onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, `barcode-${format}.png`))} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download PNG</button>
         </>
       ) : (
         <p className="text-sm text-red-600">{format === 'code39' ? 'Only A–Z, 0–9 and - . space $ / + % allowed.' : `Enter ${format === 'ean8' ? '7 or 8' : format === 'upca' ? '11 or 12' : '12 or 13'} digits — check digit is added automatically.`}</p>

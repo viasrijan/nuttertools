@@ -62,7 +62,7 @@ export default function TypingTest() {
         placeholder={done ? 'Done! Click new words to go again.' : 'Start typing…'}
         className="w-full border px-4 h-12 text-base"
       />
-      <button onClick={restart} className="px-5 h-10 bg-zinc-900 text-white text-sm">New words</button>
+      <button onClick={restart} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">New words</button>
     </div>
   )
 }

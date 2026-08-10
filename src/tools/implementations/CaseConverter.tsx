@@ -20,13 +20,13 @@ export default function CaseConverter() {
       <div className="flex flex-wrap gap-2">
         {trans.map(([label], i) => (
           <button key={label} onClick={() => setActive(i)}
-            className={`px-3 h-9 text-sm border ${active === i ? 'bg-zinc-900 text-white' : ''}`}>{label}</button>
+            className={`px-3 h-9 text-sm border ${active === i ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{label}</button>
         ))}
       </div>
       <div className="border p-4 bg-zinc-50 dark:bg-zinc-800 min-h-[80px] font-mono text-sm whitespace-pre-wrap break-words">
         {trans[active][1](text) || '…'}
       </div>
-      <button onClick={() => navigator.clipboard.writeText(trans[active][1](text))} className="px-4 h-9 bg-zinc-900 text-white text-sm">Copy result</button>
+      <button onClick={() => navigator.clipboard.writeText(trans[active][1](text))} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy result</button>
     </div>
   )
 }

@@ -37,12 +37,12 @@ export default function RotatePdf() {
       <DropZone onFiles={fl => setFile(fl[0])} accept="application/pdf" multiple={false} label="Drop a PDF to rotate" />
       <div className="flex flex-wrap gap-2">
         {[90, 180, 270].map(a => (
-          <button key={a} onClick={() => setAngle(a)} className={`px-4 h-9 text-sm border ${angle === a ? 'bg-zinc-900 text-white' : ''}`}>{a}° clockwise</button>
+          <button key={a} onClick={() => setAngle(a)} className={`px-4 h-9 text-sm border ${angle === a ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{a}° clockwise</button>
         ))}
       </div>
       <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={all} onChange={e => setAll(e.target.checked)} />All pages</label>
       {!all && <input value={pages} onChange={e => setPages(e.target.value)} className="border px-3 h-9 text-sm" placeholder="1-3,5,7-9" />}
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Rotating…' : 'Rotate & download'}</button>
+      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Rotating…' : 'Rotate & download'}</button>
     </div>
   )
 }

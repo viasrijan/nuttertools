@@ -73,7 +73,7 @@ export default function InvoiceGenerator() {
       </div>
       <label className="block text-sm"><span className="font-semibold">Notes</span><input value={note} onChange={e => setNote(e.target.value)} className="w-full border px-3 h-9 mt-1 text-sm" /></label>
       <div className="flex items-center gap-3">
-        <button onClick={gen} className="px-5 h-10 bg-zinc-900 text-white text-sm">Download PDF</button>
+        <button onClick={gen} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download PDF</button>
         <span className="text-lg font-bold">Total: ${total.toFixed(2)}</span>
       </div>
     </div>

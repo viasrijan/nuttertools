@@ -64,7 +64,7 @@ export default function ReadmeGenerator() {
         <label className="flex items-center gap-2"><input type="checkbox" checked={d.badges} onChange={e => set('badges', e.target.checked)} />Badges</label>
         <label className="flex items-center gap-2"><input type="checkbox" checked={d.contributing} onChange={e => set('contributing', e.target.checked)} />Contributing section</label>
       </div>
-      <button onClick={() => navigator.clipboard.writeText(gen())} className="px-5 h-10 bg-zinc-900 text-white text-sm">Copy README</button>
+      <button onClick={() => navigator.clipboard.writeText(gen())} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy README</button>
       <textarea value={gen()} readOnly className="w-full h-80 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />
     </div>
   )

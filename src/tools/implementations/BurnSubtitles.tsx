@@ -67,7 +67,7 @@ export default function BurnSubtitles() {
         <label className="font-semibold text-zinc-900 dark:text-white">Font size</label>
         <input type="number" value={size} onChange={e => setSize(+e.target.value)} className="border px-2 py-2 w-20" />
       </div>
-      <button onClick={run} disabled={busy || !video} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Burning…' : 'Burn subtitles & download'}</button>
+      <button onClick={run} disabled={busy || !video} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Burning…' : 'Burn subtitles & download'}</button>
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Subtitles are hard-baked into the video (no soft track). Videos and subtitles never leave your device.</p>
     </div>

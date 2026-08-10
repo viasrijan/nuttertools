@@ -73,12 +73,12 @@ export default function ToneGenerator() {
     <div className="space-y-4 max-w-xl">
       <div className="flex flex-wrap gap-2">
         {NOTES.flatMap(n => [n + '3', n + '4', n + '5']).map(n => (
-          <button key={n} onClick={() => setNote(n)} className={`px-2.5 h-8 text-xs border rounded ${note === n ? 'bg-zinc-900 text-white' : ''}`}>{n}</button>
+          <button key={n} onClick={() => setNote(n)} className={`px-2.5 h-8 text-xs border rounded ${note === n ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{n}</button>
         ))}
       </div>
       <div className="flex flex-wrap gap-2">
         {['sine', 'square', 'triangle', 'sawtooth'].map(w => (
-          <button key={w} onClick={() => setWave(w as OscillatorType)} className={`px-3 h-9 text-sm capitalize border rounded ${wave === w ? 'bg-zinc-900 text-white' : ''}`}>{w}</button>
+          <button key={w} onClick={() => setWave(w as OscillatorType)} className={`px-3 h-9 text-sm capitalize border rounded ${wave === w ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{w}</button>
         ))}
       </div>
       <p className="text-2xl font-bold">{freq.toFixed(1)} Hz</p>
@@ -87,7 +87,7 @@ export default function ToneGenerator() {
         <label className="text-sm font-semibold">Volume ({Math.round(volume * 100)}%)<input type="range" min={0} max={1} step={0.05} value={volume} onChange={e => setVolume(parseFloat(e.target.value))} className="w-full mt-2" /></label>
       </div>
       <div className="flex gap-2">
-        <button onClick={play} className="px-6 h-10 bg-zinc-900 text-white text-sm">Play</button>
+        <button onClick={play} className="px-6 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Play</button>
         <button onClick={stop} className="px-6 h-10 border text-sm">Stop</button>
         <button onClick={exportWav} disabled={exporting} className="px-6 h-10 border text-sm">{exporting ? 'Rendering…' : 'Download WAV'}</button>
       </div>

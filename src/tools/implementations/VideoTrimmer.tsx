@@ -36,7 +36,7 @@ export default function VideoTrimmer() {
         <label className="text-sm">From <input type="text" value={start} onChange={e => setStart(e.target.value)} className="border px-2 h-9 w-28 font-mono text-sm" placeholder="00:00" /></label>
         <label className="text-sm">To <input type="text" value={end} onChange={e => setEnd(e.target.value)} className="border px-2 h-9 w-28 font-mono text-sm" placeholder="00:30" /></label>
       </div>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Trimming…' : 'Trim & download'}</button>
+      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Trimming…' : 'Trim & download'}</button>
       <p className="text-[11px] font-medium text-zinc-500">Use HH:MM or MM:SS format.</p>
     </div>
   )

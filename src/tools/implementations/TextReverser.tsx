@@ -23,12 +23,12 @@ export default function TextReverser() {
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
         {modes.map(m => (
-          <button key={m.id} onClick={() => setMode(m.id)} className={`px-3 h-9 text-sm border ${mode === m.id ? 'bg-zinc-900 text-white' : ''}`}>{m.label}</button>
+          <button key={m.id} onClick={() => setMode(m.id)} className={`px-3 h-9 text-sm border ${mode === m.id ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{m.label}</button>
         ))}
       </div>
       <textarea value={text} onChange={e => setText(e.target.value)} className="w-full h-32 border p-3 text-sm" />
       <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(run())} className="px-4 h-9 bg-zinc-900 text-white text-sm">Copy result</button>
+        <button onClick={() => navigator.clipboard.writeText(run())} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy result</button>
       </div>
       <div className="border p-4 bg-zinc-50 dark:bg-zinc-800 font-mono text-sm whitespace-pre-wrap break-words">{run()}</div>
     </div>

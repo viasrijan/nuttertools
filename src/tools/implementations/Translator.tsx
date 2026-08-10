@@ -39,7 +39,7 @@ export default function Translator() {
           {LANGS.filter(l => l[0] !== 'auto').map(l => <option key={l[0]} value={l[0]}>{l[1]}</option>)}
         </select>
       </div>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Translating…' : 'Translate'}</button>
+      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Translating…' : 'Translate'}</button>
       {error && <p className="text-xs text-red-500">{error}</p>}
       {result && (
         <div className="space-y-2">

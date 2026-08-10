@@ -54,7 +54,7 @@ export default function CurlToFetch() {
         <div>
           <p className="text-sm font-semibold mb-1">JavaScript fetch</p>
           <textarea value={fetchCode} readOnly className="w-full h-72 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />
-          <button onClick={() => navigator.clipboard.writeText(fetchCode)} className="px-4 h-9 bg-zinc-900 text-white text-sm mt-2">Copy</button>
+          <button onClick={() => navigator.clipboard.writeText(fetchCode)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm mt-2">Copy</button>
         </div>
       </div>
     </div>

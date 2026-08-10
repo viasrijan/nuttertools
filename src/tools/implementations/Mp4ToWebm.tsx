@@ -20,7 +20,7 @@ export default function Mp4ToWebm() {
   return (
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={fl => setFile(fl[0])} accept="video/mp4,.mp4" multiple={false} label="Drop an MP4 to convert to WebM (VP9)" />
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Converting…' : 'Convert & download'}</button>
+      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Converting…' : 'Convert & download'}</button>
       <p className="text-[11px] font-medium text-zinc-500">Smaller files with better streaming support — great for web embeds. Conversion can take a minute.</p>
     </div>
   )

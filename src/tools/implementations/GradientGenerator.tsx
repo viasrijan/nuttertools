@@ -30,7 +30,7 @@ export default function GradientGenerator() {
       <div className="h-40 rounded-lg border" style={{ background: `linear-gradient(${angle}deg, ${from}, ${to})` }} />
       <code className="block border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800">{css}</code>
       <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(css)} className="px-4 h-9 bg-zinc-900 text-white text-sm">Copy CSS</button>
+        <button onClick={() => navigator.clipboard.writeText(css)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy CSS</button>
         <button onClick={() => { const p = PRESETS[Math.floor(Math.random() * PRESETS.length)]; setFrom(p[1]); setTo(p[2]) }} className="px-4 h-9 border text-sm">Random</button>
       </div>
       <div className="flex flex-wrap gap-2">

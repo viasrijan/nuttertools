@@ -50,11 +50,11 @@ export default function MinifyBeautify() {
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
         {TYPES.map(t => (
-          <button key={t} onClick={() => { setType(t); setOutput('') }} className={`px-3 h-9 text-sm border ${type === t ? 'bg-zinc-900 text-white' : ''}`}>{t}</button>
+          <button key={t} onClick={() => { setType(t); setOutput('') }} className={`px-3 h-9 text-sm border ${type === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t}</button>
         ))}
       </div>
       <div className="flex flex-wrap gap-2">
-        <button onClick={() => run('minify')} className="px-4 h-9 bg-zinc-900 text-white text-sm">Minify</button>
+        <button onClick={() => run('minify')} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Minify</button>
         <button onClick={() => run('beautify')} className="px-4 h-9 border text-sm">Beautify</button>
         {output && (
           <>

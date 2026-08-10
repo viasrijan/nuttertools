@@ -5,16 +5,11 @@ function toBase(n: number, base: number) { return n.toString(base).toUpperCase()
 export default function BinaryConverter() {
   const [input, setInput] = useState('255')
   const [from, setFrom] = useState<'dec' | 'hex' | 'oct' | 'bin'>('dec')
-  const [error, setError] = useState('')
 
-  const parsed = (() => {
-    setError('')
-    if (!input.trim()) return NaN
-    const radix = from === 'dec' ? 10 : from === 'hex' ? 16 : from === 'oct' ? 8 : 2
-    const n = parseInt(input.trim(), radix)
-    if (isNaN(n) || /[^0-9a-fA-F]/.test(input) && from === 'hex') { if (isNaN(n)) setError(`Invalid ${from} value`) }
-    return n
-  })()
+  const radix = from === 'dec' ? 10 : from === 'hex' ? 16 : from === 'oct' ? 8 : 2
+  const trimmed = input.trim()
+  const parsed = trimmed ? parseInt(trimmed, radix) : NaN
+  const error = trimmed && isNaN(parsed) ? `Invalid ${from} value` : ''
 
   const rows: [string, () => string][] = [
     ['Decimal', () => String(parsed)],

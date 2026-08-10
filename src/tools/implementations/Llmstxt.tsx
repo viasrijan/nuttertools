@@ -24,7 +24,7 @@ export default function Llmstxt() {
       </div>
       <pre className="border p-3 text-xs max-h-[260px] overflow-auto whitespace-pre-wrap">{out}</pre>
       <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(out)} className="px-5 h-10 bg-zinc-900 text-white text-sm">Copy llms.txt</button>
+        <button onClick={() => navigator.clipboard.writeText(out)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy llms.txt</button>
         <a href={`data:text/plain;charset=utf-8,${encodeURIComponent(out)}`} download="llms.txt" className="px-5 h-10 border text-sm inline-flex items-center">Download</a>
       </div>
       <p className="text-[11px] text-zinc-500">llms.txt tells AI crawlers (ChatGPT, Claude, Perplexity…) what your site is about. Host the file at the root of your domain.</p>

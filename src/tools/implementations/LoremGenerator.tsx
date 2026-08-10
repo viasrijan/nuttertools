@@ -33,7 +33,7 @@ export default function LoremGenerator() {
           <option value="words">Words</option><option value="sentences">Sentences</option><option value="paragraphs">Paragraphs</option>
         </select>
         <input type="number" min={1} max={100} value={count} onChange={e => setCount(parseInt(e.target.value) || 1)} className="border px-3 h-9 text-sm w-24" />
-        <button onClick={gen} className="px-4 h-9 bg-zinc-900 text-white text-sm">Generate</button>
+        <button onClick={gen} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Generate</button>
         <button onClick={() => navigator.clipboard.writeText(out)} className="px-4 h-9 border text-sm">Copy</button>
       </div>
       <textarea value={out} readOnly className="w-full h-64 border p-3 text-sm" placeholder="Generated text appears here" />

@@ -48,7 +48,7 @@ export default function CsvSql() {
         <input value={table} onChange={e => setTable(e.target.value)} className="border px-2 py-2 w-40" />
       </div>
       <textarea value={csv} onChange={e => setCsv(e.target.value)} placeholder="Paste CSV (first row = headers)…" className="w-full h-[200px] border p-3 text-sm font-mono" />
-      <button onClick={() => navigator.clipboard.writeText(sql)} className="px-5 h-10 bg-zinc-900 text-white text-sm">Copy SQL</button>
+      <button onClick={() => navigator.clipboard.writeText(sql)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy SQL</button>
       <pre className="border p-3 text-xs max-h-[300px] overflow-auto whitespace-pre">{sql}</pre>
     </div>
   )

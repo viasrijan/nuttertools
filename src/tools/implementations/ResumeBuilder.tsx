@@ -62,7 +62,7 @@ export default function ResumeBuilder() {
         <button onClick={() => set('jobs', [...data.jobs, { role: '', company: '', years: '', points: '' }])} className="px-3 h-8 border text-sm">+ Add job</button>
       </div>
       <input value={data.edu} onChange={e => set('edu', e.target.value)} className="w-full border px-3 h-9 text-sm" placeholder="Education" />
-      <button onClick={gen} className="px-5 h-10 bg-zinc-900 text-white text-sm">Download PDF</button>
+      <button onClick={gen} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download PDF</button>
     </div>
   )
 }

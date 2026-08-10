@@ -61,7 +61,7 @@ export default function AltTextGenerator() {
       {img && (
         <>
           <canvas ref={canvasRef} className="hidden" />
-          <button onClick={analyze} className="px-5 h-10 bg-zinc-900 text-white text-sm">Generate alt text</button>
+          <button onClick={analyze} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Generate alt text</button>
           {alt && (
             <div className="border p-3">
               <label className="text-xs font-semibold text-zinc-900 dark:text-white uppercase">Suggested alt text</label>

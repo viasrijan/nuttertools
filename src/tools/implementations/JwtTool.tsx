@@ -36,7 +36,7 @@ export default function JwtTool() {
     <div className="space-y-4 max-w-3xl">
       <textarea value={token} onChange={e => setToken(e.target.value)} className="w-full border p-3 h-24 font-mono text-xs break-all" placeholder="Paste JWT token" />
       <div className="flex gap-2">
-        <button onClick={decode} className="px-4 h-9 bg-zinc-900 text-white text-sm">Decode</button>
+        <button onClick={decode} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Decode</button>
         <button onClick={() => navigator.clipboard.writeText(JSON.stringify(JSON.parse(payload || '{}'), null, 2))} className="px-4 h-9 border text-sm">Copy</button>
       </div>
       {error && <p className="text-xs text-red-500">{error}</p>}

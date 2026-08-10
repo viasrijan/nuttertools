@@ -45,7 +45,7 @@ export default function ImageCaptioner() {
       {caption && (
         <div className="space-y-3">
           <p className="text-lg font-medium border p-3">{caption}</p>
-          <button onClick={() => navigator.clipboard.writeText(caption)} className="px-4 h-9 bg-zinc-900 text-white text-sm">Copy</button>
+          <button onClick={() => navigator.clipboard.writeText(caption)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy</button>
         </div>
       )}
       <p className="text-[11px] font-medium text-zinc-500">Runs ViT-GPT2 image captioning entirely on-device.</p>

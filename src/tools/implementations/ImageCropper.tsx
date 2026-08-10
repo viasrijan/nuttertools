@@ -91,7 +91,7 @@ export default function ImageCropper() {
               <option value="0.75">4:3</option>
               <option value="1.25">5:4</option>
             </select>
-            <button onClick={apply} className="px-4 h-9 bg-zinc-900 text-white text-sm">Apply crop</button>
+            <button onClick={apply} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Apply crop</button>
             <button onClick={() => setImg(null)} className="px-4 h-9 border text-sm">New image</button>
             {out && <a href={out} download="cropped.png" className="text-sm underline">Download PNG</a>}
           </div>

@@ -36,7 +36,7 @@ export default function PdfTextExtract() {
       {pages.length > 0 && (
         <>
           <div className="flex gap-2">
-            <button onClick={() => navigator.clipboard.writeText(all)} className="px-4 h-9 bg-zinc-900 text-white text-sm">Copy all</button>
+            <button onClick={() => navigator.clipboard.writeText(all)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy all</button>
             <a href={`data:text/plain;charset=utf-8,${encodeURIComponent(all)}`} download="extracted.txt" className="px-4 h-9 border text-sm inline-flex items-center">Download .txt</a>
           </div>
           <p className="text-sm font-medium text-zinc-500">{pages.length} pages · {all.split(/\s+/).filter(Boolean).length} words</p>

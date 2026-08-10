@@ -37,9 +37,9 @@ export default function AudioEnhancer() {
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop an audio file to clean up and boost" />
       <div className="flex flex-wrap gap-2 text-sm">
         {Object.entries(PRESETS).map(([k, v]) => (
-          <button key={k} onClick={() => setPreset(k as keyof typeof PRESETS)} className={`px-4 h-9 border capitalize ${preset === k ? 'bg-zinc-900 text-white' : ''}`}>{k}</button>
+          <button key={k} onClick={() => setPreset(k as keyof typeof PRESETS)} className={`px-4 h-9 border capitalize ${preset === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</button>
         ))}
-        <button onClick={() => setPreset('custom')} className={`px-4 h-9 border ${preset === 'custom' ? 'bg-zinc-900 text-white' : ''}`}>Custom</button>
+        <button onClick={() => setPreset('custom')} className={`px-4 h-9 border ${preset === 'custom' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Custom</button>
       </div>
       {preset === 'custom' && (
         <div className="flex items-center gap-2 text-sm">
@@ -48,7 +48,7 @@ export default function AudioEnhancer() {
           <span className="font-mono text-xs">{loud} LUFS</span>
         </div>
       )}
-      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Enhancing…' : 'Enhance & download'}</button>
+      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Enhancing…' : 'Enhance & download'}</button>
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Normalizes loudness, removes rumble and hiss. All processing happens in your browser via FFmpeg WASM.</p>
     </div>

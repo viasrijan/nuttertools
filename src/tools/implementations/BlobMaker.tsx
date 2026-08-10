@@ -51,7 +51,7 @@ export default function BlobMaker() {
     <div className="space-y-4 max-w-3xl">
       <div className="flex flex-wrap gap-2">
         {(['blob', 'wave', 'sine'] as const).map(k => (
-          <button key={k} onClick={() => setKind(k)} className={`px-4 h-9 text-sm border ${kind === k ? 'bg-zinc-900 text-white' : ''}`}>{k}</button>
+          <button key={k} onClick={() => setKind(k)} className={`px-4 h-9 text-sm border ${kind === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</button>
         ))}
       </div>
       {kind === 'blob' ? (
@@ -67,7 +67,7 @@ export default function BlobMaker() {
         <div className="max-w-md mx-auto" dangerouslySetInnerHTML={{ __html: svg }} />
       </div>
       <div className="flex gap-2">
-        <button onClick={() => setSeed(Math.floor(Math.random() * 10000))} className="px-4 h-9 bg-zinc-900 text-white text-sm">Shuffle</button>
+        <button onClick={() => setSeed(Math.floor(Math.random() * 10000))} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Shuffle</button>
         <button onClick={() => navigator.clipboard.writeText(svg)} className="px-4 h-9 border text-sm">Copy SVG</button>
         <a href={`data:image/svg+xml;utf8,${encodeURIComponent(svg)}`} download={`${kind}.svg`} className="px-4 h-9 border text-sm inline-flex items-center">Download SVG</a>
       </div>

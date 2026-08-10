@@ -65,7 +65,7 @@ export default function Pomodoro() {
             </div>
           </div>
         </div>
-        <button onClick={() => setRunning(!running)} className={`mt-6 px-8 h-12 text-white text-sm font-semibold ${running ? 'bg-zinc-700' : 'bg-zinc-900'}`}>
+        <button onClick={() => setRunning(!running)} className={`mt-6 px-8 h-12 text-sm font-semibold ${running ? 'bg-zinc-700 text-white' : 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600'}`}>
           {running ? 'Pause' : left === (mode === 'work' ? WORK : mode === 'short' ? SHORT : LONG) ? 'Start' : 'Resume'}
         </button>
         <button onClick={() => { setLeft(mode === 'work' ? WORK : mode === 'short' ? SHORT : LONG); setRunning(false) }} className="px-4 h-12 border text-sm ml-2">Reset</button>

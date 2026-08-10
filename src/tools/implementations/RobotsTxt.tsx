@@ -32,7 +32,7 @@ export default function RobotsTxt() {
       <div className="flex items-center gap-3">
         <label className="text-sm">Crawl delay (optional)
           <input value={crawlDelay} onChange={e => setCrawlDelay(e.target.value)} className="border px-3 h-9 ml-2 w-20 text-sm" /></label>
-        <button onClick={() => navigator.clipboard.writeText(gen())} className="px-4 h-9 bg-zinc-900 text-white text-sm ml-auto">Copy</button>
+        <button onClick={() => navigator.clipboard.writeText(gen())} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm ml-auto">Copy</button>
         <a href={`data:text/plain;charset=utf-8,${encodeURIComponent(gen())}`} download="robots.txt" className="px-4 h-9 border text-sm inline-flex items-center">Download</a>
       </div>
       <textarea value={gen()} readOnly className="w-full h-48 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />

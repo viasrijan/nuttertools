@@ -27,7 +27,7 @@ export default function PasswordGen(){
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={upper} onChange={e=>setUpper(e.target.checked)}/>Uppercase</label>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={numbers} onChange={e=>setNumbers(e.target.checked)}/>Numbers</label>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={symbols} onChange={e=>setSymbols(e.target.checked)}/>Symbols</label>
-        <button onClick={gen} className="w-full h-10 bg-zinc-900 text-white text-sm">Generate Password</button>
+        <button onClick={gen} className="w-full h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Generate Password</button>
       </div>
     </div>
   )

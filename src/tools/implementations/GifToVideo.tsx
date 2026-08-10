@@ -22,7 +22,7 @@ export default function GifToVideo() {
     <div className="space-y-4 max-w-xl">
       <DropZone onFiles={fl => setFile(fl[0])} accept="image/gif,.gif" multiple={false} label="Drop a GIF to convert to MP4" />
       <label className="block text-sm font-semibold">FPS ({fps})<input type="range" min={5} max={30} value={fps} onChange={e => setFps(parseInt(e.target.value))} className="w-full mt-2" /></label>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-zinc-900 text-white text-sm">{busy ? 'Converting…' : 'Convert & download'}</button>
+      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Converting…' : 'Convert & download'}</button>
       <p className="text-[11px] font-medium text-zinc-500">MP4 is a fraction of the GIF size and plays on every device.</p>
     </div>
   )

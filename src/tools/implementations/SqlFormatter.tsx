@@ -33,7 +33,7 @@ export default function SqlFormatter() {
   return (
     <div className="space-y-4">
       <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(output)} className="px-4 h-9 bg-zinc-900 text-white text-sm">Copy formatted</button>
+        <button onClick={() => navigator.clipboard.writeText(output)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy formatted</button>
         <button onClick={() => navigator.clipboard.writeText(input.replace(/\s+/g, ' ').trim())} className="px-4 h-9 border text-sm">Copy minified</button>
       </div>
       <div className="grid md:grid-cols-2 gap-3">

@@ -79,7 +79,7 @@ export default function ImageOCR() {
       {loading && <p className="text-sm animate-pulse">{mode === 'web' ? 'Reading text via web OCR…' : 'Reading text…'}</p>}
       <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Extracted text will appear here..." className="w-full h-[260px] border p-3 text-sm" />
       <div className="flex items-center gap-3">
-        <button onClick={() => navigator.clipboard.writeText(text)} className="px-4 py-2 bg-zinc-900 text-white text-sm">Copy Text</button>
+        <button onClick={() => navigator.clipboard.writeText(text)} className="px-4 py-2 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy Text</button>
         {text && !loading && <span className="text-[11px] text-zinc-500">{mode === 'local' ? 'Local OCR (tesseract.js)' : 'Powered by OCR.space free API'}</span>}
       </div>
     </div>

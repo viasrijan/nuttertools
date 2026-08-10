@@ -14,7 +14,7 @@ export default function HtmlPreview() {
   return (
     <div className="space-y-3">
       <div className="flex gap-2">
-        <button onClick={() => setSrcDoc(html)} className="px-4 h-9 bg-zinc-900 text-white text-sm">Preview</button>
+        <button onClick={() => setSrcDoc(html)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Preview</button>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={auto} onChange={e => { setAuto(e.target.checked); if (e.target.checked) setSrcDoc(html) }} />Auto-refresh</label>
       </div>
       <div className="grid md:grid-cols-2 gap-3">

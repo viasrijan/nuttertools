@@ -66,7 +66,7 @@ export default function OgGenerator() {
         {field('Accent color', accent, setAccent, 'color')}
       </div>
       <div className="flex gap-2">
-        <button onClick={draw} className="px-4 h-9 bg-zinc-900 text-white text-sm">Preview</button>
+        <button onClick={draw} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Preview</button>
         <button onClick={download} className="px-4 h-9 border text-sm">Download PNG (1200×630)</button>
       </div>
       <canvas ref={canvasRef} className="w-full border rounded-lg shadow" />
