@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { TOOL_INFO } from '../data/toolInfo'
 import { CATEGORIES } from '../data/categories'
-import { hueFor, tileGrad } from '../lib/style'
+import { hueFor, tileGrad, textAccent } from '../lib/style'
 import { whiteToolIconUrl } from '../components/Icon'
 import ToolCard from '../components/ToolCard'
 import registry from '../tools/registry'
@@ -93,12 +93,12 @@ export default function ToolPage() {
           <section className="pb-14 max-w-3xl">
             <div className="space-y-8">
               <div>
-                <h4 className="text-[20px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-3">What is {tool.name}?</h4>
+                <h4 className={`text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] ${textAccent(h)} mb-4`}>What is {tool.name}?</h4>
                 <p className="text-[14.5px] font-medium text-zinc-900 dark:text-white leading-relaxed">{info.whatIs}</p>
               </div>
               {info.howTo.length > 0 && (
                 <div>
-                  <h4 className="text-[20px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-3">How to use {tool.name}</h4>
+                  <h4 className={`text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] ${textAccent(h)} mb-4`}>How to use {tool.name}</h4>
                   <ol className="space-y-2.5">
                     {info.howTo.map((step, i) => (
                       <li key={i} className="flex gap-3 text-[14.5px] font-medium text-zinc-900 dark:text-white leading-relaxed">
@@ -111,7 +111,7 @@ export default function ToolPage() {
               )}
               {info.faqs && info.faqs.length > 0 && (
                 <div>
-                  <h4 className="text-[20px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-3">Frequently asked questions</h4>
+                  <h4 className={`text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] ${textAccent(h)} mb-4`}>Frequently asked questions</h4>
                   <div className="divide-y divide-zinc-200 dark:divide-zinc-800 border-y border-zinc-200 dark:border-zinc-800">
                     {info.faqs.map((f, i) => (
                       <details key={i} className="group">
@@ -132,7 +132,7 @@ export default function ToolPage() {
 
       {related.length > 0 && (
         <section className="pb-12">
-          <h4 className="text-[16px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">More in {tool.category}</h4>
+          <h4 className={`text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] ${textAccent(h)} text-center mb-5 md:mb-6`}>More in {tool.category}</h4>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {related.map((t) => <ToolCard key={t.id} tool={t} />)}
           </div>
@@ -141,12 +141,15 @@ export default function ToolPage() {
 
       {cat && (
         <section className="pb-24">
-          <h4 className="text-[16px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">All sections</h4>
-          <div className="flex flex-wrap gap-1.5">
+          <h4 className={`text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] ${textAccent(h)} text-center mb-5 md:mb-6`}>All sections</h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
             {CATEGORIES.map((c) => (
               <Link key={c.slug} to={`/tools/${c.slug}`}
-                className={`px-3 h-8 text-[12px] font-medium bg-white dark:bg-zinc-900 ring-1 ring-zinc-200 dark:ring-zinc-800 grid place-items-center hover:ring-zinc-300 dark:hover:ring-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 transition-all ${c.slug === cat.slug ? 'ring-indigo-600 bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent' : ''}`}>
-                {c.name}
+                className={`group relative overflow-hidden p-4 md:p-5 ${tileGrad(c.hue)} soft-shadow transition-all duration-200 hover:scale-[1.03] flex flex-col items-center text-center ${c.slug === cat.slug ? 'ring-2 ring-white dark:ring-white/70' : ''}`}>
+                <div aria-hidden className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/15 blur-2xl group-hover:bg-white/25 transition-colors duration-200" />
+                <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-white/25" />
+                <span className="relative w-10 h-10 rounded-full bg-white/25 grid place-items-center text-[15px] font-bold text-white tabular-nums shadow-sm">{c.count}</span>
+                <h3 className="relative mt-3 font-bold text-[15px] tracking-[-0.01em] text-white">{c.name}</h3>
               </Link>
             ))}
           </div>
