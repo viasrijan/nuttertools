@@ -9,7 +9,7 @@
   },
   {
     "id": "image-compressor",
-    "name": "Compressor",
+    "name": "Image Compressor",
     "desc": "Compress JPG, PNG, WebP 80% smaller, bulk",
     "category": "Image Tools",
     "icon": "🗜️",
@@ -57,7 +57,7 @@
   },
   {
     "id": "merge-pdf",
-    "name": "Merge",
+    "name": "Merge PDF",
     "desc": "Combine multiple PDFs into one",
     "category": "PDF Tools",
     "icon": "📚",
@@ -73,7 +73,7 @@
   },
   {
     "id": "split-pdf",
-    "name": "Split",
+    "name": "Split PDF",
     "desc": "Split PDF by pages or range",
     "category": "PDF Tools",
     "icon": "✂️",
@@ -121,7 +121,7 @@
   },
   {
     "id": "video-compressor",
-    "name": "Compressor",
+    "name": "Video Compressor",
     "desc": "Compress MP4, WebM videos offline",
     "category": "Video Tools",
     "icon": "🎬",
@@ -137,7 +137,7 @@
   },
   {
     "id": "video-muter",
-    "name": "Muter",
+    "name": "Video Muter",
     "desc": "Remove audio from video",
     "category": "Video Tools",
     "icon": "🔇",
@@ -145,7 +145,7 @@
   },
   {
     "id": "video-rotator",
-    "name": "Rotator",
+    "name": "Video Rotator",
     "desc": "Rotate and flip videos",
     "category": "Video Tools",
     "icon": "↻",
@@ -153,7 +153,7 @@
   },
   {
     "id": "video-speed",
-    "name": "Speed Changer",
+    "name": "Video Speed Changer",
     "desc": "Slow-mo and fast-forward",
     "category": "Video Tools",
     "icon": "⏩",
@@ -161,7 +161,7 @@
   },
   {
     "id": "video-trimmer",
-    "name": "Trimmer",
+    "name": "Video Trimmer",
     "desc": "Cut and trim videos",
     "category": "Video Tools",
     "icon": "✂️",
@@ -185,7 +185,7 @@
   },
   {
     "id": "audio-converter",
-    "name": "Converter",
+    "name": "Audio Converter",
     "desc": "MP3, WAV, OGG, M4A converter",
     "category": "Audio Tools",
     "icon": "🎧",
@@ -193,7 +193,7 @@
   },
   {
     "id": "audio-transcriber",
-    "name": "Transcriber",
+    "name": "Audio Transcriber",
     "desc": "Whisper AI - speech to text offline",
     "category": "Audio Tools",
     "icon": "💬",
@@ -201,7 +201,7 @@
   },
   {
     "id": "audio-trimmer",
-    "name": "Trimmer & Joiner",
+    "name": "Audio Trimmer & Joiner",
     "desc": "Cut and merge audio files",
     "category": "Audio Tools",
     "icon": "✂️",
@@ -225,7 +225,7 @@
   },
   {
     "id": "compress-pdf",
-    "name": "Compress",
+    "name": "Compress PDF",
     "desc": "Reduce PDF file size",
     "category": "PDF Tools",
     "icon": "🗜️",
@@ -241,7 +241,7 @@
   },
   {
     "id": "pdf-protect",
-    "name": "Protect / Unlock",
+    "name": "PDF Protect / Unlock",
     "desc": "Add or remove password",
     "category": "PDF Tools",
     "icon": "🔒",
@@ -249,7 +249,7 @@
   },
   {
     "id": "rotate-pdf",
-    "name": "Rotate",
+    "name": "Rotate PDF",
     "desc": "Rotate PDF pages",
     "category": "PDF Tools",
     "icon": "↻",
@@ -257,7 +257,7 @@
   },
   {
     "id": "pdf-watermark",
-    "name": "Watermark",
+    "name": "PDF Watermark",
     "desc": "Add text/image watermark",
     "category": "PDF Tools",
     "icon": "💧",
@@ -537,7 +537,7 @@
   },
   {
     "id": "color-picker",
-    "name": "Picker",
+    "name": "Color Picker",
     "desc": "Pick colors from image/screen",
     "category": "Color & Design",
     "icon": "👁️",
@@ -689,7 +689,7 @@
   },
   {
     "id": "image-cropper",
-    "name": "Cropper",
+    "name": "Image Cropper",
     "desc": "Crop images to any size",
     "category": "Image Tools",
     "icon": "✂️",
@@ -697,7 +697,7 @@
   },
   {
     "id": "image-filters",
-    "name": "Filters",
+    "name": "Image Filters",
     "desc": "Brightness, contrast, blur & more",
     "category": "Image Tools",
     "icon": "🎛️",
@@ -705,7 +705,7 @@
   },
   {
     "id": "image-resizer",
-    "name": "Resizer",
+    "name": "Image Resizer",
     "desc": "Resize by %, pixels or presets",
     "category": "Image Tools",
     "icon": "🗙️",
@@ -721,7 +721,7 @@
   },
   {
     "id": "pdf-viewer",
-    "name": "Reader",
+    "name": "PDF Viewer",
     "desc": "Read and annotate PDFs",
     "category": "PDF Tools",
     "icon": "📖",
@@ -785,7 +785,7 @@
   },
   {
     "id": "text-reverser",
-    "name": "Reverser",
+    "name": "Text Reverser",
     "desc": "Reverse text, words or lines",
     "category": "Text & Writing",
     "icon": "🔄",
@@ -801,7 +801,7 @@
   },
   {
     "id": "color-shades",
-    "name": "Shades",
+    "name": "Color Shades",
     "desc": "Tints, shades & tones generator",
     "category": "Color & Design",
     "icon": "🌅",
@@ -1121,7 +1121,7 @@
   },
   {
     "id": "audio-noise-remover",
-    "name": "Noise Remover",
+    "name": "Audio Noise Remover",
     "desc": "Remove hiss, hum & background noise",
     "category": "Audio Tools",
     "icon": "🌬️",
