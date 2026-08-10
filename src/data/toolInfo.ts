@@ -89,7 +89,7 @@ export const TOOL_INFO: Record<string, ToolInfo> = {
   'typing-test': t('Measures your typing speed in WPM and accuracy with a random words test.', ['Click Start and type the shown words.', 'Finish the text.', 'See your WPM, accuracy and errors.']),
   'unit-converter': t('Converts between dozens of units: length, weight, temperature, speed, volume and more.', ['Pick the category.', 'Enter the value and choose units.', 'Read every equivalent conversion.']),
   'image-upscaler': t('Upscales images with AI-based enhancement in your browser, without uploads.', ['Upload a small image.', 'Choose the upscale factor.', 'Download the enlarged version.']),
-  'image-captioner': t('Generates a caption for any image using AI that runs on your device.', ['Upload an image.', 'Click Generate caption.', 'Copy or regenerate the caption.']),
+  'image-captioner': t('Generates an accurate AI caption for any image, powered by cloud AI with nothing to install or download.', ['Upload an image.', 'Click Generate caption.', 'Copy or regenerate the caption.']),
   'translator': t('Translates text between languages using an AI model running in your browser.', ['Pick source and target languages.', 'Type or paste your text.', 'Copy the translation.']),
   'sentiment': t('Analyzes whether a piece of text is positive, negative or neutral, with a confidence score.', ['Type or paste your text.', 'Click Analyze.', 'Read the sentiment score and label.']),
   'summarizer': t('Condenses long articles and text into short summaries with AI.', ['Paste your text or URL.', 'Choose the summary length.', 'Copy the summary.']),

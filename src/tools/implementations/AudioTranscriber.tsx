@@ -18,6 +18,7 @@ function getPipeline() {
       env.allowLocalModels = false
       const t = await pipeline('automatic-speech-recognition', 'onnx-community/whisper-tiny', {
         device: 'wasm',
+        dtype: 'q8',
         session_options: { graphOptimizationLevel: 'basic' },
       })
       return t

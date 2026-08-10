@@ -11,6 +11,7 @@ function getPipe() {
       env.allowLocalModels = false
       return pipeline('image-to-image', 'Xenova/swin2SR-classical-sr-x2-64', {
         device: 'wasm',
+        dtype: 'q8',
         session_options: { graphOptimizationLevel: 'basic' },
       })
     })()
