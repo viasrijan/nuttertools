@@ -5,14 +5,14 @@ import ToolCard from '../components/ToolCard'
 import { POPULAR_TOOLS } from '../data/popular'
 import { toolIconUrl } from '../components/Icon'
 
-const SECTION_LABEL_BASE = 'text-[32px] md:text-[35px] font-extrabold tracking-[-0.02em] text-center'
+const SECTION_LABEL_BASE = 'text-[24px] md:text-[35px] font-extrabold tracking-[-0.02em] text-center'
 const SECTION_LABEL = `${SECTION_LABEL_BASE} text-black dark:text-white`
 const SECTION_LABEL_WHY = `${SECTION_LABEL_BASE} text-green-600 dark:text-green-400`
 const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} text-yellow-400`
 
 export default function Home() {
   return (
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 animate-[omni-fade_0.3s_ease-out]">
+    <div className="max-w-[1200px] mx-auto px-5 sm:px-6 animate-[omni-fade_0.3s_ease-out]">
       <section className="relative pt-8 pb-8 md:pt-16 md:pb-14 text-center overflow-hidden">
         <div aria-hidden className="absolute inset-0 pointer-events-none select-none">
           {[
@@ -31,10 +31,11 @@ export default function Home() {
           ))}
         </div>
         <div className="relative">
+          <p className="mb-3 text-[17px] font-semibold text-zinc-900 dark:text-white">
+            Your go to library of web tools.
+          </p>
           <p className="mb-6 text-[17px] font-semibold text-zinc-900 dark:text-white">
-            Your go to library of web tools.{' '}
-            <span className="font-bold text-[#f97316]">{TOTAL_TOOLS} tools</span>{' '}
-            and counting.
+            <span className="font-bold text-[#f97316]">{TOTAL_TOOLS} tools</span> and counting.
           </p>
           <h1 className="font-[800] tracking-[-0.035em] text-[clamp(22.5px,6.8vw,57.6px)] leading-[1.04] [filter:drop-shadow(0_3px_12px_rgba(0,0,0,0.12))] text-black dark:text-white">
             All useful tools in{' '}

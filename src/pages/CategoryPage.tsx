@@ -41,7 +41,7 @@ export default function CategoryPage() {
   }
 
   return (
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+    <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
       <nav className="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-[13px] font-medium text-zinc-900 dark:text-white pt-6 md:pt-8">
         <Link to="/" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Home</Link>
         <span>/</span>
