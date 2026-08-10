@@ -31,10 +31,10 @@ export default function Home() {
           ))}
         </div>
         <div className="relative">
-          <p className="mb-6 text-[15px] font-semibold text-zinc-900 dark:text-white">
-            Your go to library for Internet tools{' '}
-            <span className="inline-flex items-center gap-2 text-white bg-gradient-to-b from-[#ff7a55] to-[#d64525] px-[18px] py-[9px] rounded-full shadow-sm">{TOTAL_TOOLS} tools</span>{' '}
-            and counting...
+          <p className="mb-6 text-[17px] font-semibold text-zinc-900 dark:text-white">
+            Your go to library of web tools.{' '}
+            <span className="inline-flex items-center gap-2 text-white bg-gradient-to-b from-[#ff7a55] to-[#d64525] px-3 py-[7px] rounded-md shadow-sm">{TOTAL_TOOLS} tools</span>{' '}
+            and counting.
           </p>
           <h1 className="font-[800] tracking-[-0.035em] text-[clamp(22.5px,6.8vw,57.6px)] leading-[1.04] [filter:drop-shadow(0_3px_12px_rgba(0,0,0,0.12))] text-black dark:text-white">
             All useful tools in{' '}
