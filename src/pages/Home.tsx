@@ -31,10 +31,9 @@ export default function Home() {
           ))}
         </div>
         <div className="relative">
-          <p className="mb-3 text-[17px] font-semibold text-zinc-900 dark:text-white">
-            Your go to library of web tools.
-          </p>
           <p className="mb-6 text-[17px] font-semibold text-zinc-900 dark:text-white">
+            Your go to library of web tools.{' '}
+            <br className="sm:hidden" />
             <span className="font-bold text-[#f97316]">{TOTAL_TOOLS} tools</span> and counting.
           </p>
           <h1 className="font-[800] tracking-[-0.035em] text-[clamp(22.5px,6.8vw,57.6px)] leading-[1.04] [filter:drop-shadow(0_3px_12px_rgba(0,0,0,0.12))] text-black dark:text-white">
