@@ -9,8 +9,12 @@ function getPipe() {
     pipePromise = (async () => {
       const { pipeline, env } = await import('@huggingface/transformers')
       env.allowLocalModels = false
-      return pipeline('image-to-image', 'Xenova/swin2SR-classical-sr-x2-64', { device: 'wasm' })
+      return pipeline('image-to-image', 'Xenova/swin2SR-classical-sr-x2-64', {
+        device: 'wasm',
+        session_options: { graphOptimizationLevel: 'basic' },
+      })
     })()
+    pipePromise.catch(() => { pipePromise = null })
   }
   return pipePromise
 }

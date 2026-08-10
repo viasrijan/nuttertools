@@ -16,9 +16,13 @@ function getPipeline() {
     pipelinePromise = (async () => {
       const { pipeline, env } = await import('@huggingface/transformers')
       env.allowLocalModels = false
-      const t = await pipeline('automatic-speech-recognition', 'onnx-community/whisper-tiny', { device: 'wasm' })
+      const t = await pipeline('automatic-speech-recognition', 'onnx-community/whisper-tiny', {
+        device: 'wasm',
+        session_options: { graphOptimizationLevel: 'basic' },
+      })
       return t
     })()
+    pipelinePromise.catch(() => { pipelinePromise = null })
   }
   return pipelinePromise
 }

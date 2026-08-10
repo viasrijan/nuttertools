@@ -8,8 +8,12 @@ function getPipe() {
     pipePromise = (async () => {
       const { pipeline, env } = await import('@huggingface/transformers')
       env.allowLocalModels = false
-      return pipeline('image-to-text', 'Xenova/vit-gpt2-image-captioning', { device: 'wasm' })
+      return pipeline('image-to-text', 'Xenova/vit-gpt2-image-captioning', {
+        device: 'wasm',
+        session_options: { graphOptimizationLevel: 'basic' },
+      })
     })()
+    pipePromise.catch(() => { pipePromise = null })
   }
   return pipePromise
 }
