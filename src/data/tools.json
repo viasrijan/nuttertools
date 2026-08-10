@@ -1326,5 +1326,221 @@
     "category": "AI Tools",
     "icon": "♿",
     "implemented": true
+  },
+  {
+    "id": "xml-formatter",
+    "name": "XML Formatter",
+    "desc": "Format, beautify or minify XML",
+    "category": "Developer Tools",
+    "icon": "🧾",
+    "implemented": true
+  },
+  {
+    "id": "keycode-info",
+    "name": "Keycode Info",
+    "desc": "Press a key to see its JS event data",
+    "category": "Developer Tools",
+    "icon": "⌨️",
+    "implemented": true
+  },
+  {
+    "id": "base-converter",
+    "name": "Base Converter",
+    "desc": "Convert numbers between bases 2-36",
+    "category": "Developer Tools",
+    "icon": "🔢",
+    "implemented": true
+  },
+  {
+    "id": "flexbox-generator",
+    "name": "Flexbox Generator",
+    "desc": "Visual CSS flexbox builder",
+    "category": "Developer Tools",
+    "icon": "📐",
+    "implemented": true
+  },
+  {
+    "id": "cron-parser",
+    "name": "Cron Parser",
+    "desc": "Explain cron expressions and next run times",
+    "category": "Developer Tools",
+    "icon": "⏰",
+    "implemented": true
+  },
+  {
+    "id": "css-cursors",
+    "name": "CSS Cursors",
+    "desc": "Browse and copy every CSS cursor",
+    "category": "Color & Design",
+    "icon": "🖱️",
+    "implemented": true
+  },
+  {
+    "id": "timestamp-converter",
+    "name": "Timestamp Converter",
+    "desc": "Unix timestamp to date and back",
+    "category": "Everyday Utilities",
+    "icon": "🕰️",
+    "implemented": true
+  },
+  {
+    "id": "random-picker",
+    "name": "Random Picker",
+    "desc": "Pick a random line from your list",
+    "category": "Everyday Utilities",
+    "icon": "🎲",
+    "implemented": true
+  },
+  {
+    "id": "yes-no",
+    "name": "Yes/No Maker",
+    "desc": "Random yes, no or maybe answers",
+    "category": "Everyday Utilities",
+    "icon": "🔮",
+    "implemented": true
+  },
+  {
+    "id": "team-generator",
+    "name": "Team Generator",
+    "desc": "Split names into balanced teams",
+    "category": "Everyday Utilities",
+    "icon": "👥",
+    "implemented": true
+  },
+  {
+    "id": "username-generator",
+    "name": "Username Generator",
+    "desc": "Fun random usernames from word combos",
+    "category": "Everyday Utilities",
+    "icon": "👤",
+    "implemented": true
+  },
+  {
+    "id": "roman-numeral",
+    "name": "Roman Numeral Converter",
+    "desc": "Convert between numbers and roman numerals",
+    "category": "Everyday Utilities",
+    "icon": "🏛️",
+    "implemented": true
+  },
+  {
+    "id": "discount-calculator",
+    "name": "Discount Calculator",
+    "desc": "Work out discounts and final prices",
+    "category": "Everyday Utilities",
+    "icon": "🏷️",
+    "implemented": true
+  },
+  {
+    "id": "calorie-calculator",
+    "name": "Calorie Calculator",
+    "desc": "Estimate BMR and daily calorie needs",
+    "category": "Everyday Utilities",
+    "icon": "🔥",
+    "implemented": true
+  },
+  {
+    "id": "sleep-cycle-calculator",
+    "name": "Sleep Cycle Calculator",
+    "desc": "Best times to sleep and wake",
+    "category": "Everyday Utilities",
+    "icon": "😴",
+    "implemented": true
+  },
+  {
+    "id": "would-you-rather",
+    "name": "Would You Rather",
+    "desc": "Play would-you-rather with friends",
+    "category": "Everyday Utilities",
+    "icon": "🤔",
+    "implemented": true
+  },
+  {
+    "id": "movie-picker",
+    "name": "Movie & Show Picker",
+    "desc": "Pick a random movie or show",
+    "category": "Everyday Utilities",
+    "icon": "🍿",
+    "implemented": true
+  },
+  {
+    "id": "spin-wheel",
+    "name": "Spin Wheel",
+    "desc": "Custom wheel of names and choices",
+    "category": "Everyday Utilities",
+    "icon": "🎡",
+    "implemented": true
+  },
+  {
+    "id": "currency-converter",
+    "name": "Currency Converter",
+    "desc": "Live exchange rate conversion",
+    "category": "Everyday Utilities",
+    "icon": "💱",
+    "implemented": true
+  },
+  {
+    "id": "credit-card-generator",
+    "name": "Credit Card Generator",
+    "desc": "Luhn-valid test credit cards",
+    "category": "Encoding & Security",
+    "icon": "💳",
+    "implemented": true
+  },
+  {
+    "id": "qr-scanner",
+    "name": "QR Code Scanner",
+    "desc": "Scan QR codes with camera or image",
+    "category": "Image Tools",
+    "icon": "📷",
+    "implemented": true
+  },
+  {
+    "id": "image-to-base64",
+    "name": "Image to Base64",
+    "desc": "Convert images to base64 data URLs",
+    "category": "Image Tools",
+    "icon": "🖼️",
+    "implemented": true
+  },
+  {
+    "id": "palindrome-checker",
+    "name": "Palindrome Checker",
+    "desc": "Check if text reads the same backwards",
+    "category": "Text & Writing",
+    "icon": "🔁",
+    "implemented": true
+  },
+  {
+    "id": "markdown-table-generator",
+    "name": "Markdown Table Generator",
+    "desc": "Build markdown tables visually",
+    "category": "Text & Writing",
+    "icon": "📊",
+    "implemented": true
+  },
+  {
+    "id": "file-size-converter",
+    "name": "File Size Converter",
+    "desc": "Convert between file size units",
+    "category": "File Tools",
+    "icon": "💾",
+    "implemented": true
+  },
+  {
+    "id": "pdf-organizer",
+    "name": "PDF Organizer",
+    "desc": "Reorder, rotate and remove PDF pages",
+    "category": "PDF Tools",
+    "icon": "📑",
+    "implemented": true
+  },
+  {
+    "id": "pdf-inspector",
+    "name": "PDF Inspector",
+    "desc": "Inspect PDF metadata and structure",
+    "category": "PDF Tools",
+    "icon": "🔎",
+    "implemented": true
   }
 ]

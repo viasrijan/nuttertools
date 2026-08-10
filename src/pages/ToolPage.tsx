@@ -1,6 +1,7 @@
 import { Suspense, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
+import { TOOL_INFO } from '../data/toolInfo'
 import { CATEGORIES } from '../data/categories'
 import { hueFor, tileGrad } from '../lib/style'
 import { whiteToolIconUrl } from '../components/Icon'
@@ -84,6 +85,50 @@ export default function ToolPage() {
           </div>
         )}
       </div>
+
+      {(() => {
+        const info = TOOL_INFO[tool.id]
+        if (!info) return null
+        return (
+          <section className="pb-14 max-w-3xl">
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-2.5">What is {tool.name}?</h4>
+                <p className="text-[14.5px] font-medium text-zinc-900 dark:text-white leading-relaxed">{info.whatIs}</p>
+              </div>
+              {info.howTo.length > 0 && (
+                <div>
+                  <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-2.5">How to use {tool.name}</h4>
+                  <ol className="space-y-2.5">
+                    {info.howTo.map((step, i) => (
+                      <li key={i} className="flex gap-3 text-[14.5px] font-medium text-zinc-900 dark:text-white leading-relaxed">
+                        <span className="shrink-0 w-6 h-6 rounded-full bg-green-600/10 dark:bg-green-400/10 text-green-700 dark:text-green-400 grid place-items-center text-[12.5px] font-bold">{i + 1}</span>
+                        <span className="pt-0.5">{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+              {info.faqs && info.faqs.length > 0 && (
+                <div>
+                  <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-2.5">Frequently asked questions</h4>
+                  <div className="divide-y divide-zinc-200 dark:divide-zinc-800 border-y border-zinc-200 dark:border-zinc-800">
+                    {info.faqs.map((f, i) => (
+                      <details key={i} className="group">
+                        <summary className="cursor-pointer list-none flex items-center justify-between gap-4 py-3.5 text-[14.5px] font-semibold text-zinc-900 dark:text-white">
+                          {f.q}
+                          <svg className="w-4 h-4 shrink-0 text-zinc-400 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+                        </summary>
+                        <p className="pb-4 text-[14.5px] font-medium text-zinc-900 dark:text-white leading-relaxed">{f.a}</p>
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )
+      })()}
 
       {related.length > 0 && (
         <section className="pb-12">
