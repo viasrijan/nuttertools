@@ -8,8 +8,9 @@ function getPipe() {
     pipePromise = (async () => {
       const { pipeline, env } = await import('@huggingface/transformers')
       env.allowLocalModels = false
-      return pipeline('image-to-text', 'Xenova/vit-gpt2-image-captioning', {
+      return pipeline('image-to-text', 'onnx-community/Florence-2-base-ft', {
         device: 'wasm',
+        dtype: { vision_encoder: 'fp32', encoder_model: 'q8', decoder_model_merged: 'q8' },
         session_options: { graphOptimizationLevel: 'basic' },
       })
     })()
@@ -29,11 +30,11 @@ export default function ImageCaptioner() {
     if (!f) return
     setBusy(true); setError(''); setCaption('')
     try {
-      setStatus('Downloading caption model (~30 MB on first run)…')
+      setStatus('Downloading Florence-2 model (~350 MB on first run)…')
       const pipe = await getPipe()
-      setStatus('Analyzing image…')
+      setStatus('Describing image…')
       const { RawImage } = await import('@huggingface/transformers')
-      const out: any = await pipe(await RawImage.fromBlob(f))
+      const out: any = await pipe(await RawImage.fromBlob(f), '<MORE_DETAILED_CAPTION>', { max_new_tokens: 64 })
       setStatus('')
       setCaption((out?.[0]?.generated_text ?? '').replace(/^\s+/, ''))
     } catch (e: any) {
@@ -53,7 +54,7 @@ export default function ImageCaptioner() {
           <button onClick={() => navigator.clipboard.writeText(caption)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy</button>
         </div>
       )}
-      <p className="text-[11px] font-medium text-zinc-500">Runs ViT-GPT2 image captioning entirely on-device.</p>
+      <p className="text-[11px] font-medium text-zinc-500">Runs Microsoft Florence-2 image captioning entirely on-device.</p>
     </div>
   )
 }
