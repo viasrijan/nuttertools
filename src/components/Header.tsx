@@ -10,24 +10,24 @@ import Fuse from 'fuse.js'
 
 const TOOLS = toolsData as any[]
 
-const NAV_ORDER = ['developer-tools', 'pdf-tools', 'text-writing', 'image-tools', 'color-design', 'video-tools']
+const NAV_ORDER = ['text-writing', 'image-tools', 'video-tools', 'color-design', 'pdf-tools', 'ai-tools']
 
 const NAV_LABELS: Record<string, string> = {
   'image-tools': 'Images',
-  'pdf-tools': 'PDFs',
-  'developer-tools': 'Dev',
+  'pdf-tools': 'PDF',
+  'ai-tools': 'AI',
   'text-writing': 'Text',
   'color-design': 'Design',
   'video-tools': 'Video',
 }
 
 const VIEW_ALL_LABELS: Record<string, string> = {
-  'developer-tools': 'Dev',
   'pdf-tools': 'PDF',
   'text-writing': 'Text',
   'image-tools': 'Image',
   'color-design': 'Design',
   'video-tools': 'Video',
+  'ai-tools': 'AI',
 }
 
 const POPULAR_CATS = CATEGORIES
@@ -61,6 +61,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   const searchRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLElement>(null)
   const [menuTop, setMenuTop] = useState(0)
+  const [dropTop, setDropTop] = useState(0)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -111,6 +112,12 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
 
   const catTools = (name: string) => TOOLS.filter((t) => t.category === name)
 
+  const openDrop = (slug: string, e: React.MouseEvent<HTMLDivElement>) => {
+    const hb = headerRef.current?.getBoundingClientRect().bottom ?? 0
+    setDropTop(Math.max(0, hb - e.currentTarget.getBoundingClientRect().top))
+    setOpen(slug)
+  }
+
   return (
     <header ref={headerRef} className="sticky top-0 z-50 pt-0 sm:pt-8 px-0 sm:px-3.5">
       <div className="mx-auto max-w-[1200px] relative">
@@ -149,15 +156,15 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                 const tools = catTools(c.name)
                 return (
                   <div key={c.slug} className="relative shrink-0"
-                    onMouseEnter={() => setOpen(c.slug)}
+                    onMouseEnter={(e) => openDrop(c.slug, e)}
                     onMouseLeave={() => setOpen((o) => (o === c.slug ? null : o))}>
                     <button onClick={() => go(`/tools/${c.slug}`)}
                       className="flex items-center whitespace-nowrap text-[13px] font-semibold px-3.5 py-2 text-zinc-900">
                       {NAV_LABELS[c.slug] || c.name}
                     </button>
                     {open === c.slug && (
-                      <div className="absolute left-0 top-full pt-2">
-                        <div className="w-[320px] origin-top rounded-3xl border border-transparent bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-drop_0.15s_ease-out]">
+                      <div className="absolute left-0 pt-2" style={{ top: dropTop }}>
+                        <div className="w-[320px] origin-top rounded-3xl border border-transparent bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-slide-down_0.18s_ease-out]">
                           <div className="flex flex-col gap-0.5">
                             {tools.slice(0, 8).map((t) => (
                               <Link key={t.id} to={`/tool/${t.id}`} onClick={() => go(`/tool/${t.id}`)}
@@ -267,7 +274,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
           </div>
 
         {mOpen && (
-          <div className="lg:hidden fixed inset-0 z-[60] bg-[#ececec] dark:bg-[#1a1a1a] overflow-hidden animate-[omni-drop_0.2s_ease-out]" style={{ top: menuTop }}>
+          <div className="lg:hidden fixed inset-0 z-[60] bg-[#ececec] dark:bg-[#1a1a1a] overflow-hidden animate-[omni-slide-down_0.2s_ease-out]" style={{ top: menuTop }}>
             <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-3 pb-4 flex flex-col h-full">
               <div className="flex flex-col flex-1 min-h-0 justify-center">
                 {POPULAR_CATS.map((c) => (
