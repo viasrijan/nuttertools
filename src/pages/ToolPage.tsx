@@ -94,15 +94,15 @@ export default function ToolPage() {
             <div className="space-y-8">
               <div>
                 <h4 className="text-[24px] md:text-[35px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">What is {tool.name}?</h4>
-                <p className="text-[14.5px] font-medium text-zinc-900 dark:text-white leading-relaxed">{info.whatIs}</p>
+                <p className="text-[16px] font-medium text-zinc-900 dark:text-white leading-relaxed">{info.whatIs}</p>
               </div>
               {info.howTo.length > 0 && (
                 <div>
-                  <h4 className="text-[24px] md:text-[35px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">How to use {tool.name}</h4>
+                  <h4 className="text-[24px] md:text-[35px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">How to use it:</h4>
                   <ol className="space-y-2.5">
                     {info.howTo.map((step, i) => (
-                      <li key={i} className="flex gap-3 text-[14.5px] font-medium text-zinc-900 dark:text-white leading-relaxed">
-                        <span className="shrink-0 w-6 h-6 rounded-full bg-green-600/10 dark:bg-green-400/10 text-green-700 dark:text-green-400 grid place-items-center text-[12.5px] font-bold">{i + 1}</span>
+                      <li key={i} className="flex gap-3 text-[16px] font-medium text-zinc-900 dark:text-white leading-relaxed">
+                        <span className="shrink-0 w-6 h-6 rounded-full bg-black dark:bg-white text-white dark:text-black grid place-items-center text-[12.5px] font-bold">{i + 1}</span>
                         <span className="pt-0.5">{step}</span>
                       </li>
                     ))}
