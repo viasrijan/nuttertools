@@ -33,7 +33,7 @@ export default function App() {
           <Route path="/tool/:id" element={<ToolPage />} />
         </Routes>
       </main>
-      <footer className="bg-white dark:bg-gradient-to-b dark:from-black dark:to-[#1a1a1a]">
+      <footer className="bg-gradient-to-b from-white to-[#ececec] dark:bg-gradient-to-b dark:from-black dark:to-[#1a1a1a]">
         <div className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-6 md:pt-8 pb-5 sm:pb-8">
           <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-2.5">
