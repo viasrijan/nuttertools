@@ -164,7 +164,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                     </button>
                     {open === c.slug && (
                       <div className="absolute left-0" style={{ top: dropTop }}>
-                        <div className="w-[320px] origin-top rounded-3xl border border-transparent bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-slide-down_0.18s_ease-out]">
+                        <div className="w-[320px] origin-top border border-transparent bg-white dark:bg-zinc-900 soft-shadow-menu p-2 omni-menu-anim">
                           <div className="flex flex-col gap-0.5">
                             {tools.slice(0, 8).map((t) => (
                               <Link key={t.id} to={`/tool/${t.id}`} onClick={() => go(`/tool/${t.id}`)}

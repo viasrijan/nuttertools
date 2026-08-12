@@ -64,6 +64,15 @@ p { text-wrap: pretty; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes omni-menu-slide {
+  from { opacity: 0; transform: translateY(-32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.omni-menu-anim {
+  animation: omni-menu-slide 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 @keyframes omni-fade {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -128,6 +137,20 @@ p { text-wrap: pretty; }
   box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.3),
     0 8px 24px -10px rgba(0, 0, 0, 0.5);
+}
+
+.soft-shadow-menu {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 6px 20px -8px rgba(0, 0, 0, 0.08),
+    inset 0 14px 16px -12px rgba(0, 0, 0, 0.28);
+}
+
+.dark .soft-shadow-menu {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 8px 24px -10px rgba(0, 0, 0, 0.5),
+    inset 0 14px 16px -12px rgba(0, 0, 0, 0.55);
 }
 
 /* ---- Modern controls ---- */
