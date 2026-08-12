@@ -65,8 +65,21 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   const [dropTop, setDropTop] = useState(0)
   const [dropLeft, setDropLeft] = useState(0)
   const panelRef = useRef<HTMLDivElement>(null)
+  const closeTimer = useRef<number | null>(null)
   const navigate = useNavigate()
   const location = useLocation()
+
+  const cancelClose = () => {
+    if (closeTimer.current !== null) {
+      clearTimeout(closeTimer.current)
+      closeTimer.current = null
+    }
+  }
+
+  const scheduleClose = (slug: string) => {
+    cancelClose()
+    closeTimer.current = window.setTimeout(() => setOpen((o) => (o === slug ? null : o)), 250)
+  }
 
   const fuse = useMemo(() => new Fuse(TOOLS, { keys: ['name', 'desc', 'category'], threshold: 0.3 }), [])
   const results = sq.trim() ? fuse.search(sq.trim()).map((r) => r.item).slice(0, 8) : []
@@ -120,7 +133,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
     const r = e.currentTarget.getBoundingClientRect()
     const hb = headerRef.current?.getBoundingClientRect().bottom ?? 0
     setDropLeft(r.left)
-    setDropTop(Math.max(0, hb - r.top))
+    setDropTop(hb)
+    cancelClose()
     setOpen(slug)
   }
 
@@ -166,14 +180,16 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                     onMouseLeave={(e) => {
                       const rel = e.relatedTarget as Node | null
                       if (rel && panelRef.current && panelRef.current.contains(rel)) return
-                      setOpen((o) => (o === c.slug ? null : o))
+                      scheduleClose(c.slug)
                     }}>
                     <button onClick={() => go(`/tools/${c.slug}`)}
                       className="flex items-center whitespace-nowrap text-[13px] font-semibold px-3.5 py-2 text-zinc-900">
                       {NAV_LABELS[c.slug] || c.name}
                     </button>
                     {open === c.slug && createPortal(
-                      <div ref={panelRef} className="fixed z-40" style={{ top: dropTop, left: dropLeft }}>
+                      <div ref={panelRef} className="fixed z-40" style={{ top: dropTop, left: dropLeft }}
+                        onMouseEnter={cancelClose}
+                        onMouseLeave={() => scheduleClose(c.slug)}>
                         <div className="w-[320px] origin-top border border-transparent bg-white dark:bg-zinc-900 soft-shadow-menu p-2 omni-menu-anim">
                           <div className="flex flex-col gap-0.5">
                             {tools.slice(0, 8).map((t) => (
