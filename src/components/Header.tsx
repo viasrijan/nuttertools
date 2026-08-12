@@ -132,7 +132,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   const openDrop = (slug: string, e: React.MouseEvent<HTMLDivElement>) => {
     const r = e.currentTarget.getBoundingClientRect()
     const hb = headerRef.current?.getBoundingClientRect().bottom ?? 0
-    setDropLeft(r.left)
+    setDropLeft(r.left + r.width / 2)
     setDropTop(hb)
     cancelClose()
     setOpen(slug)
@@ -187,10 +187,10 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                       {NAV_LABELS[c.slug] || c.name}
                     </button>
                     {open === c.slug && createPortal(
-                      <div ref={panelRef} className="fixed z-40" style={{ top: dropTop, left: dropLeft }}
+                      <div ref={panelRef} className="fixed z-40 -translate-x-1/2" style={{ top: dropTop, left: dropLeft }}
                         onMouseEnter={cancelClose}
                         onMouseLeave={() => scheduleClose(c.slug)}>
-                        <div className="w-[320px] origin-top border border-transparent bg-white dark:bg-zinc-900 soft-shadow-menu p-2 omni-menu-anim">
+                        <div className="w-[256px] origin-top border border-transparent bg-white dark:bg-zinc-900 soft-shadow-menu p-2 omni-menu-anim">
                           <div className="flex flex-col gap-0.5">
                             {tools.slice(0, 8).map((t) => (
                               <Link key={t.id} to={`/tool/${t.id}`} onClick={() => go(`/tool/${t.id}`)}
