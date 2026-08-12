@@ -163,7 +163,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                       {NAV_LABELS[c.slug] || c.name}
                     </button>
                     {open === c.slug && (
-                      <div className="absolute left-0 pt-2" style={{ top: dropTop }}>
+                      <div className="absolute left-0" style={{ top: dropTop }}>
                         <div className="w-[320px] origin-top rounded-3xl border border-transparent bg-white dark:bg-zinc-900 soft-shadow p-2 animate-[omni-slide-down_0.18s_ease-out]">
                           <div className="flex flex-col gap-0.5">
                             {tools.slice(0, 8).map((t) => (
