@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState, useId } from 'react'
+import { createPortal } from 'react-dom'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { LayoutGrid, Lightbulb } from 'lucide-react'
 import { CATEGORIES } from '../data/categories'
@@ -62,6 +63,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   const headerRef = useRef<HTMLElement>(null)
   const [menuTop, setMenuTop] = useState(0)
   const [dropTop, setDropTop] = useState(0)
+  const [dropLeft, setDropLeft] = useState(0)
+  const panelRef = useRef<HTMLDivElement>(null)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -78,7 +81,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   useEffect(() => {
     const h = (e: MouseEvent) => {
       const t = e.target as Node
-      if (navRef.current && !navRef.current.contains(t)) setOpen(null)
+      const inPanel = panelRef.current?.contains(t)
+      if (navRef.current && !navRef.current.contains(t) && !inPanel) setOpen(null)
       if (searchRef.current && !searchRef.current.contains(t)) setFocus(false)
     }
     document.addEventListener('mousedown', h)
@@ -113,8 +117,10 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
   const catTools = (name: string) => TOOLS.filter((t) => t.category === name)
 
   const openDrop = (slug: string, e: React.MouseEvent<HTMLDivElement>) => {
+    const r = e.currentTarget.getBoundingClientRect()
     const hb = headerRef.current?.getBoundingClientRect().bottom ?? 0
-    setDropTop(Math.max(0, hb - e.currentTarget.getBoundingClientRect().top))
+    setDropLeft(r.left)
+    setDropTop(Math.max(0, hb - r.top))
     setOpen(slug)
   }
 
@@ -157,13 +163,17 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                 return (
                   <div key={c.slug} className="relative shrink-0"
                     onMouseEnter={(e) => openDrop(c.slug, e)}
-                    onMouseLeave={() => setOpen((o) => (o === c.slug ? null : o))}>
+                    onMouseLeave={(e) => {
+                      const rel = e.relatedTarget as Node | null
+                      if (rel && panelRef.current && panelRef.current.contains(rel)) return
+                      setOpen((o) => (o === c.slug ? null : o))
+                    }}>
                     <button onClick={() => go(`/tools/${c.slug}`)}
                       className="flex items-center whitespace-nowrap text-[13px] font-semibold px-3.5 py-2 text-zinc-900">
                       {NAV_LABELS[c.slug] || c.name}
                     </button>
-                    {open === c.slug && (
-                      <div className="absolute left-0" style={{ top: dropTop }}>
+                    {open === c.slug && createPortal(
+                      <div ref={panelRef} className="fixed z-40" style={{ top: dropTop, left: dropLeft }}>
                         <div className="w-[320px] origin-top border border-transparent bg-white dark:bg-zinc-900 soft-shadow-menu p-2 omni-menu-anim">
                           <div className="flex flex-col gap-0.5">
                             {tools.slice(0, 8).map((t) => (
@@ -183,7 +193,8 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                             </Link>
                           </div>
                         </div>
-                      </div>
+                      </div>,
+                      document.body
                     )}
                     </div>
                   )
