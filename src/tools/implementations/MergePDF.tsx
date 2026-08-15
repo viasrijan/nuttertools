@@ -20,12 +20,30 @@ export default function MergePDF(){
   }
 
   return (
-    <div className="space-y-4">
-      <DropZone onFiles={onFiles} accept="application/pdf" label="Drop PDFs to merge - order matters"/>
-      <div className="text-xs font-medium text-zinc-900 dark:text-white">{files.map(f=>f.name).join(' + ')}</div>
-      <button onClick={merge} disabled={files.length<2} className="px-4 py-2 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm disabled:opacity-30">Merge {files.length} PDFs</button>
-      {out && <a href={out} download="merged.pdf" className="block mt-2 text-sm underline">Download Merged PDF</a>}
-      <button onClick={()=>{setFiles([]); setOut("")}} className="text-xs underline">Clear</button>
+    <div className="space-y-6 max-w-xl">
+      <DropZone onFiles={onFiles} accept="application/pdf" label="Drop PDFs to merge — order matters"/>
+      {files.length > 0 && (
+        <div className="p-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs font-semibold">
+          Selected: {files.map(f=>f.name).join(' + ')}
+        </div>
+      )}
+      <div className="flex flex-wrap items-center gap-3">
+        <button onClick={merge} disabled={files.length<2} className="px-6 h-12 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm uppercase tracking-wider rounded-none shadow-md transition-all disabled:opacity-50">
+          Merge {files.length} PDFs
+        </button>
+        {files.length > 0 && (
+          <button onClick={()=>{setFiles([]); setOut("")}} className="px-4 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
+            Clear all
+          </button>
+        )}
+      </div>
+      {out && (
+        <div className="pt-2">
+          <a href={out} download="merged.pdf" className="inline-flex items-center justify-center px-6 h-12 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm uppercase tracking-wider rounded-none shadow-md transition-all">
+            Download Merged PDF
+          </a>
+        </div>
+      )}
     </div>
   )
 }

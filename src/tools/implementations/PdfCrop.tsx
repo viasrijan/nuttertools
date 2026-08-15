@@ -33,34 +33,44 @@ export default function PdfCrop() {
       }
       const out = await doc.save()
       saveBlob(bytesToBlob(out, 'application/pdf'), file.name.replace(/\.[^.]+$/, '') + '-cropped.pdf')
-      setStatus(`Cropped ${pages.length} page${pages.length === 1 ? '' : 's'} — check your downloads.`)
+      setStatus(`Cropped ${pages.length} page${pages.length === 1 ? '' : 's'} successfully — check your downloads.`)
     } catch (e: any) { setStatus('Error: ' + e.message) }
     setBusy(false)
   }
 
   const input = (label: string, v: number, set: (n: number) => void) => (
-    <div>
-      <label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">{label}</label>
-      <input type="number" min="0" value={v} onChange={e => set(Math.max(0, +e.target.value))} className="w-full border px-2 py-2 text-sm mt-1" />
+    <div className="space-y-1.5">
+      <label className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">{label}</label>
+      <input type="number" min="0" value={v} onChange={e => set(Math.max(0, +e.target.value))} className="w-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 h-10 text-sm font-semibold rounded-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20" />
     </div>
   )
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-6 max-w-xl">
       <DropZone onFiles={crop} accept="application/pdf" multiple={false} label="Drop a PDF to crop page margins" />
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {input('Top', top, setTop)}
         {input('Bottom', bottom, setBottom)}
         {input('Left', left, setLeft)}
         {input('Right', right, setRight)}
       </div>
-      <div className="flex gap-2 text-sm">
+      <div className="flex flex-wrap gap-2">
         {(['mm', 'pct'] as const).map(u => (
-          <button key={u} onClick={() => setUnit(u)} className={`px-4 h-9 border ${unit === u ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{u === 'mm' ? 'Millimeters' : 'Percent of page'}</button>
+          <button
+            key={u}
+            onClick={() => setUnit(u)}
+            className={`px-5 h-10 text-xs font-bold uppercase tracking-wider rounded-none transition-all ${
+              unit === u
+                ? 'bg-indigo-600 text-white shadow-sm'
+                : 'border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700'
+            }`}
+          >
+            {u === 'mm' ? 'Millimeters (mm)' : 'Percent (%)'}
+          </button>
         ))}
       </div>
-      {busy && <Progress label={status} />}
-      {!busy && status && <p className="text-sm text-zinc-600">{status}</p>}
+      {busy && <Progress label={status || 'Processing PDF…'} />}
+      {!busy && status && <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">{status}</p>}
     </div>
   )
 }
