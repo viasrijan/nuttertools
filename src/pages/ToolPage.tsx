@@ -68,7 +68,7 @@ export default function ToolPage() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-[#242424] border border-transparent p-4 md:p-8 min-h-[400px] soft-shadow mb-12">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 rounded-3xl p-5 md:p-8 min-h-[400px] soft-shadow mb-12">
         {Comp ? (
           <Suspense fallback={
             <div className="flex items-center justify-center py-24">
