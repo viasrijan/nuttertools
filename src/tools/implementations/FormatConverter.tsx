@@ -299,21 +299,21 @@ export default function FormatConverter() {
     saveAs(await zip.generateAsync({ type: 'blob' }), 'converted-images.zip')
   }
 
-  const btn = 'px-4 h-9 text-sm border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white'
-  const btnActive = 'px-4 h-9 text-sm border ring-1 ring-zinc-400 dark:ring-zinc-500 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white'
-  const input = 'border border-zinc-300 dark:border-zinc-700 bg-transparent px-3 h-9 text-sm text-zinc-900 dark:text-white'
-  const label = 'text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400'
+  const btn = 'px-4 h-10 text-xs font-bold uppercase tracking-wider border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white rounded-none hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors'
+  const btnActive = 'px-4 h-10 text-xs font-bold uppercase tracking-wider border border-indigo-600 bg-indigo-600 text-white rounded-none shadow-sm'
+  const input = 'border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 h-10 text-sm text-zinc-900 dark:text-white rounded-none'
+  const label = 'text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400'
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <DropZone onFiles={onFiles} accept="image/*" multiple={true} label="Drop images to convert & edit (multiple = batch)" />
 
-      {busy && <Progress label="Converting…" />}
+      {busy && <Progress label="Converting images…" />}
 
       {items.length > 0 && (
         <>
-          <div className="grid gap-3 md:grid-cols-2">
-            <section className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-3 space-y-3">
+          <div className="grid gap-4 md:grid-cols-2">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
               <h3 className={label}>Format & quality</h3>
               <div className="flex flex-wrap gap-2">
                 {formats.map((f) => (
@@ -321,16 +321,16 @@ export default function FormatConverter() {
                 ))}
               </div>
               {qualityMatters && (
-                <label className="block text-sm text-zinc-600 dark:text-zinc-300">
-                  Quality {Math.round(quality * 100)}%
-                  <input type="range" min={0.05} max={1} step={0.05} value={quality} onChange={(e) => setQuality(parseFloat(e.target.value))} className="w-full" />
+                <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
+                  <span>Quality: {Math.round(quality * 100)}%</span>
+                  <input type="range" min={0.05} max={1} step={0.05} value={quality} onChange={(e) => setQuality(parseFloat(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
                 </label>
               )}
-              {!opaque && <p className="text-xs text-zinc-500 dark:text-zinc-400">Transparency is kept for PNG, WebP, GIF and AVIF.</p>}
-              {opaque && <p className="text-xs text-zinc-500 dark:text-zinc-400">JPG / BMP can't store transparency — a white background is used.</p>}
+              {!opaque && <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Transparency is preserved for PNG, WebP, GIF and AVIF.</p>}
+              {opaque && <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">JPG / BMP do not support transparency — filled with a clean white background.</p>}
             </section>
 
-            <section className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-3 space-y-3">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
               <h3 className={label}>Resize</h3>
               <div className="flex flex-wrap gap-2">
                 {(['none', 'percent', 'pixels'] as const).map((m) => (
@@ -338,31 +338,37 @@ export default function FormatConverter() {
                 ))}
               </div>
               {resizeMode === 'percent' && (
-                <label className="block text-sm text-zinc-600 dark:text-zinc-300">
-                  Scale {percent}%
-                  <input type="range" min={1} max={400} value={percent} onChange={(e) => setPercent(parseInt(e.target.value))} className="w-full" />
+                <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
+                  <span>Scale factor: {percent}%</span>
+                  <input type="range" min={1} max={400} value={percent} onChange={(e) => setPercent(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
                 </label>
               )}
               {resizeMode === 'pixels' && (
-                <div className="flex flex-wrap items-center gap-2 text-sm">
-                  <input type="number" value={pxW} onChange={(e) => setPxW(parseInt(e.target.value) || 0)} className={`${input} w-28`} />
-                  ×
-                  <input type="number" value={pxH} onChange={(e) => setPxH(parseInt(e.target.value) || 0)} className={`${input} w-28`} />
-                  <label className="flex items-center gap-1.5 text-xs text-zinc-600 dark:text-zinc-300">
-                    <input type="checkbox" checked={keepAspect} onChange={(e) => setKeepAspect(e.target.checked)} />
-                    Keep aspect
+                <div className="flex flex-wrap items-center gap-3 text-sm">
+                  <div>
+                    <span className="block text-[11px] font-semibold text-zinc-500 mb-1">Width</span>
+                    <input type="number" value={pxW} onChange={(e) => setPxW(parseInt(e.target.value) || 0)} className={`${input} w-28`} />
+                  </div>
+                  <span className="mt-5">×</span>
+                  <div>
+                    <span className="block text-[11px] font-semibold text-zinc-500 mb-1">Height</span>
+                    <input type="number" value={pxH} onChange={(e) => setPxH(parseInt(e.target.value) || 0)} className={`${input} w-28`} />
+                  </div>
+                  <label className="flex items-center gap-2 text-xs font-semibold text-zinc-700 dark:text-zinc-300 mt-5 cursor-pointer">
+                    <input type="checkbox" checked={keepAspect} onChange={(e) => setKeepAspect(e.target.checked)} className="w-4 h-4 rounded-none accent-indigo-600" />
+                    Keep aspect ratio
                   </label>
                 </div>
               )}
             </section>
 
-            <section className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-3 space-y-3 md:col-span-2">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50 md:col-span-2">
               <h3 className={label}>Crop</h3>
               <div className="flex flex-wrap items-center gap-2">
-                <button onClick={() => setCropEnabled(!cropEnabled)} className={cropEnabled ? btnActive : btn}>{cropEnabled ? 'Crop: on' : 'Crop: off'}</button>
+                <button onClick={() => setCropEnabled(!cropEnabled)} className={cropEnabled ? btnActive : btn}>{cropEnabled ? 'Crop: Active' : 'Crop: Off'}</button>
                 {cropEnabled && (
                   <select onChange={(e) => aspectRef.current = parseFloat(e.target.value) || 0} defaultValue="0" className={input}>
-                    <option value="0">Free</option>
+                    <option value="0">Free aspect</option>
                     <option value="1">Square 1:1</option>
                     <option value="1.5">3:2</option>
                     <option value="1.777">16:9</option>
@@ -375,21 +381,21 @@ export default function FormatConverter() {
                 <div
                   ref={stageRef}
                   onPointerDown={down} onPointerMove={move} onPointerUp={up}
-                  className="relative inline-block select-none touch-none overflow-hidden rounded-lg"
+                  className="relative inline-block select-none touch-none overflow-hidden border border-zinc-300 dark:border-zinc-700 bg-black/5 dark:bg-white/5"
                 >
-                  <img src={items[0].url} className="block max-h-[320px] w-auto pointer-events-none" alt="Crop source" />
-                  <div className="absolute border-2 border-white ring-1 ring-black/30 bg-white/20"
+                  <img src={items[0].url} className="block max-h-[360px] w-auto pointer-events-none" alt="Crop source" />
+                  <div className="absolute border-2 border-indigo-500 ring-2 ring-white/50 bg-indigo-500/15"
                     style={{ left: `${crop.nx * 100}%`, top: `${crop.ny * 100}%`, width: `${crop.nw * 100}%`, height: `${crop.nh * 100}%` }}>
-                    <div className="absolute w-2.5 h-2.5 -left-1 -top-1 bg-white border border-black/40" />
-                    <div className="absolute w-2.5 h-2.5 -right-1 -top-1 bg-white border border-black/40" />
-                    <div className="absolute w-2.5 h-2.5 -left-1 -bottom-1 bg-white border border-black/40" />
-                    <div className="absolute w-2.5 h-2.5 -right-1 -bottom-1 bg-white border border-black/40" />
+                    <div className="absolute w-3 h-3 -left-1.5 -top-1.5 bg-indigo-600 border border-white" />
+                    <div className="absolute w-3 h-3 -right-1.5 -top-1.5 bg-indigo-600 border border-white" />
+                    <div className="absolute w-3 h-3 -left-1.5 -bottom-1.5 bg-indigo-600 border border-white" />
+                    <div className="absolute w-3 h-3 -right-1.5 -bottom-1.5 bg-indigo-600 border border-white" />
                   </div>
                 </div>
               )}
             </section>
 
-            <section className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-3 space-y-3">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
               <h3 className={label}>Rotate & flip</h3>
               <div className="flex flex-wrap gap-2">
                 {[0, 90, 180, 270].map((r) => (
@@ -397,61 +403,101 @@ export default function FormatConverter() {
                 ))}
               </div>
               <div className="flex flex-wrap gap-2">
-                <button onClick={() => setFlipH(!flipH)} className={flipH ? btnActive : btn}>Flip H</button>
-                <button onClick={() => setFlipV(!flipV)} className={flipV ? btnActive : btn}>Flip V</button>
+                <button onClick={() => setFlipH(!flipH)} className={flipH ? btnActive : btn}>Flip Horizontal</button>
+                <button onClick={() => setFlipV(!flipV)} className={flipV ? btnActive : btn}>Flip Vertical</button>
               </div>
             </section>
 
-            <section className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-3 space-y-3">
-              <h3 className={label}>Adjustments</h3>
-              <label className="block text-sm text-zinc-600 dark:text-zinc-300">Brightness {brightness}%<input type="range" min={0} max={200} value={brightness} onChange={(e) => setBrightness(parseInt(e.target.value))} className="w-full" /></label>
-              <label className="block text-sm text-zinc-600 dark:text-zinc-300">Contrast {contrast}%<input type="range" min={0} max={200} value={contrast} onChange={(e) => setContrast(parseInt(e.target.value))} className="w-full" /></label>
-              <label className="block text-sm text-zinc-600 dark:text-zinc-300">Saturation {saturate}%<input type="range" min={0} max={300} value={saturate} onChange={(e) => setSaturate(parseInt(e.target.value))} className="w-full" /></label>
-              <label className="block text-sm text-zinc-600 dark:text-zinc-300">Blur {blur}px<input type="range" min={0} max={20} step={0.5} value={blur} onChange={(e) => setBlur(parseFloat(e.target.value))} className="w-full" /></label>
-              <div className="flex flex-wrap gap-2">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
+              <h3 className={label}>Adjustments & Filters</h3>
+              <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
+                <span>Brightness: {brightness}%</span>
+                <input type="range" min={0} max={200} value={brightness} onChange={(e) => setBrightness(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
+              </label>
+              <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
+                <span>Contrast: {contrast}%</span>
+                <input type="range" min={0} max={200} value={contrast} onChange={(e) => setContrast(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
+              </label>
+              <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
+                <span>Saturation: {saturate}%</span>
+                <input type="range" min={0} max={300} value={saturate} onChange={(e) => setSaturate(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
+              </label>
+              <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
+                <span>Blur: {blur}px</span>
+                <input type="range" min={0} max={20} step={0.5} value={blur} onChange={(e) => setBlur(parseFloat(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
+              </label>
+              <div className="flex flex-wrap gap-2 pt-2">
                 <button onClick={() => setGrayscale(!grayscale)} className={grayscale ? btnActive : btn}>Grayscale</button>
                 <button onClick={() => setSepia(!sepia)} className={sepia ? btnActive : btn}>Sepia</button>
               </div>
             </section>
 
-            <section className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-3 space-y-3">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
               <h3 className={label}>Rounded corners</h3>
-              <label className="block text-sm text-zinc-600 dark:text-zinc-300">
-                Radius {cornerRadius}%
-                <input type="range" min={0} max={50} value={cornerRadius} onChange={(e) => setCornerRadius(parseInt(e.target.value))} className="w-full" />
+              <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
+                <span>Corner Radius: {cornerRadius}%</span>
+                <input type="range" min={0} max={50} value={cornerRadius} onChange={(e) => setCornerRadius(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
               </label>
-              {opaque && <p className="text-xs text-zinc-500 dark:text-zinc-400">Use PNG / WebP / GIF to keep the corners transparent.</p>}
+              {opaque && <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Use PNG, WebP or GIF to keep corner backgrounds transparent.</p>}
             </section>
 
-            <section className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-3 space-y-3 md:col-span-2">
-              <h3 className={label}>Add text</h3>
-              <input value={text} onChange={(e) => setText(e.target.value)} placeholder="Text to overlay…" className={`${input} w-full max-w-sm`} />
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
-                <label className="text-zinc-600 dark:text-zinc-300">Size {textSize}%<input type="range" min={2} max={30} value={textSize} onChange={(e) => setTextSize(parseInt(e.target.value))} className="w-full" /></label>
-                <label className="text-zinc-600 dark:text-zinc-300">Opacity {textOpacity}%<input type="range" min={5} max={100} value={textOpacity} onChange={(e) => setTextOpacity(parseInt(e.target.value))} className="w-full" /></label>
-                <label className="text-zinc-600 dark:text-zinc-300 flex flex-col gap-1">Color<input type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} className="h-9 w-14 border border-zinc-300 dark:border-zinc-700 bg-transparent rounded" /></label>
-                <label className="flex items-center gap-1.5 text-zinc-600 dark:text-zinc-300"><input type="checkbox" checked={textBold} onChange={(e) => setTextBold(e.target.checked)} />Bold</label>
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50 md:col-span-2">
+              <h3 className={label}>Add watermarks & text</h3>
+              <input value={text} onChange={(e) => setText(e.target.value)} placeholder="Type overlay text here…" className={`${input} w-full max-w-md`} />
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+                <label className="font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
+                  <span>Font Size: {textSize}%</span>
+                  <input type="range" min={2} max={30} value={textSize} onChange={(e) => setTextSize(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
+                </label>
+                <label className="font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
+                  <span>Opacity: {textOpacity}%</span>
+                  <input type="range" min={5} max={100} value={textOpacity} onChange={(e) => setTextOpacity(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
+                </label>
+                <label className="font-semibold text-zinc-700 dark:text-zinc-300 flex flex-col gap-1">
+                  <span>Text Color</span>
+                  <input type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} className="h-10 w-full border border-zinc-300 dark:border-zinc-700 bg-transparent rounded-none cursor-pointer" />
+                </label>
+                <label className="flex items-center gap-2 font-semibold text-zinc-700 dark:text-zinc-300 mt-6 cursor-pointer">
+                  <input type="checkbox" checked={textBold} onChange={(e) => setTextBold(e.target.checked)} className="w-4 h-4 rounded-none accent-indigo-600" />
+                  Bold text
+                </label>
               </div>
-              <div className="inline-grid grid-cols-3 gap-1">
+              <div className="inline-grid grid-cols-3 gap-1.5 pt-2">
                 {TEXT_POSITIONS.map((p) => (
-                  <button key={p.id} onClick={() => setTextPos(p.id)} className={`px-3 h-8 text-xs border ${textPos === p.id ? 'ring-1 ring-zinc-400 dark:ring-zinc-500 bg-zinc-100 dark:bg-zinc-800' : 'border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white'}`}>{p.label}</button>
+                  <button key={p.id} onClick={() => setTextPos(p.id)} className={`px-4 h-9 text-xs font-bold uppercase tracking-wider border ${textPos === p.id ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white'}`}>{p.label}</button>
                 ))}
               </div>
             </section>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
-            <button onClick={convert} disabled={busy} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm disabled:opacity-50">Convert all ({items.length})</button>
-            {items.some((it) => it.out) && <button onClick={downloadZip} className="px-4 h-9 border text-sm">Download ZIP</button>}
+          <div className="flex flex-wrap items-center gap-3 pt-4">
+            <button onClick={convert} disabled={busy} className="px-6 h-12 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm uppercase tracking-wider rounded-none shadow-md transition-all disabled:opacity-50">
+              {busy ? 'Processing…' : `Convert all images (${items.length})`}
+            </button>
+            {items.some((it) => it.out) && (
+              <button onClick={downloadZip} className="px-6 h-12 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-white dark:text-zinc-900 font-bold text-sm uppercase tracking-wider rounded-none shadow-sm transition-all">
+                Download ZIP archive
+              </button>
+            )}
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
             {items.map((it, i) => (
-              <div key={i} className="border border-zinc-200 dark:border-zinc-800 rounded-xl p-2">
-                <img src={it.out || it.url} className="w-full h-28 object-cover rounded" alt={it.file.name} />
-                <p className="text-[11px] mt-1 truncate">{it.file.name}</p>
-                <p className="text-[10px] text-zinc-500 dark:text-zinc-400">{it.w}×{it.h}{it.ow ? ` → ${it.ow}×${it.oh}` : ''}{it.outSize ? ` · ${(it.outSize / 1024).toFixed(0)}KB` : ''}</p>
-                {it.out && it.outName && <a href={it.out} download={it.outName} className="text-xs underline">Download {active.ext.toUpperCase()}</a>}
+              <div key={i} className="border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 rounded-none p-4 space-y-3">
+                <div className="w-full h-44 bg-zinc-200/60 dark:bg-zinc-950/60 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center p-2 overflow-hidden">
+                  <img src={it.out || it.url} className="max-h-full max-w-full object-contain pointer-events-none" alt={it.file.name} />
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs font-bold truncate text-zinc-900 dark:text-white">{it.file.name}</p>
+                  <p className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 tabular-nums">
+                    {it.w}×{it.h}{it.ow ? ` → ${it.ow}×${it.oh}` : ''}{it.outSize ? ` • ${(it.outSize / 1024).toFixed(0)}KB` : ''}
+                  </p>
+                </div>
+                {it.out && it.outName && (
+                  <a href={it.out} download={it.outName} className="inline-flex items-center justify-center w-full h-9 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-100 dark:text-zinc-900 text-xs font-bold uppercase tracking-wider rounded-none transition-colors">
+                    Download {active.ext.toUpperCase()}
+                  </a>
+                )}
               </div>
             ))}
           </div>
