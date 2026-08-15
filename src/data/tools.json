@@ -17,8 +17,8 @@
   },
   {
     "id": "format-converter",
-    "name": "Format Converter",
-    "desc": "Convert between JPG, PNG, WebP, AVIF",
+    "name": "Image Format Converter",
+    "desc": "Convert & edit images: resize, crop, flip, text, filters & more",
     "category": "Image Tools",
     "icon": "🔄",
     "implemented": true
