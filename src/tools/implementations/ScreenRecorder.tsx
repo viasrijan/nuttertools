@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { saveBlob } from '../../lib/download'
 
 export default function ScreenRecorder() {
@@ -33,20 +35,20 @@ export default function ScreenRecorder() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div className="border p-6 text-center">
         <p className="text-sm font-medium text-zinc-500 mb-4">
           {recording ? '● Recording… share your tab or screen' : 'Record your screen, tab, or a window. Audio is captured too.'}
         </p>
         {!recording
-          ? <button onClick={start} className="px-6 h-11 bg-red-600 text-white text-sm font-semibold">Start recording</button>
-          : <button onClick={stop} className="px-6 h-11 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold animate-pulse">■ Stop & save</button>}
+          ? <Button variant="danger" onClick={start}>Start recording</Button>
+          : <Button variant="danger" onClick={stop} className="animate-pulse px-6 h-11 font-semibold">■ Stop & save</Button>}
       </div>
       {url && (
-        <div className="space-y-2">
-          <video src={url} controls className="w-full border rounded-lg" />
-          <div className="flex gap-2">
-            <button onClick={async () => saveBlob(await awaitBlob(url), `recording-${Date.now()}.webm`)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download</button>
+        <div className="space-y-3">
+          <video src={url} controls className="w-full border " />
+          <div className="flex gap-2.5">
+            <Button variant="secondary" size="sm" onClick={async () => saveBlob(await awaitBlob(url), `recording-${Date.now()}.webm`)}>Download</Button>
             <a href={url} download="recording.webm" className="px-4 h-9 border text-sm inline-flex items-center">Save</a>
           </div>
         </div>

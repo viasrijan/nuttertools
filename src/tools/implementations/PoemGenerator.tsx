@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { aiText } from '../../lib/ai'
 
 const STYLES = ['Haiku', 'Sonnet', 'Free verse', 'Rhyming', 'Acrostic']
@@ -24,12 +26,12 @@ export default function PoemGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <input value={topic} onChange={e => setTopic(e.target.value)} className="w-full border px-3 h-10 text-sm" placeholder="Topic, e.g. the sea at midnight" />
-      <div className="flex flex-wrap gap-2">
-        {STYLES.map(s => <button key={s} onClick={() => setStyle(s)} className={`px-3 h-9 text-sm border ${style === s ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{s}</button>)}
+      <div className="flex flex-wrap gap-2.5">
+        {STYLES.map(s => <Button variant="outline" key={s} onClick={() => setStyle(s)} className={`px-3 h-9 text-sm border ${style === s ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{s}</Button>)}
       </div>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Composing…' : 'Write poem'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Write poem</Button>
       {error && <p className="text-xs text-zinc-500">{error}</p>}
       {res && <p className="text-sm whitespace-pre-wrap border p-4 leading-7">{res}</p>}
     </div>

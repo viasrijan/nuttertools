@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const PRESETS: [string, string, string][] = [
   ['Ocean', '#06b6d4', '#6366f1'],
   ['Sunset', '#f97316', '#ec4899'],
@@ -17,7 +19,7 @@ export default function GradientGenerator() {
   const css = `background: linear-gradient(${angle}deg, ${from}, ${to});`
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       <div className="grid grid-cols-2 gap-3">
         <label className="text-sm font-semibold">From
           <div className="flex items-center gap-2 mt-1"><input type="color" value={from} onChange={e => setFrom(e.target.value)} className="w-12 h-10 border" /><input value={from} onChange={e => setFrom(e.target.value)} className="border px-3 h-10 flex-1 font-mono text-sm" /></div>
@@ -27,15 +29,15 @@ export default function GradientGenerator() {
         </label>
       </div>
       <label className="block text-sm font-semibold">Angle: {angle}°<input type="range" min={0} max={360} value={angle} onChange={e => setAngle(parseInt(e.target.value))} className="w-full mt-2" /></label>
-      <div className="h-40 rounded-lg border" style={{ background: `linear-gradient(${angle}deg, ${from}, ${to})` }} />
+      <div className="h-40  border" style={{ background: `linear-gradient(${angle}deg, ${from}, ${to})` }} />
       <code className="block border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800">{css}</code>
-      <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(css)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy CSS</button>
-        <button onClick={() => { const p = PRESETS[Math.floor(Math.random() * PRESETS.length)]; setFrom(p[1]); setTo(p[2]) }} className="px-4 h-9 border text-sm">Random</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(css)}>Copy CSS</Button>
+        <Button variant="outline" size="sm" onClick={() => { const p = PRESETS[Math.floor(Math.random() * PRESETS.length)]; setFrom(p[1]); setTo(p[2]) }}>Random</Button>
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2.5">
         {PRESETS.map(([name, a, b]) => (
-          <button key={name} onClick={() => { setFrom(a); setTo(b) }} className="px-3 h-8 border text-xs">{name}</button>
+          <Button key={name} variant="outline" size="sm" className="px-3 h-8 text-xs" onClick={() => { setFrom(a); setTo(b) }}>{name}</Button>
         ))}
       </div>
     </div>

@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const NAMED: Record<string, string> = {
   amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u00a0', copy: '©', reg: '®', trade: '™',
   hellip: '…', mdash: '—', ndash: '–', lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”',
@@ -26,11 +28,11 @@ export default function HtmlEntityEncoder() {
   }, [input])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <textarea value={input} onChange={e => setInput(e.target.value)} placeholder="Paste HTML or text…" className="w-full h-[160px] border p-3 text-sm font-mono" />
       <div className="flex flex-wrap gap-2 text-sm">
-        <button onClick={() => setMode('special')} className={`px-4 h-9 border ${mode === 'special' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Encode &lt; &gt; " '</button>
-        <button onClick={() => setMode('all')} className={`px-4 h-9 border ${mode === 'all' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Encode non-ASCII</button>
+        <Button variant="outline" onClick={() => setMode('special')} className={`px-4 h-9 border ${mode === 'special' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Encode &lt; &gt; " '</Button>
+        <Button variant="outline" onClick={() => setMode('all')} className={`px-4 h-9 border ${mode === 'all' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Encode non-ASCII</Button>
       </div>
       <div className="grid md:grid-cols-2 gap-2">
         <div>
@@ -42,7 +44,7 @@ export default function HtmlEntityEncoder() {
           <pre className="border p-3 text-xs font-mono mt-1 max-h-[200px] overflow-auto whitespace-pre-wrap break-all">{decoded}</pre>
         </div>
       </div>
-      <button onClick={() => navigator.clipboard.writeText(encoded)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy encoded</button>
+      <Button variant="secondary" onClick={() => navigator.clipboard.writeText(encoded)}>Copy encoded</Button>
     </div>
   )
 }

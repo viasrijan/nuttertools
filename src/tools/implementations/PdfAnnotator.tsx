@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import * as pdfjs from 'pdfjs-dist'
 import { PDFDocument, rgb } from 'pdf-lib'
@@ -116,18 +118,18 @@ export default function PdfAnnotator() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <DropZone onFiles={load} accept="application/pdf" multiple={false} label="Drop a PDF to draw on it" />
       {pdf && (
         <>
           <div className="flex flex-wrap gap-2 text-sm items-center">
             {(['rect', 'highlight', 'text'] as const).map(t => (
-              <button key={t} onClick={() => setTool(t)} className={`px-4 h-9 border capitalize ${tool === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t === 'rect' ? '□ Box' : t === 'highlight' ? '🟡 Highlight' : '🅣 Text'}</button>
+              <Button variant="outline" key={t} onClick={() => setTool(t)} className={`px-4 h-9 border capitalize ${tool === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t === 'rect' ? '□ Box' : t === 'highlight' ? '🟡 Highlight' : '🅣 Text'}</Button>
             ))}
             <span className="text-xs text-zinc-500 mx-2">Page {pageNum}/{numPages}</span>
-            <button onClick={() => setPageNum(p => Math.max(1, p - 1))} className="px-3 h-9 border text-sm">←</button>
-            <button onClick={() => setPageNum(p => Math.min(numPages, p + 1))} className="px-3 h-9 border text-sm">→</button>
-            <button onClick={exportPdf} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm ml-auto">Download annotated PDF</button>
+            <Button variant="outline" onClick={() => setPageNum(p => Math.max(1, p - 1))} className="px-3 h-9 border text-sm">←</Button>
+            <Button variant="outline" onClick={() => setPageNum(p => Math.min(numPages, p + 1))} className="px-3 h-9 border text-sm">→</Button>
+            <Button variant="secondary" onClick={exportPdf} className="ml-auto">Download annotated PDF</Button>
           </div>
           <canvas ref={canvasRef} className="max-w-full border bg-white" onMouseDown={onDown} onMouseMove={onMove} onMouseUp={onUp} onMouseLeave={onUp} />
         </>

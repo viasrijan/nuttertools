@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function isValidDate(d: Date) {
   return !Number.isNaN(d.getTime())
 }
@@ -61,7 +63,7 @@ export default function TimestampConverter() {
   ] : []
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div className="flex flex-wrap items-end gap-3">
         <div className="flex-1 min-w-[160px]">
           <label className="block text-xs font-semibold text-zinc-500 dark:text-zinc-400 mb-1">Unix timestamp (s or ms)</label>
@@ -73,7 +75,7 @@ export default function TimestampConverter() {
           <input type="datetime-local" value={local} onChange={toDate}
             className="w-full border px-3 py-2.5 text-zinc-900 dark:text-white bg-transparent outline-none focus:border-indigo-600" />
         </div>
-        <button onClick={now} className="px-4 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold">Now</button>
+        <Button variant="secondary" onClick={now}>Now</Button>
       </div>
       {rows.length > 0 && (
         <div className="border divide-y divide-zinc-200 dark:divide-zinc-800 text-[13px] font-mono">

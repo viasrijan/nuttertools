@@ -46,7 +46,7 @@ export default function PdfToWord() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={convert} accept="application/pdf" multiple={false} label="Drop a PDF to convert to Word" />
       {busy && <Progress label="Converting PDF to Word…" />}
       {error && <p className="text-xs text-red-500">{error}</p>}

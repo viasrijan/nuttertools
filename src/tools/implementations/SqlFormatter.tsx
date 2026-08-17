@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function formatSql(sql: string): string {
   const lines = sql
     .replace(/;\s*$/g, ';')
@@ -31,10 +33,10 @@ export default function SqlFormatter() {
   const [input, setInput] = useState(`SELECT u.name, COUNT(o.id) as orders FROM users u LEFT JOIN orders o ON o.user_id = u.id WHERE u.active = 1 GROUP BY u.id ORDER BY orders DESC LIMIT 10;`)
   const output = formatSql(input)
   return (
-    <div className="space-y-4">
-      <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(output)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy formatted</button>
-        <button onClick={() => navigator.clipboard.writeText(input.replace(/\s+/g, ' ').trim())} className="px-4 h-9 border text-sm">Copy minified</button>
+    <div className="space-y-5">
+      <div className="flex gap-2.5">
+        <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(output)}>Copy formatted</Button>
+        <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(input.replace(/\s+/g, ' ').trim())}>Copy minified</Button>
       </div>
       <div className="grid md:grid-cols-2 gap-3">
         <div>

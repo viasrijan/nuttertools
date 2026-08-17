@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function parseCsv(text: string): string[][] {
   const rows: string[][] = []
   let row: string[] = [], cur = '', inQ = false
@@ -62,12 +64,12 @@ export default function JsonCsv() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <textarea value={input} onChange={e => setInput(e.target.value)} placeholder="Paste JSON (array of objects) or CSV with header row…" className="w-full h-[220px] border p-3 text-sm font-mono" />
-      <div className="flex flex-wrap gap-2">
-        <button onClick={() => { setError(''); navigator.clipboard.writeText(toJson()) }} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">CSV → JSON</button>
-        <button onClick={() => { setError(''); navigator.clipboard.writeText(toJsonRaw()) }} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">CSV → JSON (array)</button>
-        <button onClick={() => { setError(''); navigator.clipboard.writeText(fromJson()) }} className="px-5 h-10 border text-sm">JSON → CSV</button>
+      <div className="flex flex-wrap gap-2.5">
+        <Button variant="secondary" onClick={() => { setError(''); navigator.clipboard.writeText(toJson()) }}>CSV → JSON</Button>
+        <Button variant="secondary" onClick={() => { setError(''); navigator.clipboard.writeText(toJsonRaw()) }}>CSV → JSON (array)</Button>
+        <Button variant="outline" onClick={() => { setError(''); navigator.clipboard.writeText(fromJson()) }}>JSON → CSV</Button>
       </div>
       {error && <p className="text-sm text-red-600">{error}</p>}
       {!error && input.trim() && <pre className="border p-3 text-xs max-h-[220px] overflow-auto whitespace-pre-wrap">{(() => { try { return input.trim().startsWith('[') || input.trim().startsWith('{') ? fromJson() : toJson() } catch { return '' } })()}</pre>}

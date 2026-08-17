@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const DIGITS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 function parse(value: string, base: number): bigint {
@@ -52,7 +54,7 @@ export default function BaseConverter() {
   const otherBases = [2, 8, 10, 16].filter((b) => b !== to)
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div className="flex flex-wrap items-end gap-3">
         <div className="flex-1 min-w-[180px]">
           <label className="block text-xs font-semibold text-zinc-500 dark:text-zinc-400 mb-1">Value</label>
@@ -75,18 +77,18 @@ export default function BaseConverter() {
         </div>
       </div>
       {error && <p className="text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
-      <div className="border p-4">
+      <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-5 transition-all duration-200 hover:shadow-[0_8px_24px_-12px_rgba(0,0,0,0.12)]">
         <div className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">Result (base {to})</div>
         <div className="mt-1 text-2xl font-mono font-bold break-all">{result || '—'}</div>
       </div>
-      <div className="border divide-y divide-zinc-200 dark:divide-zinc-800 text-sm font-mono">
+      <div className=" border border-zinc-200/80 dark:border-zinc-700/80 divide-y divide-zinc-200 dark:divide-zinc-800 text-sm font-mono overflow-hidden transition-all duration-200">
         {otherBases.map((b) => {
           let v = ''
           try { v = render(parse(value, from), b) } catch { v = '' }
           return (
             <div key={b} className="flex items-center justify-between px-3 py-2">
               <span className="text-zinc-500 dark:text-zinc-400">base {b}</span>
-              <button onClick={() => setValue(v)} className="font-semibold text-zinc-900 dark:text-white hover:underline" title="Use as input">{v || '—'}</button>
+              <Button variant="ghost" size="sm" onClick={() => setValue(v)} className="font-semibold hover:underline">{v || '—'}</Button>
             </div>
           )
         })}

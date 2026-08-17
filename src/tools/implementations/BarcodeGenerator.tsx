@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { saveBlob } from '../../lib/download'
 
 const L = ['0001101', '0011001', '0010011', '0111101', '0100011', '0110001', '0101111', '0111011', '0110111', '0001011']
@@ -94,10 +96,10 @@ export default function BarcodeGenerator() {
   useEffect(() => { draw() })
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div className="flex flex-wrap gap-2 text-sm">
         {([['ean13', 'EAN-13'], ['ean8', 'EAN-8'], ['upca', 'UPC-A'], ['code39', 'Code 39']] as const).map(([k, l]) => (
-          <button key={k} onClick={() => setFormat(k)} className={`px-4 h-9 border ${format === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{l}</button>
+          <Button variant="outline" key={k} onClick={() => setFormat(k)} className={`px-4 h-9 border ${format === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{l}</Button>
         ))}
       </div>
       <div className="flex flex-wrap gap-2 text-sm items-center">
@@ -110,7 +112,7 @@ export default function BarcodeGenerator() {
       {valid ? (
         <>
           <canvas ref={canvasRef} className="border bg-white max-w-full" />
-          <button onClick={draw} className="px-4 h-9 border text-sm">Redraw</button>
+          <Button variant="outline" size="sm" onClick={draw}>Redraw</Button>
           <button onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, `barcode-${format}.png`))} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download PNG</button>
         </>
       ) : (

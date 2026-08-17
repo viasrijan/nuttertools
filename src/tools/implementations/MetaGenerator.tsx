@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function MetaGenerator() {
   const [d, setD] = useState({
     title: 'NutterTools — Every Useful Tool, All in One Place',
@@ -39,7 +41,7 @@ export default function MetaGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-3xl">
+    <div className="space-y-5 max-w-3xl omni-rise">
       <input value={d.title} onChange={e => set('title', e.target.value)} className="w-full border px-3 h-9 text-sm" placeholder="Page title" />
       <textarea value={d.desc} onChange={e => set('desc', e.target.value)} className="w-full border p-3 h-20 text-sm" placeholder="Meta description" />
       <div className="grid md:grid-cols-2 gap-3">
@@ -56,7 +58,7 @@ export default function MetaGenerator() {
         <label className="flex items-center gap-2"><input type="checkbox" checked={d.canonical} onChange={e => set('canonical', e.target.checked)} />Canonical</label>
         <input value={d.twitterHandle} onChange={e => set('twitterHandle', e.target.value)} className="border px-3 h-9 text-sm flex-1 min-w-[140px]" placeholder="Twitter handle" />
       </div>
-      <button onClick={() => navigator.clipboard.writeText(gen())} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy meta tags</button>
+      <Button variant="secondary" onClick={() => navigator.clipboard.writeText(gen())}>Copy meta tags</Button>
       <textarea value={gen()} readOnly className="w-full h-64 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />
     </div>
   )

@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 const TEMPLATES: Record<string, { key: string, desc: string, value: string, secret?: boolean }[]> = {
   'Web app': [
     { key: 'NODE_ENV', desc: 'Runtime environment', value: 'development' },
@@ -39,28 +42,28 @@ export default function EnvGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-3xl">
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-5 max-w-3xl omni-rise">
+      <div className="flex flex-wrap gap-2.5">
         {Object.keys(TEMPLATES).map(k => (
-          <button key={k} onClick={() => select(k)} className={`px-3 h-9 text-sm border ${tpl === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</button>
+          <Button variant="outline" key={k} onClick={() => select(k)} className={`px-3 h-9 text-sm border ${tpl === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</Button>
         ))}
       </div>
-      <div className="space-y-2">
+      <div className="space-y-3">
         {rows.map((r, i) => (
           <div key={i} className="grid grid-cols-[1fr_1fr_auto] gap-2 items-center">
             <input value={r.key} onChange={e => { const n = [...rows]; n[i] = { ...r, key: e.target.value }; setRows(n) }} className="border px-3 h-9 font-mono text-sm" placeholder="KEY" />
             <input value={r.value} onChange={e => { const n = [...rows]; n[i] = { ...r, value: e.target.value }; setRows(n) }} className="border px-3 h-9 font-mono text-sm" placeholder="value" />
-            <button onClick={() => setRows(rows.filter((_, x) => x !== i))} className="h-9 border px-2 text-xs">✕</button>
+            <Button variant="ghost" size="sm" onClick={() => setRows(rows.filter((_, x) => x !== i))}>✕</Button>
           </div>
         ))}
         <button onClick={() => setRows([...rows, { key: 'NEW_KEY', desc: '', value: '' }])} className="px-3 h-8 border text-sm">+ Add key</button>
       </div>
-      <button onClick={gen} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Generate .env</button>
+      <Button variant="secondary" onClick={gen}>Generate .env</Button>
       {out && (
         <>
           <textarea value={out} readOnly className="w-full h-40 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />
-          <div className="flex gap-2">
-            <button onClick={() => navigator.clipboard.writeText(out)} className="px-4 h-9 border text-sm">Copy</button>
+          <div className="flex gap-2.5">
+            <CopyButton value={out} />
           </div>
         </>
       )}

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function WhoisLookup() {
   const [domain, setDomain] = useState('nutter.tools')
   const [state, setState] = useState<'idle' | 'loading' | 'ok' | 'err'>('idle')
@@ -33,10 +35,10 @@ export default function WhoisLookup() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <div className="flex gap-2">
+    <div className="space-y-5 max-w-xl omni-rise">
+      <div className="flex gap-2.5">
         <input value={domain} onChange={e => setDomain(e.target.value)} onKeyDown={e => e.key === 'Enter' && lookup()} placeholder="example.com" className="flex-1 border px-3 py-2 text-sm" />
-        <button onClick={lookup} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Whois</button>
+        <Button variant="secondary" onClick={lookup}>Whois</Button>
       </div>
       {state === 'loading' && <p className="text-xs text-zinc-500">Querying RDAP registry…</p>}
       {state === 'err' && <p className="text-sm text-zinc-500">No registration data found (domain may be unregistered) or the registry is unreachable.</p>}

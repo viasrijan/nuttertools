@@ -45,7 +45,7 @@ export default function TxtToPdf() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={convert} accept=".txt,text/plain" multiple={false} label="Drop a .txt file to convert to PDF" />
       {busy && <Progress label="Converting text to PDF…" />}
       {error && <p className="text-xs text-red-500">{error}</p>}

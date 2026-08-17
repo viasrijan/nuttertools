@@ -26,7 +26,7 @@ export default function CidrCalculator() {
   }, [cidr])
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <input value={cidr} onChange={e => setCidr(e.target.value)} placeholder="192.168.1.0/24" className="w-full border px-3 py-2 text-sm font-mono" />
       {res ? (
         <div className="border text-sm divide-y">

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const SYNONYMS: Record<string, string[]> = {
   good: ['excellent', 'great', 'superb', 'outstanding', 'fine'],
   bad: ['poor', 'terrible', 'awful', 'substandard', 'inferior'],
@@ -71,14 +73,14 @@ export default function Paraphraser() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="flex gap-2 text-sm">
-        <button onClick={() => setMode('light')} className={`px-4 h-9 border ${mode === 'light' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Light (45% words)</button>
-        <button onClick={() => setMode('heavy')} className={`px-4 h-9 border ${mode === 'heavy' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Heavy (85% words)</button>
+        <Button variant="outline" onClick={() => setMode('light')} className={`px-4 h-9 border ${mode === 'light' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Light (45% words)</Button>
+        <Button variant="outline" onClick={() => setMode('heavy')} className={`px-4 h-9 border ${mode === 'heavy' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Heavy (85% words)</Button>
       </div>
       <textarea value={input} onChange={e => setInput(e.target.value)} placeholder="Paste text to paraphrase…" className="w-full h-[160px] border p-3 text-sm" />
-      <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(paraphrase())} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Paraphrase & copy</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" onClick={() => navigator.clipboard.writeText(paraphrase())}>Paraphrase & copy</Button>
       </div>
       <p className="text-[11px] text-zinc-500">AI-free: swaps words for synonyms from a built-in dictionary. Great for drafts, not for SEO gaming.</p>
     </div>

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function PercentCalc() {
   const [tab, setTab] = useState<'percent' | 'change' | 'gst' | 'emi'>('percent')
   const [a, setA] = useState('200')
@@ -24,10 +26,10 @@ export default function PercentCalc() {
   )
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-5 max-w-xl omni-rise">
+      <div className="flex flex-wrap gap-2.5">
         {(['percent', 'change', 'gst', 'emi'] as const).map(t => (
-          <button key={t} onClick={() => setTab(t)} className={`px-3 h-9 text-sm border capitalize ${tab === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t}</button>
+          <Button variant="outline" key={t} onClick={() => setTab(t)} className={`px-3 h-9 text-sm border capitalize ${tab === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t}</Button>
         ))}
       </div>
       {tab === 'percent' && (
@@ -36,7 +38,7 @@ export default function PercentCalc() {
             <Field v={a} set={setA} label="Value" />
             <Field v={b} set={setB} label="Percent %" />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-3">
             <Result label={`${b}% of ${a}`} value={(pct * pctOf / 100).toFixed(2)} />
             <Result label={`${a} + ${b}% =`} value={(pct + pct * pctOf / 100).toFixed(2)} />
             <Result label={`${a} − ${b}% =`} value={(pct - pct * pctOf / 100).toFixed(2)} />
@@ -58,7 +60,7 @@ export default function PercentCalc() {
             <Field v={price} set={setPrice} label="Price" />
             <Field v={gstRate} set={setGstRate} label="GST %" />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-3">
             <Result label="GST amount" value={(parseFloat(price) * parseFloat(gstRate) / 100).toFixed(2)} />
             <Result label="Total (incl. GST)" value={(parseFloat(price) * (1 + parseFloat(gstRate) / 100)).toFixed(2)} />
             <Result label="Exclusive amount" value={(parseFloat(price) / (1 + parseFloat(gstRate) / 100)).toFixed(2)} />

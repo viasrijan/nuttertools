@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { aiText } from '../../lib/ai'
 
 export default function Summarizer() {
@@ -26,13 +28,13 @@ export default function Summarizer() {
   const count = text.trim().split(/\s+/).filter(Boolean).length
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <textarea value={text} onChange={e => setText(e.target.value)} className="w-full border p-3 h-48 text-sm" placeholder="Paste a long article or document…" />
       <p className="text-xs text-zinc-500">{count} words</p>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Summarizing…' : 'Summarize'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Summarize</Button>
       {error && <p className="text-xs text-zinc-500">{error}</p>}
       {res && (
-        <div className="space-y-2">
+        <div className="space-y-3">
           <p className="text-sm border p-3">{res}</p>
           {fallback && <p className="text-[11px] text-zinc-400">Extractive summary (top 3 sentences by length).</p>}
         </div>

@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { PDFDocument, degrees } from 'pdf-lib'
@@ -34,16 +36,16 @@ export default function RotatePdf() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="application/pdf" multiple={false} label="Drop a PDF to rotate" />
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2.5">
         {[90, 180, 270].map(a => (
-          <button key={a} onClick={() => setAngle(a)} className={`px-4 h-9 text-sm border ${angle === a ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{a}° clockwise</button>
+          <Button variant="outline" key={a} onClick={() => setAngle(a)} className={`px-4 h-9 text-sm border ${angle === a ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{a}° clockwise</Button>
         ))}
       </div>
       <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={all} onChange={e => setAll(e.target.checked)} />All pages</label>
       {!all && <input value={pages} onChange={e => setPages(e.target.value)} className="border px-3 h-9 text-sm" placeholder="1-3,5,7-9" />}
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Rotating…' : 'Rotate & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Rotate & download</Button>
       {busy && <Progress label="Rotating PDF…" />}
     </div>
   )

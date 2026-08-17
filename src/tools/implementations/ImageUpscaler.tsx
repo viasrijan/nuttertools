@@ -65,7 +65,7 @@ export default function ImageUpscaler() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={upscale} accept="image/*" multiple={false} label="Drop an image to upscale 2×" />
       {busy && <Progress label={status} />}
       {error && <p className="text-xs text-red-500">{error}</p>}

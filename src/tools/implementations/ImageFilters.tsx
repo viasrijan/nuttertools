@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 
 const INIT = { brightness: 100, contrast: 100, saturate: 100, blur: 0, grayscale: 0, sepia: 0, invert: 0, hue: 0 }
@@ -90,19 +92,19 @@ export default function ImageFilters() {
   ]
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       {!img ? (
         <DropZone onFiles={onFiles} accept="image/*" multiple={true} label="Drop one or more images to edit (multiple = batch)" />
       ) : (
         <>
-          <div className="flex flex-wrap gap-2">
-            <button onClick={download} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download</button>
+          <div className="flex flex-wrap gap-2.5">
+            <Button variant="secondary" size="sm" onClick={download}>Download</Button>
             {batch.length > 0 && (
-              <button onClick={downloadAll} disabled={busy} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm disabled:opacity-50">
+              <Button variant="secondary" size="sm" disabled={busy} onClick={downloadAll}>
                 {busy ? 'Applying…' : `Download selected (${batch.filter(b => b.checked).length})`}
-              </button>
+              </Button>
             )}
-            <button onClick={() => setF(INIT)} className="px-4 h-9 border text-sm">Reset</button>
+            <Button variant="outline" size="sm" onClick={() => setF(INIT)}>Reset</Button>
             <button onClick={() => { setImg(null); setBatch([]) }} className="px-4 h-9 border text-sm">New images</button>
           </div>
           <img src={img.url} style={{ filter: filterCss() }} className="max-h-[380px] mx-auto" alt="Preview" />
@@ -110,7 +112,7 @@ export default function ImageFilters() {
             <div className="border p-3 space-y-2">
               <div className="flex items-center justify-between text-sm font-medium">
                 <span>Batch ({batch.filter(b => b.checked).length} selected)</span>
-                <div className="flex gap-2">
+                <div className="flex gap-2.5">
                   <button onClick={() => setBatch(batch.map(b => ({ ...b, checked: true })))} className="underline text-xs">Select all</button>
                   <button onClick={() => setBatch(batch.map(b => ({ ...b, checked: false })))} className="underline text-xs">Clear</button>
                 </div>

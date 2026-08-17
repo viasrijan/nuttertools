@@ -22,7 +22,7 @@ export default function KeywordDensity() {
   const max = stats.top.length ? stats.top[0][1] : 1
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="flex flex-wrap items-center gap-3 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white">Min word length</label>
         <input type="number" value={minLen} onChange={e => setMinLen(Math.max(1, +e.target.value))} className="border px-2 py-2 w-20" />
@@ -31,14 +31,14 @@ export default function KeywordDensity() {
       </div>
       <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Paste text to analyze keyword density…" className="w-full h-[200px] border p-3 text-sm" />
       {stats.total > 0 && (
-        <div className="space-y-2">
+        <div className="space-y-3">
           <p className="text-xs text-zinc-500">{stats.total} words · {stats.counts} unique keywords</p>
           {stats.top.map(([w, c]) => {
             const pct = c / stats.total * 100
             return (
               <div key={w} className="flex items-center gap-2 text-sm">
                 <span className="w-36 truncate font-medium text-zinc-900 dark:text-white">{w}</span>
-                <div className="flex-1 bg-zinc-200 dark:bg-zinc-800 h-4 rounded-sm overflow-hidden">
+                <div className="flex-1 bg-zinc-200 dark:bg-zinc-800 h-4  overflow-hidden">
                   <div className="h-full bg-zinc-900 dark:bg-white" style={{ width: `${c / max * 100}%` }} />
                 </div>
                 <span className="w-20 text-right text-xs font-mono">{c}× ({pct.toFixed(2)}%)</span>

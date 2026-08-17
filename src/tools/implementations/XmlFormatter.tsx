@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function format(xml: string): string {
   const doc = new DOMParser().parseFromString(xml, 'application/xml')
   if (doc.getElementsByTagName('parsererror').length) throw new Error('Invalid XML')
@@ -58,7 +60,7 @@ export default function XmlFormatter() {
   }
 
   return (
-    <div className="space-y-4 max-w-3xl">
+    <div className="space-y-5 max-w-3xl omni-rise">
       <div>
         <textarea
           value={input}
@@ -69,17 +71,17 @@ export default function XmlFormatter() {
           className="w-full border bg-transparent p-3 font-mono text-[13px] text-zinc-900 dark:text-white outline-none focus:border-indigo-600 placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
         />
       </div>
-      <div className="flex flex-wrap gap-2">
-        <button onClick={() => run('format')} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold">Format</button>
-        <button onClick={() => run('minify')} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold">Minify</button>
+      <div className="flex flex-wrap gap-2.5">
+        <Button variant="secondary" onClick={() => run('format')}>Format</Button>
+        <Button variant="secondary" onClick={() => run('minify')}>Minify</Button>
         <button onClick={() => { setInput(''); setOutput(''); setError('') }} className="px-5 h-10 text-sm font-semibold ring-1 ring-zinc-200 dark:ring-zinc-800">Clear</button>
       </div>
       {error && <p className="text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
       {output && (
-        <div className="space-y-2">
+        <div className="space-y-3">
           <textarea value={output} readOnly rows={10} spellCheck={false}
             className="w-full border bg-transparent p-3 font-mono text-[13px] text-zinc-900 dark:text-white outline-none" />
-          <button onClick={copy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold">{copied ? 'Copied!' : 'Copy result'}</button>
+          <Button variant="secondary" onClick={copy}>{copied ? 'Copied!' : 'Copy result'}</Button>
         </div>
       )}
     </div>

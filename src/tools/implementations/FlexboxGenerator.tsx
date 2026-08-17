@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse']
 const JUSTIFY = ['flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly']
 const ALIGN = ['stretch', 'flex-start', 'center', 'flex-end', 'baseline']
@@ -41,7 +43,7 @@ export default function FlexboxGenerator() {
   )
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {sel('Direction', direction, setDirection, DIRECTIONS)}
         {sel('Justify content', justify, setJustify, JUSTIFY)}
@@ -60,7 +62,7 @@ export default function FlexboxGenerator() {
       </div>
       <div className="border p-4 bg-[#ececec] dark:bg-[#1a1a1a]">
         <div className="border border-dashed border-zinc-300 dark:border-zinc-700 p-4 min-h-[180px]"
-          style={{ display: 'flex', flexDirection: direction, justifyContent: justify, alignItems: align, flexWrap: wrap, gap }}>
+          style={{ display: 'flex', flexDirection: direction as React.CSSProperties['flexDirection'], justifyContent: justify, alignItems: align, flexWrap: wrap as React.CSSProperties['flexWrap'], gap }}>
           {Array.from({ length: count }, (_, i) => (
             <div key={i} className="w-16 h-16 grid place-items-center text-white font-bold"
               style={{ background: COLORS[i % COLORS.length] }}>{i + 1}</div>
@@ -70,7 +72,7 @@ export default function FlexboxGenerator() {
       <div className="flex flex-wrap gap-2 items-start">
         <textarea value={css} readOnly rows={7} spellCheck={false}
           className="flex-1 min-w-[220px] border bg-transparent p-3 font-mono text-[13px] text-zinc-900 dark:text-white outline-none" />
-        <button onClick={copy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold">{copied ? 'Copied!' : 'Copy CSS'}</button>
+        <Button variant="secondary" onClick={copy}>{copied ? 'Copied!' : 'Copy CSS'}</Button>
       </div>
     </div>
   )

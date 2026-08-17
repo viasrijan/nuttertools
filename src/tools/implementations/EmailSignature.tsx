@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function EmailSignature() {
   const [name, setName] = useState('Nutter Dev')
   const [title, setTitle] = useState('Web Developer')
@@ -29,7 +31,7 @@ export default function EmailSignature() {
   )
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
         {field('Name', name, setName)}
         {field('Job title', title, setTitle)}
@@ -43,8 +45,8 @@ export default function EmailSignature() {
         <input type="color" value={color} onChange={e => setColor(e.target.value)} className="h-9 border" />
       </div>
       <div className="border p-4 overflow-x-auto" dangerouslySetInnerHTML={{ __html: sig }} />
-      <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(sig)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy HTML signature</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" onClick={() => navigator.clipboard.writeText(sig)}>Copy HTML signature</Button>
         <a href={`data:text/html;charset=utf-8,${encodeURIComponent(sig)}`} download="signature.html" className="px-5 h-10 border text-sm inline-flex items-center">Download .html</a>
       </div>
       <p className="text-[11px] text-zinc-500">In Gmail: Settings → Signature → paste with formatting. In Outlook: insert signature as HTML file.</p>

@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import { saveBlob } from '../../lib/download'
 
@@ -68,19 +70,19 @@ export default function CsvJson() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <div className="flex gap-2">
-        <button onClick={() => setDir('csv-json')} className={`px-4 h-9 text-sm border ${dir === 'csv-json' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>CSV → JSON</button>
-        <button onClick={() => setDir('json-csv')} className={`px-4 h-9 text-sm border ${dir === 'json-csv' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>JSON → CSV</button>
+    <div className="space-y-5 max-w-xl omni-rise">
+      <div className="flex gap-2.5">
+        <Button variant="outline" onClick={() => setDir('csv-json')} className={`px-4 h-9 text-sm border ${dir === 'csv-json' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>CSV → JSON</Button>
+        <Button variant="outline" onClick={() => setDir('json-csv')} className={`px-4 h-9 text-sm border ${dir === 'json-csv' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>JSON → CSV</Button>
       </div>
       <DropZone onFiles={onFile} accept=".csv,.json,.txt" multiple={false} label="Or drop a .csv / .json file" />
       <textarea value={input} onChange={e => setInput(e.target.value)} placeholder={dir === 'csv-json' ? 'name,age\nAlice,30' : '{"name":"Alice","age":30}'} className="w-full border p-3 h-36 font-mono text-sm" />
-      <button onClick={convert} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Convert ↓</button>
+      <Button variant="secondary" onClick={convert}>Convert ↓</Button>
       {error && <p className="text-xs text-red-500">{error}</p>}
       {output && (
-        <div className="space-y-2">
+        <div className="space-y-3">
           <textarea readOnly value={output} className="w-full border p-3 h-44 font-mono text-sm" />
-          <button onClick={download} className="px-5 h-10 border text-sm">Download</button>
+          <Button variant="outline" onClick={download}>Download</Button>
         </div>
       )}
     </div>

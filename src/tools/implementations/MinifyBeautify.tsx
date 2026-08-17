@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 const TYPES = ['json', 'html', 'css', 'javascript'] as const
 
 function minifyJson(s: string) { return JSON.stringify(JSON.parse(s)) }
@@ -47,18 +50,18 @@ export default function MinifyBeautify() {
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-5">
+      <div className="flex flex-wrap gap-2.5">
         {TYPES.map(t => (
           <button key={t} onClick={() => { setType(t); setOutput('') }} className={`px-3 h-9 text-sm border ${type === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t}</button>
         ))}
       </div>
-      <div className="flex flex-wrap gap-2">
-        <button onClick={() => run('minify')} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Minify</button>
-        <button onClick={() => run('beautify')} className="px-4 h-9 border text-sm">Beautify</button>
+      <div className="flex flex-wrap gap-2.5">
+        <Button variant="secondary" size="sm" onClick={() => run('minify')}>Minify</Button>
+        <Button variant="outline" size="sm" onClick={() => run('beautify')}>Beautify</Button>
         {output && (
           <>
-            <button onClick={() => navigator.clipboard.writeText(output)} className="px-4 h-9 border text-sm">Copy</button>
+            <CopyButton value={output} />
             <span className="text-xs font-medium self-center text-zinc-500">{stats.in} → {stats.out} chars ({stats.saved} saved)</span>
           </>
         )}

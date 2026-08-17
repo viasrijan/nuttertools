@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function ShadowGenerator() {
   const [type, setType] = useState<'box' | 'text'>('box')
   const [x, setX] = useState(2)
@@ -20,10 +22,10 @@ export default function ShadowGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-2xl">
-      <div className="flex gap-2">
-        <button onClick={() => setType('box')} className={`px-4 h-9 text-sm border ${type === 'box' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Box shadow</button>
-        <button onClick={() => setType('text')} className={`px-4 h-9 text-sm border ${type === 'text' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Text shadow</button>
+    <div className="space-y-5 max-w-2xl omni-rise">
+      <div className="flex gap-2.5">
+        <Button variant="outline" onClick={() => setType('box')} className={`px-4 h-9 text-sm border ${type === 'box' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Box shadow</Button>
+        <Button variant="outline" onClick={() => setType('text')} className={`px-4 h-9 text-sm border ${type === 'text' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Text shadow</Button>
       </div>
       {type === 'box' ? (
         <>
@@ -51,7 +53,7 @@ export default function ShadowGenerator() {
           : <p className="text-3xl font-extrabold" style={{ textShadow }}>NutterTools</p>}
       </div>
       <code className="block border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800">{css}</code>
-      <button onClick={() => navigator.clipboard.writeText(css)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy CSS</button>
+      <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(css)}>Copy CSS</Button>
     </div>
   )
 }

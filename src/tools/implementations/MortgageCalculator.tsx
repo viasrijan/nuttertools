@@ -39,22 +39,22 @@ export default function MortgageCalculator() {
   const money = (v: number) => '$' + Math.round(v).toLocaleString()
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Home price</label><input type="number" value={price} onChange={e => setPrice(+e.target.value)} className="w-full border px-2 py-2 mt-1" /></div>
-        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Down payment %</label><input type="number" value={down} onChange={e => setDown(+e.target.value)} className="w-full border px-2 py-2 mt-1" /></div>
-        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Rate % / yr</label><input type="number" step="0.05" value={rate} onChange={e => setRate(+e.target.value)} className="w-full border px-2 py-2 mt-1" /></div>
+        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Home price</label><input type="number" value={price} onChange={e => setPrice(+e.target.value)} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 py-2 transition-all duration-200" /></div>
+        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Down payment %</label><input type="number" value={down} onChange={e => setDown(+e.target.value)} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 py-2 transition-all duration-200" /></div>
+        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Rate % / yr</label><input type="number" step="0.05" value={rate} onChange={e => setRate(+e.target.value)} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 py-2 transition-all duration-200" /></div>
         <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Term (years)</label>
-          <select value={years} onChange={e => setYears(+e.target.value)} className="w-full border px-2 py-2 mt-1">
+          <select value={years} onChange={e => setYears(+e.target.value)} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 py-2 transition-all duration-200">
             <option value={10}>10</option><option value={15}>15</option><option value={20}>20</option><option value={30}>30</option>
           </select>
         </div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-center">
-        <div className="border p-3"><div className="text-lg font-bold">{money(res.payment)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Monthly payment</div></div>
-        <div className="border p-3"><div className="text-lg font-bold">{money(res.P)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Loan amount</div></div>
-        <div className="border p-3"><div className="text-lg font-bold text-red-600">{money(res.interest)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Total interest</div></div>
-        <div className="border p-3"><div className="text-lg font-bold">{money(res.total)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Total cost</div></div>
+        <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]"><div className="text-lg font-bold">{money(res.payment)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Monthly payment</div></div>
+        <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]"><div className="text-lg font-bold">{money(res.P)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Loan amount</div></div>
+        <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]"><div className="text-lg font-bold text-red-600">{money(res.interest)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Total interest</div></div>
+        <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]"><div className="text-lg font-bold">{money(res.total)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Total cost</div></div>
       </div>
       <div className="border text-xs max-h-[280px] overflow-auto">
         <table className="w-full">

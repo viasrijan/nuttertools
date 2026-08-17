@@ -28,7 +28,7 @@ export default function CalorieCalculator() {
   }
   const tdee = valid ? bmr * ACTIVITIES[activity].mult : 0
 
-  const rows = [
+  const rows: [string, number][] = [
     ['BMR (base metabolic rate)', bmr],
     ['Maintain weight', tdee],
     ['Mild weight loss (−0.25 kg/week)', tdee * 0.875],
@@ -37,7 +37,7 @@ export default function CalorieCalculator() {
   ]
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <div>
           <label className="block text-xs font-semibold text-zinc-500 dark:text-zinc-400 mb-1">Sex</label>

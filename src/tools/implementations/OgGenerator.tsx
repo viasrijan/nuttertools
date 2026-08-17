@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function OgGenerator() {
   const [title, setTitle] = useState('NutterTools')
   const [sub, setSub] = useState('Every useful tool, all in one place')
@@ -57,7 +59,7 @@ export default function OgGenerator() {
   )
 
   return (
-    <div className="space-y-4 max-w-3xl">
+    <div className="space-y-5 max-w-3xl omni-rise">
       <div className="grid sm:grid-cols-2 gap-3">
         {field('Title', title, setTitle)}
         {field('Subtitle', sub, setSub)}
@@ -65,11 +67,11 @@ export default function OgGenerator() {
         {field('Text color', fg, setFg, 'color')}
         {field('Accent color', accent, setAccent, 'color')}
       </div>
-      <div className="flex gap-2">
-        <button onClick={draw} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Preview</button>
-        <button onClick={download} className="px-4 h-9 border text-sm">Download PNG (1200×630)</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" size="sm" onClick={draw}>Preview</Button>
+        <Button variant="outline" size="sm" onClick={download}>Download PNG (1200×630)</Button>
       </div>
-      <canvas ref={canvasRef} className="w-full border rounded-lg shadow" />
+      <canvas ref={canvasRef} className="w-full border  shadow" />
     </div>
   )
 }

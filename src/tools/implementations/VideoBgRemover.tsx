@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { getFFmpeg } from '../../lib/ffmpeg'
@@ -50,16 +52,16 @@ export default function VideoBgRemover() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setVideo(fl[0])} accept="video/*" multiple={false} label="Drop a short video — background is removed per frame (AI, on-device)" />
       {video && <p className="text-xs text-zinc-500">{video.name}</p>}
       <div className="flex items-center gap-2 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white">Frame rate</label>
         {[5, 10, 15].map(f => (
-          <button key={f} onClick={() => setFps(f)} className={`px-3 h-9 text-xs border ${fps === f ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{f} fps</button>
+          <Button variant="outline" key={f} onClick={() => setFps(f)} className={`px-3 h-9 text-xs border ${fps === f ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{f} fps</Button>
         ))}
       </div>
-      <button onClick={run} disabled={busy || !video} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Processing…' : 'Remove background & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy || !video} isLoading={busy || !video}>Remove background & download</Button>
       {busy && <Progress label={status} />}
       {!busy && status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Best for short clips (&lt;8s): {fps} fps → ~{fps * 8} frames, a few minutes per second of video. Output is a transparent WebM — use an editor to place it over any background. First run downloads the AI model once (~40 MB).</p>

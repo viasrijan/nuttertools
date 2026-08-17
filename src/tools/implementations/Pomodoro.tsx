@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const WORK = 25 * 60, SHORT = 5 * 60, LONG = 15 * 60
 
 export default function Pomodoro() {
@@ -45,10 +47,10 @@ export default function Pomodoro() {
 
   return (
     <div className="space-y-5 max-w-lg">
-      <div className="flex gap-2">
-        <button onClick={() => switchMode('work')} className={`px-4 h-9 text-sm border ${mode === 'work' ? 'bg-red-600 text-white' : ''}`}>Work 25</button>
-        <button onClick={() => switchMode('short')} className={`px-4 h-9 text-sm border ${mode === 'short' ? 'bg-emerald-600 text-white' : ''}`}>Short 5</button>
-        <button onClick={() => switchMode('long')} className={`px-4 h-9 text-sm border ${mode === 'long' ? 'bg-sky-600 text-white' : ''}`}>Long 15</button>
+      <div className="flex gap-2.5">
+        <Button variant="outline" onClick={() => switchMode('work')} className={`px-4 h-9 text-sm border ${mode === 'work' ? 'bg-red-600 text-white' : ''}`}>Work 25</Button>
+        <Button variant="outline" onClick={() => switchMode('short')} className={`px-4 h-9 text-sm border ${mode === 'short' ? 'bg-emerald-600 text-white' : ''}`}>Short 5</Button>
+        <Button variant="outline" onClick={() => switchMode('long')} className={`px-4 h-9 text-sm border ${mode === 'long' ? 'bg-sky-600 text-white' : ''}`}>Long 15</Button>
       </div>
       <div className="border p-8 text-center">
         <div className="relative w-44 h-44 mx-auto">
@@ -65,9 +67,9 @@ export default function Pomodoro() {
             </div>
           </div>
         </div>
-        <button onClick={() => setRunning(!running)} className={`mt-6 px-8 h-12 text-sm font-semibold ${running ? 'bg-zinc-700 text-white' : 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600'}`}>
+        <Button variant="outline" onClick={() => setRunning(!running)} className={`mt-6 px-8 h-12 text-sm font-semibold ${running ? 'bg-zinc-700 text-white' : 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600'}`}>
           {running ? 'Pause' : left === (mode === 'work' ? WORK : mode === 'short' ? SHORT : LONG) ? 'Start' : 'Resume'}
-        </button>
+        </Button>
         <button onClick={() => { setLeft(mode === 'work' ? WORK : mode === 'short' ? SHORT : LONG); setRunning(false) }} className="px-4 h-12 border text-sm ml-2">Reset</button>
         <p className="mt-3 text-sm font-medium text-zinc-500">Completed pomodoros: <b className="text-zinc-900 dark:text-white">{rounds}</b> 🍅</p>
       </div>
@@ -82,7 +84,7 @@ export default function Pomodoro() {
             <li key={i} className="flex items-center gap-2 border px-3 py-2 text-sm">
               <input type="checkbox" className="accent-emerald-500" />
               <span className="flex-1">{t}</span>
-              <button onClick={() => setTasks(tasks.filter((_, x) => x !== i))} className="text-xs text-zinc-400 hover:text-red-500">✕</button>
+              <Button variant="secondary" size="sm" onClick={() => setTasks(tasks.filter((_, x) => x !== i))}>✕</Button>
             </li>
           ))}
         </ul>

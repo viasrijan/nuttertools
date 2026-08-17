@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
 
+import StatTile from '../../components/ui/StatTile'
+
 export default function ReadingTime() {
   const [text, setText] = useState('')
   const [wpm, setWpm] = useState('200')
@@ -19,13 +21,13 @@ export default function ReadingTime() {
   const fmt = (s: number) => s >= 60 ? `${Math.floor(s / 60)}m ${s % 60}s` : `${s}s`
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
-        <div className="border p-3 text-center"><div className="text-xl font-bold">{stats.words.toLocaleString()}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Words</div></div>
-        <div className="border p-3 text-center"><div className="text-xl font-bold">{stats.chars.toLocaleString()}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Characters</div></div>
-        <div className="border p-3 text-center"><div className="text-xl font-bold">{stats.sentences}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Sentences</div></div>
-        <div className="border p-3 text-center"><div className="text-xl font-bold">{stats.avg}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Avg words/sentence</div></div>
-        <div className="border p-3 text-center"><div className="text-xl font-bold">{fmt(stats.readSec)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Reading time</div></div>
+    <div className="space-y-5">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+        <StatTile label="" value={stats.words.toLocaleString()} />
+        <StatTile label="" value={stats.chars.toLocaleString()} />
+        <StatTile label="" value={stats.sentences} />
+        <StatTile label="" value={stats.avg} />
+        <StatTile label="" value={fmt(stats.readSec)} />
       </div>
       <div className="flex items-center gap-2 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white">Reading speed (WPM)</label>

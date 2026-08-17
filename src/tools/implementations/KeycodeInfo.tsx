@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 type KeyEventInfo = {
   key: string
   code: string
@@ -76,7 +78,7 @@ export default function KeycodeInfo() {
   ] : []
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div className={`border border-dashed p-10 text-center transition ${info ? 'border-green-500' : 'border-zinc-300 dark:border-zinc-700'}`}>
         {info ? (
           <div>
@@ -88,7 +90,7 @@ export default function KeycodeInfo() {
         )}
       </div>
       {info && (
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className="border divide-y divide-zinc-200 dark:divide-zinc-800 text-[13px] font-mono">
             {rows.map(([k, v]) => (
               <div key={k} className="flex justify-between px-3 py-2">
@@ -97,7 +99,7 @@ export default function KeycodeInfo() {
               </div>
             ))}
           </div>
-          <button onClick={copyJson} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold">Copy as JSON</button>
+          <Button variant="secondary" onClick={copyJson}>Copy as JSON</Button>
         </div>
       )}
       <div>

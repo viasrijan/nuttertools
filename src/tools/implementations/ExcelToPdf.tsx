@@ -63,7 +63,7 @@ export default function ExcelToPdf() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={convert} accept=".xlsx,.xls,.csv" multiple={false} label="Drop an Excel file to convert to PDF" />
       {busy && <Progress label="Rendering spreadsheet…" />}
       {error && <p className="text-xs text-red-500">{error}</p>}

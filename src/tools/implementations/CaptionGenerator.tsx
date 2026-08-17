@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 const OPENER = ['Here\'s a', 'Check out this', 'Nothing beats a', 'Weekend mood:', 'You need to see this', 'Throwing it back to', 'PSA:', 'Obsessed with this', 'Mood:']
 
 export default function CaptionGenerator() {
@@ -26,7 +29,7 @@ export default function CaptionGenerator() {
   const shown = variants.length ? variants : generate()
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="flex flex-wrap gap-2 items-center text-sm">
         <input value={subject} onChange={e => setSubject(e.target.value)} placeholder="What's in the post?" className="flex-1 border px-3 py-2" />
         <select value={vibe} onChange={e => setVibe(e.target.value)} className="border px-2 py-2">
@@ -34,15 +37,15 @@ export default function CaptionGenerator() {
         </select>
         <label className="flex items-center gap-1.5 text-xs"><input type="checkbox" checked={emojis} onChange={e => setEmojis(e.target.checked)} /> Emojis</label>
       </div>
-      <div className="space-y-2">
+      <div className="space-y-3">
         {shown.map((v, i) => (
           <div key={i} className="border p-3 flex justify-between gap-2 items-start">
             <p className="text-sm">{v}</p>
-            <button onClick={() => navigator.clipboard.writeText(v)} className="px-3 h-8 border text-xs shrink-0">Copy</button>
+            <CopyButton value={v} />
           </div>
         ))}
       </div>
-      <button onClick={() => setVariants(generate())} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Shuffle again</button>
+      <Button variant="secondary" onClick={() => setVariants(generate())}>Shuffle again</Button>
     </div>
   )
 }

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import CopyButton from '../../components/ui/CopyButton'
+
 function parseCurl(curl: string): string {
   let url = ''
   const headers: [string, string][] = []
@@ -45,7 +47,7 @@ export default function CurlToFetch() {
   -d '{"username":"john","password":"secret"}'`)
   const fetchCode = parseCurl(curl)
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="grid md:grid-cols-2 gap-3">
         <div>
           <p className="text-sm font-semibold mb-1">cURL</p>
@@ -54,7 +56,7 @@ export default function CurlToFetch() {
         <div>
           <p className="text-sm font-semibold mb-1">JavaScript fetch</p>
           <textarea value={fetchCode} readOnly className="w-full h-72 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />
-          <button onClick={() => navigator.clipboard.writeText(fetchCode)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm mt-2">Copy</button>
+          <CopyButton value={fetchCode} />
         </div>
       </div>
     </div>

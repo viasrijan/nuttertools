@@ -27,7 +27,7 @@ export default function PdfFormFlattener() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={flatten} accept="application/pdf" multiple={false} label="Drop a fillable PDF form" />
       {busy && <Progress label={status} />}
       {!busy && status && <p className="text-sm text-zinc-600">{status}</p>}

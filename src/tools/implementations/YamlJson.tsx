@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 import { load, dump } from 'js-yaml'
 
 const SAMPLE_YAML = `name: NutterTools
@@ -39,11 +42,11 @@ export default function YamlJson() {
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-5">
+      <div className="flex flex-wrap gap-2.5">
         <button onClick={() => { setTab('y2j'); y2j() }} className={`px-4 h-9 text-sm border ${tab === 'y2j' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>YAML → JSON</button>
         <button onClick={() => { setTab('j2y'); j2y() }} className={`px-4 h-9 text-sm border ${tab === 'j2y' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>JSON → YAML</button>
-        <button onClick={() => navigator.clipboard.writeText(tab === 'y2j' ? j : y)} className="px-4 h-9 border text-sm">Copy</button>
+        <CopyButton value={tab === 'y2j' ? j : y} />
       </div>
       {error && <p className="text-xs text-red-500">{error}</p>}
       {tab === 'y2j' ? (

@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { PDFDocument, StandardFonts, rgb, degrees } from 'pdf-lib'
@@ -43,7 +45,7 @@ export default function PdfWatermark() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="application/pdf" multiple={false} label="Drop a PDF to watermark" />
       <input value={text} onChange={e => setText(e.target.value)} className="w-full border px-3 h-10 text-sm" placeholder="Watermark text" />
       <div className="grid sm:grid-cols-2 gap-3">
@@ -51,7 +53,7 @@ export default function PdfWatermark() {
         <label className="text-sm font-semibold">Size ({size})<input type="range" min={24} max={120} value={size} onChange={e => setSize(parseInt(e.target.value))} className="w-full mt-2" /></label>
       </div>
       <label className="text-sm font-semibold flex items-center gap-3">Color <input type="color" value={color} onChange={e => setColor(e.target.value)} className="w-14 h-10 border" /></label>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Adding watermark…' : 'Add watermark & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Add watermark & download</Button>
       {busy && <Progress label="Adding watermark…" />}
     </div>
   )

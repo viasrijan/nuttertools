@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
 
@@ -36,7 +38,7 @@ export default function ResumeBuilder() {
   }
 
   return (
-    <div className="space-y-4 max-w-3xl">
+    <div className="space-y-5 max-w-3xl omni-rise">
       <input value={data.name} onChange={e => set('name', e.target.value)} className="w-full border px-3 h-9 text-sm" placeholder="Full name" />
       <input value={data.title} onChange={e => set('title', e.target.value)} className="w-full border px-3 h-9 text-sm" placeholder="Job title" />
       <div className="grid md:grid-cols-2 gap-3">
@@ -50,7 +52,7 @@ export default function ResumeBuilder() {
       <div className="border p-3 space-y-2">
         <p className="text-xs font-bold uppercase tracking-wider text-zinc-500">Experience</p>
         {data.jobs.map((j, i) => (
-          <div key={i} className="space-y-2">
+          <div key={i} className="space-y-3">
             <div className="grid grid-cols-3 gap-2">
               <input value={j.role} onChange={e => { const n = [...data.jobs]; n[i] = { ...j, role: e.target.value }; set('jobs', n) }} className="border px-2 h-9 text-sm" placeholder="Role" />
               <input value={j.company} onChange={e => { const n = [...data.jobs]; n[i] = { ...j, company: e.target.value }; set('jobs', n) }} className="border px-2 h-9 text-sm" placeholder="Company" />
@@ -62,7 +64,7 @@ export default function ResumeBuilder() {
         <button onClick={() => set('jobs', [...data.jobs, { role: '', company: '', years: '', points: '' }])} className="px-3 h-8 border text-sm">+ Add job</button>
       </div>
       <input value={data.edu} onChange={e => set('edu', e.target.value)} className="w-full border px-3 h-9 text-sm" placeholder="Education" />
-      <button onClick={gen} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download PDF</button>
+      <Button variant="secondary" onClick={gen}>Download PDF</Button>
     </div>
   )
 }

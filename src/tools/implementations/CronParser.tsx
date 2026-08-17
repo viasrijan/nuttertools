@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 const DAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 const RANGES = { minute: [0, 59], hour: [0, 23], dom: [1, 31], month: [1, 12], dow: [0, 7] } as const
@@ -83,7 +85,7 @@ function nextRuns(expr: string, count: number): Date[] | null {
   const limit = new Date(d)
   limit.setFullYear(limit.getFullYear() + 2)
   while (runs.length < count && d <= limit) {
-    if (matches(d, parsed.fields)) runs.push(new Date(d))
+    if (parsed.fields.every(Boolean) && matches(d, parsed.fields as Set<number>[])) runs.push(new Date(d))
     d.setMinutes(d.getMinutes() + 1)
   }
   return runs
@@ -104,8 +106,8 @@ export default function CronParser() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-5 max-w-xl omni-rise">
+      <div className="flex flex-wrap gap-2.5">
         <input value={expr} onChange={(e) => setExpr(e.target.value)} spellCheck={false}
           className="flex-1 min-w-[200px] border px-3 py-2.5 font-mono text-zinc-900 dark:text-white bg-transparent outline-none focus:border-indigo-600" />
         <select onChange={(e) => { if (e.target.value) setExpr(e.target.value) }} value=""
@@ -120,13 +122,13 @@ export default function CronParser() {
           {parsed.fields.map((s, i) => (
             <div key={i} className="flex items-center justify-between px-3 py-2">
               <span className="text-zinc-500 dark:text-zinc-400 font-medium">{FIELD_NAMES[i]}</span>
-              <span className="font-mono text-zinc-900 dark:text-white">{[...s].sort((a, b) => a - b).slice(0, 14).join(', ')}{s.size > 14 ? ' …' : ''}</span>
+              <span className="font-mono text-zinc-900 dark:text-white">{s ? [...s].sort((a, b) => a - b).slice(0, 14).join(', ') : '—'}{s && s.size > 14 ? ' …' : ''}</span>
             </div>
           ))}
         </div>
       )}
       {runs && (
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400">Next 5 runs (your local time)</div>
           <div className="border divide-y divide-zinc-200 dark:divide-zinc-800 font-mono text-[13px]">
             {runs.map((d, i) => (
@@ -136,7 +138,7 @@ export default function CronParser() {
               </div>
             ))}
           </div>
-          <button onClick={copy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold">{copied ? 'Copied!' : 'Copy schedule'}</button>
+          <Button variant="secondary" onClick={copy}>{copied ? 'Copied!' : 'Copy schedule'}</Button>
         </div>
       )}
     </div>

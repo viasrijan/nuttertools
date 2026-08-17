@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const TITLES = [
   'The Shawshank Redemption', 'Inception', 'Interstellar', 'The Dark Knight', 'Pulp Fiction',
   'The Godfather', 'Forrest Gump', 'The Matrix', 'Fight Club', 'The Lord of the Rings',
@@ -33,14 +35,14 @@ export default function MoviePicker() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <button onClick={reroll} disabled={all.length === 0 || rolling}
         className={`w-full h-40 border border-dashed border-zinc-300 dark:border-zinc-700 text-lg font-semibold transition ${rolling ? 'animate-pulse' : 'hover:border-green-500'}`}>
         {rolling ? 'Rolling…' : pick ? `🎬 ${pick}` : 'Pick a movie or show for me'}
       </button>
       <div className="flex items-center justify-between gap-3">
         <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400">{all.length} titles in the pool</span>
-        <button onClick={() => { setPick(''); setHistory([]) }} className="px-4 h-9 text-xs font-bold ring-1 ring-zinc-200 dark:ring-zinc-800">Reset</button>
+        <Button variant="subtle" size="sm" onClick={() => { setPick(''); setHistory([]) }}>Reset</Button>
       </div>
       <div>
         <label className="block text-xs font-semibold text-zinc-500 dark:text-zinc-400 mb-1">Add your own titles (one per line)</label>

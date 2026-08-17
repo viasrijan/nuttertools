@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 export default function JSONFormatter(){
   const [input,setInput]=useState('{\"name\":\"NutterTools\",\"tools\":95}')
   const [output,setOutput]=useState("")
@@ -17,11 +20,11 @@ export default function JSONFormatter(){
   }
 
   return (
-    <div className="space-y-3">
-      <div className="flex gap-2">
-        <button onClick={format} className="px-4 h-8 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Format</button>
-        <button onClick={minify} className="px-4 h-8 border text-sm">Minify</button>
-        <button onClick={()=>navigator.clipboard.writeText(output)} className="px-4 h-8 border text-sm">Copy</button>
+    <div className="space-y-5">
+      <div className="flex gap-2.5">
+        <Button variant="secondary" size="sm" onClick={format}>Format</Button>
+        <Button variant="outline" size="sm" onClick={minify}>Minify</Button>
+        <CopyButton value={output} />
       </div>
       {error && <p className="text-xs text-red-500">{error}</p>}
       <div className="grid md:grid-cols-2 gap-3">

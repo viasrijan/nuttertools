@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 import DropZone from '../../components/DropZone'
 
 export default function AltTextGenerator() {
@@ -56,19 +59,19 @@ export default function AltTextGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="image/*" multiple={false} label="Drop an image to describe" />
       {img && (
         <>
           <canvas ref={canvasRef} className="hidden" />
-          <button onClick={analyze} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Generate alt text</button>
+          <Button variant="secondary" onClick={analyze}>Generate alt text</Button>
           {alt && (
-            <div className="border p-3">
+            <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]">
               <label className="text-xs font-semibold text-zinc-900 dark:text-white uppercase">Suggested alt text</label>
               <p className="text-sm mt-1">{alt}</p>
               <div className="flex gap-2 mt-2">
-                <button onClick={() => navigator.clipboard.writeText(alt)} className="px-4 h-9 border text-xs">Copy</button>
-                <button onClick={analyze} className="px-4 h-9 border text-xs">Regenerate</button>
+                <CopyButton value={alt} />
+                <Button variant="outline" size="sm" onClick={analyze}>Regenerate</Button>
               </div>
               <p className="text-[11px] text-zinc-500 mt-2">Color/statistics-based description — edit it to describe the actual content: e.g. &quot;Two people hiking on a trail at sunset&quot;.</p>
             </div>

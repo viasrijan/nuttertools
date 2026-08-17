@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function MemoWriter() {
   const [topic, setTopic] = useState('Q3 budget update')
   const [audience, setAudience] = useState('All staff')
@@ -13,10 +15,10 @@ export default function MemoWriter() {
   }, [topic, audience, points, action])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="grid md:grid-cols-2 gap-2 text-sm">
-        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Subject</label><input value={topic} onChange={e => setTopic(e.target.value)} className="w-full border px-2 py-2 mt-1" /></div>
-        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">To</label><input value={audience} onChange={e => setAudience(e.target.value)} className="w-full border px-2 py-2 mt-1" /></div>
+        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Subject</label><input value={topic} onChange={e => setTopic(e.target.value)} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 py-2 transition-all duration-200" /></div>
+        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">To</label><input value={audience} onChange={e => setAudience(e.target.value)} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 py-2 transition-all duration-200" /></div>
       </div>
       <div>
         <label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Key points — one per line</label>
@@ -24,8 +26,8 @@ export default function MemoWriter() {
       </div>
       <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Action required</label><input value={action} onChange={e => setAction(e.target.value)} className="w-full border px-2 py-2 text-sm mt-1" /></div>
       <pre className="border p-4 text-sm whitespace-pre-wrap">{memo}</pre>
-      <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(memo)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy memo</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" onClick={() => navigator.clipboard.writeText(memo)}>Copy memo</Button>
       </div>
     </div>
   )

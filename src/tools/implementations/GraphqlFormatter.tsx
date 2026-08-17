@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 type Tok = { type: 'name' | 'string' | 'comment' | 'punct' | 'num', v: string }
 
 function tokenize(input: string): Tok[] {
@@ -55,11 +57,11 @@ export default function GraphqlFormatter() {
   const out = useMemo(() => formatGraphql(input), [input])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <textarea value={input} onChange={e => setInput(e.target.value)} placeholder="Paste GraphQL query / SDL…" className="w-full h-[240px] border p-3 text-sm font-mono" />
-      <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(out)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Format & copy</button>
-        <button onClick={() => setInput(out)} className="px-5 h-10 border text-sm">Use output</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" onClick={() => navigator.clipboard.writeText(out)}>Format & copy</Button>
+        <Button variant="outline" onClick={() => setInput(out)}>Use output</Button>
       </div>
       <pre className="border p-3 text-xs max-h-[300px] overflow-auto whitespace-pre-wrap">{out}</pre>
     </div>

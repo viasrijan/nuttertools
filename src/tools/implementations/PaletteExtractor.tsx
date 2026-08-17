@@ -31,7 +31,7 @@ export default function PaletteExtractor(){
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <DropZone onFiles={onFiles} accept="image/*" multiple={false} label="Drop image to extract palette"/>
       {img && <img src={img} className="w-full max-h-[300px] object-contain border"/>}
       <div className="flex gap-2 flex-wrap">

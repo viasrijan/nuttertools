@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const ADJ = ['Swift', 'Clever', 'Brave', 'Cosmic', 'Fuzzy', 'Neon', 'Silent', 'Mighty', 'Quirky', 'Lucky', 'Wild', 'Gentle', 'Bold', 'Crimson', 'Golden', 'Rapid', 'Noble', 'Vivid', 'Lunar', 'Solar', 'Sneaky', 'Cheerful', 'Mellow', 'Prickly', 'Zesty', 'Frosty', 'Jolly', 'Shiny', 'Turbo', 'Epic']
 const NOUN = ['Tiger', 'Panda', 'Falcon', 'Dolphin', 'Wolf', 'Fox', 'Otter', 'Hawk', 'Lynx', 'Orca', 'Raven', 'Badger', 'Coyote', 'Heron', 'Koi', 'Lion', 'Moose', 'Owl', 'Puma', 'Quail', 'Salmon', 'Toucan', 'Viper', 'Walrus', 'Zebra', 'Bison', 'Crane', 'Gecko', 'Ibex', 'Jaguar']
 
@@ -34,7 +36,7 @@ export default function UsernameGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div className="flex flex-wrap gap-4 text-sm">
         <label className="flex items-center gap-2 font-medium">
           Count
@@ -64,14 +66,14 @@ export default function UsernameGenerator() {
             <option value="upper">UPPERCASE</option>
           </select>
         </label>
-        <button onClick={generate} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold ml-auto">Generate</button>
+        <Button variant="secondary" onClick={generate} className="font-semibold ml-auto">Generate</Button>
       </div>
       {names.length > 0 && (
         <div className="border divide-y divide-zinc-200 dark:divide-zinc-800">
           {names.map((n) => (
             <div key={n} className="flex items-center justify-between gap-3 px-4 py-3">
               <span className="font-mono font-semibold text-zinc-900 dark:text-white">{n}</span>
-              <button onClick={() => copy(n)} className="text-xs font-bold text-green-600 dark:text-green-400 shrink-0">{copied === n ? 'Copied!' : 'Copy'}</button>
+              <Button variant="ghost" size="sm" className="text-xs font-bold text-green-600 dark:text-green-400 shrink-0">{copied === n ? 'Copied!' : 'Copy'}</Button>
             </div>
           ))}
         </div>

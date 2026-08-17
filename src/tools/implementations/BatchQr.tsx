@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import QRCode from 'qrcode'
 import JSZip from 'jszip'
 import Progress from '../../components/Progress'
@@ -45,15 +47,15 @@ export default function BatchQr() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <textarea value={lines} onChange={e => { setLines(e.target.value); setGenerated(false) }} placeholder="One URL/text per line…" className="w-full h-[160px] border p-3 text-sm font-mono" />
       <div className="flex flex-wrap gap-2 items-center text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white">Size</label>
         <select value={size} onChange={e => { setSize(+e.target.value); setGenerated(false) }} className="border px-2 py-2">
           {[256, 512, 1024].map(s => <option key={s} value={s}>{s}px</option>)}
         </select>
-        <button onClick={gen} disabled={busy || !items.length} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Generating…' : `Generate ${items.length || ''} QR codes`}</button>
-        {generated && <button onClick={downloadZip} className="px-5 h-10 border text-sm">Download ZIP</button>}
+        <Button variant="secondary" onClick={gen} disabled={busy || !items.length}>{busy ? 'Generating…' : `Generate ${items.length || ''} QR codes`}</Button>
+        {generated && <Button variant="outline" onClick={downloadZip}>Download ZIP</Button>}
       </div>
       {busy && <Progress label="Generating QR codes…" />}
       <div ref={containerRef} className="grid grid-cols-2 md:grid-cols-4 gap-3" />

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function SitemapGen() {
   const [domain, setDomain] = useState('https://example.com')
   const [paths, setPaths] = useState('/\n/about\n/blog\n/contact')
@@ -26,7 +28,7 @@ export default function SitemapGen() {
   }
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       <input value={domain} onChange={e => setDomain(e.target.value)} className="w-full border px-3 h-9 text-sm" placeholder="https://example.com" />
       <textarea value={paths} onChange={e => setPaths(e.target.value)} className="w-full border p-3 h-32 font-mono text-xs" placeholder="One path per line" />
       <div className="grid grid-cols-3 gap-3">
@@ -41,8 +43,8 @@ export default function SitemapGen() {
         <label className="text-sm">Last mod
           <input type="date" value={lastmod} onChange={e => setLastmod(e.target.value)} className="w-full border px-2 h-9 mt-1 text-sm" /></label>
       </div>
-      <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(gen())} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy sitemap</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(gen())}>Copy sitemap</Button>
         <a href={`data:text/xml;charset=utf-8,${encodeURIComponent(gen())}`} download="sitemap.xml" className="px-4 h-9 border text-sm inline-flex items-center">Download sitemap.xml</a>
       </div>
       <textarea value={gen()} readOnly className="w-full h-64 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />

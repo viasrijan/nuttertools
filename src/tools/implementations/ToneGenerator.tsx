@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { saveBlob } from '../../lib/download'
 
 const NOTES = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
@@ -70,15 +72,15 @@ export default function ToneGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-5 max-w-xl omni-rise">
+      <div className="flex flex-wrap gap-2.5">
         {NOTES.flatMap(n => [n + '3', n + '4', n + '5']).map(n => (
-          <button key={n} onClick={() => setNote(n)} className={`px-2.5 h-8 text-xs border rounded ${note === n ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{n}</button>
+          <Button variant="outline" key={n} onClick={() => setNote(n)} className={`px-2.5 h-8 text-xs border  ${note === n ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{n}</Button>
         ))}
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2.5">
         {['sine', 'square', 'triangle', 'sawtooth'].map(w => (
-          <button key={w} onClick={() => setWave(w as OscillatorType)} className={`px-3 h-9 text-sm capitalize border rounded ${wave === w ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{w}</button>
+          <Button variant="outline" key={w} onClick={() => setWave(w as OscillatorType)} className={`px-3 h-9 text-sm capitalize border  ${wave === w ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{w}</Button>
         ))}
       </div>
       <p className="text-2xl font-bold">{freq.toFixed(1)} Hz</p>
@@ -86,10 +88,10 @@ export default function ToneGenerator() {
         <label className="text-sm font-semibold">Duration ({dur}s)<input type="range" min={0.2} max={5} step={0.1} value={dur} onChange={e => setDur(parseFloat(e.target.value))} className="w-full mt-2" /></label>
         <label className="text-sm font-semibold">Volume ({Math.round(volume * 100)}%)<input type="range" min={0} max={1} step={0.05} value={volume} onChange={e => setVolume(parseFloat(e.target.value))} className="w-full mt-2" /></label>
       </div>
-      <div className="flex gap-2">
-        <button onClick={play} className="px-6 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Play</button>
-        <button onClick={stop} className="px-6 h-10 border text-sm">Stop</button>
-        <button onClick={exportWav} disabled={exporting} className="px-6 h-10 border text-sm">{exporting ? 'Rendering…' : 'Download WAV'}</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" onClick={play}>Play</Button>
+        <Button variant="outline" onClick={stop} className="px-6 h-10 border text-sm">Stop</Button>
+        <Button variant="outline" disabled={exporting} onClick={exportWav}>{exporting ? 'Rendering…' : 'Download WAV'}</Button>
       </div>
     </div>
   )

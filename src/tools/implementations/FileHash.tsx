@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 
 function md5(bytes: Uint8Array): string {
@@ -54,16 +56,16 @@ export default function FileHash() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFiles(Array.from(fl))} accept="*" multiple label="Drop files to hash (runs locally)" />
       {files.length > 0 && <p className="text-xs text-zinc-500">{files.length} file{files.length === 1 ? '' : 's'} selected</p>}
       <div className="flex flex-wrap gap-2 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white self-center">Algorithm</label>
         {['MD5', 'SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'].map(a => (
-          <button key={a} onClick={() => setAlg(a)} className={`px-3 h-9 text-xs border ${alg === a ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{a}</button>
+          <Button variant="outline" key={a} onClick={() => setAlg(a)} className={`px-3 h-9 text-xs border ${alg === a ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{a}</Button>
         ))}
       </div>
-      <button onClick={run} disabled={!files.length} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Hash files</button>
+      <Button variant="secondary" onClick={run} disabled={!files.length}>Hash files</Button>
       {results.map((r, i) => (
         <div key={i} className="border p-3 text-xs">
           <div className="flex justify-between mb-1"><span className="font-semibold">{r.name}</span><span className="text-zinc-500">{r.size}</span></div>

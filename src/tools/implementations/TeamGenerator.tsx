@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr]
   for (let i = a.length - 1; i > 0; i--) {
@@ -25,7 +27,7 @@ export default function TeamGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div>
         <label className="block text-xs font-semibold text-zinc-500 dark:text-zinc-400 mb-1">Names (one per line)</label>
         <textarea value={names} onChange={(e) => setNames(e.target.value)} rows={8} spellCheck={false}
@@ -36,15 +38,12 @@ export default function TeamGenerator() {
         <label className="text-sm font-semibold text-zinc-900 dark:text-white">Teams</label>
         <input type="number" min="1" max="10" value={teamCount} onChange={(e) => setTeamCount(Math.min(10, Math.max(1, +e.target.value)))}
           className="border px-3 py-2 w-20 bg-transparent text-zinc-900 dark:text-white" />
-        <button onClick={generate} disabled={list.length === 0}
-          className={`px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold ${list.length === 0 ? 'opacity-40' : ''}`}>
-          Generate teams
-        </button>
+        <Button variant="secondary" onClick={generate} disabled={list.length === 0} className="font-semibold">Generate teams</Button>
       </div>
       {teams.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {teams.map((t, i) => (
-            <div key={i} className="border p-4">
+            <div key={i} className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-5 transition-all duration-200 hover:shadow-[0_8px_24px_-12px_rgba(0,0,0,0.12)]">
               <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400">Team {i + 1} · {t.length}</div>
               <ul className="mt-2 space-y-1 text-sm font-medium">
                 {t.map((n, j) => <li key={j}>{n}</li>)}

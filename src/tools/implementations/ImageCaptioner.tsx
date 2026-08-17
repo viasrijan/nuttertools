@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import CopyButton from '../../components/ui/CopyButton'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 
@@ -56,14 +58,14 @@ export default function ImageCaptioner() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={captionImg} accept="image/*" multiple={false} label="Drop an image to describe" />
       {busy && <Progress label={status} />}
       {error && <p className="text-xs text-red-500">{error}</p>}
       {caption && (
-        <div className="space-y-3">
+        <div className="space-y-5">
           <p className="text-lg font-medium border p-3">{caption}</p>
-          <button onClick={() => navigator.clipboard.writeText(caption)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy</button>
+          <CopyButton value={caption} />
         </div>
       )}
       <p className="text-[11px] font-medium text-zinc-500">Powered by Google Gemini in the cloud — nothing is downloaded to your device.</p>

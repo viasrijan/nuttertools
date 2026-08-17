@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function b64url(input: string): string {
   return input.replace(/-/g, '+').replace(/_/g, '/')
 }
@@ -33,10 +35,10 @@ export default function JwtTool() {
   const [body, setBody] = useState('')
 
   return (
-    <div className="space-y-4 max-w-3xl">
+    <div className="space-y-5 max-w-3xl omni-rise">
       <textarea value={token} onChange={e => setToken(e.target.value)} className="w-full border p-3 h-24 font-mono text-xs break-all" placeholder="Paste JWT token" />
-      <div className="flex gap-2">
-        <button onClick={decode} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Decode</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" size="sm" onClick={decode}>Decode</Button>
         <button onClick={() => navigator.clipboard.writeText(JSON.stringify(JSON.parse(payload || '{}'), null, 2))} className="px-4 h-9 border text-sm">Copy</button>
       </div>
       {error && <p className="text-xs text-red-500">{error}</p>}

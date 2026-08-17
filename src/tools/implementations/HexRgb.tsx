@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import CopyButton from '../../components/ui/CopyButton'
+
 function hexToRgb(hex: string) { const n = parseInt(hex.slice(1), 16); return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 } }
 function rgbToHex(r: number, g: number, b: number) { return '#' + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1) }
 function rgbToHsl(r: number, g: number, b: number) {
@@ -23,15 +25,15 @@ export default function HexRgb() {
   const hsl = parsed ? rgbToHsl(parsed.r, parsed.g, parsed.b) : null
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <label className="text-sm font-semibold">Hex color</label>
-      <div className="flex gap-2">
+      <div className="flex gap-2.5">
         <input type="color" value={/^#[0-9a-fA-F]{6}$/.test(hex) ? hex : '#000000'} onChange={e => setHex(e.target.value)} className="w-12 h-10 border" />
         <input value={hex} onChange={e => setHex(e.target.value)} className="border px-3 h-10 flex-1 font-mono text-sm" placeholder="#RRGGBB" />
       </div>
-      <div className="h-24 rounded-lg border" style={{ background: /^#[0-9a-fA-F]{6}$/.test(hex) ? hex : '#fff' }} />
+      <div className="h-24  border" style={{ background: /^#[0-9a-fA-F]{6}$/.test(hex) ? hex : '#fff' }} />
       {parsed && hsl ? (
-        <div className="space-y-2">
+        <div className="space-y-3">
           <Row label="RGB" value={`rgb(${parsed.r}, ${parsed.g}, ${parsed.b})`} />
           <Row label="HSL" value={`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`} />
           <Row label="Hex" value={hex.toLowerCase()} />
@@ -46,7 +48,7 @@ function Row({ label, value }: { label: string, value: string }) {
     <div className="border p-3 flex items-center gap-3">
       <span className="w-12 text-sm font-bold">{label}</span>
       <code className="flex-1 font-mono text-sm">{value}</code>
-      <button onClick={() => navigator.clipboard.writeText(value)} className="text-xs border px-2 py-1">Copy</button>
+      <CopyButton value={value} />
     </div>
   )
 }

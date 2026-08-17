@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { ffmpegRun } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
 
@@ -49,16 +51,16 @@ export default function VoiceRecorder() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <button onClick={toggle} className={`px-6 h-12 text-sm rounded-full ${recording ? 'bg-red-600 text-white animate-pulse' : 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600'}`}>
+    <div className="space-y-5 max-w-xl omni-rise">
+      <Button variant="outline" onClick={toggle} className={`px-6 h-12 text-sm  ${recording ? 'bg-red-600 text-white animate-pulse' : 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600'}`}>
         {recording ? `● Recording ${seconds}s — click to stop` : 'Start recording'}
-      </button>
+      </Button>
       {url && (
-        <div className="space-y-3">
+        <div className="space-y-5">
           <audio controls src={url} className="w-full" />
-          <div className="flex gap-2">
-            <button onClick={() => blob && saveBlob(blob, 'recording.webm')} className="px-4 h-9 border text-sm">Download WebM</button>
-            <button onClick={toMp3} disabled={converting} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{converting ? 'Converting…' : 'Download MP3'}</button>
+          <div className="flex gap-2.5">
+            <Button variant="outline" size="sm" onClick={() => blob && saveBlob(blob, 'recording.webm')}>Download WebM</Button>
+            <Button variant="secondary" size="sm" disabled={converting} onClick={toMp3}>{converting ? 'Converting…' : 'Download MP3'}</Button>
           </div>
         </div>
       )}

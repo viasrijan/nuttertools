@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 const CYCLE = 90
 
 function shiftTime(time: string, minutes: number): string {
@@ -25,13 +28,12 @@ export default function SleepCycleCalculator() {
   const labels = ['Best (6 cycles)', 'Good (5 cycles)', 'Okay (4 cycles)', 'Minimal (3 cycles)']
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <div className="flex gap-2">
+    <div className="space-y-5 max-w-xl omni-rise">
+      <div className="flex gap-2.5">
         {([['wake', 'I wake up at…'], ['sleep', 'I go to bed at…']] as const).map(([m, label]) => (
-          <button key={m} onClick={() => setMode(m)}
-            className={`px-4 h-10 text-sm font-semibold ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : 'ring-1 ring-zinc-200 dark:ring-zinc-800'}`}>
+          <Button variant="outline" key={m} onClick={() => setMode(m)} className={`px-4 h-10 text-sm font-semibold ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : 'ring-1 ring-zinc-200 dark:ring-zinc-800'}`}>
             {label}
-          </button>
+          </Button>
         ))}
       </div>
       <div className="flex flex-wrap items-center gap-3">
@@ -46,8 +48,7 @@ export default function SleepCycleCalculator() {
               <div className="font-bold text-lg">{formatTime(t.time)}</div>
               <div className="text-xs text-zinc-500 dark:text-zinc-400">{labels[i]} · {t.minutes / 60} hrs sleep</div>
             </div>
-            <button onClick={() => navigator.clipboard.writeText(t.time)}
-              className="text-xs font-bold text-green-600 dark:text-green-400">Copy</button>
+            <CopyButton value={t.time} />
           </div>
         ))}
       </div>

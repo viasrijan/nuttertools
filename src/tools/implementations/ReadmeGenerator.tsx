@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function ReadmeGenerator() {
   const [d, setD] = useState({
     name: 'My Awesome Project', desc: 'A short description of what this project does and why it exists.',
@@ -49,7 +51,7 @@ export default function ReadmeGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-3xl">
+    <div className="space-y-5 max-w-3xl omni-rise">
       <div className="grid md:grid-cols-2 gap-3">
         <label className="text-sm"><span className="font-semibold">Project name</span><input value={d.name} onChange={e => set('name', e.target.value)} className="w-full border px-3 h-9 mt-1" /></label>
         <label className="text-sm"><span className="font-semibold">Install command</span><input value={d.install} onChange={e => set('install', e.target.value)} className="w-full border px-3 h-9 mt-1 font-mono text-xs" /></label>
@@ -64,7 +66,7 @@ export default function ReadmeGenerator() {
         <label className="flex items-center gap-2"><input type="checkbox" checked={d.badges} onChange={e => set('badges', e.target.checked)} />Badges</label>
         <label className="flex items-center gap-2"><input type="checkbox" checked={d.contributing} onChange={e => set('contributing', e.target.checked)} />Contributing section</label>
       </div>
-      <button onClick={() => navigator.clipboard.writeText(gen())} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy README</button>
+      <Button variant="secondary" onClick={() => navigator.clipboard.writeText(gen())}>Copy README</Button>
       <textarea value={gen()} readOnly className="w-full h-80 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />
     </div>
   )

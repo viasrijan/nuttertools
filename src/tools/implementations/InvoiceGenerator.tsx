@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
 
@@ -46,7 +48,7 @@ export default function InvoiceGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-3xl">
+    <div className="space-y-5 max-w-3xl omni-rise">
       <div className="grid md:grid-cols-2 gap-3">
         <label className="block text-sm"><span className="font-semibold">From</span><textarea value={from} onChange={e => setFrom(e.target.value)} className="w-full border p-2 mt-1 h-20 text-sm" /></label>
         <label className="block text-sm"><span className="font-semibold">Bill to</span><textarea value={to} onChange={e => setTo(e.target.value)} className="w-full border p-2 mt-1 h-20 text-sm" /></label>
@@ -56,7 +58,7 @@ export default function InvoiceGenerator() {
         <input type="date" value={date} onChange={e => setDate(e.target.value)} className="border px-3 h-9 text-sm" />
         <input type="date" value={due} onChange={e => setDue(e.target.value)} className="border px-3 h-9 text-sm" placeholder="Due" />
       </div>
-      <div className="space-y-2">
+      <div className="space-y-3">
         <div className="grid grid-cols-[1fr_80px_90px_90px_36px] gap-2 text-xs font-bold uppercase tracking-wider text-zinc-500">
           <span>Description</span><span>Qty</span><span>Rate</span><span>Amount</span><span></span>
         </div>
@@ -66,14 +68,14 @@ export default function InvoiceGenerator() {
             <input type="number" value={l.qty} onChange={e => { const n = [...lines]; n[i] = { ...l, qty: parseFloat(e.target.value) || 0 }; setLines(n) }} className="border px-2 h-9 text-sm" />
             <input type="number" value={l.rate} onChange={e => { const n = [...lines]; n[i] = { ...l, rate: parseFloat(e.target.value) || 0 }; setLines(n) }} className="border px-2 h-9 text-sm" />
             <div className="h-9 grid items-center text-sm font-semibold">${(l.qty * l.rate).toFixed(2)}</div>
-            <button onClick={() => setLines(lines.filter((_, x) => x !== i))} className="h-9 border text-xs">✕</button>
+            <Button variant="outline" onClick={() => setLines(lines.filter((_, x) => x !== i))} className="h-9 border text-xs">✕</Button>
           </div>
         ))}
         <button onClick={() => setLines([...lines, { desc: '', qty: 1, rate: 0 }])} className="px-3 h-8 border text-sm">+ Add line</button>
       </div>
       <label className="block text-sm"><span className="font-semibold">Notes</span><input value={note} onChange={e => setNote(e.target.value)} className="w-full border px-3 h-9 mt-1 text-sm" /></label>
       <div className="flex items-center gap-3">
-        <button onClick={gen} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download PDF</button>
+        <Button variant="secondary" onClick={gen}>Download PDF</Button>
         <span className="text-lg font-bold">Total: ${total.toFixed(2)}</span>
       </div>
     </div>

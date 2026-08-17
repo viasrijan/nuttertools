@@ -28,14 +28,14 @@ export default function PasswordStrength() {
   const colors = ['#dc2626', '#ea580c', '#eab308', '#16a34a', '#059669']
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <input type={pw.length ? 'password' : 'text'} value={pw} onChange={e => setPw(e.target.value)} placeholder="Type a password…" className="w-full border px-3 py-2 text-sm font-mono" />
       {pw && (
         <>
           <div>
             <div className="flex gap-1 h-2">
               {[0, 1, 2, 3].map(i => (
-                <div key={i} className="flex-1 rounded-sm" style={{ background: i < score.score ? colors[score.score] : '#e4e4e7' }} />
+                <div key={i} className="flex-1 " style={{ background: i < score.score ? colors[score.score] : '#e4e4e7' }} />
               ))}
             </div>
             <div className="flex justify-between mt-1 text-sm">

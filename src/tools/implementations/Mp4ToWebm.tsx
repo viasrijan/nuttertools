@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
@@ -19,9 +21,9 @@ export default function Mp4ToWebm() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="video/mp4,.mp4" multiple={false} label="Drop an MP4 to convert to WebM (VP9)" />
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Converting…' : 'Convert & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Convert & download</Button>
       {busy && <Progress label="Converting MP4 to WebM…" />}
       <p className="text-[11px] font-medium text-zinc-500">Smaller files with better streaming support — great for web embeds. Conversion can take a minute.</p>
     </div>

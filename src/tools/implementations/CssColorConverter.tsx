@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 const NAMED: Record<string, string> = {
   black: '#000000', white: '#FFFFFF', red: '#FF0000', green: '#008000', blue: '#0000FF',
   yellow: '#FFFF00', orange: '#FFA500', purple: '#800080', pink: '#FFC0CB', gray: '#808080',
@@ -65,16 +68,16 @@ export default function CssColorConverter() {
   ] : []
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <input value={input} onChange={e => setInput(e.target.value)} className="w-full border px-3 h-10 font-mono text-sm" placeholder="#hex, rgb(), hsl() or a color name" />
       {!parsed && <p className="text-xs text-red-500">Could not parse that color</p>}
-      {parsed && <div className="h-24 rounded-lg border" style={{ background: `rgb(${parsed.r}, ${parsed.g}, ${parsed.b})` }} />}
-      <div className="space-y-2">
+      {parsed && <div className="h-24  border" style={{ background: `rgb(${parsed.r}, ${parsed.g}, ${parsed.b})` }} />}
+      <div className="space-y-3">
         {rows.map(([label, value]) => (
           <div key={label} className="border p-3 flex items-center gap-3">
             <span className="w-12 text-sm font-bold">{label}</span>
             <code className="flex-1 font-mono text-sm">{value}</code>
-            <button onClick={() => navigator.clipboard.writeText(value)} className="text-xs border px-2 py-1">Copy</button>
+            <CopyButton value={value} />
           </div>
         ))}
       </div>

@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import { PDFDocument } from 'pdf-lib'
 
@@ -22,9 +24,9 @@ export default function ImagesToPDF(){
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <DropZone onFiles={onFiles} accept="image/*" label="Drop images to make PDF"/>
-      <button onClick={convert} disabled={!files.length} className="px-4 py-2 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm disabled:opacity-30">Convert {files.length} images to PDF</button>
+      <Button variant="secondary" disabled={!files.length} onClick={convert}>Convert {files.length} images to PDF</Button>
       {out && <a href={out} download="images.pdf" className="text-sm underline">Download PDF</a>}
     </div>
   )

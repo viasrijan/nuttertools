@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import { PDFDocument } from 'pdf-lib'
 
@@ -25,11 +27,11 @@ export default function SplitPDF(){
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <DropZone onFiles={onFiles} accept="application/pdf" multiple={false}/>
       <div className="flex gap-2 items-center">
         <input value={range} onChange={e=>setRange(e.target.value)} placeholder="1-2,4,6-8" className="border px-3 h-9 text-sm w-40"/>
-        <button onClick={split} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Split</button>
+        <Button variant="secondary" size="sm" onClick={split}>Split</Button>
       </div>
       {out && <a href={out} download="split.pdf" className="text-sm underline">Download Split PDF</a>}
     </div>

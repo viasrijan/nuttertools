@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import { saveBlob } from '../../lib/download'
 
@@ -85,21 +87,21 @@ export default function FaceBlur() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <DropZone onFiles={fl => setFile(fl[0])} accept="image/*" multiple={false} label="Drop a photo — drag a box over faces or objects to hide" />
       <div className="flex flex-wrap gap-2 text-sm items-center">
         {(['blur', 'pixelate'] as const).map(m => (
-          <button key={m} onClick={() => setMode(m)} className={`px-4 h-9 border capitalize ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{m}</button>
+          <Button variant="outline" key={m} onClick={() => setMode(m)} className={`px-4 h-9 border capitalize ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{m}</Button>
         ))}
         <label className="font-semibold text-zinc-900 dark:text-white ml-2 text-xs">Intensity</label>
         <input type="range" min="4" max="40" value={intensity} onChange={e => setIntensity(+e.target.value)} className="w-32" />
-        {box && <button onClick={applyEffect} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Apply</button>}
-        {box && <button onClick={clear} className="px-4 h-9 border text-sm">Clear</button>}
+        {box && <Button variant="secondary" size="sm" onClick={applyEffect}>Apply</Button>}
+        {box && <Button variant="outline" size="sm" onClick={clear}>Clear</Button>}
       </div>
       {img && (
         <>
           <canvas ref={canvasRef} className="max-w-full border cursor-crosshair" onMouseDown={onDown} onMouseMove={onMove} onMouseUp={onUp} onMouseLeave={onUp} />
-          <button onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, file?.name.replace(/\.[^.]+$/, '') + '-blurred.png'), 'image/png')} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download PNG</button>
+          <Button variant="secondary" onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, file?.name.replace(/\.[^.]+$/, '') + '-blurred.png'), 'image/png')}>Download PNG</Button>
         </>
       )}
       <p className="text-[11px] text-zinc-500">Everything runs locally in your browser — no photo leaves your device.</p>

@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 const LETTERS = 'abcdefghijklmnopqrstuvwxyz'
 
 export default function CaesarCipher() {
@@ -15,14 +18,14 @@ export default function CaesarCipher() {
   const brute = () => Array.from({ length: 26 }, (_, i) => ({ shift: i, text: cipher(text, i) }))
 
   return (
-    <div className="space-y-4 max-w-3xl">
-      <textarea value={text} onChange={e => { setText(e.target.value); setOut(cipher(e.target.value, shift)) }} className="w-full border p-3 h-24 text-sm" />
+    <div className="space-y-5 max-w-3xl omni-rise">
+      <textarea value={text} onChange={e => { setText(e.target.value); setOut(cipher(e.target.value, shift)) }} className="w-full h-24 w-full  border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/80 p-3 text-sm transition-all duration-200" />
       <div className="flex items-center gap-3">
         <label className="text-sm">Shift</label>
         <input type="range" min={-25} max={25} value={shift} onChange={e => setShift(parseInt(e.target.value))} className="flex-1" />
         <span className="font-mono text-sm font-bold">{shift >= 0 ? `+${shift}` : shift}</span>
-        <button onClick={() => { setOut(cipher(text, shift)); setText(cipher(text, shift)) }} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Apply</button>
-        <button onClick={() => navigator.clipboard.writeText(out)} className="px-4 h-9 border text-sm">Copy</button>
+        <Button variant="secondary" size="sm" onClick={() => { setOut(cipher(text, shift)); setText(cipher(text, shift)) }}>Apply</Button>
+        <CopyButton value={out} />
       </div>
       <textarea value={out} onChange={e => setOut(e.target.value)} className="w-full border p-3 h-24 text-sm bg-zinc-50 dark:bg-zinc-800" />
       <div>

@@ -1,9 +1,10 @@
 import React from 'react'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost' | 'danger'
+  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost' | 'danger' | 'subtle' | 'gradient'
   size?: 'sm' | 'md' | 'lg'
   isLoading?: boolean
+  icon?: React.ReactNode
 }
 
 export function Button({
@@ -11,25 +12,52 @@ export function Button({
   variant = 'primary',
   size = 'md',
   isLoading = false,
+  icon,
   className = '',
   disabled,
   ...props
 }: ButtonProps) {
-  const base = 'inline-flex items-center justify-center font-bold transition-all duration-200 select-none active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none rounded-none'
-  
+  const base =
+    'group/btn relative inline-flex items-center justify-center font-bold tracking-[-0.01em] select-none overflow-hidden ' +
+    'transition-all duration-200 ease-out active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none ' +
+    'disabled:active:scale-100  focus-visible:ring-4 focus-visible:ring-indigo-500/30 focus-visible:ring-offset-0'
+
   const sizes = {
     sm: 'px-3.5 h-8 text-xs gap-1.5',
     md: 'px-5 h-10 text-sm gap-2',
-    lg: 'px-7 h-12 text-base gap-2.5',
+    lg: 'px-7 h-12 text-[15px] gap-2.5',
   }
 
   const variants = {
-    primary: 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_4px_14px_rgba(79,70,229,0.4)] hover:shadow-[0_6px_20px_rgba(79,70,229,0.6)]',
-    secondary: 'bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-100 dark:text-zinc-900 shadow-sm',
-    accent: 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-[0_4px_14px_rgba(5,150,105,0.4)]',
-    outline: 'border-2 border-zinc-900 dark:border-zinc-100 hover:bg-zinc-900 hover:text-white dark:hover:bg-white dark:hover:text-zinc-900 text-zinc-900 dark:text-zinc-100 transition-colors',
-    ghost: 'hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300',
-    danger: 'bg-rose-600 hover:bg-rose-500 text-white shadow-[0_4px_14px_rgba(225,29,72,0.4)]',
+    primary:
+      'text-white bg-gradient-to-b from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 ' +
+      'shadow-[0_1px_2px_rgba(0,0,0,0.15),0_8px_20px_-6px_rgba(79,70,229,0.55)] ' +
+      'hover:shadow-[0_2px_4px_rgba(0,0,0,0.15),0_12px_28px_-6px_rgba(79,70,229,0.7)] hover:-translate-y-0.5 active:translate-y-0',
+    gradient:
+      'text-white bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 bg-[length:180%_100%] bg-left hover:bg-right ' +
+      'shadow-[0_1px_2px_rgba(0,0,0,0.15),0_8px_22px_-6px_rgba(139,92,246,0.6)] ' +
+      'hover:shadow-[0_2px_4px_rgba(0,0,0,0.15),0_12px_30px_-6px_rgba(139,92,246,0.75)] hover:-translate-y-0.5 active:translate-y-0 ' +
+      'transition-[background-position,box-shadow,transform] duration-500',
+    secondary:
+      'text-white bg-zinc-900 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-200 dark:text-zinc-900 ' +
+      'shadow-[0_1px_2px_rgba(0,0,0,0.2),0_10px_24px_-10px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 active:translate-y-0',
+    accent:
+      'text-white bg-gradient-to-b from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 ' +
+      'shadow-[0_1px_2px_rgba(0,0,0,0.15),0_8px_20px_-6px_rgba(5,150,105,0.5)] ' +
+      'hover:shadow-[0_2px_4px_rgba(0,0,0,0.15),0_12px_28px_-6px_rgba(5,150,105,0.65)] hover:-translate-y-0.5 active:translate-y-0',
+    danger:
+      'text-white bg-gradient-to-b from-rose-500 to-rose-600 hover:from-rose-400 hover:to-rose-500 ' +
+      'shadow-[0_1px_2px_rgba(0,0,0,0.15),0_8px_20px_-6px_rgba(225,29,72,0.5)] ' +
+      'hover:shadow-[0_2px_4px_rgba(0,0,0,0.15),0_12px_28px_-6px_rgba(225,29,72,0.65)] hover:-translate-y-0.5 active:translate-y-0',
+    outline:
+      'border border-zinc-300 dark:border-zinc-600 bg-white/60 dark:bg-zinc-900/60 text-zinc-800 dark:text-zinc-100 ' +
+      'hover:border-indigo-400 dark:hover:border-indigo-500 hover:bg-indigo-50/60 dark:hover:bg-indigo-500/10 hover:text-indigo-700 dark:hover:text-indigo-300 ' +
+      'hover:-translate-y-0.5 active:translate-y-0',
+    subtle:
+      'bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-200 ' +
+      'hover:bg-zinc-200/80 dark:hover:bg-zinc-700/80 hover:-translate-y-0.5 active:translate-y-0',
+    ghost:
+      'text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70 hover:text-zinc-900 dark:hover:text-white',
   }
 
   return (
@@ -38,8 +66,17 @@ export function Button({
       disabled={disabled || isLoading}
       {...props}
     >
-      {isLoading && (
-        <span className="w-4 h-4 rounded-none border-2 border-current border-t-transparent animate-spin shrink-0" />
+      {/* light sweep on hover for filled variants */}
+      {(variant === 'primary' || variant === 'gradient' || variant === 'accent' || variant === 'danger') && (
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover/btn:translate-x-full"
+        />
+      )}
+      {isLoading ? (
+        <span className="w-4 h-4  border-2 border-current border-t-transparent animate-spin shrink-0" />
+      ) : (
+        icon && <span className="shrink-0 [&>svg]:w-4 [&>svg]:h-4">{icon}</span>
       )}
       {children}
     </button>

@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 const MORSE: Record<string, string> = {
   'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
   'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
@@ -20,11 +23,11 @@ export default function MorseCode() {
   const [morse, setMorse] = useState('')
   const [mode, setMode] = useState<'t2m' | 'm2t'>('t2m')
   return (
-    <div className="space-y-4 max-w-3xl">
-      <div className="flex gap-2">
-        <button onClick={() => setMode('t2m')} className={`px-4 h-9 text-sm border ${mode === 't2m' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Text → Morse</button>
-        <button onClick={() => setMode('m2t')} className={`px-4 h-9 text-sm border ${mode === 'm2t' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Morse → Text</button>
-        <button onClick={() => navigator.clipboard.writeText(morse)} className="px-4 h-9 border text-sm">Copy</button>
+    <div className="space-y-5 max-w-3xl omni-rise">
+      <div className="flex gap-2.5">
+        <Button variant="outline" onClick={() => setMode('t2m')} className={`px-4 h-9 text-sm border ${mode === 't2m' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Text → Morse</Button>
+        <Button variant="outline" onClick={() => setMode('m2t')} className={`px-4 h-9 text-sm border ${mode === 'm2t' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Morse → Text</Button>
+        <CopyButton value={morse} />
       </div>
       {mode === 't2m' ? (
         <div className="grid md:grid-cols-2 gap-3">

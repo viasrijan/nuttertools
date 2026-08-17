@@ -37,15 +37,15 @@ export default function CardValidator() {
   }, [input])
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <input value={input} onChange={e => setInput(e.target.value)} placeholder="Card number (12–19 digits)" className="w-full border px-3 py-2 text-sm font-mono tracking-wider" />
       {res ? (
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className={`border p-3 text-sm font-semibold ${res.luhn ? 'border-green-500 text-green-600' : 'border-red-500 text-red-600'}`}>
             {res.luhn ? '✓ Passes Luhn check — valid card number' : '✗ Fails Luhn check — not a valid card number'}
           </div>
           <div className="border p-3 text-sm flex items-center gap-3">
-            <span className="inline-block w-3 h-2 rounded-sm" style={{ background: res.color }} />
+            <span className="inline-block w-3 h-2 " style={{ background: res.color }} />
             <span className="font-bold" style={{ color: res.color }}>{res.brand}</span>
             <span className="text-xs text-zinc-500">{res.len} digits</span>
           </div>

@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const RELATED: Record<string, string[]> = {
   food: ['foodie', 'foodlover', 'yum', 'delicious', 'homemade', 'cooking'],
   travel: ['travelgram', 'wanderlust', 'adventure', 'explore', 'vacation', 'passport'],
@@ -34,7 +36,7 @@ export default function HashtagGenerator() {
   const text = tags.map(t => '#' + t.replace(/[^a-z0-9]/gi, '')).join(' ')
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <input value={input} onChange={e => setInput(e.target.value)} placeholder="Describe your post: e.g. coffee photography" className="w-full border px-3 py-2 text-sm" />
       <div className="flex items-center gap-2 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white">Count</label>
@@ -46,7 +48,7 @@ export default function HashtagGenerator() {
           <button key={i} onClick={() => navigator.clipboard.writeText('#' + t)} className="text-sm text-blue-600 dark:text-blue-400 hover:underline">#{t.replace(/[^a-z0-9]/gi, '')}</button>
         ))}
       </div>
-      <button onClick={() => navigator.clipboard.writeText(text)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy all hashtags</button>
+      <Button variant="secondary" onClick={() => navigator.clipboard.writeText(text)}>Copy all hashtags</Button>
       <p className="text-[11px] text-zinc-500">Mix of your keywords + a small built-in thesaurus. Click any tag to copy it alone.</p>
     </div>
   )

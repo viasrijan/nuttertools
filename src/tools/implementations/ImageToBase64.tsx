@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function ImageToBase64() {
   const [dataUrl, setDataUrl] = useState('')
   const [name, setName] = useState('')
@@ -33,7 +35,7 @@ export default function ImageToBase64() {
   }
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       <div
         onDragOver={(e) => e.preventDefault()}
         onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files?.[0]; if (f) handle(f) }}
@@ -44,7 +46,7 @@ export default function ImageToBase64() {
         <input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) handle(f) }} />
       </div>
       {dataUrl && (
-        <div className="space-y-3">
+        <div className="space-y-5">
           <div className="flex items-center gap-4 flex-wrap">
             <img src={dataUrl} alt="" className="w-20 h-20 object-contain border bg-white dark:bg-zinc-900 p-1" />
             <div className="text-sm">
@@ -54,9 +56,9 @@ export default function ImageToBase64() {
           </div>
           <textarea value={dataUrl} readOnly rows={6} spellCheck={false}
             className="w-full border bg-transparent p-3 font-mono text-[12px] text-zinc-900 dark:text-white outline-none break-all" />
-          <div className="flex flex-wrap gap-2">
-            <button onClick={copy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold">{copied ? 'Copied!' : 'Copy data URL'}</button>
-            <button onClick={download} className="px-5 h-10 text-sm font-semibold ring-1 ring-zinc-200 dark:ring-zinc-800">Download as .txt</button>
+          <div className="flex flex-wrap gap-2.5">
+            <Button variant="secondary" onClick={copy}>{copied ? 'Copied!' : 'Copy data URL'}</Button>
+            <Button variant="secondary" onClick={download}>Download as .txt</Button>
           </div>
         </div>
       )}

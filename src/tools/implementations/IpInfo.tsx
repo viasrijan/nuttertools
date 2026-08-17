@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import CopyButton from '../../components/ui/CopyButton'
+
 function ua() {
   const ua = navigator.userAgent
   const browser = /Edg\//.test(ua) ? 'Microsoft Edge' : /OPR|Opera/.test(ua) ? 'Opera' : /Chrome\//.test(ua) ? 'Chrome' : /Firefox\//.test(ua) ? 'Firefox' : /Safari\//.test(ua) ? 'Safari' : 'Unknown'
@@ -39,14 +41,14 @@ export default function IpInfo() {
   ]
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       {error && <p className="text-xs text-red-500">{error}</p>}
       <div className="border divide-y divide-zinc-100 dark:divide-zinc-800">
         {rows.map(([k, v]) => (
           <div key={k} className="flex items-center gap-3 px-4 py-2.5">
             <span className="w-32 text-[11px] font-bold uppercase tracking-wider text-zinc-500">{k}</span>
             <code className="flex-1 font-mono text-sm">{v}</code>
-            {k === 'IP address' && ip && <button onClick={() => navigator.clipboard.writeText(ip)} className="text-xs border px-2 py-1">Copy</button>}
+            {k === 'IP address' && ip && <CopyButton value={ip} />}
           </div>
         ))}
       </div>

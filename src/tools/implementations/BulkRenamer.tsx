@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import { saveBlob } from '../../lib/download'
 
@@ -21,13 +23,13 @@ export default function BulkRenamer() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFiles(Array.from(fl))} multiple label="Drop files to rename" />
       {files.length > 0 && (
         <>
-          <div className="flex flex-wrap gap-2">
-            <button onClick={() => setMode('prefix')} className={`px-3 h-9 text-sm border ${mode === 'prefix' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Prefix name</button>
-            <button onClick={() => setMode('number')} className={`px-3 h-9 text-sm border ${mode === 'number' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Numbered</button>
+          <div className="flex flex-wrap gap-2.5">
+            <Button variant="outline" onClick={() => setMode('prefix')} className={`px-3 h-9 text-sm border ${mode === 'prefix' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Prefix name</Button>
+            <Button variant="outline" onClick={() => setMode('number')} className={`px-3 h-9 text-sm border ${mode === 'number' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Numbered</Button>
           </div>
           {mode === 'prefix' ? (
             <input value={prefix} onChange={e => setPrefix(e.target.value)} className="w-full border px-3 h-10 text-sm" placeholder="Prefix" />
@@ -46,7 +48,7 @@ export default function BulkRenamer() {
               </div>
             ))}
           </div>
-          <button onClick={downloadAll} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download {files.length} renamed files</button>
+          <Button variant="secondary" onClick={downloadAll}>Download {files.length} renamed files</Button>
           <p className="text-[11px] font-medium text-zinc-500">The browser will trigger one download per file.</p>
         </>
       )}

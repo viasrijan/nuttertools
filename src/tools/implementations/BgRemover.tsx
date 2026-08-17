@@ -61,7 +61,7 @@ export default function BgRemover(){
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <DropZone onFiles={onFiles} accept="image/*" multiple={false} />
       {loading && <Progress label={engine === 'server' ? 'Removing background…' : 'Removing background with local AI… first run downloads the model (~40 MB)'} />}
       {error && <p className="text-sm text-red-500 font-medium">{error}</p>}

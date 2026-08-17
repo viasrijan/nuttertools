@@ -32,22 +32,22 @@ export default function CompoundInterest() {
   const money = (v: number) => '$' + Math.round(v).toLocaleString()
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="grid grid-cols-2 md:grid-cols-5 gap-2 text-sm">
-        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Principal</label><input type="number" value={principal} onChange={e => setPrincipal(+e.target.value)} className="w-full border px-2 py-2 mt-1" /></div>
-        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Rate % / yr</label><input type="number" step="0.1" value={rate} onChange={e => setRate(+e.target.value)} className="w-full border px-2 py-2 mt-1" /></div>
-        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Years</label><input type="number" value={years} onChange={e => setYears(+e.target.value)} className="w-full border px-2 py-2 mt-1" /></div>
-        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Contribution</label><input type="number" value={contribution} onChange={e => setContribution(+e.target.value)} className="w-full border px-2 py-2 mt-1" /></div>
+        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Principal</label><input type="number" value={principal} onChange={e => setPrincipal(+e.target.value)} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 py-2 transition-all duration-200" /></div>
+        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Rate % / yr</label><input type="number" step="0.1" value={rate} onChange={e => setRate(+e.target.value)} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 py-2 transition-all duration-200" /></div>
+        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Years</label><input type="number" value={years} onChange={e => setYears(+e.target.value)} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 py-2 transition-all duration-200" /></div>
+        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Contribution</label><input type="number" value={contribution} onChange={e => setContribution(+e.target.value)} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 py-2 transition-all duration-200" /></div>
         <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Frequency</label>
-          <select value={freq} onChange={e => setFreq(e.target.value as typeof freq)} className="w-full border px-2 py-2 mt-1">
+          <select value={freq} onChange={e => setFreq(e.target.value as typeof freq)} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 py-2 transition-all duration-200">
             <option value="monthly">Monthly</option><option value="quarterly">Quarterly</option><option value="yearly">Yearly</option>
           </select>
         </div>
       </div>
       <div className="grid grid-cols-3 gap-2 text-center">
-        <div className="border p-3"><div className="text-lg font-bold">{money(rows.length ? rows[rows.length - 1].balance : 0)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Final balance</div></div>
-        <div className="border p-3"><div className="text-lg font-bold text-green-600">{money(totalInterest)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Total interest</div></div>
-        <div className="border p-3"><div className="text-lg font-bold">{money(totalContrib)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Total invested</div></div>
+        <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]"><div className="text-lg font-bold">{money(rows.length ? rows[rows.length - 1].balance : 0)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Final balance</div></div>
+        <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]"><div className="text-lg font-bold text-green-600">{money(totalInterest)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Total interest</div></div>
+        <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]"><div className="text-lg font-bold">{money(totalContrib)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Total invested</div></div>
       </div>
       <div className="border text-xs max-h-[280px] overflow-auto">
         <table className="w-full">

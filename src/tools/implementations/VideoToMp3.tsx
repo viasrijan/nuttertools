@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
@@ -20,10 +22,10 @@ export default function VideoToMp3() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="video/*" multiple={false} label="Drop a video to extract its audio as MP3" />
       <label className="block text-sm font-semibold">Quality (V{quality} — 0 best · 9 smallest):<input type="range" min={0} max={9} value={quality} onChange={e => setQuality(parseInt(e.target.value))} className="w-full mt-2" /></label>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Extracting…' : 'Extract MP3 & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Extract MP3 & download</Button>
       {busy && <Progress label="Extracting audio…" />}
     </div>
   )

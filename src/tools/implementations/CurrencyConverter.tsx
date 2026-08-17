@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const CURRENCIES: [string, string][] = [
   ['USD', 'US Dollar'], ['EUR', 'Euro'], ['GBP', 'British Pound'], ['JPY', 'Japanese Yen'],
   ['INR', 'Indian Rupee'], ['AUD', 'Australian Dollar'], ['CAD', 'Canadian Dollar'],
@@ -44,7 +46,7 @@ export default function CurrencyConverter() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div className="flex flex-wrap items-end gap-3">
         <div className="flex-1 min-w-[130px]">
           <label className="block text-xs font-semibold text-zinc-500 dark:text-zinc-400 mb-1">Amount</label>
@@ -70,7 +72,7 @@ export default function CurrencyConverter() {
       {status === 'error' && (
         <div className="flex items-center gap-3 text-sm font-medium text-red-600 dark:text-red-400">
           <span>Couldn't load rates. Check your connection.</span>
-          <button onClick={load} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-xs font-semibold">Retry</button>
+          <Button variant="secondary" size="sm" onClick={load}>Retry</Button>
         </div>
       )}
       {status === 'ready' && result !== null && (

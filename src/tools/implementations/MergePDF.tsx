@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import { PDFDocument } from 'pdf-lib'
 
@@ -28,9 +30,7 @@ export default function MergePDF(){
         </div>
       )}
       <div className="flex flex-wrap items-center gap-3">
-        <button onClick={merge} disabled={files.length<2} className="px-6 h-12 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm uppercase tracking-wider rounded-none shadow-md transition-all disabled:opacity-50">
-          Merge {files.length} PDFs
-        </button>
+        <Button variant="primary" size="lg" onClick={merge} disabled={files.length<2} className="w-full uppercase tracking-wider font-bold">Merge {files.length} PDFs</Button>
         {files.length > 0 && (
           <button onClick={()=>{setFiles([]); setOut("")}} className="px-4 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
             Clear all
@@ -39,7 +39,7 @@ export default function MergePDF(){
       </div>
       {out && (
         <div className="pt-2">
-          <a href={out} download="merged.pdf" className="inline-flex items-center justify-center px-6 h-12 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm uppercase tracking-wider rounded-none shadow-md transition-all">
+          <a href={out} download="merged.pdf" className="inline-flex items-center justify-center px-6 h-12 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm uppercase tracking-wider  shadow-md transition-all">
             Download Merged PDF
           </a>
         </div>

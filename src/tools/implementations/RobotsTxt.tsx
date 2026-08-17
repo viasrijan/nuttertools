@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function RobotsTxt() {
   const [site, setSite] = useState('https://example.com')
   const [allow, setAllow] = useState('/\n/assets/')
@@ -22,7 +24,7 @@ export default function RobotsTxt() {
   }
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       <input value={site} onChange={e => setSite(e.target.value)} className="w-full border px-3 h-9 text-sm" placeholder="https://example.com" />
       <div className="grid sm:grid-cols-2 gap-3">
         <label className="text-sm font-semibold">Allow (one per line)<textarea value={allow} onChange={e => setAllow(e.target.value)} className="w-full border p-2 h-24 mt-1 font-mono text-xs" /></label>
@@ -32,7 +34,7 @@ export default function RobotsTxt() {
       <div className="flex items-center gap-3">
         <label className="text-sm">Crawl delay (optional)
           <input value={crawlDelay} onChange={e => setCrawlDelay(e.target.value)} className="border px-3 h-9 ml-2 w-20 text-sm" /></label>
-        <button onClick={() => navigator.clipboard.writeText(gen())} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm ml-auto">Copy</button>
+        <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(gen())} className="ml-auto">Copy</Button>
         <a href={`data:text/plain;charset=utf-8,${encodeURIComponent(gen())}`} download="robots.txt" className="px-4 h-9 border text-sm inline-flex items-center">Download</a>
       </div>
       <textarea value={gen()} readOnly className="w-full h-48 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />

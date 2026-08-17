@@ -9,7 +9,7 @@ export default function PalindromeChecker() {
   const letters = clean.length
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <textarea value={input} onChange={(e) => setInput(e.target.value)} rows={4} spellCheck={false}
         placeholder="Type or paste any text…"
         className="w-full border bg-transparent p-3 text-[14px] text-zinc-900 dark:text-white outline-none focus:border-indigo-600 placeholder:text-zinc-400 dark:placeholder:text-zinc-500" />

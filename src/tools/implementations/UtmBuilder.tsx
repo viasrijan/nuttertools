@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const SOURCES = ['Website', 'Newsletter', 'Social', 'QR Code', 'Email', 'Referral', 'Paid Ad']
 
 export default function UtmBuilder() {
@@ -21,7 +23,7 @@ export default function UtmBuilder() {
   }
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       <label className="block text-sm font-semibold">Landing page URL<input value={url} onChange={e => setUrl(e.target.value)} className="w-full border px-3 h-9 mt-1 text-sm" placeholder="https://example.com/page" /></label>
       <div className="grid sm:grid-cols-2 gap-3">
         <label className="text-sm font-semibold">Source
@@ -41,8 +43,8 @@ export default function UtmBuilder() {
       <label className="block text-sm font-semibold">Final link
         <input value={built()} readOnly className="w-full border px-3 h-10 mt-1 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />
       </label>
-      <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(built())} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy link</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(built())}>Copy link</Button>
         <a href={built()} target="_blank" rel="noreferrer" className="px-4 h-9 border text-sm inline-flex items-center">Open</a>
       </div>
       <div className="border p-3 text-xs text-zinc-500 bg-zinc-50 dark:bg-zinc-800">

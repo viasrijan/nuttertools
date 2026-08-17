@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 
 export default function ImageCropper() {
@@ -77,7 +79,7 @@ export default function ImageCropper() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       {!img ? (
         <DropZone onFiles={onFiles} accept="image/*" multiple={false} label="Drop an image to crop" />
       ) : (
@@ -91,8 +93,8 @@ export default function ImageCropper() {
               <option value="0.75">4:3</option>
               <option value="1.25">5:4</option>
             </select>
-            <button onClick={apply} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Apply crop</button>
-            <button onClick={() => setImg(null)} className="px-4 h-9 border text-sm">New image</button>
+            <Button variant="secondary" size="sm" onClick={apply}>Apply crop</Button>
+            <Button variant="outline" size="sm" onClick={() => setImg(null)}>New image</Button>
             {out && <a href={out} download="cropped.png" className="text-sm underline">Download PNG</a>}
           </div>
           <div

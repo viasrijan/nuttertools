@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
@@ -31,13 +33,13 @@ export default function AudioTrimmer() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop audio to trim" />
       <div className="flex items-center gap-3">
         <label className="text-sm">From <input type="text" value={start} onChange={e => setStart(e.target.value)} className="border px-2 h-9 w-28 font-mono text-sm" placeholder="00:00" /></label>
         <label className="text-sm">To <input type="text" value={end} onChange={e => setEnd(e.target.value)} className="border px-2 h-9 w-28 font-mono text-sm" placeholder="00:10" /></label>
       </div>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Trimming…' : 'Trim & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Trim & download</Button>
       {busy && <Progress label="Trimming audio…" />}
     </div>
   )

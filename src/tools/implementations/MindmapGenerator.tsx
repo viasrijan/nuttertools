@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { saveBlob } from '../../lib/download'
 
 export default function MindmapGenerator() {
@@ -102,7 +104,7 @@ export default function MindmapGenerator() {
   const download = () => canvasRef.current?.toBlob(b => b && saveBlob(b, 'mindmap.png'))
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="grid md:grid-cols-2 gap-2">
         <div>
           <label className="text-xs font-semibold text-zinc-900 dark:text-white uppercase">Structure — indent with 2 spaces per level</label>
@@ -110,7 +112,7 @@ export default function MindmapGenerator() {
         </div>
         <div>
           <canvas ref={canvasRef} width={1100} height={600} className="border max-w-full" />
-          <button onClick={download} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm mt-2">Download PNG</button>
+          <Button variant="secondary" onClick={download} className="mt-2">Download PNG</Button>
         </div>
       </div>
     </div>

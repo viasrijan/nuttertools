@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const SAMPLE = 'the quick brown fox jumps over the lazy dog the quick brown fox jumps over the lazy dog'
 
 export default function TypingTest() {
@@ -36,14 +38,14 @@ export default function TypingTest() {
   }
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       <div className="grid grid-cols-4 gap-2">
         <Stat v={wpm} l="WPM" />
         <Stat v={`${accuracy}%`} l="Accuracy" />
         <Stat v={typedWords} l="Words" />
         <Stat v={started ? Math.floor((Date.now() - started) / 1000) : 0} l="Seconds" />
       </div>
-      <div className="border p-5 text-lg leading-relaxed font-medium select-none">
+      <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-6 text-lg leading-relaxed font-medium select-none transition-all duration-200">
         {words.map((w, i) => {
           const typed = input.split(' ')[i] || ''
           let cls = 'text-zinc-900 dark:text-white'
@@ -62,11 +64,11 @@ export default function TypingTest() {
         placeholder={done ? 'Done! Click new words to go again.' : 'Start typing…'}
         className="w-full border px-4 h-12 text-base"
       />
-      <button onClick={restart} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">New words</button>
+      <Button variant="secondary" onClick={restart}>New words</Button>
     </div>
   )
 }
 
 function Stat({ v, l }: { v: number | string, l: string }) {
-  return <div className="border p-3 text-center"><div className="text-xl font-bold">{v}</div><div className="text-[10px] font-bold uppercase tracking-wider text-zinc-500">{l}</div></div>
+  return <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 text-center transition-all duration-200"><div className="text-xl font-bold">{v}</div><div className="text-[10px] font-bold uppercase tracking-wider text-zinc-500">{l}</div></div>
 }

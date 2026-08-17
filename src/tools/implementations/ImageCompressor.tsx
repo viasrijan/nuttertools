@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
@@ -48,13 +50,13 @@ export default function ImageCompressor(){
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <DropZone onFiles={onFiles} accept="image/*" label="Drop JPG/PNG/WebP images"/>
       <div className="flex items-center gap-3">
         <label className="text-sm">Quality {Math.round(quality*100)}%</label>
         <input type="range" min={0.1} max={1} step={0.05} value={quality} onChange={e=>setQuality(parseFloat(e.target.value))} className="flex-1"/>
-        <button onClick={compressAll} className="px-4 py-2 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Compress</button>
-        {files.some(f=>f.out) && <button onClick={downloadZip} className="px-4 py-2 border text-sm">Download ZIP</button>}
+        <Button variant="secondary" onClick={compressAll}>Compress</Button>
+        {files.some(f=>f.out) && <Button variant="outline" onClick={downloadZip} className="px-4 py-2 border text-sm">Download ZIP</Button>}
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         {files.map((f,i)=><div key={i} className="border p-2">

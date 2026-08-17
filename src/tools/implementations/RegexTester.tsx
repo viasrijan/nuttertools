@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function explainRegex(pattern: string): string {
   const tokens = pattern.match(/\(?<!?[=!]?\\?[A-Za-z0-9_^$\\.*+?()[\]{}|/-]+|./g) || []
   const parts: string[] = []
@@ -46,11 +48,11 @@ export default function RegexTester() {
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-5">
+      <div className="flex flex-wrap gap-2.5">
         <input value={pattern} onChange={e => setPattern(e.target.value)} className="flex-1 min-w-[200px] border px-3 h-10 font-mono text-sm" placeholder="/pattern/flags" />
         <input value={flags} onChange={e => setFlags(e.target.value)} className="border px-3 h-10 font-mono text-sm w-16" placeholder="gi" />
-        <button onClick={test} className="px-4 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Test</button>
+        <Button variant="secondary" onClick={test}>Test</Button>
       </div>
       <div className="border p-3 text-xs bg-zinc-50 dark:bg-zinc-800">
         <span className="font-bold uppercase tracking-wider text-zinc-500 text-[10px]">Explanation · </span>

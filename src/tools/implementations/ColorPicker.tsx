@@ -1,4 +1,7 @@
 import { useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 import DropZone from '../../components/DropZone'
 
 export default function ColorPicker() {
@@ -42,27 +45,27 @@ export default function ColorPicker() {
   }
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       <div className="flex items-center gap-3">
         <input type="color" value={color} onChange={e => setColor(e.target.value)} className="w-16 h-12 border" />
         <div className="flex-1">
           <code className="font-mono text-lg">{color}</code>
           <div className="flex gap-2 mt-1">
-            <button onClick={() => navigator.clipboard.writeText(color)} className="text-xs border px-2 py-1">Copy</button>
-            <button onClick={pickScreen} className="text-xs border px-2 py-1">Pick from screen</button>
+            <CopyButton value={color} />
+            <Button variant="outline" size="sm" className="text-xs px-2 h-7" onClick={pickScreen}>Pick from screen</Button>
           </div>
         </div>
       </div>
-      <div className="h-16 rounded-lg border" style={{ background: color }} />
-      <div className="flex flex-wrap gap-2">
+      <div className="h-16  border" style={{ background: color }} />
+      <div className="flex flex-wrap gap-2.5">
         {picked.map((p, i) => (
-          <button key={i} onClick={() => setColor(p)} className="w-10 h-10 border rounded" style={{ background: p }} title={p} />
+          <button key={i} onClick={() => setColor(p)} className="w-10 h-10 border " style={{ background: p }} title={p} />
         ))}
       </div>
       <div>
         <p className="text-sm font-semibold mb-2">Pick from image (click anywhere)</p>
         <DropZone onFiles={onFiles} accept="image/*" multiple={false} label="Drop an image to sample colors" />
-        <canvas ref={canvasRef} className="mt-3 rounded-lg border max-h-[360px]" />
+        <canvas ref={canvasRef} className="mt-3  border max-h-[360px]" />
       </div>
     </div>
   )

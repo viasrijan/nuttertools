@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { saveBlob } from '../../lib/download'
 
 export default function FaviconGenerator() {
@@ -32,9 +34,9 @@ export default function FaviconGenerator() {
   }, [text, bg, fg, radius])
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm items-center">
-        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Letter</label><input value={text} onChange={e => setText(e.target.value.slice(0, 3))} className="w-full border px-2 py-2 mt-1" /></div>
+        <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Letter</label><input value={text} onChange={e => setText(e.target.value.slice(0, 3))} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 py-2 transition-all duration-200" /></div>
         <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Background</label><input type="color" value={bg} onChange={e => setBg(e.target.value)} className="w-full h-9 border mt-1" /></div>
         <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Foreground</label><input type="color" value={fg} onChange={e => setFg(e.target.value)} className="w-full h-9 border mt-1" /></div>
         <div><label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">Radius %</label><input type="range" min="0" max="50" value={radius} onChange={e => setRadius(+e.target.value)} className="w-full mt-3" /></div>
@@ -47,9 +49,9 @@ export default function FaviconGenerator() {
           </div>
         ))}
       </div>
-      <div className="flex gap-2">
-        <button onClick={() => saveBlob(dataUrlToBlob(draw(64)), 'favicon-64.png')} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download 64px PNG</button>
-        <button onClick={() => saveBlob(dataUrlToBlob(draw(180)), 'favicon-180.png')} className="px-5 h-10 border text-sm">Download 180px</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" onClick={() => saveBlob(dataUrlToBlob(draw(64)), 'favicon-64.png')}>Download 64px PNG</Button>
+        <Button variant="outline" onClick={() => saveBlob(dataUrlToBlob(draw(180)), 'favicon-180.png')}>Download 180px</Button>
       </div>
       <p className="text-[11px] text-zinc-500">Tip: also run this letter into the <b>Color Picker</b> or use the <b>Icon Resizer</b> for other sizes. For a full favicon pack, download 16, 32, 48 and 180 then upload to your host.</p>
     </div>

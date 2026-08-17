@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 export default function TtsStt() {
   const [text, setText] = useState('Hello! I am your text to speech tool.')
   const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null)
@@ -42,7 +45,7 @@ export default function TtsStt() {
   }
 
   return (
-    <div className="space-y-5 max-w-3xl">
+    <div className="space-y-5 max-w-3xl omni-rise">
       <div>
         <label className="text-sm font-semibold">Text to speak</label>
         <textarea value={text} onChange={e => setText(e.target.value)} className="w-full border p-3 h-28 text-sm mt-1" />
@@ -55,16 +58,16 @@ export default function TtsStt() {
           </select>
           <label className="text-sm">Rate <b>{rate}</b></label><input type="range" min={0.5} max={2} step={0.1} value={rate} onChange={e => setRate(parseFloat(e.target.value))} />
           <label className="text-sm">Pitch <b>{pitch}</b></label><input type="range" min={0} max={2} step={0.1} value={pitch} onChange={e => setPitch(parseFloat(e.target.value))} />
-          <button onClick={speak} className={`px-5 h-10 text-sm ${speaking ? 'bg-red-600 text-white' : 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600'}`}>{speaking ? 'Stop' : 'Speak'}</button>
+          <Button variant="outline" onClick={speak} className={`px-5 h-10 text-sm ${speaking ? 'bg-red-600 text-white' : 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600'}`}>{speaking ? 'Stop' : 'Speak'}</Button>
         </div>
       </div>
       <div>
         <label className="text-sm font-semibold">Speech to text</label>
-        <button onClick={toggleRec} className={`mt-2 px-5 h-10 text-sm ${recording ? 'bg-red-600 text-white animate-pulse' : 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600'}`}>
+        <Button variant="outline" onClick={toggleRec} className={`mt-2 px-5 h-10 text-sm ${recording ? 'bg-red-600 text-white animate-pulse' : 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600'}`}>
           {recording ? '● Listening…' : 'Start listening'}
-        </button>
+        </Button>
         <textarea value={heard} onChange={e => setHeard(e.target.value)} className="w-full border p-3 h-28 text-sm mt-2" placeholder="Transcribed text appears here" />
-        {heard && <button onClick={() => navigator.clipboard.writeText(heard)} className="px-4 h-9 border text-sm mt-2">Copy</button>}
+        {heard && <CopyButton value={heard} />}
       </div>
     </div>
   )

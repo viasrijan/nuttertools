@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 const WORDS = ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'sed', 'do', 'eiusmod', 'tempor', 'incididunt', 'ut', 'labore', 'et', 'dolore', 'magna', 'aliqua', 'enim', 'ad', 'minim', 'veniam', 'quis', 'nostrud', 'exercitation', 'ullamco', 'laboris', 'nisi', 'aliquip', 'ex', 'ea', 'commodo', 'consequat', 'duis', 'aute', 'irure', 'in', 'reprehenderit', 'voluptate', 'velit', 'esse', 'cillum', 'eu', 'fugiat', 'nulla', 'pariatur', 'excepteur', 'sint', 'occaecat', 'cupidatat', 'non', 'proident', 'sunt', 'culpa', 'qui', 'officia', 'deserunt', 'mollit', 'anim', 'id', 'est', 'laborum']
 const rand = (n: number) => Math.floor(Math.random() * n)
 
@@ -27,14 +30,14 @@ export default function LoremGenerator() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="flex flex-wrap items-center gap-2">
         <select value={type} onChange={e => setType(e.target.value as any)} className="border px-3 h-9 text-sm bg-transparent">
           <option value="words">Words</option><option value="sentences">Sentences</option><option value="paragraphs">Paragraphs</option>
         </select>
         <input type="number" min={1} max={100} value={count} onChange={e => setCount(parseInt(e.target.value) || 1)} className="border px-3 h-9 text-sm w-24" />
-        <button onClick={gen} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Generate</button>
-        <button onClick={() => navigator.clipboard.writeText(out)} className="px-4 h-9 border text-sm">Copy</button>
+        <Button variant="secondary" size="sm" onClick={gen}>Generate</Button>
+        <CopyButton value={out} />
       </div>
       <textarea value={out} readOnly className="w-full h-64 border p-3 text-sm" placeholder="Generated text appears here" />
     </div>

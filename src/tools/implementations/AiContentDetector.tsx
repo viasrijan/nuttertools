@@ -36,16 +36,16 @@ export default function AiContentDetector() {
   }, [text])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Paste text to analyze…" className="w-full h-[240px] border p-3 text-sm" />
       {res && text.trim() && (
-        <div className="space-y-3">
-          <div className="border p-4">
+        <div className="space-y-5">
+          <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-5 transition-all duration-200 hover:shadow-[0_8px_24px_-12px_rgba(0,0,0,0.12)]">
             <div className="flex justify-between items-center mb-2">
               <span className="font-bold" style={{ color: res.color }}>{res.label}</span>
               <span className="text-2xl font-bold font-mono" style={{ color: res.color }}>{res.pct}%</span>
             </div>
-            <div className="h-3 bg-zinc-200 dark:bg-zinc-800 rounded-sm overflow-hidden">
+            <div className="h-3 bg-zinc-200 dark:bg-zinc-800  overflow-hidden">
               <div className="h-full transition-all" style={{ width: `${res.pct}%`, background: res.color }} />
             </div>
             <div className="grid grid-cols-3 gap-2 text-center mt-3 text-xs">

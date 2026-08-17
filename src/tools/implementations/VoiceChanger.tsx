@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
@@ -34,14 +36,14 @@ export default function VoiceChanger() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop a voice recording to disguise" />
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2.5">
         {Object.keys(VOICES).map(v => (
-          <button key={v} onClick={() => setVoice(v)} className={`px-4 h-9 text-sm border capitalize ${voice === v ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{v}</button>
+          <Button variant="outline" key={v} onClick={() => setVoice(v)} className={`px-4 h-9 text-sm border capitalize ${voice === v ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{v}</Button>
         ))}
       </div>
-      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Processing…' : 'Change voice & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy || !file} isLoading={busy || !file}>Change voice & download</Button>
       {busy && <Progress label="Applying voice effect…" />}
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Pitch and formant tricks applied with FFmpeg — great for videos, podcasts and prank calls. All offline.</p>

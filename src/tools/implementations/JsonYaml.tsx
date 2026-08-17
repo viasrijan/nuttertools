@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import * as yaml from 'js-yaml'
 
 export default function JsonYaml() {
@@ -18,14 +20,14 @@ export default function JsonYaml() {
   }, [input, mode])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="flex flex-wrap gap-2 text-sm">
         {([['auto', 'Auto detect'], ['j2y', 'JSON → YAML'], ['y2j', 'YAML → JSON']] as const).map(([k, l]) => (
-          <button key={k} onClick={() => setMode(k)} className={`px-4 h-9 text-sm border ${mode === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{l}</button>
+          <Button variant="outline" key={k} onClick={() => setMode(k)} className={`px-4 h-9 text-sm border ${mode === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{l}</Button>
         ))}
       </div>
       <textarea value={input} onChange={e => setInput(e.target.value)} placeholder="Paste JSON or YAML…" className="w-full h-[200px] border p-3 text-sm font-mono" />
-      <button onClick={() => navigator.clipboard.writeText(converted.ok ? converted.text : '')} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Convert & copy</button>
+      <Button variant="secondary" onClick={() => navigator.clipboard.writeText(converted.ok ? converted.text : '')}>Convert & copy</Button>
       {converted.ok
         ? <pre className="border p-3 text-xs max-h-[260px] overflow-auto whitespace-pre-wrap">{converted.text}</pre>
         : <p className="text-sm text-red-600">{converted.msg}</p>}

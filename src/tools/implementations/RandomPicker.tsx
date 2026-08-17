@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function RandomPicker() {
   const [text, setText] = useState('')
   const [result, setResult] = useState('')
@@ -23,7 +25,7 @@ export default function RandomPicker() {
   const clear = () => { setText(''); setResult(''); setHistory([]) }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div>
         <label className="block text-xs font-semibold text-zinc-500 dark:text-zinc-400 mb-1">List of choices (one per line)</label>
         <textarea value={text} onChange={(e) => setText(e.target.value)} rows={8} spellCheck={false}
@@ -35,7 +37,7 @@ export default function RandomPicker() {
           className={`px-6 h-11 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold ${items.length === 0 ? 'opacity-40' : ''}`}>
           {rolling ? 'Picking…' : `Pick one of ${items.length}`}
         </button>
-        <button onClick={clear} className="px-4 h-11 text-sm font-semibold ring-1 ring-zinc-200 dark:ring-zinc-800">Clear</button>
+        <Button variant="secondary" size="sm" onClick={clear}>Clear</Button>
       </div>
       {result && (
         <div className={`border p-6 text-center ${rolling ? 'animate-pulse' : ''}`}>

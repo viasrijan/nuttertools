@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import * as pdfjs from 'pdfjs-dist'
@@ -43,7 +45,7 @@ export default function CompressPdf() {
     <div className="space-y-6 max-w-xl">
       <DropZone onFiles={fl => setFile(fl[0])} accept="application/pdf" multiple={false} label="Drop a PDF to compress" />
       {file && <p className="text-xs font-bold text-zinc-700 dark:text-zinc-300">Loaded: {file.name} ({(file.size / 1024).toFixed(0)} KB)</p>}
-      <div className="space-y-4">
+      <div className="space-y-5">
         <label className="block text-xs font-bold uppercase tracking-wide text-zinc-700 dark:text-zinc-300 space-y-1.5">
           <span>Image quality: {Math.round(quality * 100)}%</span>
           <input type="range" min={0.1} max={1} step={0.05} value={quality} onChange={e => setQuality(parseFloat(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
@@ -53,9 +55,7 @@ export default function CompressPdf() {
           <input type="range" min={0.5} max={3} step={0.1} value={scale} onChange={e => setScale(parseFloat(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
         </label>
       </div>
-      <button onClick={compress} disabled={busy || !file} className="px-6 h-12 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm uppercase tracking-wider rounded-none shadow-md transition-all disabled:opacity-50">
-        {busy ? 'Compressing PDF…' : 'Compress & download PDF'}
-      </button>
+      <Button variant="primary" size="lg" onClick={compress} disabled={busy || !file} className="w-full uppercase tracking-wider font-bold">{busy ? 'Compressing PDF…' : 'Compress & download PDF'}</Button>
       {busy && <Progress label="Compressing pages…" />}
       {stats && (
         <div className="border border-zinc-300 dark:border-zinc-700 p-4 bg-zinc-50 dark:bg-zinc-900 text-sm font-semibold">

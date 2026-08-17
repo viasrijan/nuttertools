@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
@@ -21,13 +23,13 @@ export default function VideoToGif() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="video/*" multiple={false} label="Drop a video to convert to GIF" />
       <div className="grid sm:grid-cols-2 gap-3">
         <label className="text-sm font-semibold">FPS ({fps})<input type="range" min={5} max={30} value={fps} onChange={e => setFps(parseInt(e.target.value))} className="w-full mt-2" /></label>
         <label className="text-sm font-semibold">Width ({width}px)<input type="range" min={160} max={960} step={16} value={width} onChange={e => setWidth(parseInt(e.target.value))} className="w-full mt-2" /></label>
       </div>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Converting…' : 'Convert & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Convert & download</Button>
       {busy && <Progress label="Converting video to GIF…" />}
       <p className="text-[11px] font-medium text-zinc-500">Tip: lower FPS and width produce much smaller GIFs.</p>
     </div>

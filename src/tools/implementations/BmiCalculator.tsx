@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function bmiCategory(bmi: number) {
   if (bmi < 18.5) return { label: 'Underweight', color: 'bg-sky-100 text-sky-700 dark:bg-sky-500/10 dark:text-sky-300' }
   if (bmi < 25) return { label: 'Healthy', color: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300' }
@@ -24,9 +26,9 @@ export default function BmiCalculator() {
 
   return (
     <div className="space-y-4 max-w-lg">
-      <div className="flex gap-2">
-        <button onClick={() => setUnit('metric')} className={`px-4 h-9 text-sm border ${unit === 'metric' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Metric</button>
-        <button onClick={() => setUnit('imperial')} className={`px-4 h-9 text-sm border ${unit === 'imperial' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Imperial</button>
+      <div className="flex gap-2.5">
+        <Button variant="outline" onClick={() => setUnit('metric')} className={`px-4 h-9 text-sm border ${unit === 'metric' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Metric</Button>
+        <Button variant="outline" onClick={() => setUnit('imperial')} className={`px-4 h-9 text-sm border ${unit === 'imperial' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Imperial</Button>
       </div>
       <div className="grid grid-cols-2 gap-3">
         <label className="block text-sm font-semibold">{unit === 'metric' ? 'Height (cm)' : 'Height (inches)'}
@@ -39,11 +41,11 @@ export default function BmiCalculator() {
           <div className="border p-4 text-center">
             <div className="text-4xl font-extrabold">{bmi.toFixed(1)}</div>
             <div className="text-xs font-bold uppercase tracking-wider text-zinc-500 mt-1">BMI</div>
-            <span className={`inline-block mt-2 px-3 py-1 rounded text-xs font-bold ${cat.color}`}>{cat.label}</span>
+            <span className={`inline-block mt-2 px-3 py-1  text-xs font-bold ${cat.color}`}>{cat.label}</span>
           </div>
           <div>
-            <div className="relative h-2 rounded-full bg-gradient-to-r from-sky-400 via-emerald-400 via-50% to-red-500">
-              <div className="absolute -top-1 w-4 h-4 bg-white border-2 border-zinc-900 rounded-full -translate-x-1/2" style={{ left: `${pos}%` }} />
+            <div className="relative h-2  bg-gradient-to-r from-sky-400 via-emerald-400 via-50% to-red-500">
+              <div className="absolute -top-1 w-4 h-4 bg-white border-2 border-zinc-900  -translate-x-1/2" style={{ left: `${pos}%` }} />
             </div>
             <div className="flex justify-between text-[10px] font-bold text-zinc-500 mt-1"><span>15</span><span>18.5</span><span>25</span><span>30</span><span>40</span></div>
           </div>

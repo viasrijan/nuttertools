@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function MarkdownTableGenerator() {
   const [cols, setCols] = useState(3)
   const [rows, setRows] = useState(3)
@@ -39,7 +41,7 @@ export default function MarkdownTableGenerator() {
   const [copied, setCopied] = useState(false)
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       <div className="flex flex-wrap gap-3 text-sm items-center">
         <label className="font-medium">Columns
           <input type="number" min="1" max="10" value={cols} onChange={(e) => setSize('cols', Math.min(10, Math.max(1, +e.target.value)))}
@@ -79,7 +81,7 @@ export default function MarkdownTableGenerator() {
       </div>
       <textarea value={build()} readOnly rows={Math.min(12, rows + 2)} spellCheck={false}
         className="w-full border bg-transparent p-3 font-mono text-[13px] text-zinc-900 dark:text-white outline-none" />
-      <button onClick={copy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold">{copied ? 'Copied!' : 'Copy markdown'}</button>
+      <Button variant="secondary" onClick={copy}>{copied ? 'Copied!' : 'Copy markdown'}</Button>
     </div>
   )
 }

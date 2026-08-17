@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function parseCsv(text: string): string[][] {
   const rows: string[][] = []
   let row: string[] = [], cur = '', inQ = false
@@ -42,13 +44,13 @@ export default function CsvSql() {
   }, [csv, table])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="flex items-center gap-2 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white">Table name</label>
         <input value={table} onChange={e => setTable(e.target.value)} className="border px-2 py-2 w-40" />
       </div>
       <textarea value={csv} onChange={e => setCsv(e.target.value)} placeholder="Paste CSV (first row = headers)…" className="w-full h-[200px] border p-3 text-sm font-mono" />
-      <button onClick={() => navigator.clipboard.writeText(sql)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy SQL</button>
+      <Button variant="secondary" onClick={() => navigator.clipboard.writeText(sql)}>Copy SQL</Button>
       <pre className="border p-3 text-xs max-h-[300px] overflow-auto whitespace-pre">{sql}</pre>
     </div>
   )

@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
@@ -30,7 +32,7 @@ export default function SpeedPitch() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop an audio file" />
       <div className="space-y-3 text-sm">
         <div>
@@ -41,13 +43,13 @@ export default function SpeedPitch() {
           <div className="flex justify-between mb-1"><label className="font-semibold text-zinc-900 dark:text-white">Pitch shift</label><span className="font-mono text-xs">{pitch > 0 ? '+' : ''}{pitch} semitones</span></div>
           <input type="range" min="-12" max="12" step="1" value={pitch} onChange={e => setPitch(+e.target.value)} className="w-full" />
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2.5">
           {[['Original', 1, 0], ['1.25×', 1.25, 0], ['1.5×', 1.5, 0], ['2×', 2, 0], ['+1 st', 1, 1], ['+4 st', 1, 4], ['-1 st', 1, -1], ['-4 st', 1, -4]].map(([l, s, p]) => (
             <button key={String(l)} onClick={() => { setSpeed(s as number); setPitch(p as number) }} className="px-3 h-9 text-xs border">{l}</button>
           ))}
         </div>
       </div>
-      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Processing…' : 'Process & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy || !file} isLoading={busy || !file}>Process & download</Button>
       {busy && <Progress label="Adjusting speed and pitch…" />}
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Speed keeps pitch intact; pitch keeps speed intact. Great for learning languages, transcribing or remixing.</p>

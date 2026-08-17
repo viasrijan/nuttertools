@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 
@@ -94,16 +96,15 @@ export default function ImageResizer() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <DropZone onFiles={onFiles} accept="image/*" multiple={true} label="Drop one or more images to resize (multiple = batch)" />
       {busy && <Progress label="Processing…" />}
       {img && !batch && (
         <>
           <div className="text-sm text-zinc-600 dark:text-zinc-300">Original: {img.w} × {img.h}px</div>
-          <div className="flex gap-2">
+          <div className="flex gap-2.5">
             {(['percent', 'pixels', 'preset'] as const).map(m => (
-              <button key={m} onClick={() => setMode(m)}
-                className={`px-4 h-9 text-sm border ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{m}</button>
+              <Button variant="outline" key={m} onClick={() => setMode(m)} className={`px-4 h-9 text-sm border ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{m}</Button>
             ))}
           </div>
           {mode === 'percent' && (
@@ -117,7 +118,7 @@ export default function ImageResizer() {
             </div>
           )}
           {mode === 'preset' && (
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2.5">
               {PRESETS.map(p => (
                 <button key={p.label} onClick={() => { setW(p.w); setH(p.h) }}
                   className="px-3 h-9 border text-sm">{p.label}</button>
@@ -125,7 +126,7 @@ export default function ImageResizer() {
             </div>
           )}
           <div className="flex items-center gap-3">
-            <button onClick={resize} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Resize</button>
+            <Button variant="secondary" size="sm" onClick={resize}>Resize</Button>
             {out && <a href={out} download="resized.jpg" className="text-sm underline">Download JPG</a>}
           </div>
           {out && <img src={out} className="max-h-[280px]" alt="Result" />}
@@ -134,7 +135,7 @@ export default function ImageResizer() {
       {batch && (
         <>
           <div className="flex items-center gap-3">
-            <button onClick={resize} disabled={busy} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm disabled:opacity-50">Resize all ({batch.length})</button>
+            <Button variant="secondary" size="sm" disabled={busy} onClick={resize}>Resize all ({batch.length})</Button>
             {batch.every(b => b.url.startsWith('data:')) && (
               <button onClick={() => {
                 batch.forEach((b, i) => {

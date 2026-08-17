@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
@@ -23,14 +25,14 @@ export default function AudioNoiseRemover() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop a recording with hiss, hum or background noise" />
       <div className="flex items-center gap-2 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white">Strength</label>
         <input type="range" min="-60" max="-15" value={strength} onChange={e => setStrength(+e.target.value)} className="w-48" />
         <span className="font-mono text-xs">{strength} dB</span>
       </div>
-      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Denoising…' : 'Remove noise & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy || !file} isLoading={busy || !file}>Remove noise & download</Button>
       {busy && <Progress label="Denoising audio…" />}
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">FFT-based noise reduction (afftdn) plus non-local denoising. Gentle settings (-30 to -40 dB) keep music intact; strong settings are for speech.</p>

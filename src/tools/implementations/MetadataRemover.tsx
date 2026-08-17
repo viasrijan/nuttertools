@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import { saveBlob } from '../../lib/download'
 
@@ -40,10 +42,10 @@ export default function MetadataRemover() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFiles(Array.from(fl))} accept="image/*" multiple label="Drop JPG / PNG / WebP photos" />
       <p className="text-xs text-zinc-500">Re-encodes each image through a fresh canvas, dropping EXIF (GPS, camera, timestamps) and any embedded metadata. Files are never uploaded.</p>
-      <button onClick={strip} disabled={!files.length} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Strip metadata & download</button>
+      <Button variant="secondary" onClick={strip} disabled={!files.length}>Strip metadata & download</Button>
       {done.length > 0 && (
         <div className="space-y-1 text-xs">
           {done.map((d, i) => <div key={i} className="border p-2 flex justify-between"><span className="font-semibold">{d.name}</span><span className="text-zinc-500">{d.before} → {d.after}</span></div>)}

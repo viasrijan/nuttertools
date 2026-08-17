@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function diff(birth: Date, target = new Date()) {
   let years = target.getFullYear() - birth.getFullYear()
   let months = target.getMonth() - birth.getMonth()
@@ -27,10 +29,10 @@ export default function AgeCalc() {
   })() : null
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <div className="flex gap-2">
-        <button onClick={() => setMode('age')} className={`px-4 h-9 text-sm border ${mode === 'age' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Age</button>
-        <button onClick={() => setMode('diff')} className={`px-4 h-9 text-sm border ${mode === 'diff' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Date diff</button>
+    <div className="space-y-5 max-w-xl omni-rise">
+      <div className="flex gap-2.5">
+        <Button variant="outline" onClick={() => setMode('age')} className={`px-4 h-9 text-sm border ${mode === 'age' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Age</Button>
+        <Button variant="outline" onClick={() => setMode('diff')} className={`px-4 h-9 text-sm border ${mode === 'diff' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Date diff</Button>
       </div>
       <div className="grid grid-cols-2 gap-3">
         <label className="text-sm font-semibold">{mode === 'age' ? 'Date of birth' : 'Start date'}<input type="date" value={dob} onChange={e => setDob(e.target.value)} className="w-full border px-3 h-9 mt-1" /></label>

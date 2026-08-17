@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 function toB64(buf: ArrayBuffer) {
   const bytes = new Uint8Array(buf)
   let bin = ''
@@ -71,10 +74,10 @@ export default function TextEncryptor() {
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} className="w-full border px-3 h-9 text-sm mt-1" />
       </div>
       {error && <p className="text-xs text-red-500">{error}</p>}
-      <div className="flex gap-2">
-        <button onClick={encrypt} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? '…' : 'Encrypt'}</button>
-        <button onClick={decrypt} disabled={busy} className="px-5 h-10 border text-sm">{busy ? '…' : 'Decrypt'}</button>
-        {out && <button onClick={() => navigator.clipboard.writeText(out)} className="px-5 h-10 border text-sm">Copy</button>}
+      <div className="flex gap-2.5">
+        <Button variant="secondary" onClick={encrypt} disabled={busy} isLoading={busy}>Encrypt</Button>
+        <Button variant="outline" disabled={busy} onClick={decrypt}>{busy ? '…' : 'Decrypt'}</Button>
+        {out && <CopyButton value={out} />}
       </div>
       <div>
         <label className="text-sm font-semibold">Encrypted text (base64)</label>

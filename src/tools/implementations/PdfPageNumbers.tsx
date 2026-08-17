@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
@@ -40,7 +42,7 @@ export default function PdfPageNumbers() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="application/pdf" multiple={false} label="Drop a PDF to add page numbers" />
       {file && <p className="text-xs font-medium text-zinc-500">Loaded: {file.name}</p>}
       <div className="flex flex-wrap items-center gap-3">
@@ -49,7 +51,7 @@ export default function PdfPageNumbers() {
         <select value={pos} onChange={e => setPos(e.target.value)} className="border px-2 h-9 text-sm bg-transparent">
           {POSITIONS.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}
         </select>
-        <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Working…' : 'Add numbers & download'}</button>
+        <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Add numbers & download</Button>
         {busy && <Progress label="Adding page numbers…" />}
       </div>
     </div>

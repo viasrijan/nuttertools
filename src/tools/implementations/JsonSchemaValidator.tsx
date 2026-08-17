@@ -18,7 +18,7 @@ export default function JsonSchemaValidator() {
   }, [schema, data])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div>
         <label className="text-xs font-semibold text-zinc-900 dark:text-white uppercase">JSON Schema</label>
         <textarea value={schema} onChange={e => setSchema(e.target.value)} className="w-full h-[180px] border p-3 text-sm font-mono mt-1" />

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const ROMAN = [
   [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'],
   [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'],
@@ -61,27 +63,26 @@ export default function RomanNumeral() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <div className="flex gap-2">
+    <div className="space-y-5 max-w-xl omni-rise">
+      <div className="flex gap-2.5">
         {(['toRoman', 'fromRoman'] as const).map((m) => (
-          <button key={m} onClick={() => setMode(m)}
-            className={`px-4 h-10 text-sm font-semibold ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : 'ring-1 ring-zinc-200 dark:ring-zinc-800'}`}>
+          <Button variant="outline" key={m} onClick={() => setMode(m)} className={`px-4 h-10 text-sm font-semibold ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : 'ring-1 ring-zinc-200 dark:ring-zinc-800'}`}>
             {m === 'toRoman' ? 'Number → Roman' : 'Roman → Number'}
-          </button>
+          </Button>
         ))}
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2.5">
         <input value={input} onChange={(e) => setInput(e.target.value)} spellCheck={false}
           placeholder={mode === 'toRoman' ? 'e.g. 1984' : 'e.g. MCMLXXXIV'}
           onKeyDown={(e) => e.key === 'Enter' && convert()}
           className="flex-1 min-w-[180px] border px-3 py-2.5 font-mono text-zinc-900 dark:text-white bg-transparent outline-none focus:border-indigo-600" />
-        <button onClick={convert} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold">Convert</button>
+        <Button variant="secondary" onClick={convert}>Convert</Button>
       </div>
       {error && <p className="text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
       {result && (
         <div className="flex items-center justify-between border p-5 gap-3">
           <span className="text-3xl font-black tracking-tight break-all">{result}</span>
-          <button onClick={copy} className="px-4 h-9 text-xs font-bold text-green-600 dark:text-green-400 shrink-0">{copied ? 'Copied!' : 'Copy'}</button>
+          <Button variant="secondary" onClick={copy} className="text-xs shrink-0">Copy</Button>
         </div>
       )}
     </div>

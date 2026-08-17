@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import { saveBlob } from '../../lib/download'
 
@@ -46,7 +48,7 @@ export default function PhotoCaption() {
   }, [img, text, size, color, pos])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <DropZone onFiles={fl => setFile(fl[0])} accept="image/*" multiple={false} label="Drop a photo to add a caption" />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm items-center">
         <input value={text} onChange={e => setText(e.target.value)} placeholder="Caption text (\\n for new line)" className="border px-2 py-2 col-span-2" />
@@ -55,13 +57,13 @@ export default function PhotoCaption() {
       </div>
       <div className="flex gap-2 text-sm">
         {(['top', 'center', 'bottom'] as const).map(p => (
-          <button key={p} onClick={() => setPos(p)} className={`px-4 h-9 border capitalize ${pos === p ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{p}</button>
+          <Button variant="outline" key={p} onClick={() => setPos(p)} className={`px-4 h-9 border capitalize ${pos === p ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{p}</Button>
         ))}
       </div>
       {img && (
         <>
           <canvas ref={canvasRef} className="max-w-full border" />
-          <button onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, file?.name.replace(/\.[^.]+$/, '') + '-captioned.png'), 'image/png')} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download PNG</button>
+          <Button variant="secondary" onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, file?.name.replace(/\.[^.]+$/, '') + '-captioned.png'), 'image/png')}>Download PNG</Button>
         </>
       )}
     </div>

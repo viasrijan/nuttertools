@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
@@ -34,13 +36,13 @@ export default function AudioEnhancer() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop an audio file to clean up and boost" />
       <div className="flex flex-wrap gap-2 text-sm">
         {Object.entries(PRESETS).map(([k, v]) => (
-          <button key={k} onClick={() => setPreset(k as keyof typeof PRESETS)} className={`px-4 h-9 border capitalize ${preset === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</button>
+          <Button variant="outline" key={k} onClick={() => setPreset(k as keyof typeof PRESETS)} className={`px-4 h-9 border capitalize ${preset === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</Button>
         ))}
-        <button onClick={() => setPreset('custom')} className={`px-4 h-9 border ${preset === 'custom' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Custom</button>
+        <Button variant="outline" onClick={() => setPreset('custom')} className={`px-4 h-9 border ${preset === 'custom' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Custom</Button>
       </div>
       {preset === 'custom' && (
         <div className="flex items-center gap-2 text-sm">
@@ -49,7 +51,7 @@ export default function AudioEnhancer() {
           <span className="font-mono text-xs">{loud} LUFS</span>
         </div>
       )}
-      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Enhancing…' : 'Enhance & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy || !file} isLoading={busy || !file}>Enhance & download</Button>
       {busy && <Progress label="Enhancing audio…" />}
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Normalizes loudness, removes rumble and hiss. All processing happens in your browser via FFmpeg WASM.</p>

@@ -49,7 +49,7 @@ export default function PdfToExcel() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={convert} accept="application/pdf" multiple={false} label="Drop a PDF — tables become Excel sheets" />
       {busy && <Progress label={status} />}
       {!busy && status && <p className="text-sm text-zinc-600">{status}</p>}

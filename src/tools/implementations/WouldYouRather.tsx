@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const QUESTIONS: [string, string][] = [
   ['Have the ability to fly', 'Be invisible'],
   ['Always be 10 minutes early', 'Always be 10 minutes late'],
@@ -48,7 +50,7 @@ export default function WouldYouRather() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {pair.map((opt, i) => (
           <button key={i} onClick={() => choose(opt)}
@@ -59,7 +61,7 @@ export default function WouldYouRather() {
         ))}
       </div>
       <div className="flex items-center justify-between gap-3">
-        <button onClick={next} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold">Next question</button>
+        <Button variant="secondary" onClick={next}>Next question</Button>
         <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400">{count} answered · {QUESTIONS.length} questions</span>
       </div>
       {picked && (

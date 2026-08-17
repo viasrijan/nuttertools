@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import * as ort from 'onnxruntime-web'
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
@@ -114,16 +116,16 @@ export default function StemSplitter() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop a song — vocals, drums, bass and everything else get separated" />
       {file && <p className="text-xs text-zinc-500">{file.name} — first run downloads the model once (165 MB), then everything is processed on your device.</p>}
-      <button onClick={run} disabled={busy || !file} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Separating…' : 'Separate stems'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy || !file} isLoading={busy || !file}>Separate stems</Button>
       {busy && <Progress label={stage} percent={progress} />}
       {results.length > 0 && (
-        <div className="space-y-2">
+        <div className="space-y-3">
           {results.map((r, i) => (
             <div key={r.name} className="border p-3 flex flex-wrap items-center gap-3">
-              <span className="w-2 h-8 rounded-full" style={{ background: STEMS[i].color }} />
+              <span className="w-2 h-8 " style={{ background: STEMS[i].color }} />
               <div className="flex-1 min-w-[120px]">
                 <div className="text-sm font-bold">{r.name}</div>
                 <div className="text-[11px] text-zinc-500">{r.size}</div>

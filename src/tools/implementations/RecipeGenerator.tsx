@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { aiText } from '../../lib/ai'
 
 export default function RecipeGenerator() {
@@ -19,10 +21,10 @@ export default function RecipeGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} className="w-full border p-3 h-24 text-sm" placeholder="Ingredients, e.g. chicken, garlic, tomatoes, rice" />
+    <div className="space-y-5 max-w-xl omni-rise">
+      <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} className="w-full h-24 w-full  border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/80 p-3 text-sm transition-all duration-200" placeholder="Ingredients, e.g. chicken, garlic, tomatoes, rice" />
       <input value={diet} onChange={e => setDiet(e.target.value)} className="w-full border px-3 h-10 text-sm" placeholder="Optional: dietary constraint (vegan, gluten-free…)" />
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Cooking…' : 'Generate recipe'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Generate recipe</Button>
       {error && <p className="text-xs text-red-500">{error}</p>}
       {res && <p className="text-sm whitespace-pre-wrap border p-4 leading-6">{res}</p>}
     </div>

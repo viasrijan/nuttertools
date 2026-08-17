@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { PDFDocument, degrees } from 'pdf-lib'
 
 type Page = { pdfIndex: number, rotate: number }
@@ -71,11 +73,11 @@ export default function PdfOrganizer() {
       const out = await PDFDocument.create()
       for (const p of pages) {
         const [page] = await out.copyPages(srcDoc, [p.pdfIndex])
-        if (p.rotate) page.setRotation(page.getRotation().add(degrees(p.rotate)))
+        if (p.rotate) page.setRotation(degrees(page.getRotation().angle + p.rotate))
         out.addPage(page)
       }
       const bytes = await out.save()
-      const blob = new Blob([bytes], { type: 'application/pdf' })
+      const blob = new Blob([new Uint8Array(bytes)], { type: 'application/pdf' })
       const a = document.createElement('a')
       a.href = URL.createObjectURL(blob)
       a.download = 'organized.pdf'
@@ -89,7 +91,7 @@ export default function PdfOrganizer() {
   }
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       {!srcDoc && (
         <div onClick={() => inputRef.current?.click()}
           onDragOver={(e) => e.preventDefault()}
@@ -108,25 +110,21 @@ export default function PdfOrganizer() {
               <div key={i} className="border p-2">
                 <div className="relative bg-white">
                   <img src={thumbs[p.pdfIndex]} alt={`Page ${p.pdfIndex + 1}`} className={`w-full object-contain ${p.rotate % 180 !== 0 ? 'rotate-90 my-auto' : ''}`} />
-                  <span className="absolute top-1 left-1 bg-zinc-900 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">{p.pdfIndex + 1}</span>
-                  {p.rotate > 0 && <span className="absolute top-1 right-1 bg-green-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">{p.rotate}°</span>}
+                  <span className="absolute top-1 left-1 bg-zinc-900 text-white text-[10px] font-bold px-1.5 py-0.5 ">{p.pdfIndex + 1}</span>
+                  {p.rotate > 0 && <span className="absolute top-1 right-1 bg-green-600 text-white text-[10px] font-bold px-1.5 py-0.5 ">{p.rotate}°</span>}
                 </div>
                 <div className="mt-2 flex gap-1 justify-center">
-                  <button onClick={() => move(i, -1)} disabled={i === 0} className="px-2 h-7 text-xs border border-zinc-200 dark:border-zinc-800 disabled:opacity-30">Up</button>
-                  <button onClick={() => move(i, 1)} disabled={i === pages.length - 1} className="px-2 h-7 text-xs border border-zinc-200 dark:border-zinc-800 disabled:opacity-30">Down</button>
-                  <button onClick={() => rotate(i)} className="px-2 h-7 text-xs border border-zinc-200 dark:border-zinc-800">Rotate</button>
-                  <button onClick={() => remove(i)} className="px-2 h-7 text-xs border border-red-300 dark:border-red-800 text-red-600 dark:text-red-400">Remove</button>
+                  <Button variant="outline" size="sm" className="px-2 h-7 text-xs" onClick={() => move(i, -1)} disabled={i === 0}>Up</Button>
+                  <Button variant="outline" size="sm" className="px-2 h-7 text-xs" onClick={() => move(i, 1)} disabled={i === pages.length - 1}>Down</Button>
+                  <Button variant="outline" onClick={() => rotate(i)} className="px-2 h-7 text-xs border border-zinc-200 dark:border-zinc-800">Rotate</Button>
+                  <Button variant="outline" onClick={() => remove(i)} className="px-2 h-7 text-xs border border-red-300 dark:border-red-800 text-red-600 dark:text-red-400">Remove</Button>
                 </div>
               </div>
             ))}
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <button onClick={save} disabled={working || pages.length === 0}
-              className={`px-6 h-11 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold ${working ? 'opacity-50' : ''}`}>
-              {working ? 'Working…' : `Download PDF (${pages.length} pages)`}
-            </button>
-            <button onClick={() => { setSrcDoc(null); setPages([]); setThumbs([]); setError('') }}
-              className="px-4 h-11 text-sm font-semibold ring-1 ring-zinc-200 dark:ring-zinc-800">Choose another file</button>
+            <Button variant="secondary" onClick={save} disabled={working || pages.length === 0} isLoading={working} className="font-semibold">Download PDF ({pages.length} pages)</Button>
+            <Button variant="subtle" onClick={() => { setSrcDoc(null); setPages([]); setThumbs([]); setError('') }} className="font-semibold">Choose another file</Button>
           </div>
           <p className="text-xs text-zinc-500 dark:text-zinc-400">All processing happens in your browser. Files are never uploaded.</p>
         </>

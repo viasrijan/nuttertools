@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
@@ -32,12 +34,12 @@ export default function VideoRotator() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="video/*" multiple={false} label="Drop a video to rotate" />
-      <div className="flex flex-wrap gap-2">
-        {[90, 180, 270].map(a => <button key={a} onClick={() => setAngle(a)} className={`px-4 h-9 text-sm border ${angle === a ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{a}°</button>)}
+      <div className="flex flex-wrap gap-2.5">
+        {[90, 180, 270].map(a => <Button variant="outline" key={a} onClick={() => setAngle(a)} className={`px-4 h-9 text-sm border ${angle === a ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{a}°</Button>)}
       </div>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Rotating…' : 'Rotate & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Rotate & download</Button>
       {busy && <Progress label="Rotating video…" />}
     </div>
   )

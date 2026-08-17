@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const EMAIL_RE = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/
 const TLD_RE = /^[a-z]{2,}$/i
 
@@ -32,7 +34,7 @@ export default function EmailValidator() {
   }, [input])
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <input value={input} onChange={e => { setInput(e.target.value); setDns('idle') }} placeholder="name@example.com" className="w-full border px-3 py-2 text-sm" />
       {input.trim() ? (
         <div className="space-y-2 text-sm">
@@ -49,7 +51,7 @@ export default function EmailValidator() {
           {validSyntax && (
             <div className="flex items-center gap-3">
               <label className="flex items-center gap-2 text-xs"><input type="checkbox" checked={checkDns} onChange={e => setCheckDns(e.target.checked)} /> Check MX records (DNS lookup)</label>
-              <button onClick={checkDnsNow} disabled={dns === 'checking'} className="px-4 h-9 border text-xs">Check DNS</button>
+              <Button variant="outline" size="sm" onClick={checkDnsNow} disabled={dns === 'checking'}>Check DNS</Button>
               {dns === 'checking' && <span className="text-xs text-zinc-500">Checking…</span>}
               {dns === 'ok' && <span className="text-xs text-green-600">Domain accepts mail (MX found)</span>}
               {dns === 'fail' && <span className="text-xs text-red-600">No MX records — domain likely cannot receive mail</span>}

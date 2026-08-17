@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 const toHex = (buf: ArrayBuffer) => [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('')
 
 export default function HmacGenerator() {
@@ -24,7 +27,7 @@ export default function HmacGenerator() {
   }, [msg, key, hash, format])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div>
         <label className="text-xs font-semibold text-zinc-900 dark:text-white uppercase">Message</label>
         <textarea value={msg} onChange={e => setMsg(e.target.value)} className="w-full h-[120px] border p-3 text-sm mt-1" />
@@ -36,15 +39,15 @@ export default function HmacGenerator() {
       <div className="flex flex-wrap gap-2 text-sm items-center">
         <label className="font-semibold text-zinc-900 dark:text-white">Algorithm</label>
         {['SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'].map(h => (
-          <button key={h} onClick={() => setHash(h)} className={`px-3 h-9 text-xs border ${hash === h ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{h}</button>
+          <Button variant="outline" key={h} onClick={() => setHash(h)} className={`px-3 h-9 text-xs border ${hash === h ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{h}</Button>
         ))}
         <label className="font-semibold text-zinc-900 dark:text-white ml-2">Output</label>
         {(['hex', 'b64'] as const).map(f => (
-          <button key={f} onClick={() => setFormat(f)} className={`px-3 h-9 text-xs border ${format === f ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{f === 'hex' ? 'Hex' : 'Base64'}</button>
+          <Button variant="outline" key={f} onClick={() => setFormat(f)} className={`px-3 h-9 text-xs border ${format === f ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{f === 'hex' ? 'Hex' : 'Base64'}</Button>
         ))}
       </div>
       <pre className="border p-3 text-xs break-all whitespace-pre-wrap font-mono">{out || 'Generating…'}</pre>
-      <button onClick={() => navigator.clipboard.writeText(out)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy</button>
+      <CopyButton value={out} />
     </div>
   )
 }

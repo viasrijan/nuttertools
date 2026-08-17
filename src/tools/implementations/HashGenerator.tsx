@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 import * as CryptoJS from 'crypto-js'
 
 export default function HashGenerator() {
@@ -23,15 +26,15 @@ export default function HashGenerator() {
   ]
 
   return (
-    <div className="space-y-4 max-w-3xl">
-      <textarea value={text} onChange={e => setText(e.target.value)} className="w-full border p-3 h-24 text-sm" />
-      <button onClick={run} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Hash</button>
-      <div className="space-y-2">
+    <div className="space-y-5 max-w-3xl omni-rise">
+      <textarea value={text} onChange={e => setText(e.target.value)} className="w-full h-24 w-full  border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/80 p-3 text-sm transition-all duration-200" />
+      <Button variant="secondary" onClick={run}>Hash</Button>
+      <div className="space-y-3">
         {rows.map(([name, value, desc]) => (
-          <div key={name} className="border p-3">
+          <div key={name} className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]">
             <div className="flex items-center justify-between gap-2">
               <span className="text-sm font-bold">{name} <span className="text-[11px] font-medium text-zinc-500">{desc}</span></span>
-              {value && <button onClick={() => navigator.clipboard.writeText(value)} className="text-xs border px-2 py-1">Copy</button>}
+              {value && <CopyButton value={value} />}
             </div>
             <code className="block mt-1.5 font-mono text-xs break-all bg-zinc-50 dark:bg-zinc-800 p-2">{value || '—'}</code>
           </div>

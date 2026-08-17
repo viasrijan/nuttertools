@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import CopyButton from '../../components/ui/CopyButton'
+
 function htmlToJsx(html: string): string {
   return html
     .replace(/<!--[\s\S]*?-->/g, '')
@@ -23,7 +25,7 @@ export default function HtmlJsx() {
 </div>`)
   const jsx = htmlToJsx(html)
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <p className="text-xs font-medium text-zinc-500">Converts HTML attributes to JSX conventions: class→className, self-closing tags, boolean attributes, inline script/style stripped.</p>
       <div className="grid md:grid-cols-2 gap-3">
         <div>
@@ -33,7 +35,7 @@ export default function HtmlJsx() {
         <div>
           <p className="text-sm font-semibold mb-1">JSX</p>
           <textarea value={jsx} readOnly className="w-full h-72 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />
-          <button onClick={() => navigator.clipboard.writeText(jsx)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm mt-2">Copy</button>
+          <CopyButton value={jsx} />
         </div>
       </div>
     </div>

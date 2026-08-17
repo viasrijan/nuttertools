@@ -24,7 +24,7 @@ export default function FileSizeConverter() {
   const valid = Number.isFinite(bytes) && bytes >= 0
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div className="flex flex-wrap gap-3">
         <div className="flex-1 min-w-[140px]">
           <label className="block text-xs font-semibold text-zinc-500 dark:text-zinc-400 mb-1">Value</label>

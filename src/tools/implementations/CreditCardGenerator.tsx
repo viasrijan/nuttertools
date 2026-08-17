@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 type Brand = { name: string, prefixes: string[], length: number, cvv: number }
 
 const BRANDS: Brand[] = [
@@ -70,25 +72,24 @@ export default function CreditCardGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-5 max-w-xl omni-rise">
+      <div className="flex flex-wrap gap-2.5">
         {BRANDS.map((x, i) => (
-          <button key={x.name} onClick={() => setBrand(i)}
-            className={`px-4 h-10 text-sm font-semibold ${i === brand ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : 'ring-1 ring-zinc-200 dark:ring-zinc-800'}`}>
+          <Button variant="outline" key={x.name} onClick={() => setBrand(i)} className={`px-4 h-10 text-sm font-semibold ${i === brand ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : 'ring-1 ring-zinc-200 dark:ring-zinc-800'}`}>
             {x.name}
-          </button>
+          </Button>
         ))}
       </div>
-      <button onClick={generate} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm font-semibold">Generate 5 test cards</button>
+      <Button variant="secondary" onClick={generate}>Generate 5 test cards</Button>
       {cards.length > 0 && (
-        <div className="space-y-3">
+        <div className="space-y-5">
           {cards.map((c) => (
             <div key={c.number} className="border p-4 flex flex-wrap items-center gap-3 justify-between">
               <div className="font-mono">
                 <div className="text-lg font-bold">{formatNumber(c.number)}</div>
                 <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{c.expiry} · CVV {c.cvv} · {b.name} · Luhn {validLuhn(c.number) ? 'valid' : 'invalid'}</div>
               </div>
-              <button onClick={() => copy(c.number, c.number)} className="text-xs font-bold text-green-600 dark:text-green-400 shrink-0">{copied === c.number ? 'Copied!' : 'Copy'}</button>
+              <Button variant="ghost" size="sm" className="text-xs font-bold text-green-600 dark:text-green-400 shrink-0">{copied === c.number ? 'Copied!' : 'Copy'}</Button>
             </div>
           ))}
         </div>

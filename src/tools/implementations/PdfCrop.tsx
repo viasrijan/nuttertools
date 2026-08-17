@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { PDFDocument } from 'pdf-lib'
@@ -41,7 +43,7 @@ export default function PdfCrop() {
   const input = (label: string, v: number, set: (n: number) => void) => (
     <div className="space-y-1.5">
       <label className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">{label}</label>
-      <input type="number" min="0" value={v} onChange={e => set(Math.max(0, +e.target.value))} className="w-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 h-10 text-sm font-semibold rounded-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20" />
+      <input type="number" min="0" value={v} onChange={e => set(Math.max(0, +e.target.value))} className="w-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 h-10 text-sm font-semibold  focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20" />
     </div>
   )
 
@@ -54,19 +56,16 @@ export default function PdfCrop() {
         {input('Left', left, setLeft)}
         {input('Right', right, setRight)}
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2.5">
         {(['mm', 'pct'] as const).map(u => (
-          <button
+          <Button
             key={u}
             onClick={() => setUnit(u)}
-            className={`px-5 h-10 text-xs font-bold uppercase tracking-wider rounded-none transition-all ${
-              unit === u
-                ? 'bg-indigo-600 text-white shadow-sm'
-                : 'border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700'
-            }`}
+            variant={unit === u ? 'primary' : 'outline'}
+            className="uppercase tracking-wider text-xs font-bold"
           >
             {u === 'mm' ? 'Millimeters (mm)' : 'Percent (%)'}
-          </button>
+          </Button>
         ))}
       </div>
       {busy && <Progress label={status || 'Processing PDF…'} />}

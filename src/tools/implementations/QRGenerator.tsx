@@ -13,7 +13,7 @@ export default function QRGenerator(){
 
   return (
     <div className="grid md:grid-cols-2 gap-6">
-      <div className="space-y-4">
+      <div className="space-y-5">
         <textarea value={text} onChange={e=>setText(e.target.value)} className="w-full h-28 border p-3 text-sm" placeholder="Enter URL or text"/>
         <div className="flex gap-3">
           <label className="text-xs">FG <input type="color" value={fg} onChange={e=>setFg(e.target.value)}/></label>

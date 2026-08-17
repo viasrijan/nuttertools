@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const ANSWERS = ['Yes', 'No', 'Maybe']
 
 export default function YesNo() {
@@ -19,7 +21,7 @@ export default function YesNo() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <button onClick={ask} disabled={flipping}
         className={`w-full h-40 border border-dashed border-zinc-300 dark:border-zinc-700 text-lg font-semibold transition ${flipping ? 'animate-pulse' : 'hover:border-green-500'}`}>
         {flipping ? 'Deciding…' : 'Ask the oracle'}

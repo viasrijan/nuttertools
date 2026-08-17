@@ -30,7 +30,7 @@ export default function ContrastChecker() {
   }
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       <div className="grid grid-cols-2 gap-3">
         <label className="text-sm font-semibold">Foreground
           <div className="flex items-center gap-2 mt-1"><input type="color" value={fg} onChange={e => setFg(e.target.value)} className="w-12 h-10 border" /><input value={fg} onChange={e => setFg(e.target.value)} className="border px-3 h-10 flex-1 font-mono text-sm" /></div>

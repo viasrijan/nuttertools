@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 import { translateText } from '../../lib/ai'
 
 const LANGS: [string, string][] = [
@@ -28,7 +31,7 @@ export default function Translator() {
   const swap = () => { setFrom(to); setTo(from) }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <textarea value={text} onChange={e => setText(e.target.value)} className="w-full border p-3 h-32 text-sm" placeholder="Text to translate…" />
       <div className="flex items-center gap-2">
         <select value={from} onChange={e => setFrom(e.target.value)} className="border px-2 h-9 text-sm bg-transparent flex-1">
@@ -39,12 +42,12 @@ export default function Translator() {
           {LANGS.filter(l => l[0] !== 'auto').map(l => <option key={l[0]} value={l[0]}>{l[1]}</option>)}
         </select>
       </div>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Translating…' : 'Translate'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Translate</Button>
       {error && <p className="text-xs text-red-500">{error}</p>}
       {result && (
-        <div className="space-y-2">
+        <div className="space-y-3">
           <p className="text-sm border p-3">{result}</p>
-          <button onClick={() => navigator.clipboard.writeText(result)} className="px-4 h-9 border text-sm">Copy</button>
+          <CopyButton value={result} />
         </div>
       )}
       <p className="text-[11px] font-medium text-zinc-500">Powered by Google's free translation endpoint.</p>

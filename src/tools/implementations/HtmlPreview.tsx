@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const SAMPLE = `<h1 style="color:rebeccapurple">Hello, World!</h1>
 <p>Edit this HTML and see the preview update live.</p>
 <style>
@@ -12,9 +14,9 @@ export default function HtmlPreview() {
   const [auto, setAuto] = useState(true)
   const [srcDoc, setSrcDoc] = useState(SAMPLE)
   return (
-    <div className="space-y-3">
-      <div className="flex gap-2">
-        <button onClick={() => setSrcDoc(html)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Preview</button>
+    <div className="space-y-5">
+      <div className="flex gap-2.5">
+        <Button variant="secondary" size="sm" onClick={() => setSrcDoc(html)}>Preview</Button>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={auto} onChange={e => { setAuto(e.target.checked); if (e.target.checked) setSrcDoc(html) }} />Auto-refresh</label>
       </div>
       <div className="grid md:grid-cols-2 gap-3">

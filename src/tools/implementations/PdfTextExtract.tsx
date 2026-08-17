@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import * as pdfjs from 'pdfjs-dist'
@@ -30,20 +32,20 @@ export default function PdfTextExtract() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <DropZone onFiles={extract} accept="application/pdf" multiple={false} label="Drop a PDF to extract its text" />
       {loading && <Progress label="Extracting text…" />}
       {error && <p className="text-xs text-red-500">{error}</p>}
       {pages.length > 0 && (
         <>
-          <div className="flex gap-2">
-            <button onClick={() => navigator.clipboard.writeText(all)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy all</button>
+          <div className="flex gap-2.5">
+            <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(all)}>Copy all</Button>
             <a href={`data:text/plain;charset=utf-8,${encodeURIComponent(all)}`} download="extracted.txt" className="px-4 h-9 border text-sm inline-flex items-center">Download .txt</a>
           </div>
           <p className="text-sm font-medium text-zinc-500">{pages.length} pages · {all.split(/\s+/).filter(Boolean).length} words</p>
           <div className="space-y-3 max-h-[420px] overflow-auto pr-1">
             {pages.map(p => (
-              <div key={p.page} className="border p-3">
+              <div key={p.page} className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]">
                 <p className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 mb-1">Page {p.page}</p>
                 <p className="text-sm whitespace-pre-wrap">{p.text || '(no text found on this page)'}</p>
               </div>

@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import CopyButton from '../../components/ui/CopyButton'
+
 type BarcodeValue = { format: string, rawValue: string }
 
 export default function QrScanner() {
@@ -78,7 +81,7 @@ export default function QrScanner() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       {!supported && (
         <p className="text-sm font-medium text-red-600 dark:text-red-400">Your browser doesn't support QR scanning (needs Chrome or Edge).</p>
       )}
@@ -96,12 +99,12 @@ export default function QrScanner() {
         </div>
       )}
       {mode === 'camera' && (
-        <div className="space-y-3">
+        <div className="space-y-5">
           <div className="relative border overflow-hidden bg-black">
             <video ref={videoRef} className="w-full h-64 object-cover" muted playsInline />
             <div className="absolute inset-0 pointer-events-none border-[3px] border-green-500/70 m-auto w-48 h-48" />
           </div>
-          <button onClick={stopCamera} className="px-5 h-10 text-sm font-semibold ring-1 ring-zinc-200 dark:ring-zinc-800">Stop camera</button>
+          <Button variant="secondary" onClick={stopCamera}>Stop camera</Button>
         </div>
       )}
       {error && <p className="text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
@@ -113,8 +116,7 @@ export default function QrScanner() {
                 <div className="text-[11px] font-bold uppercase text-zinc-400">{r.format}</div>
                 <div className="text-sm font-mono font-semibold break-all text-zinc-900 dark:text-white">{r.rawValue}</div>
               </div>
-              <button onClick={() => navigator.clipboard.writeText(r.rawValue)}
-                className="text-xs font-bold text-green-600 dark:text-green-400 shrink-0">Copy</button>
+              <CopyButton value={r.rawValue} />
             </div>
           ))}
         </div>

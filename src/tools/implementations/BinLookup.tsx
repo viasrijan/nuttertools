@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const KNOWN: Record<string, string> = {
   '400000': 'Visa (test card) — US',
   '401288': 'Visa (test) — US',
@@ -44,10 +46,10 @@ export default function BinLookup() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <div className="flex gap-2">
+    <div className="space-y-5 max-w-xl omni-rise">
+      <div className="flex gap-2.5">
         <input value={bin} onChange={e => setBin(e.target.value.replace(/\D/g, '').slice(0, 8))} placeholder="First 6–8 digits (BIN/IIN)" className="flex-1 border px-3 py-2 text-sm font-mono" />
-        <button onClick={lookup} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Lookup</button>
+        <Button variant="secondary" onClick={lookup}>Lookup</Button>
       </div>
       {state === 'loading' && <p className="text-xs text-zinc-500">Looking up…</p>}
       {state === 'fail' && <p className="text-sm text-red-600">Enter exactly 6 digits.</p>}

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 type Unit = { name: string, factor: number }
 
 const GROUPS: Record<string, { base: string, units: Unit[] }> = {
@@ -54,10 +56,10 @@ export default function UnitConverter() {
   const result = isNaN(v) ? 0 : convert(v, g.units[fromIdx].factor, g.units[toIdx].factor, group)
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-5 max-w-xl omni-rise">
+      <div className="flex flex-wrap gap-2.5">
         {Object.keys(GROUPS).map(k => (
-          <button key={k} onClick={() => setGroup(k)} className={`px-3 h-9 text-sm border ${group === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</button>
+          <Button variant="outline" key={k} onClick={() => setGroup(k)} className={`px-3 h-9 text-sm border ${group === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</Button>
         ))}
       </div>
       <div className="grid grid-cols-2 gap-3 items-end">

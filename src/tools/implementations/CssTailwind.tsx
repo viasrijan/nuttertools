@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const HEX = { r: 255, g: 0, b: 0 }
 
 function rgbToTailwind(css: string): string | null {
@@ -57,8 +59,8 @@ function convertCss(css: string): string {
     else if (prop === 'padding-right' && v.endsWith('px')) classes.push(`pr-${Math.round(parseFloat(v) / 4)}`)
     else if (prop === 'color') { const c = rgbToTailwind(v); if (c) classes.push(c) }
     else if (prop === 'background-color') { const c = rgbToTailwind(v); if (c) classes.push(c.replace('text-', 'bg-')) }
-    else if (prop === 'border-radius' && v === '50%') classes.push('rounded-full')
-    else if (prop === 'border-radius' && v.endsWith('px')) classes.push(`rounded-[${v}]`)
+    else if (prop === 'border-radius' && v === '50%') classes.push('')
+    else if (prop === 'border-radius' && v.endsWith('px')) classes.push(`[${v}]`)
     else if (prop === 'font-weight' && v === 'bold') classes.push('font-bold')
     else if (prop === 'font-size' && v.endsWith('px')) {
       const s = parseFloat(v)
@@ -83,7 +85,7 @@ function convertCss(css: string): string {
 export default function CssTailwind() {
   const [css, setCss] = useState('color: #4F46E5;\nfont-size: 16px;\nfont-weight: bold;\nborder-radius: 8px;')
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <p className="text-xs font-medium text-zinc-500">Convert common CSS declarations to Tailwind utility classes. Unknown values are emitted as arbitrary properties.</p>
       <div className="grid md:grid-cols-2 gap-3">
         <div>
@@ -93,10 +95,10 @@ export default function CssTailwind() {
         <div>
           <p className="text-sm font-semibold mb-1">Tailwind classes</p>
           <div className="w-full h-64 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800 overflow-auto whitespace-pre-wrap">{convertCss(css)}</div>
-          <button onClick={() => navigator.clipboard.writeText(convertCss(css))} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm mt-2">Copy classes</button>
+          <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(convertCss(css))} className="mt-2">Copy classes</Button>
         </div>
       </div>
-      <div className="border p-4">
+      <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-5 transition-all duration-200 hover:shadow-[0_8px_24px_-12px_rgba(0,0,0,0.12)]">
         <p className="text-xs font-bold uppercase tracking-wider text-zinc-500 mb-1">Preview</p>
         <div className={convertCss(css) + ' bg-zinc-50 dark:bg-zinc-800 p-4 border'}>Styled with generated classes</div>
       </div>

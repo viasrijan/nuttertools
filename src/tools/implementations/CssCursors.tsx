@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const CURSORS: [string, string][] = [
   ['default', 'Default arrow'], ['pointer', 'Clickable'], ['text', 'Text select'],
   ['move', 'Movable'], ['grab', 'Grabbable'], ['grabbing', 'Grabbing'],
@@ -25,13 +27,13 @@ export default function CssCursors() {
   }
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
         {CURSORS.map(([cursor, label]) => (
           <button key={cursor} onClick={() => copy(cursor)}
             className="border p-4 text-center hover:border-green-500 transition group">
             <div className="h-12 grid place-items-center">
-              <span className="w-6 h-6 rounded-full border-2 border-zinc-900 dark:border-white inline-block"
+              <span className="w-6 h-6  border-2 border-zinc-900 dark:border-white inline-block"
                 style={{ cursor }} />
             </div>
             <div className="text-sm font-bold font-mono">{cursor}</div>

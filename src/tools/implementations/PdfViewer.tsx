@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import * as pdfjs from 'pdfjs-dist'
@@ -76,13 +78,13 @@ export default function PdfViewer() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <DropZone onFiles={load} accept="application/pdf" multiple={false} label="Drop a PDF to view and annotate" />
       {busy && <Progress label="Rendering…" />}
       {error && <p className="text-xs text-red-500">{error}</p>}
       <div id="pdfviewer-layers" className="space-y-3 max-h-[70vh] overflow-auto border p-3" />
       {layersRef.current.length > 0 && (
-        <button onClick={download} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download annotated PDF</button>
+        <Button variant="secondary" onClick={download}>Download annotated PDF</Button>
       )}
       <p className="text-[11px] font-medium text-zinc-500">Drag on the pages to highlight. Drawing is baked into the downloaded PDF.</p>
     </div>

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function RandomNumber() {
   const [min, setMin] = useState(1)
   const [max, setMax] = useState(100)
@@ -37,8 +39,8 @@ export default function RandomNumber() {
           <label className="text-sm">Count<input type="number" value={count} onChange={e => setCount(parseInt(e.target.value) || 1)} className="w-full border px-2 h-9 mt-1" /></label>
         </div>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={unique} onChange={e => setUnique(e.target.checked)} />No repeats</label>
-        <button onClick={gen} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Generate</button>
-        <div className="flex flex-wrap gap-2">
+        <Button variant="secondary" onClick={gen}>Generate</Button>
+        <div className="flex flex-wrap gap-2.5">
           {list.map((n, i) => <span key={i} className="px-3 py-1.5 border font-mono text-sm font-bold">{n}</span>)}
         </div>
       </div>
@@ -46,12 +48,12 @@ export default function RandomNumber() {
         <div className="border p-4 text-center">
           <p className="text-xs font-bold uppercase tracking-wider text-zinc-500 mb-2">Dice</p>
           <div className={`text-4xl font-bold h-12 ${die !== null ? '' : 'text-zinc-300'}`}>{die ?? '?'}</div>
-          <button onClick={roll} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm mt-3">Roll</button>
+          <Button variant="secondary" onClick={roll} className="mt-3">Roll</Button>
         </div>
         <div className="border p-4 text-center">
           <p className="text-xs font-bold uppercase tracking-wider text-zinc-500 mb-2">Coin flip</p>
           <div className={`text-2xl font-bold h-12 ${coin !== null ? '' : 'text-zinc-300'}`}>{coin ?? '…'}</div>
-          <button onClick={flip} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm mt-3">Flip</button>
+          <Button variant="secondary" onClick={flip} className="mt-3">Flip</Button>
         </div>
       </div>
     </div>

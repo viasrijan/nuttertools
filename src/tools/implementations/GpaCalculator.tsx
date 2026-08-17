@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const GRADES: Record<string, number> = {
   'A+': 4.0, 'A': 4.0, 'A-': 3.7, 'B+': 3.3, 'B': 3.0, 'B-': 2.7,
   'C+': 2.3, 'C': 2.0, 'C-': 1.7, 'D+': 1.3, 'D': 1.0, 'F': 0.0,
@@ -32,11 +34,11 @@ export default function GpaCalculator() {
   const letter = (g: number) => g >= 4 ? 'A' : g >= 3.7 ? 'A-' : g >= 3.3 ? 'B+' : g >= 3 ? 'B' : g >= 2.7 ? 'B-' : g >= 2.3 ? 'C+' : g >= 2 ? 'C' : g >= 1.7 ? 'C-' : g >= 1 ? 'D' : 'F'
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="flex items-center gap-2 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white">Scale</label>
         {[4, 5].map(s => (
-          <button key={s} onClick={() => setScale(s)} className={`px-4 h-9 border ${scale === s ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{s}-point</button>
+          <Button variant="outline" key={s} onClick={() => setScale(s)} className={`px-4 h-9 border ${scale === s ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{s}-point</Button>
         ))}
       </div>
       <div className="border overflow-x-auto">
@@ -60,14 +62,14 @@ export default function GpaCalculator() {
           </tbody>
         </table>
       </div>
-      <div className="flex gap-2">
-        <button onClick={() => setRows(prev => [...prev, { id: Date.now(), course: '', credits: 3, grade: 'A' }])} className="px-4 h-9 border text-sm">+ Add course</button>
+      <div className="flex gap-2.5">
+        <Button variant="outline" size="sm" onClick={() => setRows(prev => [...prev, { id: Date.now(), course: '', credits: 3, grade: 'A' }])}>+ Add course</Button>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-center">
-        <div className="border p-3"><div className="text-xl font-bold">{gpa.raw.toFixed(2)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">GPA</div></div>
-        <div className="border p-3"><div className="text-xl font-bold">{letter(gpa.raw)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Letter</div></div>
-        <div className="border p-3"><div className="text-xl font-bold">{gpa.credits}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Credits</div></div>
-        <div className="border p-3"><div className="text-xl font-bold">{gpa.points.toFixed(1)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Grade points</div></div>
+        <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]"><div className="text-xl font-bold">{gpa.raw.toFixed(2)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">GPA</div></div>
+        <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]"><div className="text-xl font-bold">{letter(gpa.raw)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Letter</div></div>
+        <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]"><div className="text-xl font-bold">{gpa.credits}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Credits</div></div>
+        <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 transition-all duration-200 hover:shadow-[0_4px_16px_-8px_rgba(0,0,0,0.1)]"><div className="text-xl font-bold">{gpa.points.toFixed(1)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Grade points</div></div>
       </div>
     </div>
   )

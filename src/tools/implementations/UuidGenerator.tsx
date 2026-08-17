@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function uuid() { return crypto.randomUUID() }
 
 const FIRST = ['Adam', 'Bella', 'Carlos', 'Diana', 'Ethan', 'Fatima', 'George', 'Hana', 'Ivan', 'Julia', 'Kiran', 'Lena', 'Marco', 'Nina', 'Omar', 'Priya', 'Quinn', 'Rosa', 'Sam', 'Tara', 'Uma', 'Victor', 'Wendy', 'Xavier', 'Yara', 'Zane']
@@ -45,14 +47,14 @@ export default function UuidGenerator() {
   }
 
   return (
-    <div className="space-y-4 max-w-2xl">
+    <div className="space-y-5 max-w-2xl omni-rise">
       <div className="flex flex-wrap items-center gap-3">
         <label className="text-sm">Count <input type="number" min={1} max={100} value={count} onChange={e => setCount(parseInt(e.target.value) || 1)} className="border px-2 h-9 w-20 text-sm" /></label>
         <select value={version} onChange={e => setVersion(e.target.value as any)} className="border px-2 h-9 text-sm bg-transparent"><option value="v4">UUID v4 (random)</option><option value="v1">UUID v1 (time)</option></select>
         <label className="flex items-center gap-1.5 text-sm"><input type="checkbox" checked={upper} onChange={e => setUpper(e.target.checked)} />Uppercase</label>
         <label className="flex items-center gap-1.5 text-sm"><input type="checkbox" checked={noHyphen} onChange={e => setNoHyphen(e.target.checked)} />No hyphens</label>
-        <button onClick={gen} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Generate</button>
-        {ids.length > 0 && <button onClick={() => navigator.clipboard.writeText(ids.join('\n'))} className="px-4 h-9 border text-sm">Copy</button>}
+        <Button variant="secondary" size="sm" onClick={gen}>Generate</Button>
+        {ids.length > 0 && <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(ids.join('\n'))}>Copy</Button>}
       </div>
       <div className="border divide-y divide-zinc-100 dark:divide-zinc-800 max-h-64 overflow-auto">
         {ids.map((u, i) => <div key={i} className="px-3 py-2 font-mono text-xs">{u}</div>)}
@@ -65,7 +67,7 @@ export default function UuidGenerator() {
           <div className="border px-3 py-2"><span className="text-[10px] font-bold uppercase text-zinc-500 block">Phone</span>{fakeData.phone()}</div>
           <div className="border px-3 py-2"><span className="text-[10px] font-bold uppercase text-zinc-500 block">City</span>{fakeData.city()}</div>
         </div>
-        <button onClick={() => setCount(count)} className="mt-2 px-3 h-8 border text-sm">Shuffle</button>
+        <Button variant="outline" onClick={() => setCount(count)} className="mt-2 px-3 h-8 border text-sm">Shuffle</Button>
       </div>
     </div>
   )

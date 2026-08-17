@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import CopyButton from '../../components/ui/CopyButton'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 
@@ -58,14 +60,14 @@ export default function AudioTranscriber() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={transcribe} accept="audio/*" multiple={false} label="Drop an audio file to transcribe" />
       {busy && <Progress label={status} />}
       {error && <p className="text-xs text-red-500">{error}</p>}
       {result && (
-        <div className="space-y-3">
+        <div className="space-y-5">
           <p className="text-sm whitespace-pre-wrap border p-3">{result}</p>
-          <button onClick={() => navigator.clipboard.writeText(result)} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy</button>
+          <CopyButton value={result} />
         </div>
       )}
       <p className="text-[11px] font-medium text-zinc-500">Runs Whisper (tiny) fully in your browser — audio never leaves your device. Needs internet on first run to download the model.</p>

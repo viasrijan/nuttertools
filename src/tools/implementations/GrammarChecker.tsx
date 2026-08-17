@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const RULES: { id: string, label: string, test: RegExp, fix: (...m: string[]) => string }[] = [
   { id: 'i', label: 'Standalone "i" should be "I"', test: /\bi\b/g, fix: () => 'I' },
   { id: 'double-space', label: 'Double spaces', test: / {2,}/g, fix: () => ' ' },
@@ -40,11 +42,11 @@ export default function GrammarChecker() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <textarea value={text} onChange={e => { setText(e.target.value); setFixed('') }} placeholder="Paste text to check grammar…" className="w-full h-[200px] border p-3 text-sm" />
       <div className="flex flex-wrap gap-2 items-center">
-        <button onClick={fixAll} disabled={!issues.length} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Fix all ({issues.reduce((a, b) => a + b.count, 0)})</button>
-        {fixed && <button onClick={() => navigator.clipboard.writeText(fixed)} className="px-4 h-9 border text-sm">Copy fixed</button>}
+        <Button variant="secondary" onClick={fixAll} disabled={!issues.length}>Fix all ({issues.reduce((a, b) => a + b.count, 0)})</Button>
+        {fixed && <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(fixed)}>Copy fixed</Button>}
       </div>
       {issues.length === 0 && text.trim() && <p className="text-sm text-green-600">No common issues detected ✓ (this checker covers 15 common error patterns — not a full grammar engine).</p>}
       {issues.length > 0 && (

@@ -29,7 +29,7 @@ export default function DiffChecker() {
   const [b, setB] = useState('Hello world\nThis is line two edited\nSame line\nExtra line')
   const ops = useMemo(() => diff(a.split('\n'), b.split('\n')), [a, b])
   return (
-    <div className="space-y-3">
+    <div className="space-y-5">
       <div className="grid md:grid-cols-2 gap-3">
         <textarea value={a} onChange={e => setA(e.target.value)} className="w-full h-40 border p-3 text-xs font-mono" placeholder="Original" />
         <textarea value={b} onChange={e => setB(e.target.value)} className="w-full h-40 border p-3 text-xs font-mono" placeholder="Changed" />

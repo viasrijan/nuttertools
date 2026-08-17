@@ -1,5 +1,8 @@
 import { useMemo, useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+import StatTile from '../../components/ui/StatTile'
+
 export default function LlmTokenCounter() {
   const [text, setText] = useState('')
   const [model, setModel] = useState('gpt-4o')
@@ -25,12 +28,12 @@ export default function LlmTokenCounter() {
   }, [text, model, priceIn, priceOut])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-        <div className="border p-3 text-center"><div className="text-xl font-bold">{stats.tokens.toLocaleString()}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Tokens (est.)</div></div>
-        <div className="border p-3 text-center"><div className="text-xl font-bold">{stats.words.toLocaleString()}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Words</div></div>
-        <div className="border p-3 text-center"><div className="text-xl font-bold">{stats.chars.toLocaleString()}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Characters</div></div>
-        <div className="border p-3 text-center"><div className="text-xl font-bold">${(stats.inCost + stats.outCost).toFixed(4)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Est. cost</div></div>
+        <StatTile label="" value={stats.tokens.toLocaleString()} />
+        <StatTile label="" value={stats.words.toLocaleString()} />
+        <StatTile label="" value={stats.chars.toLocaleString()} />
+        <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 text-center transition-all duration-200"><div className="text-xl font-bold">${(stats.inCost + stats.outCost).toFixed(4)}</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Est. cost</div></div>
       </div>
       <div className="flex flex-wrap items-center gap-2 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white">Model</label>
@@ -43,9 +46,9 @@ export default function LlmTokenCounter() {
         <input value={priceOut} onChange={e => setPriceOut(e.target.value)} className="border px-2 py-2 w-20" />
       </div>
       <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Paste text to count tokens…" className="w-full h-[240px] border p-3 text-sm" />
-      <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(String(stats.tokens))} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy count</button>
-        <button onClick={() => setText('')} className="px-5 h-10 border text-sm">Clear</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" onClick={() => navigator.clipboard.writeText(String(stats.tokens))}>Copy count</Button>
+        <Button variant="outline" onClick={() => setText('')}>Clear</Button>
       </div>
       <p className="text-xs text-zinc-500">Estimate uses ~{MODELS[model].perToken} chars per token. Actual count varies by tokenizer.</p>
     </div>

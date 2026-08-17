@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function DiscountCalculator() {
   const [mode, setMode] = useState<'percent' | 'flat' | 'reverse'>('percent')
   const [price, setPrice] = useState('')
@@ -35,16 +37,15 @@ export default function DiscountCalculator() {
   const r = calc()
 
   return (
-    <div className="space-y-4 max-w-xl">
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-5 max-w-xl omni-rise">
+      <div className="flex flex-wrap gap-2.5">
         {([['percent', '% off'], ['flat', 'Flat amount'], ['reverse', 'Find discount %']] as const).map(([m, label]) => (
-          <button key={m} onClick={() => setMode(m)}
-            className={`px-4 h-10 text-sm font-semibold ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : 'ring-1 ring-zinc-200 dark:ring-zinc-800'}`}>
+          <Button variant="outline" key={m} onClick={() => setMode(m)} className={`px-4 h-10 text-sm font-semibold ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : 'ring-1 ring-zinc-200 dark:ring-zinc-800'}`}>
             {label}
-          </button>
+          </Button>
         ))}
       </div>
-      <div className="space-y-3">
+      <div className="space-y-5">
         <div className="flex flex-wrap items-center gap-3">
           <label className="w-40 text-sm font-semibold text-zinc-900 dark:text-white">Original price</label>
           <input value={price} onChange={(e) => setPrice(e.target.value)} type="number" placeholder="0"

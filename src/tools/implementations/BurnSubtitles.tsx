@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { getFFmpeg } from '../../lib/ffmpeg'
@@ -60,7 +62,7 @@ export default function BurnSubtitles() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setVideo(fl[0])} accept="video/*" multiple={false} label="Drop a video (.mp4)" />
       <DropZone onFiles={fl => { setSrtFile(fl[0]); setSrtText('') }} accept=".srt,.vtt,text/plain" multiple={false} label="Drop a .srt subtitle file (or paste below)" />
       <textarea value={srtText} onChange={e => { setSrtText(e.target.value); setSrtFile(null) }} placeholder="…or paste SRT content here" className="w-full h-[120px] border p-3 text-sm font-mono" />
@@ -68,7 +70,7 @@ export default function BurnSubtitles() {
         <label className="font-semibold text-zinc-900 dark:text-white">Font size</label>
         <input type="number" value={size} onChange={e => setSize(+e.target.value)} className="border px-2 py-2 w-20" />
       </div>
-      <button onClick={run} disabled={busy || !video} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Burning…' : 'Burn subtitles & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy || !video} isLoading={busy || !video}>Burn subtitles & download</Button>
       {busy && <Progress label="Burning subtitles into video…" />}
       {status && <p className="text-sm text-zinc-600">{status}</p>}
       <p className="text-[11px] text-zinc-500">Subtitles are hard-baked into the video (no soft track). Videos and subtitles never leave your device.</p>

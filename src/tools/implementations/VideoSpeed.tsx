@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { ffmpegRun } from '../../lib/ffmpeg'
@@ -29,13 +31,13 @@ export default function VideoSpeed() {
   }
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="video/*" multiple={false} label="Drop a video to change its speed" />
       <div className="flex items-center gap-3">
         <input type="range" min={0.25} max={4} step={0.25} value={speed} onChange={e => setSpeed(parseFloat(e.target.value))} className="flex-1" />
         <span className="text-sm font-semibold w-16 text-center">{speed}×</span>
       </div>
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">{busy ? 'Processing…' : 'Change speed & download'}</button>
+      <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Change speed & download</Button>
       {busy && <Progress label="Changing video speed…" />}
     </div>
   )

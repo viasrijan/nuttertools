@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 const EXPLAIN: Record<string, string> = {
   '0': 'Sunday (0) or month names',
   '1': 'January (1) or Monday (1)',
@@ -36,7 +38,7 @@ export default function CronGenerator() {
   }
 
   return (
-    <div className="space-y-5 max-w-3xl">
+    <div className="space-y-5 max-w-3xl omni-rise">
       <div>
         <p className="text-sm font-semibold mb-2">Fields (minute hour day-of-month month day-of-week)</p>
         <div className="grid grid-cols-5 gap-2">
@@ -47,20 +49,20 @@ export default function CronGenerator() {
             </label>
           ))}
         </div>
-        <div className="flex flex-wrap gap-1.5 mt-3">
+        <div className="flex flex-wrap gap-2 mt-3">
           {['*', '0', '5', '10', '15', '30', '*/5', '*/15', '?', '1-5', '1,15'].map(v => (
             <button key={v} onClick={() => setFields({ ...fields, dow: v === '?' || /^\d$|^\d-\d|,/.test(v) && /^\d$|^\d-\d|,/.test(v) ? v : fields.dow })} className="px-2 h-7 border text-xs font-mono">{v}</button>
           ))}
         </div>
       </div>
-      <div className="border p-4 bg-zinc-50 dark:bg-zinc-800">
+      <div className=" border border-zinc-200 dark:border-zinc-700 bg-zinc-50/80 dark:bg-zinc-800/80 p-5 transition-all duration-200 hover:shadow-[0_8px_24px_-12px_rgba(0,0,0,0.12)]">
         <code className="font-mono text-lg">{cron()}</code>
         <p className="text-sm mt-2 text-zinc-600 dark:text-zinc-300">{describe()}</p>
       </div>
       <div>
         <label className="text-sm font-semibold">Decode a cron expression</label>
-        <input value={input} onChange={e => setInput(e.target.value)} className="w-full border px-3 h-10 font-mono text-sm mt-1" placeholder="*/5 * * * *" />
-        <button onClick={() => { const p = input.split(/\s+/); if (p.length === 5) setFields({ min: p[0], hour: p[1], dom: p[2], mon: p[3], dow: p[4] }) }} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm mt-2">Decode</button>
+        <input value={input} onChange={e => setInput(e.target.value)} className="w-full mt-1  border border-zinc-200 dark:border-zinc-700 px-3 h-10 font-mono text-sm transition-all duration-200" placeholder="*/5 * * * *" />
+        <Button variant="secondary" size="sm" onClick={() => { const p = input.split(/\s+/); if (p.length === 5) setFields({ min: p[0], hour: p[1], dom: p[2], mon: p[3], dow: p[4] }) }} className="mt-2">Decode</Button>
       </div>
     </div>
   )

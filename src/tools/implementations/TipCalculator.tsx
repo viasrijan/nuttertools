@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 export default function TipCalculator() {
   const [bill, setBill] = useState('100')
   const [tipPct, setTipPct] = useState(15)
@@ -13,14 +15,14 @@ export default function TipCalculator() {
   const perPerson = people > 0 ? total / people : total
 
   return (
-    <div className="space-y-4 max-w-md">
+    <div className="space-y-5 max-w-md omni-rise">
       <label className="block text-sm font-semibold">Bill amount <input type="number" value={bill} onChange={e => setBill(e.target.value)} className="w-full border px-3 h-10 mt-1 text-lg" /></label>
       <div>
         <p className="text-sm font-semibold">Tip: {tipPct}%</p>
         <input type="range" min={0} max={40} value={tipPct} onChange={e => setTipPct(parseInt(e.target.value))} className="w-full mt-2" />
         <div className="flex flex-wrap gap-1.5 mt-2">
           {[10, 15, 18, 20, 25].map(t => (
-            <button key={t} onClick={() => setTipPct(t)} className={`px-3 h-8 border text-sm ${tipPct === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t}%</button>
+            <Button variant="outline" key={t} onClick={() => setTipPct(t)} className={`px-3 h-8 border text-sm ${tipPct === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t}%</Button>
           ))}
         </div>
       </div>

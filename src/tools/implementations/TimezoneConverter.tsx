@@ -48,7 +48,7 @@ export default function TimezoneConverter() {
   }, [from, to, dateStr])
 
   return (
-    <div className="space-y-4 max-w-xl">
+    <div className="space-y-5 max-w-xl omni-rise">
       <div className="grid md:grid-cols-2 gap-2">
         <div>
           <label className="text-[11px] font-semibold text-zinc-900 dark:text-white uppercase">From</label>

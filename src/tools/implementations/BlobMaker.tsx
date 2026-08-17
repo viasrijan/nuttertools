@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function blobPath(points: number, jitter: number, seed = 1) {
   const rnd = mulberry(seed)
   const angle = (i: number) => (i / points) * Math.PI * 2
@@ -48,10 +50,10 @@ export default function BlobMaker() {
     : waveSvg(kind, color)
 
   return (
-    <div className="space-y-4 max-w-3xl">
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-5 max-w-3xl omni-rise">
+      <div className="flex flex-wrap gap-2.5">
         {(['blob', 'wave', 'sine'] as const).map(k => (
-          <button key={k} onClick={() => setKind(k)} className={`px-4 h-9 text-sm border ${kind === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</button>
+          <Button variant="outline" key={k} onClick={() => setKind(k)} className={`px-4 h-9 text-sm border ${kind === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</Button>
         ))}
       </div>
       {kind === 'blob' ? (
@@ -66,9 +68,9 @@ export default function BlobMaker() {
       <div className="border p-4 bg-white">
         <div className="max-w-md mx-auto" dangerouslySetInnerHTML={{ __html: svg }} />
       </div>
-      <div className="flex gap-2">
-        <button onClick={() => setSeed(Math.floor(Math.random() * 10000))} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Shuffle</button>
-        <button onClick={() => navigator.clipboard.writeText(svg)} className="px-4 h-9 border text-sm">Copy SVG</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" size="sm" onClick={() => setSeed(Math.floor(Math.random() * 10000))}>Shuffle</Button>
+        <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(svg)}>Copy SVG</Button>
         <a href={`data:image/svg+xml;utf8,${encodeURIComponent(svg)}`} download={`${kind}.svg`} className="px-4 h-9 border text-sm inline-flex items-center">Download SVG</a>
       </div>
     </div>

@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react'
+import { Button } from '../../components/ui/Button'
+
 import { marked } from 'marked'
 
 marked.setOptions({ gfm: true, breaks: true })
@@ -11,7 +13,7 @@ export default function MarkdownHtml() {
   }, [md])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="grid md:grid-cols-2 gap-2">
         <div>
           <label className="text-xs font-semibold text-zinc-900 dark:text-white uppercase">Markdown</label>
@@ -22,8 +24,8 @@ export default function MarkdownHtml() {
           <pre className="border p-3 text-xs font-mono mt-1 h-[320px] overflow-auto whitespace-pre-wrap break-all">{html}</pre>
         </div>
       </div>
-      <div className="flex gap-2">
-        <button onClick={() => navigator.clipboard.writeText(html)} className="px-5 h-10 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Copy HTML</button>
+      <div className="flex gap-2.5">
+        <Button variant="secondary" onClick={() => navigator.clipboard.writeText(html)}>Copy HTML</Button>
       </div>
     </div>
   )

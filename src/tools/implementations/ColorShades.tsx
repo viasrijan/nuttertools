@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Button } from '../../components/ui/Button'
+
 function hexToRgb(hex: string) { const n = parseInt(hex.slice(1), 16); return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 } }
 function rgbToHex({ r, g, b }: { r: number, g: number, b: number }) { return '#' + [r, g, b].map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join('') }
 
@@ -25,7 +27,7 @@ export default function ColorShades() {
   const row = (label: string, colors: string[]) => (
     <div>
       <p className="text-xs font-bold uppercase tracking-wider text-zinc-500 mb-1.5">{label}</p>
-      <div className="flex overflow-hidden rounded-lg border">
+      <div className="flex overflow-hidden  border">
         {colors.map((c, i) => (
           <div key={i} className="flex-1 h-14 relative group" style={{ background: c }}>
             <button onClick={() => navigator.clipboard.writeText(c)} className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 text-[10px] font-mono text-white grid place-items-center">{c}</button>
