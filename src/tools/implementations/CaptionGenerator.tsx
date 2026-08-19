@@ -5,6 +5,7 @@ import { Button } from '../../components/ui/Button'
 import CopyButton from '../../components/ui/CopyButton'
 import { Field } from '../../components/ui/Field'
 import { Select } from '../../components/ui/Select'
+import { ocrText, stem } from '../../lib/ocr'
 
 const VIBES: Record<string, { label: string; grad: string; bar: string; emojis: string[] }> = {
   chill: { label: 'Chill', grad: 'from-sky-500 to-sky-600', bar: 'bg-sky-500', emojis: ['🌊', '🌅', '☕', '😌', '🍃'] },
@@ -23,38 +24,10 @@ const STOP = new Set([
   'the', 'and', 'for', 'are', 'was', 'were', 'but', 'not', 'just', 'very', 'can', 'will', 'when', 'what', 'them',
 ])
 
-const fileToBase64 = (file: File): Promise<string> =>
-  new Promise((resolve, reject) => {
-    const r = new FileReader()
-    r.onload = () => resolve(String(r.result).split(',')[1])
-    r.onerror = reject
-    r.readAsDataURL(file)
-  })
-
-const ocrText = async (file: File): Promise<string | null> => {
-  try {
-    const image = await fileToBase64(file)
-    const res = await fetch('/api/proxy?service=ocrspace', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ image, mime: file.type }),
-    })
-    if (!res.ok) return null
-    const data = await res.json()
-    const text = (data?.ParsedResults?.map((r: { ParsedText?: string }) => r.ParsedText || '').join(' ') || '').trim()
-    return text || null
-  } catch {
-    return null
-  }
-}
-
 const keywordsFrom = (text: string): string => {
   const words = text.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter((w) => w.length > 3 && !STOP.has(w))
   return [...new Set(words)].slice(0, 3).join(', ')
 }
-
-const stem = (name: string): string =>
-  name.replace(/\.[a-z0-9]+$/i, '').replace(/[-_]+/g, ' ').trim().slice(0, 24) || 'this photo'
 
 function captionFor(subject: string, vibe: string, emoji: string, topic: string): string {
   const s = subject || topic || 'this photo'

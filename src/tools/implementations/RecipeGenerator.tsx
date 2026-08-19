@@ -22,7 +22,7 @@ export default function RecipeGenerator() {
 
   return (
     <div className="space-y-5 max-w-xl omni-rise">
-      <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} className="w-full h-24 w-full  border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/80 p-3 text-sm transition-all duration-200" placeholder="Ingredients, e.g. chicken, garlic, tomatoes, rice" />
+      <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} className="w-full h-24 border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/80 p-3 text-sm transition-all duration-200" placeholder="Ingredients, e.g. chicken, garlic, tomatoes, rice" />
       <input value={diet} onChange={e => setDiet(e.target.value)} className="w-full border px-3 h-10 text-sm" placeholder="Optional: dietary constraint (vegan, gluten-free…)" />
       <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Generate recipe</Button>
       {error && <p className="text-xs text-red-500">{error}</p>}

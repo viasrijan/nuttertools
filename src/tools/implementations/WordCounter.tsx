@@ -10,10 +10,10 @@ export default function WordCounter(){
   return (
     <div className="space-y-5">
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-        <StatTile label="" value={stats.words} />
-        <StatTile label="" value={stats.chars} />
-        <StatTile label="" value={stats.charsNoSpace} />
-        <StatTile label="" value={stats.lines} />
+        <StatTile label="Words" value={stats.words} />
+        <StatTile label="Characters" value={stats.chars} />
+        <StatTile label="No spaces" value={stats.charsNoSpace} />
+        <StatTile label="Lines" value={stats.lines} />
         <div className=" border border-zinc-200/80 dark:border-zinc-700/80 bg-white/50 dark:bg-zinc-900/50 p-4 text-center transition-all duration-200"><div className="text-xl font-bold">{stats.reading}m</div><div className="text-[11px] font-semibold text-zinc-900 dark:text-white">Read time</div></div>
       </div>
       <textarea value={text} onChange={e=>setText(e.target.value)} className="w-full h-[300px] border p-3 text-sm"/>

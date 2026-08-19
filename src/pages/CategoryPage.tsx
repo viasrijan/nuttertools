@@ -3,11 +3,17 @@ import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { CATEGORIES } from '../data/categories'
 import { tileGrad } from '../lib/style'
-import { whiteCatIconUrl } from '../components/Icon'
+import { whiteCatIconUrl, CutoutCategoryIcon } from '../components/Icon'
 import ToolCard from '../components/ToolCard'
 import Fuse from 'fuse.js'
 
 const TOOLS = toolsData as any[]
+
+function CatIconFallback({ slug, className }: { slug: string, className?: string }) {
+  const [broken, setBroken] = useState(false)
+  if (broken) return <CutoutCategoryIcon slug={slug} className={`${className} text-white`} />
+  return <img src={whiteCatIconUrl(slug)} alt="" className={className} draggable={false} onError={() => setBroken(true)} />
+}
 
 export default function CategoryPage() {
   const { slug } = useParams()
@@ -49,8 +55,8 @@ export default function CategoryPage() {
       </nav>
 
       <div className="pt-8 pb-8 md:pt-10 md:pb-10 flex flex-col sm:flex-row items-center text-center sm:text-left gap-3 md:gap-4">
-        <span className={`w-14 h-14 md:w-16 md:h-16  bg-gradient-to-br ${tileGrad(cat.hue)} grid place-items-center shrink-0 shadow-lg ring-1 ring-black/10 dark:ring-white/20`}>
-          <img src={whiteCatIconUrl(cat.slug)} alt="" className="w-7 h-7 md:w-8 md:h-8" draggable={false} />
+        <span className={`w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${tileGrad(cat.hue)} grid place-items-center shrink-0 shadow-lg ring-1 ring-black/10 dark:ring-white/20`}>
+          <CatIconFallback slug={cat.slug} className="w-7 h-7 md:w-8 md:h-8" />
         </span>
         <div>
           <h1 className="text-[22px] md:text-[38px] font-[800] tracking-[-0.03em] leading-none text-balance">{cat.name}</h1>
@@ -63,7 +69,7 @@ export default function CategoryPage() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder={`Search ${cat.name}…`}
-          className="w-full h-[46px] pl-[42px] pr-4  border border-transparent bg-white dark:bg-[#242424] text-[14px] text-zinc-900 dark:text-zinc-100 soft-shadow focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
+          className="w-full h-[46px] pl-[42px] pr-4 rounded-full border border-transparent bg-white dark:bg-[#242424] text-[14px] text-zinc-900 dark:text-zinc-100 soft-shadow focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent"
         />
         <svg width="16" height="16" viewBox="0 0 18 18" fill="none" className="absolute left-4 top-1/2 -translate-y-1/2">
           <defs>

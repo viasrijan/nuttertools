@@ -13,17 +13,25 @@ export default function UsernameGenerator() {
   const [numbers, setNumbers] = useState(true)
   const [separator, setSeparator] = useState('')
   const [caseMode, setCaseMode] = useState('title')
+  const [keyword, setKeyword] = useState('')
   const [names, setNames] = useState<string[]>([])
   const [copied, setCopied] = useState('')
 
   const generate = () => {
     const out: string[] = []
+    const base = keyword.trim()
     while (out.length < count) {
       const a = ADJ[Math.floor(Math.random() * ADJ.length)]
       const n = NOUN[Math.floor(Math.random() * NOUN.length)]
       const num = numbers ? String(Math.floor(Math.random() * 900) + 100) : ''
-      let un = caseMap(a + separator + n + num, caseMode)
-      if (separator === '') un = a.toLowerCase() + n.charAt(0).toUpperCase() + n.slice(1) + num
+      let un: string
+      if (base) {
+        const stem = base.replace(/\s+/g, separator || '').toLowerCase()
+        un = caseMap(stem + separator + n + num, caseMode)
+      } else {
+        un = caseMap(a + separator + n + num, caseMode)
+        if (separator === '') un = a.toLowerCase() + n.charAt(0).toUpperCase() + n.slice(1) + num
+      }
       if (!out.includes(un)) out.push(un)
     }
     setNames(out)
@@ -38,6 +46,8 @@ export default function UsernameGenerator() {
   return (
     <div className="space-y-5 max-w-xl omni-rise">
       <div className="flex flex-wrap gap-4 text-sm">
+        <input value={keyword} onChange={(e) => setKeyword(e.target.value)}
+          placeholder="Your word (optional)…" className="flex-1 min-w-[160px] h-10 px-3 text-sm font-semibold bg-zinc-100 dark:bg-zinc-800 rounded-none outline-none focus:shadow-[0_0_0_3px_rgba(99,102,241,0.2)]" />
         <label className="flex items-center gap-2 font-medium">
           Count
           <input type="number" min="1" max="25" value={count} onChange={(e) => setCount(Math.min(25, Math.max(1, +e.target.value)))}
