@@ -7,7 +7,7 @@ export default function ToolCard({ tool }: { tool: any }) {
   return (
     <Link
       to={`/tool/${tool.id}`}
-      className={`group relative overflow-hidden rounded-2xl bg-white dark:bg-[#242424]/90 border border-zinc-200/70 dark:border-zinc-800  p-4 md:p-5 soft-shadow transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_4px_8px_rgba(0,0,0,0.06),0_18px_40px_-14px_rgba(0,0,0,0.22)] hover:border-zinc-300 dark:hover:border-zinc-700 ${cardRing(h)}`}
+      className={`group relative overflow-hidden bg-white dark:bg-[#242424]/90 border border-zinc-200/70 dark:border-zinc-800  p-4 md:p-5 soft-shadow transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_4px_8px_rgba(0,0,0,0.06),0_18px_40px_-14px_rgba(0,0,0,0.22)] hover:border-zinc-300 dark:hover:border-zinc-700 ${cardRing(h)}`}
     >
       {/* soft gradient sheen sweeping in on hover */}
       <span

@@ -34,23 +34,23 @@ export default function App() {
         </Routes>
       </main>
       <footer className="bg-gradient-to-b from-white to-[#ececec] dark:bg-gradient-to-b dark:from-black dark:to-[#1a1a1a]">
-        <div className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-6 md:pt-8 pb-5 sm:pb-8">
-          <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-10">
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-2.5">
+        <div className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-4 md:pt-5 pb-4 sm:pb-5">
+          <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-1.5">
               {CATEGORIES.map((c) => (
                 <LinkFooter key={c.slug} to={`/tools/${c.slug}`} className={hoverTextAccent(c.hue)}>{c.name}</LinkFooter>
               ))}
             </div>
-            <div className="md:text-right flex flex-col items-center md:items-end gap-4">
+            <div className="md:text-right flex flex-col items-center md:items-end gap-3">
               <div>
-                <p className="text-[33px] font-extrabold tracking-[-0.03em] leading-none bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent">NutterTools</p>
-                <p className="text-[20px] font-medium text-zinc-900 dark:text-white mt-2">
+                <p className="text-[26px] font-extrabold tracking-[-0.03em] leading-none bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent">NutterTools</p>
+                <p className="text-[16px] font-medium text-zinc-900 dark:text-white mt-1.5">
                   by{' '}
                   <a href="https://github.com/viasrijan" target="_blank" rel="noreferrer" className="font-bold text-zinc-900 dark:text-white hover:text-green-600 dark:hover:text-green-400">ViaSrijan</a>
                 </p>
               </div>
               <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 h-[30px] text-[16px] font-bold bg-gradient-to-r from-red-600 to-pink-600 text-white hover:opacity-90 transition-opacity">
+                className="inline-flex items-center gap-2 px-4 h-[28px] text-[15px] font-bold bg-gradient-to-r from-red-600 to-pink-600 text-white hover:opacity-90 transition-opacity">
                 Donate
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z" />
@@ -58,7 +58,7 @@ export default function App() {
               </a>
             </div>
           </div>
-          <div className="mt-10 pt-6 border-t border-transparent flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="mt-4 pt-3 border-t border-transparent flex flex-col sm:flex-row items-center justify-between gap-2">
             <p className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100">© {new Date().getFullYear()} NutterTools</p>
             <a href="https://github.com/viasrijan/nuttertools" target="_blank" rel="noreferrer" className="text-[12px] font-medium text-zinc-900 dark:text-zinc-100 hover:text-green-600 dark:hover:text-green-400 transition-colors">GitHub</a>
           </div>

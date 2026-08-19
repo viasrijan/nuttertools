@@ -33,7 +33,6 @@ p { text-wrap: pretty; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #c7c7cc, #a1a1aa);
-  border-radius: 999px;
   border: 2px solid transparent;
   background-clip: padding-box;
 }
@@ -509,6 +508,16 @@ input[type='radio']:focus-visible {
 /* site search inputs stay light in dark mode */
 .dark input.search-input-keep-light {
   color-scheme: light;
+}
+
+/* Header search inputs: transparent so the whole bar is one uniform surface
+   (no white flash on focus in light mode) */
+input.search-input-keep-light,
+input.search-input-keep-light:focus,
+.dark input.search-input-keep-light,
+.dark input.search-input-keep-light:focus {
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
 /* ---- Keyboard hint chips ---- */
