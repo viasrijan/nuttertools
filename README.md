@@ -1,6 +1,6 @@
 # NutterTools — Every Useful Tool, All in One Place
 
-A collection of 111 useful tools — images, PDFs, code, media, text and everyday utilities — organized into sections.
+A collection of useful tools — images, PDFs, code, media, text and everyday utilities — organized into sections.
 
 ## Live
 https://viasrijan.github.io/nuttertools/
