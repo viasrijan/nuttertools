@@ -1,9 +1,17 @@
 import { useState } from 'react'
+import { Field } from '../../components/ui/Field'
+import { Result, ResultGrid } from '../../components/ui/Result'
+import { Select } from '../../components/ui/Select'
 
-import { Button } from '../../components/ui/Button'
+const TABS = [
+  { v: 'percent', label: 'Percentage of a number' },
+  { v: 'change', label: 'Percentage change' },
+  { v: 'gst', label: 'Add / remove tax' },
+  { v: 'emi', label: 'Loan EMI' },
+]
 
 export default function PercentCalc() {
-  const [tab, setTab] = useState<'percent' | 'change' | 'gst' | 'emi'>('percent')
+  const [tab, setTab] = useState('percent')
   const [a, setA] = useState('200')
   const [b, setB] = useState('15')
   const [from, setFrom] = useState('100')
@@ -21,67 +29,61 @@ export default function PercentCalc() {
     return P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1)
   })()
 
-  const Field = ({ v, set, label }: { v: string, set: (s: string) => void, label: string }) => (
-    <label className="block text-sm font-semibold">{label}<input type="number" value={v} onChange={e => set(e.target.value)} className="w-full border px-3 h-9 mt-1" /></label>
-  )
-
   return (
-    <div className="space-y-5 max-w-xl omni-rise">
-      <div className="flex flex-wrap gap-2.5">
-        {(['percent', 'change', 'gst', 'emi'] as const).map(t => (
-          <Button variant="outline" key={t} onClick={() => setTab(t)} className={`px-3 h-9 text-sm border capitalize ${tab === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t}</Button>
-        ))}
+    <div className="space-y-6 max-w-xl">
+      <div className="max-w-[280px]">
+        <Select label="Calculation" value={tab} onChange={setTab} options={TABS} />
       </div>
       {tab === 'percent' && (
-        <>
-          <div className="grid grid-cols-2 gap-3">
-            <Field v={a} set={setA} label="Value" />
-            <Field v={b} set={setB} label="Percent %" />
+        <div className="space-y-6">
+          <div className="grid grid-cols-2 gap-4">
+            <Field label="Value" type="number" value={a} onChange={(e) => setA(e.target.value)} />
+            <Field label="Percent %" type="number" value={b} onChange={(e) => setB(e.target.value)} />
           </div>
-          <div className="space-y-3">
-            <Result label={`${b}% of ${a}`} value={(pct * pctOf / 100).toFixed(2)} />
-            <Result label={`${a} + ${b}% =`} value={(pct + pct * pctOf / 100).toFixed(2)} />
-            <Result label={`${a} − ${b}% =`} value={(pct - pct * pctOf / 100).toFixed(2)} />
-          </div>
-        </>
+          <ResultGrid>
+            <Result label={`${b}% of ${a}`} value={(pct * pctOf / 100).toFixed(2)} tone="good" />
+            <Result label={`${a} + ${b}%`} value={(pct + pct * pctOf / 100).toFixed(2)} />
+            <Result label={`${a} − ${b}%`} value={(pct - pct * pctOf / 100).toFixed(2)} />
+          </ResultGrid>
+        </div>
       )}
       {tab === 'change' && (
-        <>
-          <div className="grid grid-cols-2 gap-3">
-            <Field v={from} set={setFrom} label="From" />
-            <Field v={to} set={setTo} label="To" />
+        <div className="space-y-6">
+          <div className="grid grid-cols-2 gap-4">
+            <Field label="From" type="number" value={from} onChange={(e) => setFrom(e.target.value)} />
+            <Field label="To" type="number" value={to} onChange={(e) => setTo(e.target.value)} />
           </div>
-          <Result label="Percentage change" value={`${(((parseFloat(to) - parseFloat(from)) / parseFloat(from)) * 100).toFixed(2)}%`} />
-        </>
+          <ResultGrid>
+            <Result label="Percentage change" value={`${(((parseFloat(to) - parseFloat(from)) / parseFloat(from)) * 100).toFixed(2)}%`} tone="good" />
+          </ResultGrid>
+        </div>
       )}
       {tab === 'gst' && (
-        <>
-          <div className="grid grid-cols-2 gap-3">
-            <Field v={price} set={setPrice} label="Price" />
-            <Field v={gstRate} set={setGstRate} label="GST %" />
+        <div className="space-y-6">
+          <div className="grid grid-cols-2 gap-4">
+            <Field label="Price" type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
+            <Field label="Tax %" type="number" value={gstRate} onChange={(e) => setGstRate(e.target.value)} />
           </div>
-          <div className="space-y-3">
-            <Result label="GST amount" value={(parseFloat(price) * parseFloat(gstRate) / 100).toFixed(2)} />
-            <Result label="Total (incl. GST)" value={(parseFloat(price) * (1 + parseFloat(gstRate) / 100)).toFixed(2)} />
-            <Result label="Exclusive amount" value={(parseFloat(price) / (1 + parseFloat(gstRate) / 100)).toFixed(2)} />
-          </div>
-        </>
+          <ResultGrid>
+            <Result label="Tax amount" value={(parseFloat(price) * parseFloat(gstRate) / 100).toFixed(2)} />
+            <Result label="Total (incl. tax)" value={(parseFloat(price) * (1 + parseFloat(gstRate) / 100)).toFixed(2)} tone="good" />
+            <Result label="Pre-tax amount" value={(parseFloat(price) / (1 + parseFloat(gstRate) / 100)).toFixed(2)} />
+          </ResultGrid>
+        </div>
       )}
       {tab === 'emi' && (
-        <>
-          <div className="grid grid-cols-3 gap-3">
-            <Field v={principal} set={setPrincipal} label="Loan amount" />
-            <Field v={rate} set={setRate} label="Annual %" />
-            <Field v={months} set={setMonths} label="Months" />
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Field label="Loan amount" type="number" value={principal} onChange={(e) => setPrincipal(e.target.value)} />
+            <Field label="Annual %" type="number" value={rate} onChange={(e) => setRate(e.target.value)} />
+            <Field label="Months" type="number" value={months} onChange={(e) => setMonths(e.target.value)} />
           </div>
-          <Result label="Monthly EMI" value={`${isFinite(emi) ? emi.toLocaleString(undefined, { maximumFractionDigits: 0 }) : '—'}`} />
-          {isFinite(emi) && <Result label="Total interest" value={`${(emi * (parseInt(months) || 1) - parseFloat(principal)).toLocaleString(undefined, { maximumFractionDigits: 0 })}`} />}
-        </>
+          <ResultGrid>
+            <Result label="Monthly EMI" value={isFinite(emi) ? emi.toLocaleString(undefined, { maximumFractionDigits: 0 }) : '—'} tone="good" />
+            <Result label="Total interest" value={isFinite(emi) ? (emi * (parseInt(months) || 1) - parseFloat(principal)).toLocaleString(undefined, { maximumFractionDigits: 0 }) : '—'} />
+          </ResultGrid>
+        </div>
       )}
     </div>
   )
-}
-
-function Result({ label, value }: { label: string, value: string }) {
-  return <div className="flex items-center justify-between border p-3"><span className="text-sm font-medium">{label}</span><b className="text-base">{value}</b></div>
 }

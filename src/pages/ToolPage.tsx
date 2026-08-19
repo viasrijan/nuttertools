@@ -1,12 +1,18 @@
-import { Suspense, useEffect } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import toolsData from '../data/tools.json'
 import { TOOL_INFO } from '../data/toolInfo'
 import { CATEGORIES } from '../data/categories'
 import { hueFor, tileGrad } from '../lib/style'
-import { whiteToolIconUrl } from '../components/Icon'
+import { whiteToolIconUrl, ToolIcon } from '../components/Icon'
 import ToolCard from '../components/ToolCard'
 import registry from '../tools/registry'
+
+function ToolIconFallback({ id, className }: { id: string, className?: string }) {
+  const [broken, setBroken] = useState(false)
+  if (broken) return <ToolIcon id={id} className={`${className} text-white`} />
+  return <img src={whiteToolIconUrl(id)} alt="" className={className} draggable={false} onError={() => setBroken(true)} />
+}
 
 export default function ToolPage() {
   const { id } = useParams()
@@ -59,8 +65,8 @@ export default function ToolPage() {
       </nav>
 
       <div className="pt-8 pb-8 md:pt-10 md:pb-10 flex flex-col sm:flex-row items-center text-center sm:text-left gap-3 md:gap-4">
-        <span className={`w-14 h-14 md:w-16 md:h-16  bg-gradient-to-br ${tileGrad(h)} grid place-items-center shrink-0 shadow-lg ring-1 ring-black/10 dark:ring-white/20 transition-transform duration-300 hover:scale-105 hover:rotate-3`}>
-          <img src={whiteToolIconUrl(tool.id)} alt="" className="w-7 h-7 md:w-8 md:h-8" draggable={false} />
+        <span className={`w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${tileGrad(h)} grid place-items-center shrink-0 shadow-lg ring-1 ring-black/10 dark:ring-white/20`}>
+          <ToolIconFallback id={tool.id} className="w-7 h-7 md:w-8 md:h-8" />
         </span>
         <div className="min-w-0">
           <h1 className="text-[22px] md:text-[36px] font-[800] tracking-[-0.03em] leading-none text-balance">{tool.name}</h1>
@@ -92,7 +98,21 @@ export default function ToolPage() {
 
       {(() => {
         const info = TOOL_INFO[tool.id]
-        if (!info) return null
+        if (!info) {
+          return (
+            <section className="pb-14 max-w-3xl">
+              <div className="space-y-8">
+                <div>
+                  <h4 className="text-[24px] md:text-[35px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">What is {tool.name}?</h4>
+                  <p className="text-[16px] font-medium text-zinc-900 dark:text-white leading-relaxed">{tool.desc}</p>
+                  <p className="mt-3 text-[15px] font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                    {tool.name} runs entirely in your browser — your files and text never leave your device, no sign-up required, and it is free forever.
+                  </p>
+                </div>
+              </div>
+            </section>
+          )
+        }
         return (
           <section className="pb-14 max-w-3xl">
             <div className="space-y-8">

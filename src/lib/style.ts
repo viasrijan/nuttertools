@@ -1,6 +1,7 @@
 export type Hue =
   | 'sky' | 'rose' | 'indigo' | 'emerald' | 'amber' | 'fuchsia'
   | 'purple' | 'cyan' | 'lime' | 'teal' | 'orange' | 'violet'
+  | 'blue' | 'green' | 'yellow' | 'pink'
 
 export type HueDef = {
   tile: string
@@ -121,6 +122,42 @@ const H: Record<Hue, HueDef> = {
     text: 'text-violet-600 dark:text-violet-400',
     cardRing: 'hover:ring-violet-300 dark:hover:ring-violet-600',
   },
+  blue: {
+    tile: 'bg-blue-700 text-white',
+    tileDark: 'dark:from-blue-500/40 dark:to-indigo-500/40 dark:ring-1 dark:ring-blue-400/30',
+    grad: 'from-blue-500 to-blue-800',
+    chip: 'bg-blue-50 text-blue-700 ring-blue-200 dark:bg-blue-500/10 dark:text-blue-300 dark:ring-blue-500/30',
+    soft: 'bg-blue-50 dark:bg-blue-500/10',
+    text: 'text-blue-600 dark:text-blue-400',
+    cardRing: 'hover:ring-blue-300 dark:hover:ring-blue-600',
+  },
+  green: {
+    tile: 'bg-green-700 text-white',
+    tileDark: 'dark:from-green-500/40 dark:to-emerald-500/40 dark:ring-1 dark:ring-green-400/30',
+    grad: 'from-green-500 to-green-800',
+    chip: 'bg-green-50 text-green-700 ring-green-200 dark:bg-green-500/10 dark:text-green-300 dark:ring-green-500/30',
+    soft: 'bg-green-50 dark:bg-green-500/10',
+    text: 'text-green-600 dark:text-green-400',
+    cardRing: 'hover:ring-green-300 dark:hover:ring-green-600',
+  },
+  yellow: {
+    tile: 'bg-yellow-700 text-white',
+    tileDark: 'dark:from-yellow-500/40 dark:to-amber-500/40 dark:ring-1 dark:ring-yellow-400/30',
+    grad: 'from-yellow-500 to-yellow-800',
+    chip: 'bg-yellow-50 text-yellow-700 ring-yellow-200 dark:bg-yellow-500/10 dark:text-yellow-300 dark:ring-yellow-500/30',
+    soft: 'bg-yellow-50 dark:bg-yellow-500/10',
+    text: 'text-yellow-600 dark:text-yellow-400',
+    cardRing: 'hover:ring-yellow-300 dark:hover:ring-yellow-600',
+  },
+  pink: {
+    tile: 'bg-pink-700 text-white',
+    tileDark: 'dark:from-pink-500/40 dark:to-rose-500/40 dark:ring-1 dark:ring-pink-400/30',
+    grad: 'from-pink-500 to-pink-800',
+    chip: 'bg-pink-50 text-pink-700 ring-pink-200 dark:bg-pink-500/10 dark:text-pink-300 dark:ring-pink-500/30',
+    soft: 'bg-pink-50 dark:bg-pink-500/10',
+    text: 'text-pink-600 dark:text-pink-400',
+    cardRing: 'hover:ring-pink-300 dark:hover:ring-pink-600',
+  },
 }
 
 export const hueFor = (category: string): Hue => {
@@ -137,6 +174,10 @@ export const hueFor = (category: string): Hue => {
     'Web & SEO': 'teal',
     'Everyday Utilities': 'orange',
     'AI Tools': 'violet',
+    'Calculators': 'blue',
+    'Building & DIY': 'green',
+    'Hardware & Tech': 'yellow',
+    'Name Generators': 'pink',
   }
   return map[category] || 'indigo'
 }
@@ -167,6 +208,10 @@ export const hoverTextAccent = (h: Hue): string => {
     teal: 'hover:text-teal-600 hover:dark:text-teal-400',
     orange: 'hover:text-orange-600 hover:dark:text-orange-400',
     violet: 'hover:text-violet-600 hover:dark:text-violet-400',
+    blue: 'hover:text-blue-600 hover:dark:text-blue-400',
+    green: 'hover:text-green-600 hover:dark:text-green-400',
+    yellow: 'hover:text-yellow-600 hover:dark:text-yellow-400',
+    pink: 'hover:text-pink-600 hover:dark:text-pink-400',
   }
   return map[h]
 }

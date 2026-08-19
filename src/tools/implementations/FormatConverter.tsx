@@ -1,22 +1,24 @@
 import { useMemo, useRef, useState } from 'react'
-import { Button } from '../../components/ui/Button'
-
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { GIFEncoder, quantize, applyPalette } from 'gifenc'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
+import { Select } from '../../components/ui/Select'
+import { Slider } from '../../components/ui/Slider'
 
 type Item = { file: File, url: string, w: number, h: number, out?: string, outSize?: number, outName?: string, ow?: number, oh?: number }
 type CropBox = { nx: number, ny: number, nw: number, nh: number }
 
 const FORMATS = [
   { id: 'image/png', label: 'PNG', ext: 'png' },
-  { id: 'image/jpeg', label: 'JPG', ext: 'jpg' },
+  { id: 'image/jpeg', label: 'JPEG', ext: 'jpg' },
   { id: 'image/webp', label: 'WebP', ext: 'webp' },
   { id: 'image/gif', label: 'GIF', ext: 'gif' },
-  { id: 'image/avif', label: 'AVIF', ext: 'avif', requiresAvif: true },
+  { id: 'image/svg+xml', label: 'SVG', ext: 'svg' },
   { id: 'image/bmp', label: 'BMP', ext: 'bmp' },
+  { id: 'image/vnd.microsoft.icon', label: 'ICO (favicon)', ext: 'ico' },
+  { id: 'image/avif', label: 'AVIF', ext: 'avif', requiresAvif: true },
 ]
 
 const TEXT_POSITIONS = [
@@ -71,6 +73,51 @@ const encodeBMP = (canvas: HTMLCanvasElement): Blob => {
   return new Blob([buf], { type: 'image/bmp' })
 }
 
+const encodeSVG = (canvas: HTMLCanvasElement): Promise<Blob> =>
+  new Promise((res, rej) => {
+    canvas.toBlob((png) => {
+      if (!png) return rej(new Error('SVG encode failed'))
+      const reader = new FileReader()
+      reader.onload = () => {
+        const dataUrl = reader.result as string
+        const svg =
+          `<svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}" viewBox="0 0 ${canvas.width} ${canvas.height}">` +
+          `<image width="${canvas.width}" height="${canvas.height}" href="${dataUrl}"/></svg>`
+        res(new Blob([svg], { type: 'image/svg+xml' }))
+      }
+      reader.onerror = rej
+      reader.readAsDataURL(png)
+    }, 'image/png')
+  })
+
+const encodeICO = async (canvas: HTMLCanvasElement): Promise<Blob> => {
+  const s = Math.min(256 / canvas.width, 256 / canvas.height, 1)
+  const w = Math.max(1, Math.round(canvas.width * s))
+  const h = Math.max(1, Math.round(canvas.height * s))
+  const c = document.createElement('canvas')
+  c.width = w; c.height = h
+  c.getContext('2d')!.drawImage(canvas, 0, 0, w, h)
+  const png = await new Promise<Blob | null>((r) => c.toBlob(r, 'image/png'))
+  if (!png) throw new Error('ICO encode failed')
+  const pngBytes = new Uint8Array(await png.arrayBuffer())
+  const buf = new ArrayBuffer(22 + pngBytes.length)
+  const dv = new DataView(buf)
+  const u8 = new Uint8Array(buf)
+  dv.setUint16(0, 0, true)
+  dv.setUint16(2, 1, true)
+  dv.setUint16(4, 1, true)
+  u8[6] = w >= 256 ? 0 : w
+  u8[7] = h >= 256 ? 0 : h
+  u8[8] = 0
+  u8[9] = 0
+  dv.setUint16(10, 1, true)
+  dv.setUint16(12, 32, true)
+  dv.setUint32(14, pngBytes.length, true)
+  dv.setUint32(18, 22, true)
+  u8.set(pngBytes, 22)
+  return new Blob([buf], { type: 'image/x-icon' })
+}
+
 export default function FormatConverter() {
   const [items, setItems] = useState<Item[]>([])
   const [busy, setBusy] = useState(false)
@@ -123,6 +170,7 @@ export default function FormatConverter() {
   const active = formats.find((f) => f.id === format) ?? formats[0]
   const qualityMatters = ['image/jpeg', 'image/webp', 'image/avif'].includes(active.id)
   const opaque = active.id === 'image/jpeg' || active.id === 'image/bmp'
+  const lossless = ['image/png', 'image/svg+xml', 'image/bmp', 'image/vnd.microsoft.icon'].includes(active.id)
 
   const onFiles = async (fl: FileList) => {
     const files = Array.from(fl).filter((f) => f.type.startsWith('image/'))
@@ -132,7 +180,7 @@ export default function FormatConverter() {
       const im = await load(url)
       return { file: f, url, w: im.naturalWidth, h: im.naturalHeight }
     }))
-    setItems(loaded)
+    setItems((prev) => [...prev, ...loaded])
     setCrop({ nx: 0, ny: 0, nw: 1, nh: 1 })
   }
 
@@ -271,10 +319,12 @@ export default function FormatConverter() {
       const ti = palette.findIndex((c) => c[3] === 0)
       gif.writeFrame(index, width, height, { palette, transparent: ti >= 0, transparentIndex: Math.max(0, ti) })
       gif.finish()
-      return new Blob([new Uint8Array(gif.bytes())], { type: 'image/gif' })
+      return new Blob([gif.bytes()], { type: 'image/gif' })
     }
     if (active.id === 'image/bmp') return encodeBMP(canvas)
-    return await new Promise<Blob>((res) => canvas.toBlob((b) => res(b ?? new Blob()), active.id, qualityMatters ? quality : undefined))
+    if (active.id === 'image/svg+xml') return encodeSVG(canvas)
+    if (active.id === 'image/vnd.microsoft.icon') return encodeICO(canvas)
+    return await new Promise<Blob | null>((res) => canvas.toBlob((b) => res(b), active.id, qualityMatters ? quality : undefined))
   }
 
   const convert = async () => {
@@ -301,49 +351,53 @@ export default function FormatConverter() {
     saveAs(await zip.generateAsync({ type: 'blob' }), 'converted-images.zip')
   }
 
-  const btn = 'px-4 h-10 text-xs font-bold uppercase tracking-wider border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white  hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors'
-  const btnActive = 'px-4 h-10 text-xs font-bold uppercase tracking-wider border border-indigo-600 bg-indigo-600 text-white  shadow-sm'
-  const input = 'border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 h-10 text-sm text-zinc-900 dark:text-white '
+  const btn = 'px-4 h-10 text-xs font-bold uppercase tracking-wider border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white rounded-none hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors'
+  const btnActive = 'px-4 h-10 text-xs font-bold uppercase tracking-wider border border-indigo-600 bg-indigo-600 text-white rounded-none shadow-sm'
+  const input = 'border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 h-10 text-sm text-zinc-900 dark:text-white rounded-none'
   const label = 'text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400'
 
   return (
     <div className="space-y-6">
-      <DropZone onFiles={onFiles} accept="image/*" multiple={true} label="Drop images to convert & edit (multiple = batch)" />
+      <DropZone
+        onFiles={onFiles}
+        accept="image/*"
+        multiple={true}
+        label="Drop images to convert & edit (multiple = batch)"
+        files={items.map((it) => ({ name: it.file.name, size: it.file.size, url: it.url }))}
+        onClear={() => setItems([])}
+      />
 
       {busy && <Progress label="Converting images…" />}
 
       {items.length > 0 && (
         <>
           <div className="grid gap-4 md:grid-cols-2">
-            <section className=" border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
               <h3 className={label}>Format & quality</h3>
-              <div className="flex flex-wrap gap-2.5">
-                {formats.map((f) => (
-                  <Button key={f.id} variant="outline" onClick={() => setFormat(f.id)} className={active.id === f.id ? btnActive : btn}>{f.label}</Button>
-                ))}
-              </div>
+              <Select
+                label="Output format"
+                value={active.id}
+                onChange={setFormat}
+                options={formats.map((f) => ({ value: f.id, label: f.label + (f.requiresAvif ? '' : '') }))}
+                className="max-w-xs"
+              />
               {qualityMatters && (
-                <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
-                  <span>Quality: {Math.round(quality * 100)}%</span>
-                  <input type="range" min={0.05} max={1} step={0.05} value={quality} onChange={(e) => setQuality(parseFloat(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
-                </label>
+                <Slider label="Quality" value={Math.round(quality * 100)} min={5} max={100} display={`${Math.round(quality * 100)}%`} onChange={(v) => setQuality(v / 100)} />
               )}
-              {!opaque && <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Transparency is preserved for PNG, WebP, GIF and AVIF.</p>}
-              {opaque && <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">JPG / BMP do not support transparency — filled with a clean white background.</p>}
+              {lossless && <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Lossless format — original quality preserved.</p>}
+              {!opaque && <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Transparency is preserved for PNG, WebP, GIF, SVG, ICO and AVIF.</p>}
+              {opaque && <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">JPEG / BMP do not support transparency — filled with a clean white background.</p>}
             </section>
 
-            <section className=" border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
               <h3 className={label}>Resize</h3>
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap gap-2">
                 {(['none', 'percent', 'pixels'] as const).map((m) => (
-                  <Button key={m} variant="outline" onClick={() => setResizeMode(m)} className={resizeMode === m ? btnActive : btn}>{m === 'none' ? 'Off' : m}</Button>
+                  <button key={m} onClick={() => setResizeMode(m)} className={resizeMode === m ? btnActive : btn}>{m === 'none' ? 'Off' : m}</button>
                 ))}
               </div>
               {resizeMode === 'percent' && (
-                <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
-                  <span>Scale factor: {percent}%</span>
-                  <input type="range" min={1} max={400} value={percent} onChange={(e) => setPercent(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
-                </label>
+                <Slider label="Scale factor" value={percent} min={1} max={400} display={`${percent}%`} onChange={setPercent} />
               )}
               {resizeMode === 'pixels' && (
                 <div className="flex flex-wrap items-center gap-3 text-sm">
@@ -357,14 +411,14 @@ export default function FormatConverter() {
                     <input type="number" value={pxH} onChange={(e) => setPxH(parseInt(e.target.value) || 0)} className={`${input} w-28`} />
                   </div>
                   <label className="flex items-center gap-2 text-xs font-semibold text-zinc-700 dark:text-zinc-300 mt-5 cursor-pointer">
-                    <input type="checkbox" checked={keepAspect} onChange={(e) => setKeepAspect(e.target.checked)} className="w-4 h-4  accent-indigo-600" />
+                    <input type="checkbox" checked={keepAspect} onChange={(e) => setKeepAspect(e.target.checked)} className="w-4 h-4 rounded-none accent-indigo-600" />
                     Keep aspect ratio
                   </label>
                 </div>
               )}
             </section>
 
-            <section className=" border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50 md:col-span-2">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50 md:col-span-2">
               <h3 className={label}>Crop</h3>
               <div className="flex flex-wrap items-center gap-2">
                 <button onClick={() => setCropEnabled(!cropEnabled)} className={cropEnabled ? btnActive : btn}>{cropEnabled ? 'Crop: Active' : 'Crop: Off'}</button>
@@ -397,91 +451,76 @@ export default function FormatConverter() {
               )}
             </section>
 
-            <section className=" border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
               <h3 className={label}>Rotate & flip</h3>
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap gap-2">
                 {[0, 90, 180, 270].map((r) => (
-                  <Button key={r} variant="outline" onClick={() => setRotate(r)} className={rotate === r ? btnActive : btn}>{r === 0 ? '0°' : `${r}°`}</Button>
+                  <button key={r} onClick={() => setRotate(r)} className={rotate === r ? btnActive : btn}>{r === 0 ? '0°' : `${r}°`}</button>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap gap-2">
                 <button onClick={() => setFlipH(!flipH)} className={flipH ? btnActive : btn}>Flip Horizontal</button>
                 <button onClick={() => setFlipV(!flipV)} className={flipV ? btnActive : btn}>Flip Vertical</button>
               </div>
             </section>
 
-            <section className=" border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
               <h3 className={label}>Adjustments & Filters</h3>
-              <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
-                <span>Brightness: {brightness}%</span>
-                <input type="range" min={0} max={200} value={brightness} onChange={(e) => setBrightness(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
-              </label>
-              <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
-                <span>Contrast: {contrast}%</span>
-                <input type="range" min={0} max={200} value={contrast} onChange={(e) => setContrast(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
-              </label>
-              <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
-                <span>Saturation: {saturate}%</span>
-                <input type="range" min={0} max={300} value={saturate} onChange={(e) => setSaturate(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
-              </label>
-              <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
-                <span>Blur: {blur}px</span>
-                <input type="range" min={0} max={20} step={0.5} value={blur} onChange={(e) => setBlur(parseFloat(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
-              </label>
+              <Slider label="Brightness" value={brightness} min={0} max={200} display={`${brightness}%`} onChange={setBrightness} />
+              <Slider label="Contrast" value={contrast} min={0} max={200} display={`${contrast}%`} onChange={setContrast} />
+              <Slider label="Saturation" value={saturate} min={0} max={300} display={`${saturate}%`} onChange={setSaturate} />
+              <Slider label="Blur" value={blur} min={0} max={20} step={0.5} display={`${blur}px`} onChange={setBlur} />
               <div className="flex flex-wrap gap-2 pt-2">
                 <button onClick={() => setGrayscale(!grayscale)} className={grayscale ? btnActive : btn}>Grayscale</button>
                 <button onClick={() => setSepia(!sepia)} className={sepia ? btnActive : btn}>Sepia</button>
               </div>
             </section>
 
-            <section className=" border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
               <h3 className={label}>Rounded corners</h3>
-              <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
-                <span>Corner Radius: {cornerRadius}%</span>
-                <input type="range" min={0} max={50} value={cornerRadius} onChange={(e) => setCornerRadius(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
-              </label>
-              {opaque && <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Use PNG, WebP or GIF to keep corner backgrounds transparent.</p>}
+              <Slider label="Corner radius" value={cornerRadius} min={0} max={50} display={`${cornerRadius}%`} onChange={setCornerRadius} />
+              {opaque && <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Use PNG, WebP, GIF, SVG or ICO to keep corner backgrounds transparent.</p>}
             </section>
 
-            <section className=" border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50 md:col-span-2">
+            <section className="rounded-none border border-zinc-200 dark:border-zinc-800 p-5 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50 md:col-span-2">
               <h3 className={label}>Add watermarks & text</h3>
               <input value={text} onChange={(e) => setText(e.target.value)} placeholder="Type overlay text here…" className={`${input} w-full max-w-md`} />
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
-                <label className="font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
-                  <span>Font Size: {textSize}%</span>
-                  <input type="range" min={2} max={30} value={textSize} onChange={(e) => setTextSize(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
-                </label>
-                <label className="font-semibold text-zinc-700 dark:text-zinc-300 space-y-1">
-                  <span>Opacity: {textOpacity}%</span>
-                  <input type="range" min={5} max={100} value={textOpacity} onChange={(e) => setTextOpacity(parseInt(e.target.value))} className="w-full accent-indigo-600 cursor-pointer" />
-                </label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Slider label="Font size" value={textSize} min={2} max={30} display={`${textSize}%`} onChange={setTextSize} />
+                <Slider label="Text opacity" value={textOpacity} min={5} max={100} display={`${textOpacity}%`} onChange={setTextOpacity} />
+              </div>
+              <div className="flex flex-wrap items-end gap-4">
                 <label className="font-semibold text-zinc-700 dark:text-zinc-300 flex flex-col gap-1">
-                  <span>Text Color</span>
-                  <input type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} className="h-10 w-full border border-zinc-300 dark:border-zinc-700 bg-transparent  cursor-pointer" />
+                  <span className="text-[12px] font-bold uppercase tracking-wide">Text color</span>
+                  <input type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} className="h-10 w-24 border border-zinc-300 dark:border-zinc-700 bg-transparent rounded-none cursor-pointer" />
                 </label>
-                <label className="flex items-center gap-2 font-semibold text-zinc-700 dark:text-zinc-300 mt-6 cursor-pointer">
-                  <input type="checkbox" checked={textBold} onChange={(e) => setTextBold(e.target.checked)} className="w-4 h-4  accent-indigo-600" />
+                <label className="flex items-center gap-2 font-semibold text-zinc-700 dark:text-zinc-300 cursor-pointer">
+                  <input type="checkbox" checked={textBold} onChange={(e) => setTextBold(e.target.checked)} className="w-4 h-4 rounded-none accent-indigo-600" />
                   Bold text
                 </label>
               </div>
               <div className="inline-grid grid-cols-3 gap-1.5 pt-2">
                 {TEXT_POSITIONS.map((p) => (
-                  <Button variant="outline" key={p.id} onClick={() => setTextPos(p.id)} className={`px-4 h-9 text-xs font-bold uppercase tracking-wider border ${textPos === p.id ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white'}`}>{p.label}</Button>
+                  <button key={p.id} onClick={() => setTextPos(p.id)} className={`px-4 h-9 text-xs font-bold uppercase tracking-wider border ${textPos === p.id ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white'}`}>{p.label}</button>
                 ))}
               </div>
             </section>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 pt-4">
-            <Button variant="primary" size="lg" onClick={convert} disabled={busy} className="w-full uppercase tracking-wider font-bold">{busy ? 'Processing…' : `Convert all images (${items.length})`}</Button>
+            <button onClick={convert} disabled={busy} className="px-6 h-12 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm uppercase tracking-wider rounded-none shadow-md transition-all disabled:opacity-50">
+              {busy ? 'Processing…' : `Convert all images (${items.length})`}
+            </button>
             {items.some((it) => it.out) && (
-              <Button variant="secondary" size="lg" onClick={downloadZip} className="uppercase tracking-wider font-bold">Download ZIP archive</Button>
+              <button onClick={downloadZip} className="px-6 h-12 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-white dark:text-zinc-900 font-bold text-sm uppercase tracking-wider rounded-none shadow-sm transition-all">
+                Download ZIP archive
+              </button>
             )}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
             {items.map((it, i) => (
-              <div key={i} className="border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50  p-4 space-y-3">
+              <div key={i} className="border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 rounded-none p-4 space-y-3">
                 <div className="w-full h-44 bg-zinc-200/60 dark:bg-zinc-950/60 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center p-2 overflow-hidden">
                   <img src={it.out || it.url} className="max-h-full max-w-full object-contain pointer-events-none" alt={it.file.name} />
                 </div>
@@ -492,7 +531,7 @@ export default function FormatConverter() {
                   </p>
                 </div>
                 {it.out && it.outName && (
-                  <a href={it.out} download={it.outName} className="inline-flex items-center justify-center w-full h-9 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-100 dark:text-zinc-900 text-xs font-bold uppercase tracking-wider  transition-colors">
+                  <a href={it.out} download={it.outName} className="inline-flex items-center justify-center w-full h-9 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-100 dark:text-zinc-900 text-xs font-bold uppercase tracking-wider rounded-none transition-colors">
                     Download {active.ext.toUpperCase()}
                   </a>
                 )}

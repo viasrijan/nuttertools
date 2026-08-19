@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
-import { Button } from '../../components/ui/Button'
-
 import DropZone from '../../components/DropZone'
+import type { DropFile } from '../../components/DropZone'
 
 export default function ImageCropper() {
   const [img, setImg] = useState<{ url: string, w: number, h: number } | null>(null)
@@ -10,6 +9,8 @@ export default function ImageCropper() {
   const stageRef = useRef<HTMLDivElement>(null)
   const drag = useRef<{ startX: number, startY: number, mode: 'new' | 'move' | 'resize', orig: any } | null>(null)
   const aspectRef = useRef(0)
+
+  const dropFiles: DropFile[] = img ? [{ name: 'Image', size: 0, url: img.url }] : []
 
   const onFiles = async (fl: FileList) => {
     const f = fl[0]
@@ -81,11 +82,12 @@ export default function ImageCropper() {
   return (
     <div className="space-y-5">
       {!img ? (
-        <DropZone onFiles={onFiles} accept="image/*" multiple={false} label="Drop an image to crop" />
+        <DropZone onFiles={onFiles} accept="image/*" multiple={false} files={dropFiles} onClear={() => { setImg(null); setOut('') }} label="Drop an image to crop" />
       ) : (
         <>
+          <DropZone onFiles={onFiles} accept="image/*" multiple={false} files={dropFiles} onClear={() => { setImg(null); setOut('') }} label="Drop a new image" />
           <div className="flex flex-wrap items-center gap-2">
-            <select onChange={e => aspectRef.current = parseFloat(e.target.value) || 0} className="border px-3 h-9 text-sm bg-transparent">
+            <select onChange={e => aspectRef.current = parseFloat(e.target.value) || 0} className="h-10 px-3 text-sm font-semibold bg-zinc-100 dark:bg-zinc-800 rounded-none outline-none focus:shadow-[0_0_0_3px_rgba(99,102,241,0.2)]">
               <option value="0">Free</option>
               <option value="1">Square 1:1</option>
               <option value="1.5">3:2</option>
@@ -93,9 +95,8 @@ export default function ImageCropper() {
               <option value="0.75">4:3</option>
               <option value="1.25">5:4</option>
             </select>
-            <Button variant="secondary" size="sm" onClick={apply}>Apply crop</Button>
-            <Button variant="outline" size="sm" onClick={() => setImg(null)}>New image</Button>
-            {out && <a href={out} download="cropped.png" className="text-sm underline">Download PNG</a>}
+            <button onClick={apply} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">Apply crop</button>
+            {out && <a href={out} download="cropped.png" className="text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:underline">Download PNG</a>}
           </div>
           <div
             ref={stageRef}

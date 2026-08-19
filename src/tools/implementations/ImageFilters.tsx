@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
-import { Button } from '../../components/ui/Button'
-
 import DropZone from '../../components/DropZone'
+import type { DropFile } from '../../components/DropZone'
 
 const INIT = { brightness: 100, contrast: 100, saturate: 100, blur: 0, grayscale: 0, sepia: 0, invert: 0, hue: 0 }
 
@@ -15,19 +14,23 @@ export default function ImageFilters() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const imgRef = useRef<HTMLImageElement | null>(null)
 
+  const dropFiles: DropFile[] = (img ? [{ name: 'Preview', size: 0, url: img.url }] : []).concat(batch.map((b) => ({ name: b.name, size: 0, url: b.url })))
+
   const onFiles = async (fl: FileList) => {
-    const files = Array.from(fl).filter(f => f.type.startsWith('image/'))
+    const files = Array.from(fl).filter((f) => f.type.startsWith('image/'))
     if (!files.length) return
     const first = files[0]
     const url = URL.createObjectURL(first)
     const im = new Image()
     im.src = url
-    await new Promise(r => im.onload = r)
+    await new Promise((r) => im.onload = r)
     imgRef.current = im
     setImg({ url })
     setF(INIT)
     if (files.length > 1) {
-      setBatch(files.map(f => ({ name: f.name, url: URL.createObjectURL(f), checked: true })))
+      setBatch(files.map((f) => ({ name: f.name, url: URL.createObjectURL(f), checked: true })))
+    } else {
+      setBatch([])
     }
   }
 
@@ -64,7 +67,7 @@ export default function ImageFilters() {
   }
 
   const downloadAll = async () => {
-    const selected = batch.filter(b => b.checked)
+    const selected = batch.filter((b) => b.checked)
     if (!selected.length) return
     setBusy(true)
     try {
@@ -93,50 +96,55 @@ export default function ImageFilters() {
 
   return (
     <div className="space-y-5">
-      {!img ? (
-        <DropZone onFiles={onFiles} accept="image/*" multiple={true} label="Drop one or more images to edit (multiple = batch)" />
-      ) : (
+      <DropZone
+        onFiles={onFiles}
+        accept="image/*"
+        multiple={true}
+        files={dropFiles}
+        onClear={() => { setImg(null); setBatch([]); setF(INIT) }}
+        label="Drop one or more images to edit"
+      />
+      {img && (
         <>
-          <div className="flex flex-wrap gap-2.5">
-            <Button variant="secondary" size="sm" onClick={download}>Download</Button>
+          <div className="flex flex-wrap gap-2">
+            <button onClick={download} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">Download</button>
             {batch.length > 0 && (
-              <Button variant="secondary" size="sm" disabled={busy} onClick={downloadAll}>
-                {busy ? 'Applying…' : `Download selected (${batch.filter(b => b.checked).length})`}
-              </Button>
+              <button onClick={downloadAll} disabled={busy} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-bold text-xs uppercase tracking-wider transition-colors">
+                {busy ? 'Applying…' : `Download selected (${batch.filter((b) => b.checked).length})`}
+              </button>
             )}
-            <Button variant="outline" size="sm" onClick={() => setF(INIT)}>Reset</Button>
-            <button onClick={() => { setImg(null); setBatch([]) }} className="px-4 h-9 border text-sm">New images</button>
+            <button onClick={() => setF(INIT)} className="px-4 h-10 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-xs font-bold uppercase tracking-wider transition-colors">Reset</button>
           </div>
-          <img src={img.url} style={{ filter: filterCss() }} className="max-h-[380px] mx-auto" alt="Preview" />
+          <img src={img.url} style={{ filter: filterCss() }} className="max-h-[380px] mx-auto bg-zinc-100 dark:bg-zinc-800" alt="Preview" />
           {batch.length > 0 && (
-            <div className="border p-3 space-y-2">
-              <div className="flex items-center justify-between text-sm font-medium">
-                <span>Batch ({batch.filter(b => b.checked).length} selected)</span>
-                <div className="flex gap-2.5">
-                  <button onClick={() => setBatch(batch.map(b => ({ ...b, checked: true })))} className="underline text-xs">Select all</button>
-                  <button onClick={() => setBatch(batch.map(b => ({ ...b, checked: false })))} className="underline text-xs">Clear</button>
+            <div className="bg-zinc-100 dark:bg-zinc-800 p-3 space-y-2">
+              <div className="flex items-center justify-between text-[12px] font-bold uppercase tracking-wide">
+                <span>Batch ({batch.filter((b) => b.checked).length} selected)</span>
+                <div className="flex gap-3">
+                  <button onClick={() => setBatch(batch.map((b) => ({ ...b, checked: true })))} className="hover:underline">Select all</button>
+                  <button onClick={() => setBatch(batch.map((b) => ({ ...b, checked: false })))} className="hover:underline">Clear</button>
                 </div>
               </div>
               <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                 {batch.map((b, i) => (
                   <label key={i} className="relative block cursor-pointer">
                     <img src={b.url} style={{ filter: filterCss() }} className="h-16 w-full object-cover" alt={b.name} />
-                    <input type="checkbox" checked={b.checked} onChange={e => {
+                    <input type="checkbox" checked={b.checked} onChange={(e) => {
                       const next = [...batch]
                       next[i] = { ...b, checked: e.target.checked }
                       setBatch(next)
-                    }} className="absolute top-1 left-1 accent-green-600" />
-                    <p className="text-[10px] truncate mt-0.5">{b.name}</p>
+                    }} className="absolute top-1 left-1 w-4 h-4 accent-emerald-600" />
+                    <p className="text-[10px] font-bold truncate mt-0.5">{b.name}</p>
                   </label>
                 ))}
               </div>
             </div>
           )}
-          <div className="grid sm:grid-cols-2 gap-3">
+          <div className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
             {sliders.map(([key, label, min, max]) => (
-              <label key={key} className="block text-sm">
-                <span className="flex justify-between font-medium mb-1">{label}<span>{String(f[key])}{key === 'blur' ? 'px' : '%'}</span></span>
-                <input type="range" min={min} max={max} value={f[key]} onChange={e => setF({ ...f, [key]: parseFloat(e.target.value) })} className="w-full" />
+              <label key={key} className="block">
+                <span className="flex justify-between text-[12px] font-bold uppercase tracking-wide text-zinc-700 dark:text-zinc-300 mb-1.5">{label}<span className="text-zinc-500 dark:text-zinc-400">{String(f[key])}{key === 'blur' ? 'px' : '%'}</span></span>
+                <input type="range" min={min} max={max} value={f[key]} onChange={(e) => setF({ ...f, [key]: parseFloat(e.target.value) })} className="w-full" />
               </label>
             ))}
           </div>

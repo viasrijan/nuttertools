@@ -1,9 +1,12 @@
+import { lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { CATEGORIES, TOTAL_TOOLS } from '../data/categories'
 import { tileGrad } from '../lib/style'
 import ToolCard from '../components/ToolCard'
 import { POPULAR_TOOLS } from '../data/popular'
 import { toolIconUrl } from '../components/Icon'
+
+const ThreeBackground = lazy(() => import('../components/ThreeBackground'))
 
 const SECTION_LABEL_BASE = 'text-[24px] md:text-[35px] font-extrabold tracking-[-0.02em] text-center'
 const SECTION_LABEL = `${SECTION_LABEL_BASE} text-black dark:text-white`
@@ -14,6 +17,7 @@ export default function Home() {
   return (
     <div className="max-w-[1200px] mx-auto px-5 sm:px-6 animate-[omni-fade_0.3s_ease-out]">
       <section className="relative pt-8 pb-8 md:pt-16 md:pb-14 text-center overflow-hidden">
+        <Suspense fallback={null}><ThreeBackground /></Suspense>
         <div aria-hidden className="absolute inset-0 pointer-events-none select-none">
           {[
             { id: 'qr-generator', cls: 'left-[2%] top-[16%] w-10 h-10 md:w-12 md:h-12 opacity-20 animate-[omni-drift-a_9s_ease-in-out_infinite]' },

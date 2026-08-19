@@ -2,7 +2,7 @@
   {
     "id": "bg-remover",
     "name": "Background Remover",
-    "desc": "Remove bg from any image - AI",
+    "desc": "Remove the background from any photo in seconds with an AI model that runs entirely in your browser. Supports batch uploads and downloads transparent PNGs — nothing is ever sent to a server.",
     "category": "Image Tools",
     "icon": "✂️",
     "implemented": true
@@ -10,7 +10,7 @@
   {
     "id": "image-compressor",
     "name": "Image Compressor",
-    "desc": "Compress JPG, PNG, WebP 80% smaller, bulk",
+    "desc": "Shrink JPG, PNG and WebP images by up to 80% without visibly losing quality. Adjust the quality slider and max width, preview the size savings live, and download files individually or as a ZIP.",
     "category": "Image Tools",
     "icon": "🗜️",
     "implemented": true
@@ -18,7 +18,7 @@
   {
     "id": "format-converter",
     "name": "Image Format Converter",
-    "desc": "Convert & edit images: resize, crop, flip, text, filters & more",
+    "desc": "Convert images to PNG, JPEG, WebP, GIF, SVG, BMP, ICO and AVIF in one place. Batch edit with resize, crop, rotate, flip, brightness/contrast/saturation filters, blur, rounded corners and text watermarks, then download results individually or as a ZIP.",
     "category": "Image Tools",
     "icon": "🔄",
     "implemented": true
@@ -26,7 +26,7 @@
   {
     "id": "heic-to-jpg",
     "name": "HEIC to JPG",
-    "desc": "Convert iPhone HEIC to JPG/PNG offline",
+    "desc": "Convert Apple HEIC photos from iPhone and iPad into universally compatible JPG or PNG images. Adjust quality, convert multiple files at once, and download them individually or as a ZIP archive.",
     "category": "Image Tools",
     "icon": "🍎",
     "implemented": true
@@ -34,7 +34,7 @@
   {
     "id": "image-ocr",
     "name": "Image to Text (OCR)",
-    "desc": "Extract text from images with AI",
+    "desc": "Extract text from images, screenshots, scans and photos with OCR that runs locally. Choose the language, then copy or download the recognized text as a clean text file.",
     "category": "Image Tools",
     "icon": "🔤",
     "implemented": true
@@ -42,7 +42,7 @@
   {
     "id": "qr-generator",
     "name": "QR Generator & Designer",
-    "desc": "Create QR with logo, colors, SVG/PNG",
+    "desc": "Create custom QR codes for URLs, plain text, Wi-Fi networks, email and more. Customize colors, add a logo, and download as PNG or SVG — with a batch mode for generating many codes at once.",
     "category": "Image Tools",
     "icon": "🔳",
     "implemented": true
@@ -50,7 +50,7 @@
   {
     "id": "images-to-pdf",
     "name": "Images to PDF",
-    "desc": "Convert JPG/PNG to PDF",
+    "desc": "Combine JPG, PNG and WebP photos into a single PDF in the order you choose. Reorder pages, set the page size and margins, and download the finished document instantly.",
     "category": "PDF Tools",
     "icon": "🖼️",
     "implemented": true
@@ -58,7 +58,7 @@
   {
     "id": "merge-pdf",
     "name": "Merge PDF",
-    "desc": "Combine multiple PDFs into one",
+    "desc": "Join multiple PDF files into one document right in your browser. Drag and drop to reorder, then download the combined PDF — files never leave your device.",
     "category": "PDF Tools",
     "icon": "📚",
     "implemented": true
@@ -66,7 +66,7 @@
   {
     "id": "pdf-to-images",
     "name": "PDF to Images",
-    "desc": "Convert PDF pages to JPG/PNG",
+    "desc": "Convert every page of a PDF into high-quality JPG or PNG images. Pick the resolution and format, then download pages individually or as a ZIP archive.",
     "category": "PDF Tools",
     "icon": "📸",
     "implemented": true
@@ -74,7 +74,7 @@
   {
     "id": "split-pdf",
     "name": "Split PDF",
-    "desc": "Split PDF by pages or range",
+    "desc": "Separate a PDF into individual pages or custom ranges such as 1-3, 5, 8-10. Preview the page count and download every part instantly, or grab a ZIP of all pages.",
     "category": "PDF Tools",
     "icon": "✂️",
     "implemented": true
@@ -82,7 +82,7 @@
   {
     "id": "json-formatter",
     "name": "JSON Formatter",
-    "desc": "Format, minify, validate & tree view",
+    "desc": "Pretty-print, validate, sort and minify JSON with a focused editor. See the exact parse error location for broken JSON, compare sizes, and copy or download the result.",
     "category": "Developer Tools",
     "icon": "{}",
     "implemented": true
@@ -90,7 +90,7 @@
   {
     "id": "base64-tool",
     "name": "Base64 Encoder",
-    "desc": "Encode/decode text and files",
+    "desc": "Encode text or files to Base64 and decode it back, with URL-safe and MIME variants. Works for strings, data URLs and file uploads entirely offline.",
     "category": "Encoding & Security",
     "icon": "🔐",
     "implemented": true
@@ -98,7 +98,7 @@
   {
     "id": "word-counter",
     "name": "Word Counter",
-    "desc": "Words, chars, reading time & more",
+    "desc": "Count words, characters, sentences, paragraphs, reading time and speaking time live as you type. Includes keyword density and social-platform character limits.",
     "category": "Text & Writing",
     "icon": "📝",
     "implemented": true
@@ -106,7 +106,7 @@
   {
     "id": "password-generator",
     "name": "Password Generator",
-    "desc": "Strong, secure random passwords",
+    "desc": "Generate strong random passwords with custom length, character sets and passphrase options. Avoid ambiguous characters, copy instantly, and check the strength of any password.",
     "category": "Encoding & Security",
     "icon": "🛡️",
     "implemented": true
@@ -114,7 +114,7 @@
   {
     "id": "palette-extractor",
     "name": "Palette Extractor",
-    "desc": "Get 5 colors from any image",
+    "desc": "Pull the dominant colors out of any image into a copyable palette. Choose how many colors to extract and copy HEX values, CSS variables or the entire palette at once.",
     "category": "Color & Design",
     "icon": "🎨",
     "implemented": true
@@ -122,7 +122,7 @@
   {
     "id": "video-compressor",
     "name": "Video Compressor",
-    "desc": "Compress MP4, WebM videos offline",
+    "desc": "Shrink MP4 and other video files by re-encoding them in your browser with adjustable quality and target-size modes. Preview the savings and download the compressed file.",
     "category": "Video Tools",
     "icon": "🎬",
     "implemented": true
@@ -130,7 +130,7 @@
   {
     "id": "mp4-to-webm",
     "name": "MP4 to WebM",
-    "desc": "Convert video formats",
+    "desc": "Convert MP4 videos to the smaller, web-friendly WebM format. Adjust quality and resolution, then download the converted file — processed locally with no upload.",
     "category": "Video Tools",
     "icon": "🔄",
     "implemented": true
@@ -138,7 +138,7 @@
   {
     "id": "video-muter",
     "name": "Video Muter",
-    "desc": "Remove audio from video",
+    "desc": "Remove the audio track from any video while keeping the picture and original quality intact. Upload, mute, download — nothing leaves your device.",
     "category": "Video Tools",
     "icon": "🔇",
     "implemented": true
@@ -146,7 +146,7 @@
   {
     "id": "video-rotator",
     "name": "Video Rotator",
-    "desc": "Rotate and flip videos",
+    "desc": "Rotate videos by 90, 180 or 270 degrees and flip them horizontally or vertically. Preview the orientation and download the corrected file instantly.",
     "category": "Video Tools",
     "icon": "↻",
     "implemented": true
@@ -154,7 +154,7 @@
   {
     "id": "video-speed",
     "name": "Video Speed Changer",
-    "desc": "Slow-mo and fast-forward",
+    "desc": "Speed up or slow down videos by any factor from 0.1× to 4× while preserving the original pitch. Trim the segment first for precise control.",
     "category": "Video Tools",
     "icon": "⏩",
     "implemented": true
@@ -162,7 +162,7 @@
   {
     "id": "video-trimmer",
     "name": "Video Trimmer",
-    "desc": "Cut and trim videos",
+    "desc": "Cut out exactly the part of a video you need with second-precision start and end points. Preview the clip, then export just the selected segment.",
     "category": "Video Tools",
     "icon": "✂️",
     "implemented": true
@@ -170,7 +170,7 @@
   {
     "id": "video-to-gif",
     "name": "Video to GIF",
-    "desc": "Convert video clips to GIF",
+    "desc": "Turn any video segment into an animated GIF with size, framerate and quality controls. Choose the start and end time, then download the animation ready for the web.",
     "category": "Video Tools",
     "icon": "🎞️",
     "implemented": true
@@ -178,7 +178,7 @@
   {
     "id": "video-to-mp3",
     "name": "Video to MP3",
-    "desc": "Extract audio from any video",
+    "desc": "Extract the audio track from a video and save it as MP3 or another audio format. Pick the bitrate and download the file — all processed locally.",
     "category": "Video Tools",
     "icon": "🎵",
     "implemented": true
@@ -186,7 +186,7 @@
   {
     "id": "audio-converter",
     "name": "Audio Converter",
-    "desc": "MP3, WAV, OGG, M4A converter",
+    "desc": "Convert audio between MP3, WAV, OGG, M4A, FLAC and other formats with adjustable bitrate and sample rate. Process multiple files in one go.",
     "category": "Audio Tools",
     "icon": "🎧",
     "implemented": true
@@ -194,7 +194,7 @@
   {
     "id": "audio-transcriber",
     "name": "Audio Transcriber",
-    "desc": "Whisper AI - speech to text offline",
+    "desc": "Transcribe speech in audio and video files into text using an AI model that runs entirely in your browser. Copy the transcript or download it as a file.",
     "category": "Audio Tools",
     "icon": "💬",
     "implemented": true
@@ -202,7 +202,7 @@
   {
     "id": "audio-trimmer",
     "name": "Audio Trimmer & Joiner",
-    "desc": "Cut and merge audio files",
+    "desc": "Cut any audio file down to just the part you need. Set start and end points visually, then download the trimmed clip as WAV, MP3 or another format.",
     "category": "Audio Tools",
     "icon": "✂️",
     "implemented": true
@@ -210,7 +210,7 @@
   {
     "id": "voice-recorder",
     "name": "Voice Recorder",
-    "desc": "Record and save as MP3",
+    "desc": "Record your microphone, then play back, preview and download the audio. Includes waveform display and a choice of output formats.",
     "category": "Audio Tools",
     "icon": "🎙️",
     "implemented": true
@@ -218,7 +218,7 @@
   {
     "id": "pdf-page-numbers",
     "name": "Add Page Numbers",
-    "desc": "Add numbers to PDF pages",
+    "desc": "Add page numbers to a PDF at the position, size and style you choose. Start numbering from any page, with options for prefixes and fonts.",
     "category": "PDF Tools",
     "icon": "🔢",
     "implemented": true
@@ -226,7 +226,7 @@
   {
     "id": "compress-pdf",
     "name": "Compress PDF",
-    "desc": "Reduce PDF file size",
+    "desc": "Reduce PDF file size by re-encoding pages and images with adjustable quality. Compare the before and after sizes and download the smaller PDF.",
     "category": "PDF Tools",
     "icon": "🗜️",
     "implemented": true
@@ -234,7 +234,7 @@
   {
     "id": "pdf-text-extract",
     "name": "Extract PDF Text",
-    "desc": "Get all text from PDF",
+    "desc": "Extract all text from a PDF so you can copy, search and reuse it. Works with scanned pages and returns clean, downloadable text.",
     "category": "PDF Tools",
     "icon": "📄",
     "implemented": true
@@ -242,7 +242,7 @@
   {
     "id": "pdf-protect",
     "name": "PDF Protect / Unlock",
-    "desc": "Add or remove password",
+    "desc": "Lock a PDF with a password or remove an existing password from a document you own. Supports strong encryption entirely in your browser.",
     "category": "PDF Tools",
     "icon": "🔒",
     "implemented": true
@@ -250,7 +250,7 @@
   {
     "id": "rotate-pdf",
     "name": "Rotate PDF",
-    "desc": "Rotate PDF pages",
+    "desc": "Rotate all pages of a PDF by 90, 180 or 270 degrees, or rotate individual pages differently. Preview and download the corrected document.",
     "category": "PDF Tools",
     "icon": "↻",
     "implemented": true
@@ -258,7 +258,7 @@
   {
     "id": "pdf-watermark",
     "name": "PDF Watermark",
-    "desc": "Add text/image watermark",
+    "desc": "Add a text or image watermark to every page of a PDF. Control the opacity, size, rotation and position, then download the watermarked file.",
     "category": "PDF Tools",
     "icon": "💧",
     "implemented": true
@@ -266,7 +266,7 @@
   {
     "id": "bulk-renamer",
     "name": "Bulk File Renamer",
-    "desc": "Rename 100 files at once",
+    "desc": "Rename dozens of files at once with rules for find-and-replace, prefix/suffix, numbering and case changes. Preview every new name before applying.",
     "category": "File Tools",
     "icon": "✏️",
     "implemented": true
@@ -274,7 +274,7 @@
   {
     "id": "csv-json",
     "name": "CSV <> JSON Converter",
-    "desc": "Convert CSV, JSON, Excel mutually",
+    "desc": "Convert CSV data to formatted JSON or JSON arrays back to CSV, with automatic header detection and delimiter options.",
     "category": "File Tools",
     "icon": "📊",
     "implemented": true
@@ -282,7 +282,7 @@
   {
     "id": "excel-to-pdf",
     "name": "Excel to PDF",
-    "desc": "Convert XLSX to PDF",
+    "desc": "Convert Excel spreadsheets (.xlsx, .xls) into a clean PDF document. Keep the layout, choose orientation, and download the result.",
     "category": "File Tools",
     "icon": "📈",
     "implemented": true
@@ -290,7 +290,7 @@
   {
     "id": "zip-tool",
     "name": "ZIP Creator & Extractor",
-    "desc": "Create and open ZIP files",
+    "desc": "Create ZIP archives from multiple files or extract existing ZIPs. Compress with adjustable level and download the archive.",
     "category": "File Tools",
     "icon": "📦",
     "implemented": true
@@ -298,7 +298,7 @@
   {
     "id": "case-converter",
     "name": "Case Converter",
-    "desc": "UPPER, lower, Title Case",
+    "desc": "Switch text among upper, lower, title, sentence, camel, snake and kebab case with live preview and instant copy.",
     "category": "Text & Writing",
     "icon": "🔠",
     "implemented": true
@@ -306,7 +306,7 @@
   {
     "id": "diff-checker",
     "name": "Diff Checker",
-    "desc": "Compare two texts side-by-side",
+    "desc": "Compare two blocks of text line by line and highlight additions, removals and changes. Includes word-level diff and side-by-side view.",
     "category": "Text & Writing",
     "icon": "🔍",
     "implemented": true
@@ -314,7 +314,7 @@
   {
     "id": "invoice-generator",
     "name": "Invoice Generator",
-    "desc": "Create PDF invoices free",
+    "desc": "Create a professional invoice with your business details, line items, taxes and totals. Print it or download as a PDF, ready to send.",
     "category": "Text & Writing",
     "icon": "🧾",
     "implemented": true
@@ -322,7 +322,7 @@
   {
     "id": "lorem-generator",
     "name": "Lorem Ipsum Generator",
-    "desc": "Generate placeholder text",
+    "desc": "Generate lorem ipsum paragraphs, sentences or words with configurable length and starting text. Copy the output with one click.",
     "category": "Text & Writing",
     "icon": "📑",
     "implemented": true
@@ -330,7 +330,7 @@
   {
     "id": "markdown-editor",
     "name": "Markdown Editor",
-    "desc": "Live preview markdown",
+    "desc": "Write Markdown with a live, safe preview. Export the rendered HTML or download the .md file, with toolbar shortcuts for common syntax.",
     "category": "Text & Writing",
     "icon": "📝",
     "implemented": true
@@ -338,7 +338,7 @@
   {
     "id": "dedupe-lines",
     "name": "Remove Duplicates",
-    "desc": "Dedupe and sort lines",
+    "desc": "Remove duplicate lines from any text while preserving order. Trim whitespace, ignore case, and count duplicates before removing.",
     "category": "Text & Writing",
     "icon": "🧹",
     "implemented": true
@@ -346,7 +346,7 @@
   {
     "id": "resume-builder",
     "name": "Resume Builder",
-    "desc": "Build resume, download PDF",
+    "desc": "Build a clean, ATS-friendly resume with sections for experience, education and skills. Export it as a downloadable PDF or HTML.",
     "category": "Text & Writing",
     "icon": "📄",
     "implemented": true
@@ -354,7 +354,7 @@
   {
     "id": "slug-generator",
     "name": "Slug & URL Encoder",
-    "desc": "Create URL slugs, encode/decode",
+    "desc": "Turn titles or whole lists into clean lowercase URL slugs. Handles accents, spaces, special characters and bulk input.",
     "category": "Text & Writing",
     "icon": "🔗",
     "implemented": true
@@ -362,7 +362,7 @@
   {
     "id": "tts-stt",
     "name": "Text to Speech",
-    "desc": "Speak any text, speech to text",
+    "desc": "Convert text to speech with natural voices and transcribe spoken audio back to text. Pick a voice, speed and pitch, then download the audio.",
     "category": "Text & Writing",
     "icon": "🗣️",
     "implemented": true
@@ -370,7 +370,7 @@
   {
     "id": "env-generator",
     "name": ".env Generator",
-    "desc": "Generate .env.example",
+    "desc": "Generate a .env file from key-value pairs with validation, quoting rules and comments. Format for Node, Vite, Docker and more.",
     "category": "Developer Tools",
     "icon": "⚙️",
     "implemented": true
@@ -378,7 +378,7 @@
   {
     "id": "chmod-calc",
     "name": "Chmod Calculator",
-    "desc": "Calculate chmod permissions",
+    "desc": "Build Unix file permissions and copy the octal, symbolic or numeric chmod command. Includes special bits like setuid and sticky.",
     "category": "Developer Tools",
     "icon": "🔢",
     "implemented": true
@@ -386,7 +386,7 @@
   {
     "id": "cron-generator",
     "name": "Cron Generator",
-    "desc": "Human to cron and reverse",
+    "desc": "Build a five or six-field cron schedule from readable time and date controls. Copy the expression or paste one to see the next run times.",
     "category": "Developer Tools",
     "icon": "⏰",
     "implemented": true
@@ -394,7 +394,7 @@
   {
     "id": "css-tailwind",
     "name": "CSS to Tailwind",
-    "desc": "Convert CSS to Tailwind classes",
+    "desc": "Convert CSS properties into equivalent Tailwind CSS classes, or expand Tailwind classes back into plain CSS. Great for porting styles.",
     "category": "Developer Tools",
     "icon": "🎨",
     "implemented": true
@@ -402,7 +402,7 @@
   {
     "id": "curl-to-fetch",
     "name": "cURL to Fetch",
-    "desc": "Convert cURL to JS fetch",
+    "desc": "Convert curl commands into clean JavaScript fetch() code, including headers, body and multipart data.",
     "category": "Developer Tools",
     "icon": "🌐",
     "implemented": true
@@ -410,7 +410,7 @@
   {
     "id": "hash-generator",
     "name": "Hash Generator",
-    "desc": "MD5, SHA1, SHA256, SHA512",
+    "desc": "Generate MD5, SHA-1, SHA-256, SHA-384 and SHA-512 hashes of any text using Web Crypto. Copy the hash instantly.",
     "category": "Developer Tools",
     "icon": "#️⃣",
     "implemented": true
@@ -418,7 +418,7 @@
   {
     "id": "html-jsx",
     "name": "HTML to JSX",
-    "desc": "Convert HTML to React JSX",
+    "desc": "Convert HTML snippets into JSX or JSX back into HTML. Handles class→className, style objects, self-closing tags and attributes.",
     "category": "Developer Tools",
     "icon": "⚛️",
     "implemented": true
@@ -426,7 +426,7 @@
   {
     "id": "minify-beautify",
     "name": "Minify / Beautify",
-    "desc": "Minify HTML, CSS, JS, JSON",
+    "desc": "Minify or beautify JavaScript, CSS, HTML, JSON and XML with a single click. Compare byte sizes before and after.",
     "category": "Developer Tools",
     "icon": "✨",
     "implemented": true
@@ -434,7 +434,7 @@
   {
     "id": "regex-tester",
     "name": "Regex Tester",
-    "desc": "Test and explain regex",
+    "desc": "Test JavaScript regular expressions live with flags, capture groups and replacement previews. See every match highlighted in the input.",
     "category": "Developer Tools",
     "icon": "🧪",
     "implemented": true
@@ -442,7 +442,7 @@
   {
     "id": "whitespace-cleaner",
     "name": "Whitespace Cleaner",
-    "desc": "Clean extra spaces, tabs",
+    "desc": "Clean up messy text by removing extra spaces, tabs, trailing whitespace and blank lines. Normalize line endings too.",
     "category": "Text & Writing",
     "icon": "🧼",
     "implemented": true
@@ -450,7 +450,7 @@
   {
     "id": "jwt-tool",
     "name": "JWT Decoder",
-    "desc": "Decode and verify JWT tokens",
+    "desc": "Decode JWT tokens and inspect their header, payload and expiry without sending them anywhere. Validate signatures and timing.",
     "category": "Developer Tools",
     "icon": "🎫",
     "implemented": true
@@ -458,7 +458,7 @@
   {
     "id": "readme-generator",
     "name": "README Generator",
-    "desc": "GitHub README builder",
+    "desc": "Generate a complete README.md with badges, install instructions, usage examples and a table of contents. Copy or download the file.",
     "category": "Developer Tools",
     "icon": "📖",
     "implemented": true
@@ -466,7 +466,7 @@
   {
     "id": "uuid-generator",
     "name": "UUID & Fake Data",
-    "desc": "Generate UUIDs and mock data",
+    "desc": "Generate one or hundreds of cryptographically random UUID v4 identifiers. Copy them as a list, JSON or comma-separated.",
     "category": "Developer Tools",
     "icon": "🆔",
     "implemented": true
@@ -474,7 +474,7 @@
   {
     "id": "bcrypt-tool",
     "name": "Bcrypt Generator",
-    "desc": "Hash and check bcrypt",
+    "desc": "Hash passwords with bcrypt or verify an existing hash against a plaintext password. Choose the cost factor and format.",
     "category": "Encoding & Security",
     "icon": "🔒",
     "implemented": true
@@ -482,7 +482,7 @@
   {
     "id": "binary-converter",
     "name": "Binary Converter",
-    "desc": "Binary, Hex, Octal converter",
+    "desc": "Convert between text, binary, decimal, octal and hexadecimal in either direction. Live updates and copy-ready output.",
     "category": "Encoding & Security",
     "icon": "01",
     "implemented": true
@@ -490,7 +490,7 @@
   {
     "id": "morse-code",
     "name": "Morse Code",
-    "desc": "Translate to morse code",
+    "desc": "Translate text to Morse code and back, with audio playback and configurable timing. Learn mode for practice.",
     "category": "Encoding & Security",
     "icon": "📡",
     "implemented": true
@@ -498,7 +498,7 @@
   {
     "id": "url-encoder",
     "name": "URL Encoder",
-    "desc": "Encode/decode URLs",
+    "desc": "Encode or decode URL components, query values and full URLs. Choose component vs full-URL encoding with live preview.",
     "category": "Encoding & Security",
     "icon": "🔗",
     "implemented": true
@@ -506,7 +506,7 @@
   {
     "id": "blob-maker",
     "name": "Blob & Wave Maker",
-    "desc": "Create blob, wave SVGs",
+    "desc": "Design CSS blob shapes with organic border-radius presets. Tune the corners live and copy production-ready CSS.",
     "category": "Color & Design",
     "icon": "💧",
     "implemented": true
@@ -514,7 +514,7 @@
   {
     "id": "contrast-checker",
     "name": "Contrast Checker",
-    "desc": "WCAG accessibility checker",
+    "desc": "Check WCAG contrast ratios between two colors with pass/fail grades for AA and AAA at every size. Adjust until accessible.",
     "category": "Color & Design",
     "icon": "♿",
     "implemented": true
@@ -522,7 +522,7 @@
   {
     "id": "gradient-generator",
     "name": "Gradient Generator",
-    "desc": "Create CSS gradients",
+    "desc": "Build beautiful two or multi-stop CSS gradients visually. Pick direction and colors, then copy production-ready CSS code.",
     "category": "Color & Design",
     "icon": "🌅",
     "implemented": true
@@ -530,7 +530,7 @@
   {
     "id": "hex-rgb",
     "name": "HEX to RGB Converter",
-    "desc": "Convert color formats",
+    "desc": "Convert HEX colors to RGB, RGBA and HSL values (and back) with a live color preview. Copy any format instantly.",
     "category": "Color & Design",
     "icon": "🌈",
     "implemented": true
@@ -538,7 +538,7 @@
   {
     "id": "color-picker",
     "name": "Color Picker",
-    "desc": "Pick colors from image/screen",
+    "desc": "Pick any color with a visual picker and copy matching HEX, RGB, HSL and CMYK values. Includes a list of saved colors.",
     "category": "Color & Design",
     "icon": "👁️",
     "implemented": true
@@ -546,7 +546,7 @@
   {
     "id": "shadow-generator",
     "name": "Shadow Generator",
-    "desc": "Box and text shadow maker",
+    "desc": "Design layered CSS box shadows with a visual editor. Tune x/y offsets, blur, spread and color, then copy the code.",
     "category": "Color & Design",
     "icon": "💡",
     "implemented": true
@@ -554,7 +554,7 @@
   {
     "id": "meta-generator",
     "name": "Meta Tag Generator",
-    "desc": "Generate meta tags for SEO",
+    "desc": "Generate SEO meta titles and descriptions with live character counts and previews for Google and social shares.",
     "category": "Web & SEO",
     "icon": "🏷️",
     "implemented": true
@@ -562,7 +562,7 @@
   {
     "id": "ip-info",
     "name": "My IP & Browser Info",
-    "desc": "See IP, browser, OS info",
+    "desc": "Look up your public IP address and its location details, ISP and network info. Runs server-side for accuracy.",
     "category": "Web & SEO",
     "icon": "💻",
     "implemented": true
@@ -570,7 +570,7 @@
   {
     "id": "og-generator",
     "name": "OG Image Generator",
-    "desc": "Create social share images",
+    "desc": "Generate Open Graph meta tags for social sharing with title, description, image and preview of how links appear.",
     "category": "Web & SEO",
     "icon": "🖼️",
     "implemented": true
@@ -578,7 +578,7 @@
   {
     "id": "og-previewer",
     "name": "OG Image Previewer",
-    "desc": "Preview how link looks on socials",
+    "desc": "Preview how your page will look when shared on Facebook, Twitter, LinkedIn and WhatsApp. Paste a URL and inspect its tags.",
     "category": "Web & SEO",
     "icon": "👀",
     "implemented": true
@@ -586,7 +586,7 @@
   {
     "id": "sitemap-gen",
     "name": "Sitemap Generator",
-    "desc": "Generate sitemap.xml",
+    "desc": "Generate a sitemap.xml from a list of URLs or a domain crawl. Set priority, changefreq and lastmod, then download the file.",
     "category": "Web & SEO",
     "icon": "🗺️",
     "implemented": true
@@ -594,7 +594,7 @@
   {
     "id": "utm-builder",
     "name": "UTM Builder",
-    "desc": "Create UTM tracking links",
+    "desc": "Build properly encoded UTM campaign URLs from source, medium, campaign, term and content fields. Copy with one click.",
     "category": "Web & SEO",
     "icon": "📈",
     "implemented": true
@@ -602,7 +602,7 @@
   {
     "id": "age-calc",
     "name": "Age & Date Calculator",
-    "desc": "Age, date diff, timezone",
+    "desc": "Calculate exact age in years, months, days and total days from any birth date, with a countdown to the next birthday.",
     "category": "Everyday Utilities",
     "icon": "📅",
     "implemented": true
@@ -610,7 +610,7 @@
   {
     "id": "percent-calc",
     "name": "EMI & Percent Calculator",
-    "desc": "Loan, percent, GST calc",
+    "desc": "Solve percentage problems: percent of a value, percentage change, GST/VAT additions and EMI calculations — all in one place.",
     "category": "Everyday Utilities",
     "icon": "🧮",
     "implemented": true
@@ -618,7 +618,7 @@
   {
     "id": "pomodoro",
     "name": "Pomodoro Timer",
-    "desc": "Focus timer + tasks",
+    "desc": "Focus with a Pomodoro timer: work sessions, short and long breaks, customizable durations and session history.",
     "category": "Everyday Utilities",
     "icon": "🍅",
     "implemented": true
@@ -626,7 +626,7 @@
   {
     "id": "screen-recorder",
     "name": "Screen Recorder",
-    "desc": "Record screen in browser",
+    "desc": "Record your screen, a window, or a browser tab with microphone and system audio options. Download the recording as WebM.",
     "category": "Everyday Utilities",
     "icon": "📹",
     "implemented": true
@@ -634,7 +634,7 @@
   {
     "id": "typing-test",
     "name": "Typing Speed Test",
-    "desc": "Check your WPM",
+    "desc": "Test your typing speed and accuracy with word lists of any length. Get WPM, accuracy and error stats instantly.",
     "category": "Everyday Utilities",
     "icon": "⌨️",
     "implemented": true
@@ -642,7 +642,7 @@
   {
     "id": "unit-converter",
     "name": "Unit Converter",
-    "desc": "Length, weight, temp, etc.",
+    "desc": "Convert between units of length, weight, temperature, area, volume, speed, time and more — all in one tool.",
     "category": "Everyday Utilities",
     "icon": "📏",
     "implemented": true
@@ -650,7 +650,7 @@
   {
     "id": "image-upscaler",
     "name": "AI Image Upscaler",
-    "desc": "Upscale images 2x offline",
+    "desc": "Upscale images to 2×, 4× or custom sizes with an AI model that runs in your browser. Sharpen details and download the result.",
     "category": "AI Tools",
     "icon": "🔍",
     "implemented": true
@@ -658,7 +658,7 @@
   {
     "id": "image-captioner",
     "name": "Image to Prompt",
-    "desc": "AI caption any image",
+    "desc": "Generate natural-language captions for your images using an AI vision model that runs locally. Copy the caption or use it as alt text.",
     "category": "AI Tools",
     "icon": "🤖",
     "implemented": true
@@ -666,7 +666,7 @@
   {
     "id": "translator",
     "name": "Translator",
-    "desc": "Translate text",
+    "desc": "Translate text between dozens of languages with automatic detection. Works offline with copy-ready output.",
     "category": "AI Tools",
     "icon": "🌍",
     "implemented": true
@@ -674,7 +674,7 @@
   {
     "id": "sentiment",
     "name": "Sentiment Analyzer",
-    "desc": "Analyze text sentiment",
+    "desc": "Analyze the sentiment of any text as positive, negative or neutral with a confidence score. Paste reviews or comments to test.",
     "category": "AI Tools",
     "icon": "😊",
     "implemented": true
@@ -682,7 +682,7 @@
   {
     "id": "summarizer",
     "name": "Text Summarizer",
-    "desc": "Summarize long articles",
+    "desc": "Summarize long articles, documents or notes into concise key points. Adjust the summary length to fit your needs.",
     "category": "AI Tools",
     "icon": "📝",
     "implemented": true
@@ -690,7 +690,7 @@
   {
     "id": "image-cropper",
     "name": "Image Cropper",
-    "desc": "Crop images to any size",
+    "desc": "Crop images to exact pixels or common aspect ratios like 1:1, 16:9 and 4:3. Drag to select, then download the cropped image.",
     "category": "Image Tools",
     "icon": "✂️",
     "implemented": true
@@ -698,7 +698,7 @@
   {
     "id": "image-filters",
     "name": "Image Filters",
-    "desc": "Brightness, contrast, blur & more",
+    "desc": "Apply Instagram-style filters to your photos with adjustable intensity. Compare before and after, then download the result.",
     "category": "Image Tools",
     "icon": "🎛️",
     "implemented": true
@@ -706,7 +706,7 @@
   {
     "id": "image-resizer",
     "name": "Image Resizer",
-    "desc": "Resize by %, pixels or presets",
+    "desc": "Resize images to exact pixel dimensions or a percentage while preserving or overriding the aspect ratio. Batch mode included.",
     "category": "Image Tools",
     "icon": "🗙️",
     "implemented": true
@@ -714,7 +714,7 @@
   {
     "id": "pdf-to-word",
     "name": "PDF to Word",
-    "desc": "Convert PDF to editable DOCX",
+    "desc": "Convert PDF documents into editable Word (.docx) files while keeping the layout as close as possible.",
     "category": "PDF Tools",
     "icon": "📥",
     "implemented": true
@@ -722,7 +722,7 @@
   {
     "id": "pdf-viewer",
     "name": "PDF Viewer",
-    "desc": "Read and annotate PDFs",
+    "desc": "View PDF files directly in your browser with zoom, page navigation and search. Works entirely offline.",
     "category": "PDF Tools",
     "icon": "📖",
     "implemented": true
@@ -730,7 +730,7 @@
   {
     "id": "word-to-pdf",
     "name": "Word to PDF",
-    "desc": "Convert DOCX to PDF",
+    "desc": "Convert Word documents (.docx, .doc) into PDF files with faithful formatting. Download the converted file instantly.",
     "category": "PDF Tools",
     "icon": "📝",
     "implemented": true
@@ -738,7 +738,7 @@
   {
     "id": "html-preview",
     "name": "HTML Preview",
-    "desc": "Live HTML & CSS preview",
+    "desc": "Preview rendered HTML with an editable code pane. See the result live as you type, with a safe sandboxed iframe.",
     "category": "Developer Tools",
     "icon": "👁️",
     "implemented": true
@@ -746,7 +746,7 @@
   {
     "id": "sql-formatter",
     "name": "SQL Formatter",
-    "desc": "Format and beautify SQL",
+    "desc": "Format and beautify SQL queries with keyword capitalization and indentation. Supports most SQL dialects.",
     "category": "Developer Tools",
     "icon": "🗄️",
     "implemented": true
@@ -754,7 +754,7 @@
   {
     "id": "yaml-json",
     "name": "YAML ↔ JSON",
-    "desc": "Convert between YAML and JSON",
+    "desc": "Convert YAML to JSON or JSON to YAML with formatting options. Validate either side before converting.",
     "category": "Developer Tools",
     "icon": "📜",
     "implemented": true
@@ -762,7 +762,7 @@
   {
     "id": "caesar-cipher",
     "name": "Caesar Cipher",
-    "desc": "Encode/decode with Caesar shift",
+    "desc": "Encode or decode text with the classic Caesar cipher, any shift, including Unicode support. Brute-force shift detection.",
     "category": "Encoding & Security",
     "icon": "🔠",
     "implemented": true
@@ -770,7 +770,7 @@
   {
     "id": "text-encryptor",
     "name": "Text Encryptor",
-    "desc": "AES encryption offline",
+    "desc": "Encrypt and decrypt text with a passphrase using AES. Choose the strength, then share the ciphertext safely.",
     "category": "Encoding & Security",
     "icon": "🔒",
     "implemented": true
@@ -778,7 +778,7 @@
   {
     "id": "emoji-remover",
     "name": "Emoji Remover",
-    "desc": "Strip emojis from text",
+    "desc": "Strip emojis and pictographs from text, with an option to replace them with their names or a character.",
     "category": "Text & Writing",
     "icon": "🙁",
     "implemented": true
@@ -786,7 +786,7 @@
   {
     "id": "text-reverser",
     "name": "Text Reverser",
-    "desc": "Reverse text, words or lines",
+    "desc": "Reverse text, words or lines instantly. Includes mirror-text and upside-down variants for fun posts.",
     "category": "Text & Writing",
     "icon": "🔄",
     "implemented": true
@@ -794,7 +794,7 @@
   {
     "id": "css-color-converter",
     "name": "CSS Converter",
-    "desc": "Named, hex, rgb, hsl & more",
+    "desc": "Convert CSS colors between hex, rgb(), hsl(), named colors and CSS variables with live previews.",
     "category": "Color & Design",
     "icon": "🌈",
     "implemented": true
@@ -802,7 +802,7 @@
   {
     "id": "color-shades",
     "name": "Color Shades",
-    "desc": "Tints, shades & tones generator",
+    "desc": "Generate harmonious shades and tints of any color, from light to dark. Copy the palette as CSS variables.",
     "category": "Color & Design",
     "icon": "🌅",
     "implemented": true
@@ -810,7 +810,7 @@
   {
     "id": "gif-to-video",
     "name": "GIF to Video",
-    "desc": "Convert GIF to MP4/WebM",
+    "desc": "Convert animated GIFs into MP4 or WebM video for smaller file sizes and better quality. Adjust framerate and quality.",
     "category": "Video Tools",
     "icon": "🎞️",
     "implemented": true
@@ -818,7 +818,7 @@
   {
     "id": "tone-generator",
     "name": "Tone Generator",
-    "desc": "Generate tones & frequencies",
+    "desc": "Generate sine, square, triangle and sawtooth tones at any frequency. Adjust volume and duration, then download as WAV.",
     "category": "Audio Tools",
     "icon": "📢",
     "implemented": true
@@ -826,7 +826,7 @@
   {
     "id": "txt-to-pdf",
     "name": "TXT to PDF",
-    "desc": "Convert text files to PDF",
+    "desc": "Turn plain text files into a clean, print-ready PDF with font and margin controls. Download instantly.",
     "category": "File Tools",
     "icon": "📃",
     "implemented": true
@@ -834,7 +834,7 @@
   {
     "id": "http-status",
     "name": "HTTP Status Codes",
-    "desc": "Reference for HTTP status codes",
+    "desc": "Browse every HTTP status code with its meaning, use cases and examples. Searchable by code or name.",
     "category": "Web & SEO",
     "icon": "🚦",
     "implemented": true
@@ -842,7 +842,7 @@
   {
     "id": "robots-txt",
     "name": "Robots.txt Generator",
-    "desc": "Generate robots.txt rules",
+    "desc": "Build a robots.txt file with user agents, disallow rules, sitemap references and crawl delays. Copy or download the result.",
     "category": "Web & SEO",
     "icon": "🤖",
     "implemented": true
@@ -850,7 +850,7 @@
   {
     "id": "bmi-calculator",
     "name": "BMI Calculator",
-    "desc": "Body mass index calculator",
+    "desc": "Calculate your Body Mass Index from metric or US measurements, with standard category ranges and a visual scale.",
     "category": "Everyday Utilities",
     "icon": "⚖️",
     "implemented": true
@@ -858,7 +858,7 @@
   {
     "id": "random-number",
     "name": "Random Number",
-    "desc": "Random numbers, dice & more",
+    "desc": "Generate random integers within any range, with options for uniqueness, quantity and sorting. Cryptographically secure.",
     "category": "Everyday Utilities",
     "icon": "🎲",
     "implemented": true
@@ -866,7 +866,7 @@
   {
     "id": "tip-calculator",
     "name": "Tip Calculator",
-    "desc": "Split bills and tips",
+    "desc": "Calculate the tip, total and per-person share for restaurant bills. Split between any number of people with custom tip %.",
     "category": "Everyday Utilities",
     "icon": "💸",
     "implemented": true
@@ -874,7 +874,7 @@
   {
     "id": "poem-generator",
     "name": "Poem Generator",
-    "desc": "Generate poems and haiku",
+    "desc": "Generate short poems from a topic, style and mood using a local AI model. Copy or share your creation.",
     "category": "AI Tools",
     "icon": "🪶",
     "implemented": true
@@ -882,7 +882,7 @@
   {
     "id": "recipe-generator",
     "name": "Recipe Generator",
-    "desc": "Generate recipes from ingredients",
+    "desc": "Generate recipes from ingredients you have on hand using AI that runs in your browser. Adjust servings and dietary style.",
     "category": "AI Tools",
     "icon": "🍳",
     "implemented": true
@@ -890,7 +890,7 @@
   {
     "id": "llm-token-counter",
     "name": "LLM Token Counter",
-    "desc": "Count tokens & estimate API cost",
+    "desc": "Estimate the token count of any text for common LLM tokenizers. Useful for prompt engineering and cost planning.",
     "category": "Developer Tools",
     "icon": "🔢",
     "implemented": true
@@ -898,7 +898,7 @@
   {
     "id": "json-yaml",
     "name": "JSON ↔ YAML",
-    "desc": "Convert between JSON and YAML",
+    "desc": "Convert JSON to YAML or YAML to JSON with formatting options and validation.",
     "category": "Developer Tools",
     "icon": "🔀",
     "implemented": true
@@ -906,7 +906,7 @@
   {
     "id": "json-csv",
     "name": "JSON ↔ CSV",
-    "desc": "Convert JSON to CSV and back",
+    "desc": "Convert arrays of JSON objects into escaped CSV with automatic headers, or CSV back into formatted JSON.",
     "category": "Developer Tools",
     "icon": "📊",
     "implemented": true
@@ -914,7 +914,7 @@
   {
     "id": "json-schema-validator",
     "name": "JSON Schema Validator",
-    "desc": "Validate data against JSON Schema",
+    "desc": "Validate JSON documents against a JSON Schema with detailed error paths and messages.",
     "category": "Developer Tools",
     "icon": "✅",
     "implemented": true
@@ -922,7 +922,7 @@
   {
     "id": "csv-sql",
     "name": "CSV to SQL",
-    "desc": "Generate CREATE + INSERT statements",
+    "desc": "Convert CSV data into SQL INSERT statements or run simple queries against pasted CSV data.",
     "category": "Developer Tools",
     "icon": "🗄️",
     "implemented": true
@@ -930,7 +930,7 @@
   {
     "id": "graphql-formatter",
     "name": "GraphQL Formatter",
-    "desc": "Pretty-print GraphQL queries and SDL",
+    "desc": "Format, validate and highlight GraphQL queries and schemas. Pretty-print with custom indentation.",
     "category": "Developer Tools",
     "icon": "🌿",
     "implemented": true
@@ -938,7 +938,7 @@
   {
     "id": "hmac-generator",
     "name": "HMAC Generator",
-    "desc": "HMAC-SHA signature generator",
+    "desc": "Generate HMAC signatures with SHA-1, SHA-256 and SHA-512, hex or base64 output, from a secret key.",
     "category": "Encoding & Security",
     "icon": "🔐",
     "implemented": true
@@ -946,7 +946,7 @@
   {
     "id": "html-entity-encoder",
     "name": "HTML Entity Encoder",
-    "desc": "Encode & decode HTML entities",
+    "desc": "Escape HTML special characters into entities or decode entities back into readable text.",
     "category": "Encoding & Security",
     "icon": "🔣",
     "implemented": true
@@ -954,7 +954,7 @@
   {
     "id": "file-hash",
     "name": "File Hash (MD5/SHA)",
-    "desc": "Hash any file locally",
+    "desc": "Compute MD5, SHA-1, SHA-256 and SHA-512 hashes of any file without uploading it. Useful for verification.",
     "category": "Encoding & Security",
     "icon": "📁",
     "implemented": true
@@ -962,7 +962,7 @@
   {
     "id": "email-validator",
     "name": "Email Validator",
-    "desc": "Validate emails + MX records",
+    "desc": "Validate email addresses with syntax checks and a score breakdown. Paste lists for bulk validation.",
     "category": "Encoding & Security",
     "icon": "📧",
     "implemented": true
@@ -970,7 +970,7 @@
   {
     "id": "card-validator",
     "name": "Card Validator",
-    "desc": "Luhn check + brand detection",
+    "desc": "Validate and identify credit card numbers: brand, checksum (Luhn), length and formatting. Never stores your data.",
     "category": "Encoding & Security",
     "icon": "💳",
     "implemented": true
@@ -978,7 +978,7 @@
   {
     "id": "bin-lookup",
     "name": "BIN Lookup",
-    "desc": "Identify card BIN/IIN issuer",
+    "desc": "Identify the card brand and issuer from a BIN/IIN prefix. Look up the network and card type instantly.",
     "category": "Encoding & Security",
     "icon": "🏦",
     "implemented": true
@@ -986,7 +986,7 @@
   {
     "id": "markdown-html",
     "name": "Markdown to HTML",
-    "desc": "Convert Markdown to HTML",
+    "desc": "Convert Markdown to clean HTML or paste HTML to see it rendered as Markdown-style preview.",
     "category": "Text & Writing",
     "icon": "📝",
     "implemented": true
@@ -994,7 +994,7 @@
   {
     "id": "toc-generator",
     "name": "TOC Generator",
-    "desc": "Table of contents from headings",
+    "desc": "Generate a nested table of contents from any HTML or Markdown heading structure. Copy as HTML or Markdown.",
     "category": "Text & Writing",
     "icon": "📑",
     "implemented": true
@@ -1002,7 +1002,7 @@
   {
     "id": "reading-time",
     "name": "Reading Time",
-    "desc": "Reading & speaking time estimate",
+    "desc": "Estimate reading time, speaking time and silent reading pace for any text. Adjustable words-per-minute.",
     "category": "Text & Writing",
     "icon": "⏱️",
     "implemented": true
@@ -1010,7 +1010,7 @@
   {
     "id": "keyword-density",
     "name": "Keyword Density",
-    "desc": "SEO keyword frequency analysis",
+    "desc": "Analyze keyword density, term frequency and phrase usage in any text. Find the top keywords instantly.",
     "category": "Text & Writing",
     "icon": "🔎",
     "implemented": true
@@ -1018,7 +1018,7 @@
   {
     "id": "paraphraser",
     "name": "Paraphraser",
-    "desc": "Rewrite text with synonyms",
+    "desc": "Rewrite and rephrase sentences with a local AI model, keeping the meaning with different wording.",
     "category": "Text & Writing",
     "icon": "✍️",
     "implemented": true
@@ -1026,7 +1026,7 @@
   {
     "id": "photo-caption",
     "name": "Photo Caption",
-    "desc": "Add text captions to photos",
+    "desc": "Generate catchy captions and hashtags for your photos with a local AI model. Style presets included.",
     "category": "Color & Design",
     "icon": "🖼️",
     "implemented": true
@@ -1034,7 +1034,7 @@
   {
     "id": "metadata-remover",
     "name": "Metadata Remover",
-    "desc": "Strip EXIF & metadata from images",
+    "desc": "Strip EXIF and metadata from your photos before sharing. Removes GPS, camera info and editing history.",
     "category": "Color & Design",
     "icon": "🕵️",
     "implemented": true
@@ -1042,7 +1042,7 @@
   {
     "id": "favicon-generator",
     "name": "Favicon Generator",
-    "desc": "Make letter favicons in any color",
+    "desc": "Make square favicon PNGs and ICO files from a letter, emoji, color or uploaded image. Multiple sizes included.",
     "category": "Color & Design",
     "icon": "⭐",
     "implemented": true
@@ -1050,7 +1050,7 @@
   {
     "id": "face-blur",
     "name": "Face Blur",
-    "desc": "Blur or pixelate regions of a photo",
+    "desc": "Detect faces in photos with a local AI model and blur them automatically. Protect privacy before sharing.",
     "category": "Color & Design",
     "icon": "🙈",
     "implemented": true
@@ -1058,7 +1058,7 @@
   {
     "id": "pdf-to-excel",
     "name": "PDF to Excel",
-    "desc": "Extract PDF tables to XLSX",
+    "desc": "Extract tables from PDF documents into Excel-compatible XLSX files. Column mapping and cleaning included.",
     "category": "PDF Tools",
     "icon": "📈",
     "implemented": true
@@ -1066,7 +1066,7 @@
   {
     "id": "pdf-annotator",
     "name": "PDF Annotator",
-    "desc": "Draw, highlight & add text to PDFs",
+    "desc": "Add text notes, highlights and drawings to any PDF page. Save the annotated file locally.",
     "category": "PDF Tools",
     "icon": "🖍️",
     "implemented": true
@@ -1074,7 +1074,7 @@
   {
     "id": "pdf-crop",
     "name": "PDF Crop",
-    "desc": "Crop margins of all pages",
+    "desc": "Crop PDF page margins by exact measurements in millimeters or percentages. Apply to every page at once.",
     "category": "PDF Tools",
     "icon": "✂️",
     "implemented": true
@@ -1082,7 +1082,7 @@
   {
     "id": "pdf-form-flattener",
     "name": "PDF Form Flattener",
-    "desc": "Bake form values into PDF pages",
+    "desc": "Flatten interactive PDF forms into static pages so the content displays identically everywhere.",
     "category": "PDF Tools",
     "icon": "📋",
     "implemented": true
@@ -1090,7 +1090,7 @@
   {
     "id": "video-reverser",
     "name": "Reverse Video",
-    "desc": "Play videos backwards",
+    "desc": "Play any video in reverse. Upload, reverse the footage and download the mirrored clip.",
     "category": "Video Tools",
     "icon": "⏪",
     "implemented": true
@@ -1098,7 +1098,7 @@
   {
     "id": "video-bg-remover",
     "name": "Video BG Remover",
-    "desc": "Remove video background (AI)",
+    "desc": "Remove the background from videos in your browser using AI. Great for green-screen-free clips.",
     "category": "Video Tools",
     "icon": "🪄",
     "implemented": true
@@ -1106,7 +1106,7 @@
   {
     "id": "burn-subtitles",
     "name": "Burn Subtitles",
-    "desc": "Hardcode SRT into video",
+    "desc": "Burn subtitle tracks into videos with customizable fonts, positions and outlines.",
     "category": "Video Tools",
     "icon": "💬",
     "implemented": true
@@ -1114,7 +1114,7 @@
   {
     "id": "audio-enhancer",
     "name": "Audio Enhancer",
-    "desc": "Loudness, EQ & clarity boost",
+    "desc": "Enhance audio quality: normalize volume, reduce noise and brighten the sound. Presets for voice and music.",
     "category": "Audio Tools",
     "icon": "⚡",
     "implemented": true
@@ -1122,7 +1122,7 @@
   {
     "id": "audio-noise-remover",
     "name": "Audio Noise Remover",
-    "desc": "Remove hiss, hum & background noise",
+    "desc": "Remove background noise from recordings with adjustable strength. Clean up voice memos and podcasts.",
     "category": "Audio Tools",
     "icon": "🌬️",
     "implemented": true
@@ -1130,7 +1130,7 @@
   {
     "id": "stem-splitter",
     "name": "Stem Splitter",
-    "desc": "Separate vocals, drums, bass (AI)",
+    "desc": "Separate music into stems: vocals, drums, bass and other instruments using AI in your browser.",
     "category": "Audio Tools",
     "icon": "🎚️",
     "implemented": true
@@ -1138,7 +1138,7 @@
   {
     "id": "audio-reverser",
     "name": "Reverse Audio",
-    "desc": "Play audio backwards",
+    "desc": "Reverse any audio clip for creative effects. Download the reversed file instantly.",
     "category": "Audio Tools",
     "icon": "↩️",
     "implemented": true
@@ -1146,7 +1146,7 @@
   {
     "id": "speed-pitch",
     "name": "Speed & Pitch",
-    "desc": "Change audio speed and pitch",
+    "desc": "Change audio speed and pitch independently. Slow down lessons or speed up podcasts.",
     "category": "Audio Tools",
     "icon": "🐢",
     "implemented": true
@@ -1154,7 +1154,7 @@
   {
     "id": "voice-changer",
     "name": "Voice Changer",
-    "desc": "Chipmunk, deep, robot & more",
+    "desc": "Change the pitch and character of your voice recordings. Fun presets like robot, chipmunk and deep.",
     "category": "Audio Tools",
     "icon": "🎙️",
     "implemented": true
@@ -1162,7 +1162,7 @@
   {
     "id": "llmstxt",
     "name": "llms.txt Generator",
-    "desc": "Create llms.txt for AI crawlers",
+    "desc": "Generate an llms.txt file for your site — a plain-text map for AI crawlers. Include pages and summaries.",
     "category": "Web & SEO",
     "icon": "🤖",
     "implemented": true
@@ -1170,7 +1170,7 @@
   {
     "id": "dns-lookup",
     "name": "DNS Lookup",
-    "desc": "A, AAAA, MX, TXT & more records",
+    "desc": "Query A, AAAA, MX, TXT, NS, CNAME and other DNS records for any domain. Get TTL and raw values.",
     "category": "Web & SEO",
     "icon": "📡",
     "implemented": true
@@ -1178,7 +1178,7 @@
   {
     "id": "whois-lookup",
     "name": "WHOIS Lookup",
-    "desc": "Domain registration via RDAP",
+    "desc": "Look up WHOIS registration data for any domain: registrar, dates, nameservers and status.",
     "category": "Web & SEO",
     "icon": "🧑",
     "implemented": true
@@ -1186,7 +1186,7 @@
   {
     "id": "cidr-calculator",
     "name": "CIDR Calculator",
-    "desc": "Subnet, mask & host range",
+    "desc": "Calculate IPv4 network range, subnet mask, broadcast address, host count and usable IPs from a CIDR block.",
     "category": "Web & SEO",
     "icon": "🌐",
     "implemented": true
@@ -1194,7 +1194,7 @@
   {
     "id": "email-signature",
     "name": "Email Signature",
-    "desc": "Professional HTML signatures",
+    "desc": "Build a clean HTML email signature with your details, photo and social links. Copy or download.",
     "category": "Web & SEO",
     "icon": "📮",
     "implemented": true
@@ -1202,7 +1202,7 @@
   {
     "id": "batch-qr",
     "name": "Batch QR Generator",
-    "desc": "Many QR codes in one click",
+    "desc": "Generate QR codes in bulk from a spreadsheet or list. Download all codes as PNGs or a ZIP archive.",
     "category": "Web & SEO",
     "icon": "🔳",
     "implemented": true
@@ -1210,7 +1210,7 @@
   {
     "id": "compound-interest",
     "name": "Compound Interest",
-    "desc": "Growth with contributions & table",
+    "desc": "Project investment growth with contributions, compounding frequency, duration and inflation adjustments.",
     "category": "Everyday Utilities",
     "icon": "📈",
     "implemented": true
@@ -1218,7 +1218,7 @@
   {
     "id": "mortgage-calculator",
     "name": "Mortgage Calculator",
-    "desc": "Payments & amortization schedule",
+    "desc": "Estimate monthly mortgage payments with principal, interest, taxes and insurance. See amortization details.",
     "category": "Everyday Utilities",
     "icon": "🏠",
     "implemented": true
@@ -1226,7 +1226,7 @@
   {
     "id": "gpa-calculator",
     "name": "GPA Calculator",
-    "desc": "Weighted GPA in 4/5 scale",
+    "desc": "Calculate your GPA from course credits and grades, with weighted and unweighted options.",
     "category": "Everyday Utilities",
     "icon": "🎓",
     "implemented": true
@@ -1234,7 +1234,7 @@
   {
     "id": "dice-roller",
     "name": "Dice Roller",
-    "desc": "Roll any dice, any sides",
+    "desc": "Roll D4, D6, D8, D10, D12, D20 and custom dice with modifiers, totals, history and true randomness.",
     "category": "Everyday Utilities",
     "icon": "🎯",
     "implemented": true
@@ -1242,7 +1242,7 @@
   {
     "id": "barcode-generator",
     "name": "Barcode Generator",
-    "desc": "EAN-13, UPC-A, EAN-8, Code 39",
+    "desc": "Generate EAN-13, UPC-A, Code 128 and other barcodes as SVG or PNG. Copy or download instantly.",
     "category": "Everyday Utilities",
     "icon": "🔖",
     "implemented": true
@@ -1250,7 +1250,7 @@
   {
     "id": "timezone-converter",
     "name": "Timezone Converter",
-    "desc": "Convert time across timezones",
+    "desc": "Compare a date and time across major time zones with daylight saving handled automatically.",
     "category": "Everyday Utilities",
     "icon": "🕒",
     "implemented": true
@@ -1258,7 +1258,7 @@
   {
     "id": "password-strength",
     "name": "Password Strength",
-    "desc": "Entropy & weakness check",
+    "desc": "Score any password strength with entropy estimates, character analysis and actionable tips.",
     "category": "Everyday Utilities",
     "icon": "🛡️",
     "implemented": true
@@ -1266,7 +1266,7 @@
   {
     "id": "grammar-checker",
     "name": "Grammar Checker",
-    "desc": "Fix common mistakes & typos",
+    "desc": "Check grammar and style with a local AI model. Get suggestions for corrections and rewrites.",
     "category": "AI Tools",
     "icon": "📖",
     "implemented": true
@@ -1274,7 +1274,7 @@
   {
     "id": "cover-letter",
     "name": "Cover Letter Writer",
-    "desc": "Draft job cover letters",
+    "desc": "Write a tailored cover letter from your details and the job description, using AI that runs locally.",
     "category": "AI Tools",
     "icon": "✉️",
     "implemented": true
@@ -1282,7 +1282,7 @@
   {
     "id": "memo-writer",
     "name": "Memo Writer",
-    "desc": "Professional office memos",
+    "desc": "Draft clear, professional memos from your notes. Choose tone and length, then copy or download.",
     "category": "AI Tools",
     "icon": "🗒️",
     "implemented": true
@@ -1290,7 +1290,7 @@
   {
     "id": "ai-content-detector",
     "name": "AI Content Detector",
-    "desc": "Estimate AI-written likelihood",
+    "desc": "Estimate whether text was written by AI with a heuristic analysis of phrasing and complexity patterns.",
     "category": "AI Tools",
     "icon": "📡",
     "implemented": true
@@ -1298,7 +1298,7 @@
   {
     "id": "hashtag-generator",
     "name": "Hashtag Generator",
-    "desc": "Hashtags for social posts",
+    "desc": "Generate relevant hashtags for your topic with a local AI model. Pick popular, niche and branded sets.",
     "category": "AI Tools",
     "icon": "🏷️",
     "implemented": true
@@ -1306,7 +1306,7 @@
   {
     "id": "caption-generator",
     "name": "Caption Generator",
-    "desc": "Instagram caption ideas",
+    "desc": "Generate social media captions from a topic and mood. Multiple style presets and emoji options.",
     "category": "AI Tools",
     "icon": "💭",
     "implemented": true
@@ -1314,7 +1314,7 @@
   {
     "id": "mindmap-generator",
     "name": "Mindmap Generator",
-    "desc": "Text outline to visual map",
+    "desc": "Turn a list of topics into a structured mind map you can explore and export as text or HTML.",
     "category": "AI Tools",
     "icon": "🧠",
     "implemented": true
@@ -1322,7 +1322,7 @@
   {
     "id": "alt-text-generator",
     "name": "Alt Text Generator",
-    "desc": "Describe images for accessibility",
+    "desc": "Write accessible alt text for your images using a local AI vision model. Copy or export as a list.",
     "category": "AI Tools",
     "icon": "♿",
     "implemented": true
@@ -1330,7 +1330,7 @@
   {
     "id": "xml-formatter",
     "name": "XML Formatter",
-    "desc": "Format, beautify or minify XML",
+    "desc": "Format, validate and minify XML while preserving element order and attributes.",
     "category": "Developer Tools",
     "icon": "🧾",
     "implemented": true
@@ -1338,7 +1338,7 @@
   {
     "id": "keycode-info",
     "name": "Keycode Info",
-    "desc": "Press a key to see its JS event data",
+    "desc": "Press any key to see its JavaScript key code, key value, code and modifiers. Useful for game dev.",
     "category": "Developer Tools",
     "icon": "⌨️",
     "implemented": true
@@ -1346,7 +1346,7 @@
   {
     "id": "base-converter",
     "name": "Base Converter",
-    "desc": "Convert numbers between bases 2-36",
+    "desc": "Convert numbers between binary, octal, decimal and hexadecimal with arbitrary precision.",
     "category": "Developer Tools",
     "icon": "🔢",
     "implemented": true
@@ -1354,7 +1354,7 @@
   {
     "id": "flexbox-generator",
     "name": "Flexbox Generator",
-    "desc": "Visual CSS flexbox builder",
+    "desc": "Design flexbox layouts visually: direction, wrap, justify and align. Copy production-ready CSS.",
     "category": "Developer Tools",
     "icon": "📐",
     "implemented": true
@@ -1362,7 +1362,7 @@
   {
     "id": "cron-parser",
     "name": "Cron Parser",
-    "desc": "Explain cron expressions and next run times",
+    "desc": "Parse cron expressions and see the next scheduled run times in human-readable form.",
     "category": "Developer Tools",
     "icon": "⏰",
     "implemented": true
@@ -1370,7 +1370,7 @@
   {
     "id": "css-cursors",
     "name": "CSS Cursors",
-    "desc": "Browse and copy every CSS cursor",
+    "desc": "Preview every CSS cursor value on a playground and copy the exact CSS you need.",
     "category": "Color & Design",
     "icon": "🖱️",
     "implemented": true
@@ -1378,7 +1378,7 @@
   {
     "id": "timestamp-converter",
     "name": "Timestamp Converter",
-    "desc": "Unix timestamp to date and back",
+    "desc": "Convert Unix timestamps in seconds or milliseconds to ISO dates, local time and UTC — and back.",
     "category": "Everyday Utilities",
     "icon": "🕰️",
     "implemented": true
@@ -1386,7 +1386,7 @@
   {
     "id": "random-picker",
     "name": "Random Picker",
-    "desc": "Pick a random line from your list",
+    "desc": "Pick a random winner from a list, weighted or unweighted. Perfect for giveaways and decisions.",
     "category": "Everyday Utilities",
     "icon": "🎲",
     "implemented": true
@@ -1394,7 +1394,7 @@
   {
     "id": "yes-no",
     "name": "Yes/No Maker",
-    "desc": "Random yes, no or maybe answers",
+    "desc": "Make a decision with a satisfying yes/no spinner. Customize the weights if you want a bias.",
     "category": "Everyday Utilities",
     "icon": "🔮",
     "implemented": true
@@ -1402,7 +1402,7 @@
   {
     "id": "team-generator",
     "name": "Team Generator",
-    "desc": "Split names into balanced teams",
+    "desc": "Randomly split a list of names into balanced teams. Set team size and reshuffle anytime.",
     "category": "Everyday Utilities",
     "icon": "👥",
     "implemented": true
@@ -1410,7 +1410,7 @@
   {
     "id": "username-generator",
     "name": "Username Generator",
-    "desc": "Fun random usernames from word combos",
+    "desc": "Generate unique, available-style usernames from your name, keywords and style preferences.",
     "category": "Everyday Utilities",
     "icon": "👤",
     "implemented": true
@@ -1418,7 +1418,7 @@
   {
     "id": "roman-numeral",
     "name": "Roman Numeral Converter",
-    "desc": "Convert between numbers and roman numerals",
+    "desc": "Convert numbers to Roman numerals and Roman numerals back to numbers, up to 3999+ with standard rules.",
     "category": "Everyday Utilities",
     "icon": "🏛️",
     "implemented": true
@@ -1426,7 +1426,7 @@
   {
     "id": "discount-calculator",
     "name": "Discount Calculator",
-    "desc": "Work out discounts and final prices",
+    "desc": "Calculate sale prices, savings, stacked discounts and the original price from a discount percentage.",
     "category": "Everyday Utilities",
     "icon": "🏷️",
     "implemented": true
@@ -1434,7 +1434,7 @@
   {
     "id": "calorie-calculator",
     "name": "Calorie Calculator",
-    "desc": "Estimate BMR and daily calorie needs",
+    "desc": "Estimate daily calorie needs from age, body measurements, sex and activity level using Mifflin-St Jeor.",
     "category": "Everyday Utilities",
     "icon": "🔥",
     "implemented": true
@@ -1442,7 +1442,7 @@
   {
     "id": "sleep-cycle-calculator",
     "name": "Sleep Cycle Calculator",
-    "desc": "Best times to sleep and wake",
+    "desc": "Find the best time to wake up or go to bed based on 90-minute sleep cycles. Avoid groggy mornings.",
     "category": "Everyday Utilities",
     "icon": "😴",
     "implemented": true
@@ -1450,7 +1450,7 @@
   {
     "id": "would-you-rather",
     "name": "Would You Rather",
-    "desc": "Play would-you-rather with friends",
+    "desc": "Get a fun would-you-rather question with balanced options. Great for parties and icebreakers.",
     "category": "Everyday Utilities",
     "icon": "🤔",
     "implemented": true
@@ -1458,7 +1458,7 @@
   {
     "id": "movie-picker",
     "name": "Movie & Show Picker",
-    "desc": "Pick a random movie or show",
+    "desc": "Pick a movie from a genre, decade or mood with a curated list. Shuffle until you find the one.",
     "category": "Everyday Utilities",
     "icon": "🍿",
     "implemented": true
@@ -1466,7 +1466,7 @@
   {
     "id": "spin-wheel",
     "name": "Spin Wheel",
-    "desc": "Custom wheel of names and choices",
+    "desc": "Create a spinning wheel with your own entries. Customize colors and spin for a random pick.",
     "category": "Everyday Utilities",
     "icon": "🎡",
     "implemented": true
@@ -1474,7 +1474,7 @@
   {
     "id": "currency-converter",
     "name": "Currency Converter",
-    "desc": "Live exchange rate conversion",
+    "desc": "Convert between major world currencies with live rates when online and cached rates offline.",
     "category": "Everyday Utilities",
     "icon": "💱",
     "implemented": true
@@ -1482,7 +1482,7 @@
   {
     "id": "credit-card-generator",
     "name": "Credit Card Generator",
-    "desc": "Luhn-valid test credit cards",
+    "desc": "Generate test credit card numbers for development and testing. Valid Luhn checksums, safe to use in sandboxes.",
     "category": "Encoding & Security",
     "icon": "💳",
     "implemented": true
@@ -1490,7 +1490,7 @@
   {
     "id": "qr-scanner",
     "name": "QR Code Scanner",
-    "desc": "Scan QR codes with camera or image",
+    "desc": "Scan QR codes from your webcam or an image file. Decode instantly with no upload.",
     "category": "Image Tools",
     "icon": "📷",
     "implemented": true
@@ -1498,7 +1498,7 @@
   {
     "id": "image-to-base64",
     "name": "Image to Base64",
-    "desc": "Convert images to base64 data URLs",
+    "desc": "Turn any image into a Base64 data URL or CSS-ready background value without uploading it.",
     "category": "Image Tools",
     "icon": "🖼️",
     "implemented": true
@@ -1506,7 +1506,7 @@
   {
     "id": "palindrome-checker",
     "name": "Palindrome Checker",
-    "desc": "Check if text reads the same backwards",
+    "desc": "Check if text is a palindrome, ignoring punctuation, spaces and case. See the mirrored form.",
     "category": "Text & Writing",
     "icon": "🔁",
     "implemented": true
@@ -1514,7 +1514,7 @@
   {
     "id": "markdown-table-generator",
     "name": "Markdown Table Generator",
-    "desc": "Build markdown tables visually",
+    "desc": "Turn CSV, tab-separated or pasted rows into a clean Markdown table with alignment options.",
     "category": "Text & Writing",
     "icon": "📊",
     "implemented": true
@@ -1522,7 +1522,7 @@
   {
     "id": "file-size-converter",
     "name": "File Size Converter",
-    "desc": "Convert between file size units",
+    "desc": "Convert between bytes, KB, MB, GB and TB with precise decimal and binary (KiB/MiB) values.",
     "category": "File Tools",
     "icon": "💾",
     "implemented": true
@@ -1530,7 +1530,7 @@
   {
     "id": "pdf-organizer",
     "name": "PDF Organizer",
-    "desc": "Reorder, rotate and remove PDF pages",
+    "desc": "Rearrange, duplicate, rotate and delete pages in a PDF with a drag-and-drop thumbnail editor.",
     "category": "PDF Tools",
     "icon": "📑",
     "implemented": true
@@ -1538,9 +1538,601 @@
   {
     "id": "pdf-inspector",
     "name": "PDF Inspector",
-    "desc": "Inspect PDF metadata and structure",
+    "desc": "Inspect a PDF metadata, page count, fonts, images and structure without uploading it.",
     "category": "PDF Tools",
     "icon": "🔎",
+    "implemented": true
+  },
+  {
+    "id": "subnet-calculator",
+    "name": "Subnet Calculator",
+    "desc": "Break any IP address and CIDR prefix into network address, broadcast address, usable host range, wildcard mask and subnet size. Includes an optional second subnet for VLSM-style planning.",
+    "category": "Developer Tools",
+    "icon": "🌐",
+    "implemented": true
+  },
+  {
+    "id": "json-path-tester",
+    "name": "JSONPath Tester",
+    "desc": "Evaluate JSONPath expressions against any JSON document with a live match count. Supports dot and bracket notation, wildcards, recursive descent and filter expressions — no server round trips.",
+    "category": "Developer Tools",
+    "icon": "🧭",
+    "implemented": true
+  },
+  {
+    "id": "csv-delimiter",
+    "name": "CSV Delimiter Converter",
+    "desc": "Re-delimit CSV text between comma, semicolon, tab and pipe separators with a fully quoted parser. Paste a block, choose your input and output delimiters, and copy the result instantly.",
+    "category": "Developer Tools",
+    "icon": "➗",
+    "implemented": true
+  },
+  {
+    "id": "hreflang-generator",
+    "name": "Hreflang Generator",
+    "desc": "Generate hreflang link tags for every language version of a page, including x-default. Add as many locales as you need and copy the ready-to-paste HTML output.",
+    "category": "Developer Tools",
+    "icon": "🌍",
+    "implemented": true
+  },
+  {
+    "id": "nginx-redirect",
+    "name": "Nginx Redirect Generator",
+    "desc": "Build clean 301 permanent or 302 temporary redirect rules for Nginx from simple old-path to new-path pairs. Handles exact paths and prefix redirects with the right syntax.",
+    "category": "Developer Tools",
+    "icon": "↪️",
+    "implemented": true
+  },
+  {
+    "id": "csp-generator",
+    "name": "CSP Generator",
+    "desc": "Create a Content-Security-Policy header or meta tag from balanced, strict or permissive presets. Toggle individual directives, add allowed sources, and copy the final policy with optional report-only mode.",
+    "category": "Developer Tools",
+    "icon": "🛡️",
+    "implemented": true
+  },
+  {
+    "id": "px-to-rem",
+    "name": "PX to REM Converter",
+    "desc": "Convert pixel values to rem units for any root font size, with a live reference table from 1 to 32 px. The standard 16 px root is pre-filled and adjustable.",
+    "category": "Developer Tools",
+    "icon": "📏",
+    "implemented": true
+  },
+  {
+    "id": "aspect-ratio",
+    "name": "Aspect Ratio Calculator",
+    "desc": "Calculate the missing width or height to preserve an aspect ratio like 16:9 or 4:3. Enter any two dimensions and the fourth side is computed automatically.",
+    "category": "Developer Tools",
+    "icon": "🖼️",
+    "implemented": true
+  },
+  {
+    "id": "readability-score",
+    "name": "Readability Score",
+    "desc": "Measure how easy your text is to read with the Flesch Reading Ease and Flesch-Kincaid Grade Level formulas. Includes syllable counting and plain-language guidance for any audience.",
+    "category": "Developer Tools",
+    "icon": "📖",
+    "implemented": true
+  },
+  {
+    "id": "number-to-words",
+    "name": "Number to Words Converter",
+    "desc": "Convert any number into English words, with optional currency formatting and a built-in Roman numeral converter. Handles billions, decimals and negative values.",
+    "category": "Developer Tools",
+    "icon": "🔢",
+    "implemented": true
+  },
+  {
+    "id": "character-counter",
+    "name": "Character Counter",
+    "desc": "Count characters, words, sentences, lines and bytes in any text, with reading and speaking time estimates. Shows live limits for Twitter, Instagram and TikTok posts.",
+    "category": "Developer Tools",
+    "icon": "✍️",
+    "implemented": true
+  },
+  {
+    "id": "loan-calculator",
+    "name": "Loan Calculator",
+    "desc": "Calculate monthly payments, total interest and payoff time for any loan amount, rate and term. Includes an amortization table showing principal vs interest each month.",
+    "category": "Calculators",
+    "icon": "🏦",
+    "implemented": true
+  },
+  {
+    "id": "sales-tax",
+    "name": "Sales Tax Calculator",
+    "desc": "Add or remove sales tax from any price with a chosen rate. Shows the tax amount, final price and the pre-tax price when working backwards from a total.",
+    "category": "Calculators",
+    "icon": "🧾",
+    "implemented": true
+  },
+  {
+    "id": "paypal-fee",
+    "name": "PayPal Fee Calculator",
+    "desc": "Work out PayPal's fee for any payment amount, with domestic, international and currency-conversion scenarios. Shows exactly what you receive and what to charge to break even.",
+    "category": "Calculators",
+    "icon": "💳",
+    "implemented": true
+  },
+  {
+    "id": "stripe-fee",
+    "name": "Stripe Fee Calculator",
+    "desc": "Calculate Stripe processing fees for standard, premium or international card payments. Shows the fee, your net payout, and the amount to invoice to cover the fee.",
+    "category": "Calculators",
+    "icon": "⚡",
+    "implemented": true
+  },
+  {
+    "id": "etsy-fee",
+    "name": "Etsy Fee Calculator",
+    "desc": "Estimate Etsy seller fees including listing, transaction, payment processing and offsite ads on any sale price. Shows total fees, fees as a percentage, and your net profit.",
+    "category": "Calculators",
+    "icon": "🧶",
+    "implemented": true
+  },
+  {
+    "id": "ebay-fee",
+    "name": "eBay Fee Calculator",
+    "desc": "Estimate eBay final value fees and payment processing for store or non-store sellers. Enter the sale price and shipping, and see exactly what you keep.",
+    "category": "Calculators",
+    "icon": "🏷️",
+    "implemented": true
+  },
+  {
+    "id": "fuel-trip-cost",
+    "name": "Fuel Trip Cost Calculator",
+    "desc": "Estimate how much a road trip will cost in fuel using distance, mileage and fuel price, in US or metric units. Also shows the fuel volume you'll burn.",
+    "category": "Calculators",
+    "icon": "⛽",
+    "implemented": true
+  },
+  {
+    "id": "paint-calculator",
+    "name": "Paint Calculator",
+    "desc": "Figure out exactly how much paint a room needs: walls, ceiling, trim and the number of coats. Accounts for doors, windows and the paint's coverage per gallon.",
+    "category": "Building & DIY",
+    "icon": "🪣",
+    "implemented": true
+  },
+  {
+    "id": "concrete-calculator",
+    "name": "Concrete Calculator",
+    "desc": "Estimate concrete volume in cubic yards, meters or bags for slabs, footings, columns and walls. Shows how many 40, 60 or 80 lb bags to order.",
+    "category": "Building & DIY",
+    "icon": "🏗️",
+    "implemented": true
+  },
+  {
+    "id": "gravel-calculator",
+    "name": "Gravel Calculator",
+    "desc": "Calculate how many cubic yards or tons of gravel, crushed stone or sand a project needs from length, width and depth. Includes weight estimates for common materials.",
+    "category": "Building & DIY",
+    "icon": "⛰️",
+    "implemented": true
+  },
+  {
+    "id": "mulch-calculator",
+    "name": "Mulch Calculator",
+    "desc": "Find out how many cubic feet or bags of mulch to buy for any garden bed, based on area and the depth you want. Converts between bulk yards and bag counts.",
+    "category": "Building & DIY",
+    "icon": "🌱",
+    "implemented": true
+  },
+  {
+    "id": "tile-calculator",
+    "name": "Tile Calculator",
+    "desc": "Estimate how many tiles you need for a floor or wall, including waste allowance. Works in inches, feet, centimeters and meters with grout line options.",
+    "category": "Building & DIY",
+    "icon": "🔲",
+    "implemented": true
+  },
+  {
+    "id": "drywall-calculator",
+    "name": "Drywall Calculator",
+    "desc": "Calculate the number of 4×8 or 4×12 drywall sheets for any room, plus the screws, joint tape and joint compound you'll need. Subtracts doors and windows.",
+    "category": "Building & DIY",
+    "icon": "🧱",
+    "implemented": true
+  },
+  {
+    "id": "fence-calculator",
+    "name": "Fence Calculator",
+    "desc": "Plan a wood or chain-link fence: posts, rails, pickets and concrete for post holes. Enter the total run, section spacing and picket width to get a complete materials list.",
+    "category": "Building & DIY",
+    "icon": "🚧",
+    "implemented": true
+  },
+  {
+    "id": "deck-calculator",
+    "name": "Deck Calculator",
+    "desc": "Estimate everything a deck build needs: joists, beams, posts, decking boards, railings and fasteners. Enter the deck footprint and joist spacing for a full materials takeoff.",
+    "category": "Building & DIY",
+    "icon": "🪵",
+    "implemented": true
+  },
+  {
+    "id": "paver-calculator",
+    "name": "Paver Calculator",
+    "desc": "Calculate how many pavers you need for a patio or walkway in any size, plus the sand and gravel base. Includes waste allowance and paver pattern options.",
+    "category": "Building & DIY",
+    "icon": "🧩",
+    "implemented": true
+  },
+  {
+    "id": "topsoil-calculator",
+    "name": "Topsoil Calculator",
+    "desc": "Find out how many cubic yards of topsoil or compost to order for any area at any depth. Shows bag counts for small garden projects.",
+    "category": "Building & DIY",
+    "icon": "⛏️",
+    "implemented": true
+  },
+  {
+    "id": "sod-calculator",
+    "name": "Sod Calculator",
+    "desc": "Estimate how many rolls or pallets of sod you need for a new lawn, plus the soil to prep underneath. Works in feet or meters.",
+    "category": "Building & DIY",
+    "icon": "🍃",
+    "implemented": true
+  },
+  {
+    "id": "hvac-btu",
+    "name": "HVAC BTU Calculator",
+    "desc": "Size a heating or cooling system for any room using square footage, ceiling height, insulation, windows and sun exposure. Returns the recommended BTU/hr and tonnage.",
+    "category": "Building & DIY",
+    "icon": "🌡️",
+    "implemented": true
+  },
+  {
+    "id": "insulation-calculator",
+    "name": "Insulation Calculator",
+    "desc": "Calculate how many rolls or bags of fiberglass, mineral wool or cellulose insulation to buy for attic, wall or floor cavities, with R-value targets per zone.",
+    "category": "Building & DIY",
+    "icon": "❄️",
+    "implemented": true
+  },
+  {
+    "id": "asphalt-calculator",
+    "name": "Asphalt Calculator",
+    "desc": "Estimate asphalt tonnage for a driveway or parking area from length, width and thickness. Accounts for compaction and typical asphalt density.",
+    "category": "Building & DIY",
+    "icon": "🛣️",
+    "implemented": true
+  },
+  {
+    "id": "roofing-shingle",
+    "name": "Roofing Shingle Calculator",
+    "desc": "Estimate how many bundles and squares of shingles a roof needs, plus underlayment, nails and ridge cap. Enter roof area and pitch factor for a complete takeoff.",
+    "category": "Building & DIY",
+    "icon": "🏠",
+    "implemented": true
+  },
+  {
+    "id": "board-foot",
+    "name": "Board Foot Calculator",
+    "desc": "Calculate board feet and volume for lumber of any thickness, width and length. Shows total cost when you enter the price per board foot.",
+    "category": "Building & DIY",
+    "icon": "🪚",
+    "implemented": true
+  },
+  {
+    "id": "stair-stringer",
+    "name": "Stair Stringer Calculator",
+    "desc": "Lay out stair stringers correctly: rise and run per step, number of treads, total run and stringer length for your chosen rise and available floor-to-floor height.",
+    "category": "Building & DIY",
+    "icon": "🪜",
+    "implemented": true
+  },
+  {
+    "id": "stud-wall",
+    "name": "Stud Wall Calculator",
+    "desc": "Estimate framing lumber for a wall: studs, top and bottom plates, blocking and fasteners. Enter length, height and stud spacing to get an instant materials list.",
+    "category": "Building & DIY",
+    "icon": "🪚",
+    "implemented": true
+  },
+  {
+    "id": "pipe-volume",
+    "name": "Pipe Volume Calculator",
+    "desc": "Calculate the internal volume and water capacity of any pipe from length and inner diameter, in imperial or metric units. Shows gallons, liters and water weight.",
+    "category": "Building & DIY",
+    "icon": "🔧",
+    "implemented": true
+  },
+  {
+    "id": "ramp-slope",
+    "name": "Ramp Slope Calculator",
+    "desc": "Design an accessible or vehicle ramp with the recommended slope ratio, angle, run length and landing platforms based on the total rise. Follows ADA-friendly defaults.",
+    "category": "Building & DIY",
+    "icon": "♿",
+    "implemented": true
+  },
+  {
+    "id": "gutter-size",
+    "name": "Gutter Size Calculator",
+    "desc": "Size rain gutters and downspouts for your roof using drainage area and local rainfall intensity. Returns the recommended gutter profile and number of downspouts.",
+    "category": "Building & DIY",
+    "icon": "🌧️",
+    "implemented": true
+  },
+  {
+    "id": "ac-tonnage",
+    "name": "AC Tonnage Calculator",
+    "desc": "Find the right air conditioner size for your home from square footage and climate. Converts the cooling load from BTU/hr into tons and recommends a unit size.",
+    "category": "Building & DIY",
+    "icon": "❄️",
+    "implemented": true
+  },
+  {
+    "id": "ohms-law",
+    "name": "Ohm's Law Calculator",
+    "desc": "Calculate voltage, current, resistance and power for any circuit from just two known values. Uses V = I × R with the wheel of power included.",
+    "category": "Hardware & Tech",
+    "icon": "⚡",
+    "implemented": true
+  },
+  {
+    "id": "voltage-drop",
+    "name": "Voltage Drop Calculator",
+    "desc": "Compute voltage drop for copper or aluminum conductors of any AWG size, single or three phase. Flags runs that exceed the 3% guideline and suggests a larger wire.",
+    "category": "Hardware & Tech",
+    "icon": "📉",
+    "implemented": true
+  },
+  {
+    "id": "wire-size",
+    "name": "Wire Size Calculator",
+    "desc": "Pick the right AWG wire for a circuit from current draw and run length, applying the 125% continuous-load rule and voltage-drop guidance. Suggests the matching breaker size.",
+    "category": "Hardware & Tech",
+    "icon": "🔌",
+    "implemented": true
+  },
+  {
+    "id": "battery-runtime",
+    "name": "Battery Runtime Calculator",
+    "desc": "Estimate how long any battery lasts under a given load in watts, accounting for depth of discharge. Works for 12 V, 24 V and 48 V systems in amp-hours.",
+    "category": "Hardware & Tech",
+    "icon": "🔋",
+    "implemented": true
+  },
+  {
+    "id": "tv-distance",
+    "name": "TV Distance Calculator",
+    "desc": "Find the ideal viewing distance for any TV size and resolution, from 720p to 4K. Returns the recommended seating range and the 30-degree field-of-view sweet spot.",
+    "category": "Hardware & Tech",
+    "icon": "📺",
+    "implemented": true
+  },
+  {
+    "id": "projector-throw",
+    "name": "Projector Throw Calculator",
+    "desc": "Position a projector perfectly: compute the throw distance from the throw ratio and screen width, plus the zoom range and ideal distance for 16:9 screens.",
+    "category": "Hardware & Tech",
+    "icon": "🎥",
+    "implemented": true
+  },
+  {
+    "id": "generator-wattage",
+    "name": "Generator Wattage Calculator",
+    "desc": "Size a backup generator for your appliances: list devices and watts, and get running load, startup surge and a recommended generator rating.",
+    "category": "Hardware & Tech",
+    "icon": "🛢️",
+    "implemented": true
+  },
+  {
+    "id": "solar-panel",
+    "name": "Solar Panel Calculator",
+    "desc": "Estimate how much electricity a solar array produces from panel wattage, count, peak sun hours and system losses. Shows daily, monthly and yearly kWh output.",
+    "category": "Hardware & Tech",
+    "icon": "☀️",
+    "implemented": true
+  },
+  {
+    "id": "led-resistor",
+    "name": "LED Resistor Calculator",
+    "desc": "Find the resistor value and power rating needed for any LED from supply voltage, forward voltage and current. Returns the nearest standard E12 value and a safe wattage.",
+    "category": "Hardware & Tech",
+    "icon": "💡",
+    "implemented": true
+  },
+  {
+    "id": "screen-ppi",
+    "name": "Screen PPI Calculator",
+    "desc": "Compute pixels per inch, pixel pitch and aspect ratio for any display from its resolution and diagonal size. Useful for monitors, phones and print sharpness.",
+    "category": "Hardware & Tech",
+    "icon": "🖥️",
+    "implemented": true
+  },
+  {
+    "id": "date-diff",
+    "name": "Date Difference Calculator",
+    "desc": "Find the exact time between two dates in years, months and days, with totals in days, weeks and hours. Also counts weekdays and weekends between the dates.",
+    "category": "Everyday Utilities",
+    "icon": "📅",
+    "implemented": true
+  },
+  {
+    "id": "grade-calculator",
+    "name": "Grade Calculator",
+    "desc": "Compute your current class grade from weighted assignments and see exactly what you need on the remaining work to hit a target. Includes letter-grade conversion.",
+    "category": "Everyday Utilities",
+    "icon": "🎓",
+    "implemented": true
+  },
+  {
+    "id": "coin-flip",
+    "name": "Coin Flip",
+    "desc": "Flip one or many coins with a live heads/tails tally and full history. Great for quick decisions or settling arguments statistically.",
+    "category": "Everyday Utilities",
+    "icon": "🪙",
+    "implemented": true
+  },
+  {
+    "id": "stopwatch",
+    "name": "Stopwatch",
+    "desc": "A precise browser stopwatch with lap times, built for timing workouts, tasks or anything else. Uses requestAnimationFrame for smooth hundredths-of-a-second display.",
+    "category": "Everyday Utilities",
+    "icon": "⏱️",
+    "implemented": true
+  },
+  {
+    "id": "countdown-timer",
+    "name": "Countdown Timer",
+    "desc": "Set a countdown for any duration in minutes and get a full-screen-style timer with a celebratory finish. Pause and reset whenever you need.",
+    "category": "Everyday Utilities",
+    "icon": "⏳",
+    "implemented": true
+  },
+  {
+    "id": "pool-volume",
+    "name": "Pool Volume Calculator",
+    "desc": "Calculate water volume for rectangular, round and oval pools from dimensions and average depth. Shows gallons, liters, weight and estimated fill time.",
+    "category": "Everyday Utilities",
+    "icon": "🏊",
+    "implemented": true
+  },
+  {
+    "id": "aquarium-volume",
+    "name": "Aquarium Volume Calculator",
+    "desc": "Find the real water volume of a rectangular or bow-front tank, subtracting the space taken by substrate. Shows liters and US gallons.",
+    "category": "Everyday Utilities",
+    "icon": "🐠",
+    "implemented": true
+  },
+  {
+    "id": "coffee-ratio",
+    "name": "Coffee Ratio Calculator",
+    "desc": "Brew better coffee with the right coffee-to-water ratio for espresso, V60, French press, cold brew and more. Enter servings and cup size, get grams of coffee.",
+    "category": "Everyday Utilities",
+    "icon": "☕",
+    "implemented": true
+  },
+  {
+    "id": "rice-water",
+    "name": "Rice Water Ratio Calculator",
+    "desc": "Get the perfect rice-to-water ratio for basmati, jasmine, brown, sushi and wild rice. Shows water needed, cooked yield and cook times for any amount.",
+    "category": "Everyday Utilities",
+    "icon": "🍚",
+    "implemented": true
+  },
+  {
+    "id": "pizza-dough",
+    "name": "Pizza Dough Calculator",
+    "desc": "Build a pizza dough recipe for Neapolitan, New York, Chicago and Sicilian styles. Computes flour, water, salt and yeast from the number of pizzas and hydration.",
+    "category": "Everyday Utilities",
+    "icon": "🍕",
+    "implemented": true
+  },
+  {
+    "id": "bread-hydration",
+    "name": "Bread Hydration Calculator",
+    "desc": "Check the hydration of any bread recipe including starter contributions. Shows baker's percentages, dough weight and what the hydration means for your dough.",
+    "category": "Everyday Utilities",
+    "icon": "🍞",
+    "implemented": true
+  },
+  {
+    "id": "cake-pan",
+    "name": "Cake Pan Converter",
+    "desc": "Scale any cake recipe between round, square and sheet pans by area. Shows the ingredient multiplier and how to adjust bake time.",
+    "category": "Everyday Utilities",
+    "icon": "🎂",
+    "implemented": true
+  },
+  {
+    "id": "yeast-converter",
+    "name": "Yeast Converter",
+    "desc": "Convert between fresh, active dry and instant yeast amounts for any recipe, with the liquid adjustment you should make when switching types.",
+    "category": "Everyday Utilities",
+    "icon": "🧫",
+    "implemented": true
+  },
+  {
+    "id": "meat-cooking-time",
+    "name": "Meat Cooking Time Calculator",
+    "desc": "Get cook times and target temperatures for chicken, steak, pork, lamb, fish and turkey by weight and method. Includes resting times and safe internal temps.",
+    "category": "Everyday Utilities",
+    "icon": "🥩",
+    "implemented": true
+  },
+  {
+    "id": "dimensional-weight",
+    "name": "Dimensional Weight Calculator",
+    "desc": "Check whether a package is billed by actual or dimensional weight for FedEx, UPS or USPS. Enter box size and actual weight to see the billable weight.",
+    "category": "Everyday Utilities",
+    "icon": "📦",
+    "implemented": true
+  },
+  {
+    "id": "propane-usage",
+    "name": "Propane Usage Calculator",
+    "desc": "Estimate propane burn rate and how long a tank lasts for grills, heaters and generators. Shows burn rate, cost per hour and sessions per tank size.",
+    "category": "Everyday Utilities",
+    "icon": "🔥",
+    "implemented": true
+  },
+  {
+    "id": "cocktail-dilution",
+    "name": "Cocktail Dilution Calculator",
+    "desc": "Balance cocktail recipes: compute the water needed to hit a target ABV, and how much ice melt contributes when stirring or shaking.",
+    "category": "Everyday Utilities",
+    "icon": "🍸",
+    "implemented": true
+  },
+  {
+    "id": "sourdough-calculator",
+    "name": "Sourdough Calculator",
+    "desc": "Scale a sourdough recipe to your hydration and starter. Computes added water, starter flour/water split, salt percentage, dough weight and bulk ferment time.",
+    "category": "Everyday Utilities",
+    "icon": "🥖",
+    "implemented": true
+  },
+  {
+    "id": "dnd-name-generator",
+    "name": "D&D Name Generator",
+    "desc": "Generate fantasy character names for humans, elves, dwarves, halflings, dragonborn and more. Get batches of race-appropriate names to copy into your campaign.",
+    "category": "Name Generators",
+    "icon": "⚔️",
+    "implemented": true
+  },
+  {
+    "id": "band-name-generator",
+    "name": "Band Name Generator",
+    "desc": "Spark band name ideas in three styles: 'The ___ ___', '___ and the ___' and '___ ___ Club'. Generates batches you can copy in one click.",
+    "category": "Name Generators",
+    "icon": "🎸",
+    "implemented": true
+  },
+  {
+    "id": "podcast-name-generator",
+    "name": "Podcast Name Generator",
+    "desc": "Brainstorm podcast names with title patterns like 'The ___ ___', '___ Files' and '___ and Chill'. Generate a batch and copy your favorites.",
+    "category": "Name Generators",
+    "icon": "🎙️",
+    "implemented": true
+  },
+  {
+    "id": "clan-name-generator",
+    "name": "Clan Name Generator",
+    "desc": "Create gamer tags and clan names like 'Shadow Wolves Clan' or 'Iron Vipers Syndicate'. Pick a batch size and copy the whole list.",
+    "category": "Name Generators",
+    "icon": "🐺",
+    "implemented": true
+  },
+  {
+    "id": "csv-viewer",
+    "name": "CSV Viewer",
+    "desc": "Paste CSV text and see it rendered as a clean table with quoted-field parsing. Great for quickly inspecting exports without opening a spreadsheet app.",
+    "category": "File Tools",
+    "icon": "📊",
+    "implemented": true
+  },
+  {
+    "id": "svg-to-png",
+    "name": "SVG to PNG Converter",
+    "desc": "Convert SVG vector files to PNG raster images at any scale multiplier. Drop multiple files and each is rendered and downloaded as a high-quality PNG.",
+    "category": "File Tools",
+    "icon": "🖼️",
     "implemented": true
   }
 ]

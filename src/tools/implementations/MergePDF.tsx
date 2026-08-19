@@ -2,12 +2,15 @@ import { useState } from 'react'
 import { Button } from '../../components/ui/Button'
 
 import DropZone from '../../components/DropZone'
+import type { DropFile } from '../../components/DropZone'
 import { PDFDocument } from 'pdf-lib'
 
 export default function MergePDF(){
   const [files,setFiles]=useState<File[]>([])
   const [out,setOut]=useState<string>("")
   const onFiles = (fl:FileList)=> setFiles([...files, ...Array.from(fl)])
+
+  const dropFiles: DropFile[] = files.map(f => ({ name: f.name, size: f.size }))
 
   const merge = async ()=>{
     const merged = await PDFDocument.create()
@@ -23,9 +26,9 @@ export default function MergePDF(){
 
   return (
     <div className="space-y-6 max-w-xl">
-      <DropZone onFiles={onFiles} accept="application/pdf" label="Drop PDFs to merge — order matters"/>
+      <DropZone onFiles={onFiles} accept="application/pdf" files={dropFiles} onClear={()=>{setFiles([]); setOut("")}} label="Drop PDFs to merge — order matters"/>
       {files.length > 0 && (
-        <div className="p-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs font-semibold">
+        <div className="p-3 bg-zinc-50 dark:bg-zinc-900 text-xs font-semibold">
           Selected: {files.map(f=>f.name).join(' + ')}
         </div>
       )}

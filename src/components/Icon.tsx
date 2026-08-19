@@ -1,21 +1,28 @@
+import { useState } from 'react'
 import {
-  AirVent, AppWindow, Apple, ArrowRightLeft, AudioLines, AudioWaveform, BadgeCheck, Barcode, Binary,
-  BookMarked, BookOpen, Bot, Braces, Briefcase, CalendarDays, Camera, Captions, CaseUpper, ChefHat,
-  CircleDot, Clapperboard, Clock, Clock3, Code, Coins, Combine, Contrast, Copy, Cpu, CreditCard, Crop,
+  AirVent, AppWindow, Apple, ArrowDownWideNarrow, ArrowRightLeft, AudioLines, AudioWaveform, BadgeCheck,
+  Barcode, Battery, Beef, Binary, Blocks, BookMarked, BookOpen, Bot, Box, Braces, Briefcase, Cable, Cake,
+  Calculator, CalendarDays, Camera, Captions, CaseUpper, ChefHat, CircleDot, Clapperboard, Clock, Clock3,
+  CloudRain, Code, Coffee, Coins, Combine, Contrast, CookingPot, Copy, Cpu, CreditCard, Croissant, Crop,
   Database, Dice5, Diff, Dices, DollarSign, Droplets, Earth, Eraser,
-  Eye, EyeOff, Feather, FileArchive, FileCode, FileCode2, FileCog, FileDown, FileImage, FileJson,
+  Eye, EyeOff, Fan, Feather, Fence, FileArchive, FileCode, FileCode2, FileCog, FileDown, FileImage, FileJson,
   FileOutput, FilePlus, FileSearch, FileSignature, FileSpreadsheet, FileText, FileType, FileUp, FileVideo,
-  Files, Film, Fingerprint, Flame, FolderArchive, Frame, Gauge, Ghost, GitBranch, Globe, GraduationCap,
-  HardDrive, Hash, Highlighter, History, Home, IdCard, Image as ImageIcon, ImagePlus, Images, Keyboard, KeyRound,
-  KeySquare, Landmark, Languages, Layers, Link, Link2, ListChecks, ListOrdered, ListTree, Lock, LockKeyhole,
-  Mail, MailCheck, Maximize2, MessagesSquare, Mic, Mic2, Minimize2, Monitor, Moon, MousePointer2, Music,
+  Files, Film, Fingerprint, Fish, Flame, FlaskConical, FolderArchive, Frame, Fuel, Gauge, Ghost, GitBranch,
+  Globe, GraduationCap, Grid3x3, Hammer, HardDrive, Hash, Highlighter, History, Home, Hourglass, IdCard,
+  Image as ImageIcon, ImagePlus, Images, Keyboard, KeyRound,
+  KeySquare, Landmark, Languages, Layers, LayoutGrid, Leaf, Lightbulb, Link, Link2, ListChecks, ListOrdered,
+  ListTree, Lock, LockKeyhole,
+  Mail, MailCheck, Martini, Maximize2, MessagesSquare, Mic, Mic2, Minimize2, Monitor, Moon, Mountain,
+  MousePointer2, MoveVertical, Music,
   Music2, Network, NotebookPen, NotepadText, PaintBucket, Palette, PanelsTopLeft, Pen, PenLine, Pencil, Percent,
-  Pipette, QrCode, Radar, Radio, RadioTower, Rainbow, Receipt, RefreshCw, Regex, Repeat, Repeat2, Rewind,
-  Rotate3d, RotateCcw, RotateCw, Ruler, ScanQrCode, ScanText, Scissors, ScrollText, Search, Server,
-  Shapes, Share2, Sheet, Shield, ShieldAlert, ShieldCheck, ShieldX, Shuffle, Sigma, Slice, SlidersHorizontal,
-  Smile, SmilePlus, Speaker, Sparkles, SpellCheck, Split, Stamp, Subtitles, SwatchBook, Table, Table2,
-  Tags, Terminal, Text, TextQuote, TextCursorInput, Timer, TrendingUp, Turtle, Type, Undo2, User,
-  Users, Video, VolumeX, Wand2, WandSparkles, Waypoints, Waves, Weight, Wind, Workflow, Wrench, Zap, ZoomIn,
+  Pipette, Pizza, Plug, PlugZap, Projector, QrCode, Radar, Radio, RadioTower, Rainbow, Receipt, RefreshCw,
+  Regex, Repeat, Repeat2, Rewind, Road, Rotate3d, RotateCcw, RotateCw, Rows3, Ruler, ScanQrCode, ScanText,
+  Scissors, ScrollText, Search, Server, Shapes, Share2, Sheet, Shield, ShieldAlert, ShieldCheck, ShieldX,
+  ShoppingBag, Shuffle, Sigma, Slice, SlidersHorizontal, Smile, SmilePlus, Snowflake, Speaker, Sparkles,
+  SpellCheck, Split, Sprout, Stamp, Subtitles, Sun, SwatchBook, Swords, Table, Table2,
+  Tags, Tag, Terminal, Text, TextQuote, TextCursorInput, Thermometer, Timer, Trees, TrendingUp, Turtle, Tv, Type,
+  Undo2, User, Users, Video, VolumeX, Wallet, Wand2, WandSparkles, Warehouse, Waves, Waypoints, Weight, Wheat,
+  Wind, Workflow, Wrench, Zap, ZoomIn,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
@@ -213,6 +220,80 @@ const TOOL_ICONS: Record<string, LucideIcon> = {
   'file-size-converter': HardDrive,
   'pdf-organizer': Files,
   'pdf-inspector': FileSearch,
+  'subnet-calculator': Network,
+  'json-path-tester': Braces,
+  'csv-delimiter': Table2,
+  'hreflang-generator': Languages,
+  'nginx-redirect': ArrowRightLeft,
+  'csp-generator': ShieldCheck,
+  'px-to-rem': Ruler,
+  'aspect-ratio': Frame,
+  'readability-score': BookOpen,
+  'number-to-words': Sigma,
+  'character-counter': Type,
+  'loan-calculator': Landmark,
+  'sales-tax': Receipt,
+  'paypal-fee': Wallet,
+  'stripe-fee': CreditCard,
+  'etsy-fee': ShoppingBag,
+  'ebay-fee': Tag,
+  'fuel-trip-cost': Fuel,
+  'paint-calculator': PaintBucket,
+  'concrete-calculator': Warehouse,
+  'gravel-calculator': Mountain,
+  'mulch-calculator': Trees,
+  'tile-calculator': Grid3x3,
+  'drywall-calculator': Layers,
+  'fence-calculator': Fence,
+  'deck-calculator': Rows3,
+  'paver-calculator': Blocks,
+  'topsoil-calculator': Sprout,
+  'sod-calculator': Leaf,
+  'hvac-btu': Thermometer,
+  'insulation-calculator': Snowflake,
+  'asphalt-calculator': Road,
+  'roofing-shingle': Home,
+  'board-foot': Ruler,
+  'stair-stringer': MoveVertical,
+  'stud-wall': LayoutGrid,
+  'pipe-volume': Droplets,
+  'ramp-slope': TrendingUp,
+  'gutter-size': CloudRain,
+  'ac-tonnage': Fan,
+  'ohms-law': Zap,
+  'voltage-drop': ArrowDownWideNarrow,
+  'wire-size': Cable,
+  'battery-runtime': Battery,
+  'tv-distance': Tv,
+  'projector-throw': Projector,
+  'generator-wattage': PlugZap,
+  'solar-panel': Sun,
+  'led-resistor': Lightbulb,
+  'screen-ppi': Monitor,
+  'date-diff': CalendarDays,
+  'grade-calculator': GraduationCap,
+  'coin-flip': Coins,
+  'stopwatch': Timer,
+  'countdown-timer': Hourglass,
+  'pool-volume': Waves,
+  'aquarium-volume': Fish,
+  'coffee-ratio': Coffee,
+  'rice-water': CookingPot,
+  'pizza-dough': Pizza,
+  'bread-hydration': Wheat,
+  'cake-pan': Cake,
+  'yeast-converter': FlaskConical,
+  'meat-cooking-time': Beef,
+  'dimensional-weight': Box,
+  'propane-usage': Flame,
+  'cocktail-dilution': Martini,
+  'sourdough-calculator': Croissant,
+  'dnd-name-generator': Swords,
+  'band-name-generator': Music,
+  'podcast-name-generator': Mic,
+  'clan-name-generator': Shield,
+  'csv-viewer': Table,
+  'svg-to-png': ImageIcon,
 }
 
 const CAT_ICONS: Record<string, LucideIcon> = {
@@ -228,6 +309,10 @@ const CAT_ICONS: Record<string, LucideIcon> = {
   'web-seo': Globe,
   'everyday-utilities': Wrench,
   'ai-tools': Sparkles,
+  'calculators': Calculator,
+  'building-diy': Hammer,
+  'hardware-tech': Plug,
+  'name-generators': Wand2,
 }
 
 export function ToolIcon({ id, className }: { id: string, className?: string }) {
@@ -252,9 +337,15 @@ export const whiteToolIconUrl = (id: string) => `${base}icons/white/${id}.png?v=
 export const whiteCatIconUrl = (slug: string) => `${base}icons/white/cat-${slug}.png?v=${ICON_V}`
 
 export function CutoutToolIcon({ id, className, tone }: { id: string, className?: string, tone?: string }) {
-  return <img src={toolIconUrl(id)} alt="" className={className} draggable={false} />
+  const C = TOOL_ICONS[id] || Wrench
+  const [broken, setBroken] = useState(false)
+  if (broken || !id) return <C className={`${className} ${tone || ''}`} strokeWidth={1.9} aria-hidden="true" />
+  return <img src={toolIconUrl(id)} alt="" className={className} draggable={false} onError={() => setBroken(true)} />
 }
 
 export function CutoutCategoryIcon({ slug, className, tone }: { slug: string, className?: string, tone?: string }) {
-  return <img src={catIconUrl(slug)} alt="" className={className} draggable={false} />
+  const C = CAT_ICONS[slug] || Wrench
+  const [broken, setBroken] = useState(false)
+  if (broken || !slug) return <C className={`${className} ${tone || ''}`} strokeWidth={1.9} aria-hidden="true" />
+  return <img src={catIconUrl(slug)} alt="" className={className} draggable={false} onError={() => setBroken(true)} />
 }

@@ -30,6 +30,10 @@ const CATEGORY_META: Omit<Category, 'count'>[] = [
   { slug: 'web-seo', name: 'Web & SEO', group: 'textweb', icon: '🌐', blurb: 'Meta tags, URLs and site helpers', hue: 'teal' },
   { slug: 'everyday-utilities', name: 'Everyday Utilities', group: 'everyday', icon: '🛠️', blurb: 'Calculators, converters and daily tools', hue: 'orange' },
   { slug: 'ai-tools', name: 'AI Tools', group: 'everyday', icon: '🤖', blurb: 'Smart helpers for everyday tasks', hue: 'violet' },
+  { slug: 'calculators', name: 'Calculators', group: 'everyday', icon: '🧮', blurb: 'Money, math and quick number crunching', hue: 'blue' },
+  { slug: 'building-diy', name: 'Building & DIY', group: 'everyday', icon: '🏗️', blurb: 'Material estimates for home projects', hue: 'green' },
+  { slug: 'hardware-tech', name: 'Hardware & Tech', group: 'everyday', icon: '🔌', blurb: 'Electronics, wiring and gadget helpers', hue: 'yellow' },
+  { slug: 'name-generators', name: 'Name Generators', group: 'everyday', icon: '✨', blurb: 'Random names for characters, bands and more', hue: 'pink' },
 ]
 
 const toolCount = (name: string) =>

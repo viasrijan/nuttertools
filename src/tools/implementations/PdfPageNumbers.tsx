@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { Button } from '../../components/ui/Button'
-
 import DropZone from '../../components/DropZone'
+import type { DropFile } from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
@@ -20,6 +19,8 @@ export default function PdfPageNumbers() {
   const [pos, setPos] = useState('br')
   const [size, setSize] = useState(12)
   const [busy, setBusy] = useState(false)
+
+  const dropFiles: DropFile[] = file ? [{ name: file.name, size: file.size }] : []
 
   const run = async () => {
     if (!file) return
@@ -42,16 +43,16 @@ export default function PdfPageNumbers() {
   }
 
   return (
-    <div className="space-y-5 max-w-xl omni-rise">
-      <DropZone onFiles={fl => setFile(fl[0])} accept="application/pdf" multiple={false} label="Drop a PDF to add page numbers" />
-      {file && <p className="text-xs font-medium text-zinc-500">Loaded: {file.name}</p>}
+    <div className="space-y-5 max-w-xl">
+      <DropZone onFiles={fl => setFile(fl[0])} accept="application/pdf" multiple={false} files={dropFiles} onClear={() => setFile(null)} label="Drop a PDF to add page numbers" />
+      {file && <p className="text-xs font-bold text-zinc-500 dark:text-zinc-400">Loaded: {file.name}</p>}
       <div className="flex flex-wrap items-center gap-3">
-        <label className="text-sm">Start at <input type="number" value={start} onChange={e => setStart(parseInt(e.target.value) || 1)} className="border px-2 h-9 w-20 text-sm" /></label>
-        <label className="text-sm">Size <input type="number" value={size} onChange={e => setSize(parseInt(e.target.value) || 10)} className="border px-2 h-9 w-20 text-sm" /></label>
-        <select value={pos} onChange={e => setPos(e.target.value)} className="border px-2 h-9 text-sm bg-transparent">
+        <label className="text-sm font-bold">Start at <input type="number" value={start} onChange={e => setStart(parseInt(e.target.value) || 1)} className="px-2 h-10 w-20 text-sm font-semibold bg-zinc-100 dark:bg-zinc-800 rounded-none outline-none focus:shadow-[0_0_0_3px_rgba(99,102,241,0.2)]" /></label>
+        <label className="text-sm font-bold">Size <input type="number" value={size} onChange={e => setSize(parseInt(e.target.value) || 10)} className="px-2 h-10 w-20 text-sm font-semibold bg-zinc-100 dark:bg-zinc-800 rounded-none outline-none focus:shadow-[0_0_0_3px_rgba(99,102,241,0.2)]" /></label>
+        <select value={pos} onChange={e => setPos(e.target.value)} className="px-2 h-10 text-sm font-semibold bg-zinc-100 dark:bg-zinc-800 rounded-none outline-none focus:shadow-[0_0_0_3px_rgba(99,102,241,0.2)]">
           {POSITIONS.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}
         </select>
-        <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Add numbers & download</Button>
+        <button onClick={run} disabled={busy} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-bold text-xs uppercase tracking-wider transition-colors">{busy ? 'Working…' : 'Add numbers & download'}</button>
         {busy && <Progress label="Adding page numbers…" />}
       </div>
     </div>

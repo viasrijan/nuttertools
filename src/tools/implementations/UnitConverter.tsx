@@ -1,6 +1,6 @@
 import { useState } from 'react'
-
-import { Button } from '../../components/ui/Button'
+import { Field } from '../../components/ui/Field'
+import { Select } from '../../components/ui/Select'
 
 type Unit = { name: string, factor: number }
 
@@ -56,29 +56,26 @@ export default function UnitConverter() {
   const result = isNaN(v) ? 0 : convert(v, g.units[fromIdx].factor, g.units[toIdx].factor, group)
 
   return (
-    <div className="space-y-5 max-w-xl omni-rise">
-      <div className="flex flex-wrap gap-2.5">
-        {Object.keys(GROUPS).map(k => (
-          <Button variant="outline" key={k} onClick={() => setGroup(k)} className={`px-3 h-9 text-sm border ${group === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</Button>
-        ))}
+    <div className="space-y-6 max-w-xl">
+      <div className="max-w-[240px]">
+        <Select label="Category" value={group} onChange={setGroup} options={Object.keys(GROUPS).map((k) => ({ v: k, label: k }))} />
       </div>
-      <div className="grid grid-cols-2 gap-3 items-end">
-        <label className="block text-sm font-semibold">From
-          <select value={fromIdx} onChange={e => setFromIdx(parseInt(e.target.value))} className="w-full border px-2 h-9 mt-1 bg-transparent">
-            {g.units.map((u, i) => <option key={u.name} value={i}>{u.name}</option>)}
-          </select></label>
-        <label className="block text-sm font-semibold">To
-          <select value={toIdx} onChange={e => setToIdx(parseInt(e.target.value))} className="w-full border px-2 h-9 mt-1 bg-transparent">
-            {g.units.map((u, i) => <option key={u.name} value={i}>{u.name}</option>)}
-          </select></label>
-        <input type="number" value={value} onChange={e => setValue(e.target.value)} className="border px-3 h-12 text-lg font-semibold" />
-        <div className="border px-3 h-12 grid items-center bg-zinc-50 dark:bg-zinc-800">
-          <b className="text-lg">{result.toLocaleString(undefined, { maximumFractionDigits: 6 })}</b>
+      <div className="grid grid-cols-2 gap-4">
+        <Select label="From" value={String(fromIdx)} onChange={(v) => setFromIdx(parseInt(v))} options={g.units.map((u, i) => ({ v: String(i), label: u.name }))} />
+        <Select label="To" value={String(toIdx)} onChange={(v) => setToIdx(parseInt(v))} options={g.units.map((u, i) => ({ v: String(i), label: u.name }))} />
+      </div>
+      <div className="grid grid-cols-2 gap-4 items-end">
+        <Field label="Value" type="number" value={value} onChange={(e) => setValue(e.target.value)} />
+        <div className="space-y-1.5">
+          <span className="block text-[12px] font-bold uppercase tracking-wide text-zinc-700 dark:text-zinc-300">Result</span>
+          <div className="px-3 h-10 grid items-center bg-zinc-100 dark:bg-zinc-800">
+            <b className="text-base">{result.toLocaleString(undefined, { maximumFractionDigits: 6 })}</b>
+          </div>
         </div>
       </div>
-      <div className="text-xs text-zinc-500 font-medium">
+      <p className="text-[13px] font-semibold text-zinc-600 dark:text-zinc-300">
         {value} {g.units[fromIdx].name} = {result.toLocaleString(undefined, { maximumFractionDigits: 6 })} {g.units[toIdx].name}
-      </div>
+      </p>
     </div>
   )
 }

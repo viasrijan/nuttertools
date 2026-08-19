@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Button } from '../../components/ui/Button'
 
 import DropZone from '../../components/DropZone'
+import type { DropFile } from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import * as pdfjs from 'pdfjs-dist'
 import { PDFDocument } from 'pdf-lib'
@@ -13,6 +14,8 @@ export default function CompressPdf() {
   const [scale, setScale] = useState(1.5)
   const [busy, setBusy] = useState(false)
   const [stats, setStats] = useState<{ before: number, after: number } | null>(null)
+
+  const dropFiles: DropFile[] = file ? [{ name: file.name, size: file.size }] : []
 
   const compress = async () => {
     if (!file) return
@@ -43,7 +46,7 @@ export default function CompressPdf() {
 
   return (
     <div className="space-y-6 max-w-xl">
-      <DropZone onFiles={fl => setFile(fl[0])} accept="application/pdf" multiple={false} label="Drop a PDF to compress" />
+      <DropZone onFiles={fl => { setFile(fl[0]); setStats(null) }} accept="application/pdf" multiple={false} files={dropFiles} onClear={() => { setFile(null); setStats(null) }} label="Drop a PDF to compress" />
       {file && <p className="text-xs font-bold text-zinc-700 dark:text-zinc-300">Loaded: {file.name} ({(file.size / 1024).toFixed(0)} KB)</p>}
       <div className="space-y-5">
         <label className="block text-xs font-bold uppercase tracking-wide text-zinc-700 dark:text-zinc-300 space-y-1.5">
@@ -58,7 +61,7 @@ export default function CompressPdf() {
       <Button variant="primary" size="lg" onClick={compress} disabled={busy || !file} className="w-full uppercase tracking-wider font-bold">{busy ? 'Compressing PDF…' : 'Compress & download PDF'}</Button>
       {busy && <Progress label="Compressing pages…" />}
       {stats && (
-        <div className="border border-zinc-300 dark:border-zinc-700 p-4 bg-zinc-50 dark:bg-zinc-900 text-sm font-semibold">
+        <div className="p-4 bg-zinc-100 dark:bg-zinc-800 text-sm font-semibold">
           <b>{Math.round(stats.before / 1024)} KB</b> → <b className="text-emerald-600">{Math.round(stats.after / 1024)} KB</b>
           {' '}(saved {Math.max(0, Math.round((1 - stats.after / stats.before) * 100))}%)
         </div>

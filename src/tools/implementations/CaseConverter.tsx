@@ -1,6 +1,5 @@
 import { useState } from 'react'
-
-import { Button } from '../../components/ui/Button'
+import { Select } from '../../components/ui/Select'
 
 const trans: [string, (s: string) => string][] = [
   ['UPPERCASE', s => s.toUpperCase()],
@@ -16,18 +15,17 @@ const trans: [string, (s: string) => string][] = [
 export default function CaseConverter() {
   const [text, setText] = useState('the quick brown fox jumps over the lazy dog')
   const [active, setActive] = useState(0)
+  const converted = trans[active][1](text)
   return (
-    <div className="space-y-5">
-      <textarea value={text} onChange={e => setText(e.target.value)} className="w-full h-32 border p-3 text-sm" />
-      <div className="flex flex-wrap gap-2.5">
-        {trans.map(([label], i) => (
-          <Button variant="outline" key={label} onClick={() => setActive(i)} className={`px-3 h-9 text-sm border ${active === i ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{label}</Button>
-        ))}
+    <div className="space-y-5 max-w-2xl">
+      <textarea value={text} onChange={(e) => setText(e.target.value)} className="w-full h-32 p-3 bg-zinc-100 dark:bg-zinc-800 text-sm font-semibold rounded-none outline-none focus:shadow-[0_0_0_3px_rgba(99,102,241,0.2)]" />
+      <div className="max-w-[280px]">
+        <Select label="Case" value={active} onChange={(v) => setActive(Number(v))} options={trans.map(([label], i) => ({ v: String(i), label }))} />
       </div>
-      <div className="border p-4 bg-zinc-50 dark:bg-zinc-800 min-h-[80px] font-mono text-sm whitespace-pre-wrap break-words">
-        {trans[active][1](text) || '…'}
+      <div className="p-4 bg-zinc-100 dark:bg-zinc-800 min-h-[80px] font-mono text-sm whitespace-pre-wrap break-words">
+        {converted || '…'}
       </div>
-      <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(trans[active][1](text))}>Copy result</Button>
+      <button onClick={() => navigator.clipboard.writeText(converted)} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">Copy result</button>
     </div>
   )
 }
