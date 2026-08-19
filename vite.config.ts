@@ -5,5 +5,6 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['@ffmpeg/ffmpeg', '@ffmpeg/util', '@ffmpeg/core', '@huggingface/transformers', 'onnxruntime-web']
   },
-  build: { outDir: 'dist' }
+  build: { outDir: 'dist' },
+  base: './'
 })
