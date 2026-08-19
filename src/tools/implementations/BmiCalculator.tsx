@@ -27,8 +27,8 @@ export default function BmiCalculator() {
   return (
     <div className="space-y-4 max-w-lg">
       <div className="flex gap-2.5">
-        <Button variant="outline" onClick={() => setUnit('metric')} className={`px-4 h-9 text-sm border ${unit === 'metric' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Metric</Button>
-        <Button variant="outline" onClick={() => setUnit('imperial')} className={`px-4 h-9 text-sm border ${unit === 'imperial' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Imperial</Button>
+        <Button variant="outline" onClick={() => setUnit('metric')} className={`px-4 h-9 text-sm  ${unit === 'metric' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Metric</Button>
+        <Button variant="outline" onClick={() => setUnit('imperial')} className={`px-4 h-9 text-sm  ${unit === 'imperial' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Imperial</Button>
       </div>
       <div className="grid grid-cols-2 gap-3">
         <label className="block text-sm font-semibold">{unit === 'metric' ? 'Height (cm)' : 'Height (inches)'}

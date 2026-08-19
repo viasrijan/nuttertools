@@ -38,7 +38,7 @@ export default function GpaCalculator() {
       <div className="flex items-center gap-2 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white">Scale</label>
         {[4, 5].map(s => (
-          <Button variant="outline" key={s} onClick={() => setScale(s)} className={`px-4 h-9 border ${scale === s ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{s}-point</Button>
+          <Button variant="outline" key={s} onClick={() => setScale(s)} className={`px-4 h-9  ${scale === s ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{s}-point</Button>
         ))}
       </div>
       <div className="border overflow-x-auto">

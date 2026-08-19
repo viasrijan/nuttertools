@@ -116,8 +116,8 @@ export default function PdfOrganizer() {
                 <div className="mt-2 flex gap-1 justify-center">
                   <Button variant="outline" size="sm" className="px-2 h-7 text-xs" onClick={() => move(i, -1)} disabled={i === 0}>Up</Button>
                   <Button variant="outline" size="sm" className="px-2 h-7 text-xs" onClick={() => move(i, 1)} disabled={i === pages.length - 1}>Down</Button>
-                  <Button variant="outline" onClick={() => rotate(i)} className="px-2 h-7 text-xs border border-zinc-200 dark:border-zinc-800">Rotate</Button>
-                  <Button variant="outline" onClick={() => remove(i)} className="px-2 h-7 text-xs border border-red-300 dark:border-red-800 text-red-600 dark:text-red-400">Remove</Button>
+                  <Button variant="outline" onClick={() => rotate(i)} className="px-2 h-7 text-xs  border-zinc-200 dark:border-zinc-800">Rotate</Button>
+                  <Button variant="outline" onClick={() => remove(i)} className="px-2 h-7 text-xs  border-red-300 dark:border-red-800 text-red-600 dark:text-red-400">Remove</Button>
                 </div>
               </div>
             ))}

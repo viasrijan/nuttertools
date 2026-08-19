@@ -34,7 +34,7 @@ export default function AudioConverter() {
     <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop an audio file to convert" />
       <div className="flex flex-wrap gap-2.5">
-        {Object.keys(FORMATS).map(k => <Button variant="outline" key={k} onClick={() => setFmt(k)} className={`px-4 h-9 text-sm uppercase border ${fmt === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</Button>)}
+        {Object.keys(FORMATS).map(k => <Button variant="outline" key={k} onClick={() => setFmt(k)} className={`px-4 h-9 text-sm uppercase  ${fmt === k ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{k}</Button>)}
       </div>
       <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Convert & download</Button>
       {busy && <Progress label="Converting audio…" />}

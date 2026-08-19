@@ -41,12 +41,12 @@ export default function RotatePdf() {
       <DropZone onFiles={fl => setFile(fl[0])} accept="application/pdf" multiple={false} files={dropFiles} onClear={() => setFile(null)} label="Drop a PDF to rotate" />
       <div className="flex flex-wrap gap-2">
         {[90, 180, 270].map(a => (
-          <button key={a} onClick={() => setAngle(a)} className={`px-4 h-9 text-sm font-bold ${angle === a ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300'}`}>{a}° clockwise</button>
+          <button key={a} onClick={() => setAngle(a)} className={`px-4 h-9 text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5 active:scale-95 ${angle === a ? 'bg-gradient-to-b from-indigo-500 to-indigo-600 shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : 'bg-gradient-to-b from-sky-500 to-sky-600 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(14,165,233,0.5)]'}`}>{a}° clockwise</button>
         ))}
       </div>
       <label className="flex items-center gap-2 text-sm font-bold"><input type="checkbox" checked={all} onChange={e => setAll(e.target.checked)} className="w-4 h-4 accent-indigo-600" />All pages</label>
       {!all && <input value={pages} onChange={e => setPages(e.target.value)} className="px-3 h-10 text-sm font-semibold bg-zinc-100 dark:bg-zinc-800 rounded-none outline-none focus:shadow-[0_0_0_3px_rgba(99,102,241,0.2)]" placeholder="1-3,5,7-9" />}
-      <button onClick={run} disabled={busy} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-bold text-xs uppercase tracking-wider transition-colors">{busy ? 'Rotating…' : 'Rotate & download'}</button>
+      <button onClick={run} disabled={busy} className="px-5 h-10 disabled:opacity-50 text-white font-bold text-xs uppercase tracking-wider bg-gradient-to-b from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(79,70,229,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95">{busy ? 'Rotating…' : 'Rotate & download'}</button>
       {busy && <Progress label="Rotating PDF…" />}
     </div>
   )

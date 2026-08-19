@@ -75,12 +75,12 @@ export default function ToneGenerator() {
     <div className="space-y-5 max-w-xl omni-rise">
       <div className="flex flex-wrap gap-2.5">
         {NOTES.flatMap(n => [n + '3', n + '4', n + '5']).map(n => (
-          <Button variant="outline" key={n} onClick={() => setNote(n)} className={`px-2.5 h-8 text-xs border  ${note === n ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{n}</Button>
+          <Button variant="outline" key={n} onClick={() => setNote(n)} className={`px-2.5 h-8 text-xs   ${note === n ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{n}</Button>
         ))}
       </div>
       <div className="flex flex-wrap gap-2.5">
         {['sine', 'square', 'triangle', 'sawtooth'].map(w => (
-          <Button variant="outline" key={w} onClick={() => setWave(w as OscillatorType)} className={`px-3 h-9 text-sm capitalize border  ${wave === w ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{w}</Button>
+          <Button variant="outline" key={w} onClick={() => setWave(w as OscillatorType)} className={`px-3 h-9 text-sm capitalize   ${wave === w ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{w}</Button>
         ))}
       </div>
       <p className="text-2xl font-bold">{freq.toFixed(1)} Hz</p>
@@ -90,7 +90,7 @@ export default function ToneGenerator() {
       </div>
       <div className="flex gap-2.5">
         <Button variant="secondary" onClick={play}>Play</Button>
-        <Button variant="outline" onClick={stop} className="px-6 h-10 border text-sm">Stop</Button>
+        <Button variant="outline" onClick={stop} className="px-6 h-10  text-sm">Stop</Button>
         <Button variant="outline" disabled={exporting} onClick={exportWav}>{exporting ? 'Rendering…' : 'Download WAV'}</Button>
       </div>
     </div>

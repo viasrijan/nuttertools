@@ -52,7 +52,7 @@ export default function VoiceRecorder() {
 
   return (
     <div className="space-y-5 max-w-xl omni-rise">
-      <Button variant="outline" onClick={toggle} className={`px-6 h-12 text-sm  ${recording ? 'bg-red-600 text-white animate-pulse' : 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600'}`}>
+      <Button variant="outline" onClick={toggle} className={`px-6 h-12 text-sm  ${recording ? 'bg-red-600 text-white animate-pulse' : 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]'}`}>
         {recording ? `● Recording ${seconds}s — click to stop` : 'Start recording'}
       </Button>
       {url && (

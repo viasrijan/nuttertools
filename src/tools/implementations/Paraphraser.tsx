@@ -75,8 +75,8 @@ export default function Paraphraser() {
   return (
     <div className="space-y-5">
       <div className="flex gap-2 text-sm">
-        <Button variant="outline" onClick={() => setMode('light')} className={`px-4 h-9 border ${mode === 'light' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Light (45% words)</Button>
-        <Button variant="outline" onClick={() => setMode('heavy')} className={`px-4 h-9 border ${mode === 'heavy' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Heavy (85% words)</Button>
+        <Button variant="outline" onClick={() => setMode('light')} className={`px-4 h-9  ${mode === 'light' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Light (45% words)</Button>
+        <Button variant="outline" onClick={() => setMode('heavy')} className={`px-4 h-9  ${mode === 'heavy' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Heavy (85% words)</Button>
       </div>
       <textarea value={input} onChange={e => setInput(e.target.value)} placeholder="Paste text to paraphrase…" className="w-full h-[160px] border p-3 text-sm" />
       <div className="flex gap-2.5">

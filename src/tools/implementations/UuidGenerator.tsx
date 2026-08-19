@@ -67,7 +67,7 @@ export default function UuidGenerator() {
           <div className="border px-3 py-2"><span className="text-[10px] font-bold uppercase text-zinc-500 block">Phone</span>{fakeData.phone()}</div>
           <div className="border px-3 py-2"><span className="text-[10px] font-bold uppercase text-zinc-500 block">City</span>{fakeData.city()}</div>
         </div>
-        <Button variant="outline" onClick={() => setCount(count)} className="mt-2 px-3 h-8 border text-sm">Shuffle</Button>
+        <Button variant="outline" onClick={() => setCount(count)} className="mt-2 px-3 h-8  text-sm">Shuffle</Button>
       </div>
     </div>
   )

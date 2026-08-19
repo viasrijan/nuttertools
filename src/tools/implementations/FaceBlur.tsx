@@ -91,7 +91,7 @@ export default function FaceBlur() {
       <DropZone onFiles={fl => setFile(fl[0])} accept="image/*" multiple={false} label="Drop a photo — drag a box over faces or objects to hide" />
       <div className="flex flex-wrap gap-2 text-sm items-center">
         {(['blur', 'pixelate'] as const).map(m => (
-          <Button variant="outline" key={m} onClick={() => setMode(m)} className={`px-4 h-9 border capitalize ${mode === m ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{m}</Button>
+          <Button variant="outline" key={m} onClick={() => setMode(m)} className={`px-4 h-9  capitalize ${mode === m ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{m}</Button>
         ))}
         <label className="font-semibold text-zinc-900 dark:text-white ml-2 text-xs">Intensity</label>
         <input type="range" min="4" max="40" value={intensity} onChange={e => setIntensity(+e.target.value)} className="w-32" />

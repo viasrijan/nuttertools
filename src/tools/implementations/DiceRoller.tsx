@@ -28,7 +28,7 @@ export default function DiceRoller() {
         <input type="number" min="1" max="12" value={count} onChange={e => setCount(Math.min(12, Math.max(1, +e.target.value)))} className="border px-2 py-2 w-20" />
         <label className="font-semibold text-zinc-900 dark:text-white ml-2">Sides</label>
         {[4, 6, 8, 10, 12, 20].map(s => (
-          <Button variant="outline" key={s} onClick={() => setSides(s)} className={`px-3 h-9 text-xs border font-mono ${sides === s ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>d{s}</Button>
+          <Button variant="outline" key={s} onClick={() => setSides(s)} className={`px-3 h-9 text-xs  font-mono ${sides === s ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>d{s}</Button>
         ))}
         <Button variant="secondary" onClick={roll} disabled={rolling} isLoading={rolling} className="ml-auto">Roll</Button>
       </div>

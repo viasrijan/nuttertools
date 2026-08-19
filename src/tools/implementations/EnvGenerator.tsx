@@ -45,7 +45,7 @@ export default function EnvGenerator() {
     <div className="space-y-5 max-w-3xl omni-rise">
       <div className="flex flex-wrap gap-2.5">
         {Object.keys(TEMPLATES).map(k => (
-          <Button variant="outline" key={k} onClick={() => select(k)} className={`px-3 h-9 text-sm border ${tpl === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</Button>
+          <Button variant="outline" key={k} onClick={() => select(k)} className={`px-3 h-9 text-sm  ${tpl === k ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{k}</Button>
         ))}
       </div>
       <div className="space-y-3">
@@ -56,7 +56,7 @@ export default function EnvGenerator() {
             <Button variant="ghost" size="sm" onClick={() => setRows(rows.filter((_, x) => x !== i))}>✕</Button>
           </div>
         ))}
-        <button onClick={() => setRows([...rows, { key: 'NEW_KEY', desc: '', value: '' }])} className="px-3 h-8 border text-sm">+ Add key</button>
+        <button onClick={() => setRows([...rows, { key: 'NEW_KEY', desc: '', value: '' }])} className="px-4 h-9 text-sm font-bold text-white bg-gradient-to-b from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(5,150,105,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95">+ Add key</button>
       </div>
       <Button variant="secondary" onClick={gen}>Generate .env</Button>
       {out && (

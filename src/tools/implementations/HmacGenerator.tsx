@@ -39,11 +39,11 @@ export default function HmacGenerator() {
       <div className="flex flex-wrap gap-2 text-sm items-center">
         <label className="font-semibold text-zinc-900 dark:text-white">Algorithm</label>
         {['SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'].map(h => (
-          <Button variant="outline" key={h} onClick={() => setHash(h)} className={`px-3 h-9 text-xs border ${hash === h ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{h}</Button>
+          <Button variant="outline" key={h} onClick={() => setHash(h)} className={`px-3 h-9 text-xs  ${hash === h ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{h}</Button>
         ))}
         <label className="font-semibold text-zinc-900 dark:text-white ml-2">Output</label>
         {(['hex', 'b64'] as const).map(f => (
-          <Button variant="outline" key={f} onClick={() => setFormat(f)} className={`px-3 h-9 text-xs border ${format === f ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{f === 'hex' ? 'Hex' : 'Base64'}</Button>
+          <Button variant="outline" key={f} onClick={() => setFormat(f)} className={`px-3 h-9 text-xs  ${format === f ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{f === 'hex' ? 'Hex' : 'Base64'}</Button>
         ))}
       </div>
       <pre className="border p-3 text-xs break-all whitespace-pre-wrap font-mono">{out || 'Generating…'}</pre>

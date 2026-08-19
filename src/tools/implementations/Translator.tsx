@@ -37,7 +37,7 @@ export default function Translator() {
         <select value={from} onChange={e => setFrom(e.target.value)} className="border px-2 h-9 text-sm bg-transparent flex-1">
           {LANGS.map(l => <option key={l[0]} value={l[0]}>{l[1]}</option>)}
         </select>
-        <button onClick={swap} title="Swap languages" className="px-3 h-9 border text-sm">⇄</button>
+        <button onClick={swap} title="Swap languages" className="px-3 h-9 text-sm font-bold text-zinc-900 bg-gradient-to-b from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-[0_1px_2px_rgba(0,0,0,0.18),0_6px_16px_-6px_rgba(245,158,11,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95">⇄</button>
         <select value={to} onChange={e => setTo(e.target.value)} className="border px-2 h-9 text-sm bg-transparent flex-1">
           {LANGS.filter(l => l[0] !== 'auto').map(l => <option key={l[0]} value={l[0]}>{l[1]}</option>)}
         </select>

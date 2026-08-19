@@ -53,7 +53,7 @@ export default function BlobMaker() {
     <div className="space-y-5 max-w-3xl omni-rise">
       <div className="flex flex-wrap gap-2.5">
         {(['blob', 'wave', 'sine'] as const).map(k => (
-          <Button variant="outline" key={k} onClick={() => setKind(k)} className={`px-4 h-9 text-sm border ${kind === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</Button>
+          <Button variant="outline" key={k} onClick={() => setKind(k)} className={`px-4 h-9 text-sm  ${kind === k ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{k}</Button>
         ))}
       </div>
       {kind === 'blob' ? (

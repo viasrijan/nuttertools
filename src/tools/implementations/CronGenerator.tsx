@@ -51,7 +51,7 @@ export default function CronGenerator() {
         </div>
         <div className="flex flex-wrap gap-2 mt-3">
           {['*', '0', '5', '10', '15', '30', '*/5', '*/15', '?', '1-5', '1,15'].map(v => (
-            <button key={v} onClick={() => setFields({ ...fields, dow: v === '?' || /^\d$|^\d-\d|,/.test(v) && /^\d$|^\d-\d|,/.test(v) ? v : fields.dow })} className="px-2 h-7 border text-xs font-mono">{v}</button>
+            <button key={v} onClick={() => setFields({ ...fields, dow: v === '?' || /^\d$|^\d-\d|,/.test(v) && /^\d$|^\d-\d|,/.test(v) ? v : fields.dow })} className="px-2.5 h-8 text-xs font-mono font-bold text-white bg-gradient-to-b from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(14,165,233,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95">{v}</button>
           ))}
         </div>
       </div>

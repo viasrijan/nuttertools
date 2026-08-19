@@ -23,7 +23,7 @@ export default function JsonYaml() {
     <div className="space-y-5">
       <div className="flex flex-wrap gap-2 text-sm">
         {([['auto', 'Auto detect'], ['j2y', 'JSON → YAML'], ['y2j', 'YAML → JSON']] as const).map(([k, l]) => (
-          <Button variant="outline" key={k} onClick={() => setMode(k)} className={`px-4 h-9 text-sm border ${mode === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{l}</Button>
+          <Button variant="outline" key={k} onClick={() => setMode(k)} className={`px-4 h-9 text-sm  ${mode === k ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{l}</Button>
         ))}
       </div>
       <textarea value={input} onChange={e => setInput(e.target.value)} placeholder="Paste JSON or YAML…" className="w-full h-[200px] border p-3 text-sm font-mono" />

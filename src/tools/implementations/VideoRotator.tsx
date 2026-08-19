@@ -37,7 +37,7 @@ export default function VideoRotator() {
     <div className="space-y-5 max-w-xl omni-rise">
       <DropZone onFiles={fl => setFile(fl[0])} accept="video/*" multiple={false} label="Drop a video to rotate" />
       <div className="flex flex-wrap gap-2.5">
-        {[90, 180, 270].map(a => <Button variant="outline" key={a} onClick={() => setAngle(a)} className={`px-4 h-9 text-sm border ${angle === a ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{a}°</Button>)}
+        {[90, 180, 270].map(a => <Button variant="outline" key={a} onClick={() => setAngle(a)} className={`px-4 h-9 text-sm  ${angle === a ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{a}°</Button>)}
       </div>
       <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Rotate & download</Button>
       {busy && <Progress label="Rotating video…" />}

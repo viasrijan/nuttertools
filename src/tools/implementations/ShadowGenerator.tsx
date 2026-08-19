@@ -24,8 +24,8 @@ export default function ShadowGenerator() {
   return (
     <div className="space-y-5 max-w-2xl omni-rise">
       <div className="flex gap-2.5">
-        <Button variant="outline" onClick={() => setType('box')} className={`px-4 h-9 text-sm border ${type === 'box' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Box shadow</Button>
-        <Button variant="outline" onClick={() => setType('text')} className={`px-4 h-9 text-sm border ${type === 'text' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Text shadow</Button>
+        <Button variant="outline" onClick={() => setType('box')} className={`px-4 h-9 text-sm  ${type === 'box' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Box shadow</Button>
+        <Button variant="outline" onClick={() => setType('text')} className={`px-4 h-9 text-sm  ${type === 'text' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Text shadow</Button>
       </div>
       {type === 'box' ? (
         <>

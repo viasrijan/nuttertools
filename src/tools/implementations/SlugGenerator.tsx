@@ -24,7 +24,7 @@ export default function SlugGenerator() {
         <div className="flex items-center gap-2 mt-2">
           <span className="text-sm">Separator</span>
           {['-', '_', ''].map(s => (
-            <Button variant="outline" key={s || 'none'} onClick={() => setSep(s)} className={`px-3 h-8 border text-sm ${sep === s ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{s || 'none'}</Button>
+            <Button variant="outline" key={s || 'none'} onClick={() => setSep(s)} className={`px-3 h-8  text-sm ${sep === s ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{s || 'none'}</Button>
           ))}
           <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(slug())} className="ml-auto">Copy slug</Button>
         </div>

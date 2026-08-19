@@ -40,7 +40,7 @@ export default function VoiceChanger() {
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop a voice recording to disguise" />
       <div className="flex flex-wrap gap-2.5">
         {Object.keys(VOICES).map(v => (
-          <Button variant="outline" key={v} onClick={() => setVoice(v)} className={`px-4 h-9 text-sm border capitalize ${voice === v ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{v}</Button>
+          <Button variant="outline" key={v} onClick={() => setVoice(v)} className={`px-4 h-9 text-sm  capitalize ${voice === v ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{v}</Button>
         ))}
       </div>
       <Button variant="secondary" onClick={run} disabled={busy || !file} isLoading={busy || !file}>Change voice & download</Button>

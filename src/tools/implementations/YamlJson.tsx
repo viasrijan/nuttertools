@@ -44,8 +44,8 @@ export default function YamlJson() {
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap gap-2.5">
-        <button onClick={() => { setTab('y2j'); y2j() }} className={`px-4 h-9 text-sm border ${tab === 'y2j' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>YAML → JSON</button>
-        <button onClick={() => { setTab('j2y'); j2y() }} className={`px-4 h-9 text-sm border ${tab === 'j2y' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>JSON → YAML</button>
+        <Button variant="outline" onClick={() => { setTab('y2j'); y2j() }} className={`px-4 h-9 text-sm ${tab === 'y2j' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>YAML → JSON</Button>
+        <Button variant="outline" onClick={() => { setTab('j2y'); j2y() }} className={`px-4 h-9 text-sm ${tab === 'j2y' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>JSON → YAML</Button>
         <CopyButton value={tab === 'y2j' ? j : y} />
       </div>
       {error && <p className="text-xs text-red-500">{error}</p>}

@@ -61,8 +61,8 @@ export default function ZipTool() {
   return (
     <div className="space-y-5 max-w-xl omni-rise">
       <div className="flex gap-2.5">
-        <Button variant="outline" onClick={() => setMode('zip')} className={`px-4 h-9 text-sm border ${mode === 'zip' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Create zip</Button>
-        <Button variant="outline" onClick={() => setMode('unzip')} className={`px-4 h-9 text-sm border ${mode === 'unzip' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Extract zip</Button>
+        <Button variant="outline" onClick={() => setMode('zip')} className={`px-4 h-9 text-sm  ${mode === 'zip' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Create zip</Button>
+        <Button variant="outline" onClick={() => setMode('unzip')} className={`px-4 h-9 text-sm  ${mode === 'unzip' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Extract zip</Button>
       </div>
       {mode === 'zip' ? (
         <>

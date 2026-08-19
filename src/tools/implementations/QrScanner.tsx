@@ -87,13 +87,11 @@ export default function QrScanner() {
       )}
       {supported && mode === null && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <button onClick={startCamera} className="border p-8 text-center hover:border-green-500 transition">
-            <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-2">Use camera</div>
+          <button onClick={startCamera} className="p-8 text-center border-2 border-dashed border-zinc-300/90 dark:border-zinc-700 bg-gradient-to-b from-zinc-50/80 to-white dark:from-zinc-900/50 dark:to-zinc-900/20 hover:border-emerald-400 dark:hover:border-emerald-500/70 hover:bg-emerald-50/40 dark:hover:bg-emerald-500/[0.06] transition-all duration-200">
+            <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-600 dark:text-emerald-400 mb-2">Use camera</div>
             <div className="text-sm font-semibold text-zinc-900 dark:text-white">Point at a QR code</div>
           </button>
-          <label className="border p-8 text-center hover:border-green-500 transition cursor-pointer block">
-            <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-green-600 dark:text-green-400 mb-2">Upload image</div>
-            <div className="text-sm font-semibold text-zinc-900 dark:text-white">Scan a QR from a photo</div>
+          <label className="p-8 text-center border-2 border-dashed border-zinc-300/90 dark:border-zinc-700 bg-gradient-to-b from-zinc-50/80 to-white dark:from-zinc-900/50 dark:to-zinc-900/20 hover:border-emerald-400 dark:hover:border-emerald-500/70 hover:bg-emerald-50/40 dark:hover:bg-emerald-500/[0.06] transition-all duration-200 cursor-pointer block">
             <input type="file" accept="image/*" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) scanImage(f) }} />
           </label>
         </div>

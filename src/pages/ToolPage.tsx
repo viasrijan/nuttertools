@@ -126,7 +126,7 @@ export default function ToolPage() {
                   <ol className="space-y-3">
                     {info.howTo.map((step, i) => (
                       <li key={i} className="flex gap-3 text-[16px] font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                        <span className="shrink-0 w-6 h-6  bg-gradient-to-br from-indigo-500 to-violet-600 text-white grid place-items-center text-[12.5px] font-bold shadow-[0_2px_8px_-2px_rgba(99,102,241,0.6)]">{i + 1}</span>
+                        <span className="shrink-0 w-5 h-5  bg-gradient-to-br from-indigo-500 to-violet-600 text-white grid place-items-center text-[10px] font-bold shadow-[0_2px_8px_-2px_rgba(99,102,241,0.6)]">{i + 1}</span>
                         <span className="pt-0.5">{step}</span>
                       </li>
                     ))}

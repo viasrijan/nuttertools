@@ -48,9 +48,9 @@ export default function Pomodoro() {
   return (
     <div className="space-y-5 max-w-lg">
       <div className="flex gap-2.5">
-        <Button variant="outline" onClick={() => switchMode('work')} className={`px-4 h-9 text-sm border ${mode === 'work' ? 'bg-red-600 text-white' : ''}`}>Work 25</Button>
-        <Button variant="outline" onClick={() => switchMode('short')} className={`px-4 h-9 text-sm border ${mode === 'short' ? 'bg-emerald-600 text-white' : ''}`}>Short 5</Button>
-        <Button variant="outline" onClick={() => switchMode('long')} className={`px-4 h-9 text-sm border ${mode === 'long' ? 'bg-sky-600 text-white' : ''}`}>Long 15</Button>
+        <Button variant="outline" onClick={() => switchMode('work')} className={`px-4 h-9 text-sm  ${mode === 'work' ? 'bg-red-600 text-white' : ''}`}>Work 25</Button>
+        <Button variant="outline" onClick={() => switchMode('short')} className={`px-4 h-9 text-sm  ${mode === 'short' ? 'bg-emerald-600 text-white' : ''}`}>Short 5</Button>
+        <Button variant="outline" onClick={() => switchMode('long')} className={`px-4 h-9 text-sm  ${mode === 'long' ? 'bg-sky-600 text-white' : ''}`}>Long 15</Button>
       </div>
       <div className="border p-8 text-center">
         <div className="relative w-44 h-44 mx-auto">
@@ -67,17 +67,17 @@ export default function Pomodoro() {
             </div>
           </div>
         </div>
-        <Button variant="outline" onClick={() => setRunning(!running)} className={`mt-6 px-8 h-12 text-sm font-semibold ${running ? 'bg-zinc-700 text-white' : 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600'}`}>
+        <Button variant="outline" onClick={() => setRunning(!running)} className={`mt-6 px-8 h-12 text-sm font-semibold ${running ? 'bg-zinc-700 text-white' : 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]'}`}>
           {running ? 'Pause' : left === (mode === 'work' ? WORK : mode === 'short' ? SHORT : LONG) ? 'Start' : 'Resume'}
         </Button>
-        <button onClick={() => { setLeft(mode === 'work' ? WORK : mode === 'short' ? SHORT : LONG); setRunning(false) }} className="px-4 h-12 border text-sm ml-2">Reset</button>
+        <Button variant="subtle" onClick={() => { setLeft(mode === 'work' ? WORK : mode === 'short' ? SHORT : LONG); setRunning(false) }} className="px-8 h-12 text-sm font-semibold ml-2">Reset</Button>
         <p className="mt-3 text-sm font-medium text-zinc-500">Completed pomodoros: <b className="text-zinc-900 dark:text-white">{rounds}</b> 🍅</p>
       </div>
       <div>
         <p className="text-sm font-semibold mb-2">Tasks</p>
         <div className="flex gap-2 mb-2">
           <input value={task} onChange={e => setTask(e.target.value)} onKeyDown={e => { if (e.key === 'Enter' && task.trim()) { setTasks([...tasks, task.trim()]); setTask('') } }} className="flex-1 border px-3 h-9 text-sm" placeholder="Add a task…" />
-          <button onClick={() => { if (task.trim()) { setTasks([...tasks, task.trim()]); setTask('') } }} className="px-4 h-9 border text-sm">Add</button>
+          <Button variant="accent" onClick={() => { if (task.trim()) { setTasks([...tasks, task.trim()]); setTask('') } }} className="px-4 h-9 text-sm font-bold">Add</Button>
         </div>
         <ul className="space-y-1">
           {tasks.map((t, i) => (

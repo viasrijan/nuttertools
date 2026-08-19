@@ -25,7 +25,7 @@ export default function TextReverser() {
     <div className="space-y-5">
       <div className="flex flex-wrap gap-2.5">
         {modes.map(m => (
-          <Button variant="outline" key={m.id} onClick={() => setMode(m.id)} className={`px-3 h-9 text-sm border ${mode === m.id ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{m.label}</Button>
+          <Button variant="outline" key={m.id} onClick={() => setMode(m.id)} className={`px-3 h-9 text-sm  ${mode === m.id ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{m.label}</Button>
         ))}
       </div>
       <textarea value={text} onChange={e => setText(e.target.value)} className="w-full h-32 border p-3 text-sm" />

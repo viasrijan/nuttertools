@@ -25,8 +25,8 @@ export default function MorseCode() {
   return (
     <div className="space-y-5 max-w-3xl omni-rise">
       <div className="flex gap-2.5">
-        <Button variant="outline" onClick={() => setMode('t2m')} className={`px-4 h-9 text-sm border ${mode === 't2m' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Text → Morse</Button>
-        <Button variant="outline" onClick={() => setMode('m2t')} className={`px-4 h-9 text-sm border ${mode === 'm2t' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Morse → Text</Button>
+        <Button variant="outline" onClick={() => setMode('t2m')} className={`px-4 h-9 text-sm  ${mode === 't2m' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Text → Morse</Button>
+        <Button variant="outline" onClick={() => setMode('m2t')} className={`px-4 h-9 text-sm  ${mode === 'm2t' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Morse → Text</Button>
         <CopyButton value={morse} />
       </div>
       {mode === 't2m' ? (
@@ -40,7 +40,7 @@ export default function MorseCode() {
           <textarea value={text} readOnly className="w-full h-44 border p-3 text-sm bg-zinc-50 dark:bg-zinc-800" />
         </div>
       )}
-      <button onClick={() => { if (mode === 't2m') setMorse(toMorse(text)); else setText(fromMorse(morse)) }} className="px-4 h-9 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Convert</button>
+      <button onClick={() => { if (mode === 't2m') setMorse(toMorse(text)); else setText(fromMorse(morse)) }} className="px-4 h-9 text-sm font-bold text-white bg-gradient-to-b from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(79,70,229,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95">Convert</button>
     </div>
   )
 }

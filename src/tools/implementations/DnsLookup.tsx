@@ -30,7 +30,7 @@ export default function DnsLookup() {
       </div>
       <div className="flex flex-wrap gap-2.5">
         {TYPES.map(t => (
-          <button key={t} onClick={() => { setType(t); }} className={`px-3 h-9 text-xs border font-mono ${type === t ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{t}</button>
+          <button key={t} onClick={() => { setType(t); }} className={`px-3 h-9 text-xs font-bold font-mono text-white transition-all duration-200 hover:-translate-y-0.5 active:scale-95 ${type === t ? 'bg-gradient-to-b from-indigo-500 to-indigo-600 shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : 'bg-gradient-to-b from-sky-500 to-sky-600 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(14,165,233,0.5)]'}`}>{t}</button>
         ))}
       </div>
       {state === 'loading' && <p className="text-xs text-zinc-500">Querying…</p>}

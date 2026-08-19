@@ -501,18 +501,18 @@ export default function FormatConverter() {
               </div>
               <div className="inline-grid grid-cols-3 gap-1.5 pt-2">
                 {TEXT_POSITIONS.map((p) => (
-                  <button key={p.id} onClick={() => setTextPos(p.id)} className={`px-4 h-9 text-xs font-bold uppercase tracking-wider border ${textPos === p.id ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white'}`}>{p.label}</button>
+                  <button key={p.id} onClick={() => setTextPos(p.id)} className={`px-4 h-9 text-xs font-bold uppercase tracking-wider text-white transition-all duration-200 hover:-translate-y-0.5 active:scale-95 ${textPos === p.id ? 'bg-gradient-to-b from-indigo-500 to-indigo-600 shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : 'bg-gradient-to-b from-sky-500 to-sky-600 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(14,165,233,0.5)]'}`}>{p.label}</button>
                 ))}
               </div>
             </section>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 pt-4">
-            <button onClick={convert} disabled={busy} className="px-6 h-12 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm uppercase tracking-wider rounded-none shadow-md transition-all disabled:opacity-50">
+            <button onClick={convert} disabled={busy} className="px-6 h-12 text-white font-bold text-sm uppercase tracking-wider shadow-[0_1px_2px_rgba(0,0,0,0.15),0_8px_20px_-6px_rgba(79,70,229,0.55)] bg-gradient-to-b from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50">
               {busy ? 'Processing…' : `Convert all images (${items.length})`}
             </button>
             {items.some((it) => it.out) && (
-              <button onClick={downloadZip} className="px-6 h-12 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-white dark:text-zinc-900 font-bold text-sm uppercase tracking-wider rounded-none shadow-sm transition-all">
+              <button onClick={downloadZip} className="px-6 h-12 text-white font-bold text-sm uppercase tracking-wider bg-gradient-to-b from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_8px_20px_-6px_rgba(5,150,105,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
                 Download ZIP archive
               </button>
             )}
@@ -531,7 +531,7 @@ export default function FormatConverter() {
                   </p>
                 </div>
                 {it.out && it.outName && (
-                  <a href={it.out} download={it.outName} className="inline-flex items-center justify-center w-full h-9 bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-100 dark:text-zinc-900 text-xs font-bold uppercase tracking-wider rounded-none transition-colors">
+                  <a href={it.out} download={it.outName} className="inline-flex items-center justify-center w-full h-9 text-white text-xs font-bold uppercase tracking-wider bg-gradient-to-b from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(14,165,233,0.5)] transition-all duration-200 hover:-translate-y-0.5">
                     Download {active.ext.toUpperCase()}
                   </a>
                 )}

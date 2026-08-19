@@ -31,8 +31,8 @@ export default function HtmlEntityEncoder() {
     <div className="space-y-5">
       <textarea value={input} onChange={e => setInput(e.target.value)} placeholder="Paste HTML or text…" className="w-full h-[160px] border p-3 text-sm font-mono" />
       <div className="flex flex-wrap gap-2 text-sm">
-        <Button variant="outline" onClick={() => setMode('special')} className={`px-4 h-9 border ${mode === 'special' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Encode &lt; &gt; " '</Button>
-        <Button variant="outline" onClick={() => setMode('all')} className={`px-4 h-9 border ${mode === 'all' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Encode non-ASCII</Button>
+        <Button variant="outline" onClick={() => setMode('special')} className={`px-4 h-9  ${mode === 'special' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Encode &lt; &gt; " '</Button>
+        <Button variant="outline" onClick={() => setMode('all')} className={`px-4 h-9  ${mode === 'all' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Encode non-ASCII</Button>
       </div>
       <div className="grid md:grid-cols-2 gap-2">
         <div>

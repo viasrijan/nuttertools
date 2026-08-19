@@ -40,9 +40,9 @@ export default function AudioEnhancer() {
       <DropZone onFiles={fl => setFile(fl[0])} accept="audio/*" multiple={false} label="Drop an audio file to clean up and boost" />
       <div className="flex flex-wrap gap-2 text-sm">
         {Object.entries(PRESETS).map(([k, v]) => (
-          <Button variant="outline" key={k} onClick={() => setPreset(k as keyof typeof PRESETS)} className={`px-4 h-9 border capitalize ${preset === k ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{k}</Button>
+          <Button variant="outline" key={k} onClick={() => setPreset(k as keyof typeof PRESETS)} className={`px-4 h-9  capitalize ${preset === k ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{k}</Button>
         ))}
-        <Button variant="outline" onClick={() => setPreset('custom')} className={`px-4 h-9 border ${preset === 'custom' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Custom</Button>
+        <Button variant="outline" onClick={() => setPreset('custom')} className={`px-4 h-9  ${preset === 'custom' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Custom</Button>
       </div>
       {preset === 'custom' && (
         <div className="flex items-center gap-2 text-sm">

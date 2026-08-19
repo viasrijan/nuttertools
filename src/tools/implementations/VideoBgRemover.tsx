@@ -58,7 +58,7 @@ export default function VideoBgRemover() {
       <div className="flex items-center gap-2 text-sm">
         <label className="font-semibold text-zinc-900 dark:text-white">Frame rate</label>
         {[5, 10, 15].map(f => (
-          <Button variant="outline" key={f} onClick={() => setFps(f)} className={`px-3 h-9 text-xs border ${fps === f ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{f} fps</Button>
+          <Button variant="outline" key={f} onClick={() => setFps(f)} className={`px-3 h-9 text-xs  ${fps === f ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{f} fps</Button>
         ))}
       </div>
       <Button variant="secondary" onClick={run} disabled={busy || !video} isLoading={busy || !video}>Remove background & download</Button>

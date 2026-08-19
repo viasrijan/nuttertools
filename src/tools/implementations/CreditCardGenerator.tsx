@@ -75,7 +75,7 @@ export default function CreditCardGenerator() {
     <div className="space-y-5 max-w-xl omni-rise">
       <div className="flex flex-wrap gap-2.5">
         {BRANDS.map((x, i) => (
-          <Button variant="outline" key={x.name} onClick={() => setBrand(i)} className={`px-4 h-10 text-sm font-semibold ${i === brand ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : 'ring-1 ring-zinc-200 dark:ring-zinc-800'}`}>
+          <Button variant="outline" key={x.name} onClick={() => setBrand(i)} className={`px-4 h-10 text-sm font-semibold ${i === brand ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : 'bg-indigo-100 dark:bg-indigo-500/25 text-indigo-700 dark:text-indigo-200 shadow-[0_1px_2px_rgba(0,0,0,0.08),0_6px_16px_-8px_rgba(99,102,241,0.5)]'}`}>
             {x.name}
           </Button>
         ))}

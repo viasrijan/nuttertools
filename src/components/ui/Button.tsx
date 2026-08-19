@@ -50,14 +50,16 @@ export function Button({
       'shadow-[0_1px_2px_rgba(0,0,0,0.15),0_8px_20px_-6px_rgba(225,29,72,0.5)] ' +
       'hover:shadow-[0_2px_4px_rgba(0,0,0,0.15),0_12px_28px_-6px_rgba(225,29,72,0.65)] hover:-translate-y-0.5 active:translate-y-0',
     outline:
-      'border border-zinc-300 dark:border-zinc-600 bg-white/60 dark:bg-zinc-900/60 text-zinc-800 dark:text-zinc-100 ' +
-      'hover:border-indigo-400 dark:hover:border-indigo-500 hover:bg-indigo-50/60 dark:hover:bg-indigo-500/10 hover:text-indigo-700 dark:hover:text-indigo-300 ' +
-      'hover:-translate-y-0.5 active:translate-y-0',
+      'text-white bg-gradient-to-b from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 ' +
+      'shadow-[0_1px_2px_rgba(0,0,0,0.15),0_8px_20px_-6px_rgba(14,165,233,0.55)] ' +
+      'hover:shadow-[0_2px_4px_rgba(0,0,0,0.15),0_12px_28px_-6px_rgba(14,165,233,0.7)] hover:-translate-y-0.5 active:translate-y-0',
     subtle:
-      'bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-200 ' +
-      'hover:bg-zinc-200/80 dark:hover:bg-zinc-700/80 hover:-translate-y-0.5 active:translate-y-0',
+      'text-zinc-900 bg-gradient-to-b from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 ' +
+      'shadow-[0_1px_2px_rgba(0,0,0,0.18),0_8px_20px_-6px_rgba(245,158,11,0.55)] ' +
+      'hover:shadow-[0_2px_4px_rgba(0,0,0,0.18),0_12px_28px_-6px_rgba(245,158,11,0.7)] hover:-translate-y-0.5 active:translate-y-0',
     ghost:
-      'text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/70 hover:text-zinc-900 dark:hover:text-white',
+      'text-indigo-700 dark:text-indigo-200 bg-indigo-100 dark:bg-indigo-500/25 hover:bg-indigo-200 dark:hover:bg-indigo-500/40 ' +
+      'shadow-[0_1px_2px_rgba(0,0,0,0.08),0_6px_16px_-8px_rgba(99,102,241,0.5)] hover:-translate-y-0.5 active:translate-y-0',
   }
 
   return (
@@ -67,7 +69,7 @@ export function Button({
       {...props}
     >
       {/* light sweep on hover for filled variants */}
-      {(variant === 'primary' || variant === 'gradient' || variant === 'accent' || variant === 'danger') && (
+      {(variant === 'primary' || variant === 'gradient' || variant === 'accent' || variant === 'danger' || variant === 'outline' || variant === 'subtle') && (
         <span
           aria-hidden
           className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover/btn:translate-x-full"

@@ -74,7 +74,7 @@ export default function XmlFormatter() {
       <div className="flex flex-wrap gap-2.5">
         <Button variant="secondary" onClick={() => run('format')}>Format</Button>
         <Button variant="secondary" onClick={() => run('minify')}>Minify</Button>
-        <button onClick={() => { setInput(''); setOutput(''); setError('') }} className="px-5 h-10 text-sm font-semibold ring-1 ring-zinc-200 dark:ring-zinc-800">Clear</button>
+        <button onClick={() => { setInput(''); setOutput(''); setError('') }} className="px-5 h-10 text-sm font-bold text-white bg-gradient-to-b from-rose-500 to-rose-600 hover:from-rose-400 hover:to-rose-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(225,29,72,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95">Clear</button>
       </div>
       {error && <p className="text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
       {output && (

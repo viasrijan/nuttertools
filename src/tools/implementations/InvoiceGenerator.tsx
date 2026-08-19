@@ -68,10 +68,10 @@ export default function InvoiceGenerator() {
             <input type="number" value={l.qty} onChange={e => { const n = [...lines]; n[i] = { ...l, qty: parseFloat(e.target.value) || 0 }; setLines(n) }} className="border px-2 h-9 text-sm" />
             <input type="number" value={l.rate} onChange={e => { const n = [...lines]; n[i] = { ...l, rate: parseFloat(e.target.value) || 0 }; setLines(n) }} className="border px-2 h-9 text-sm" />
             <div className="h-9 grid items-center text-sm font-semibold">${(l.qty * l.rate).toFixed(2)}</div>
-            <Button variant="outline" onClick={() => setLines(lines.filter((_, x) => x !== i))} className="h-9 border text-xs">✕</Button>
+            <Button variant="outline" onClick={() => setLines(lines.filter((_, x) => x !== i))} className="h-9  text-xs">✕</Button>
           </div>
         ))}
-        <button onClick={() => setLines([...lines, { desc: '', qty: 1, rate: 0 }])} className="px-3 h-8 border text-sm">+ Add line</button>
+        <button onClick={() => setLines([...lines, { desc: '', qty: 1, rate: 0 }])} className="px-4 h-9 text-sm font-bold text-white bg-gradient-to-b from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(5,150,105,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95">+ Add line</button>
       </div>
       <label className="block text-sm"><span className="font-semibold">Notes</span><input value={note} onChange={e => setNote(e.target.value)} className="w-full border px-3 h-9 mt-1 text-sm" /></label>
       <div className="flex items-center gap-3">

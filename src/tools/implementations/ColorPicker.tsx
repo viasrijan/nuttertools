@@ -59,7 +59,7 @@ export default function ColorPicker() {
       <div className="h-16  border" style={{ background: color }} />
       <div className="flex flex-wrap gap-2.5">
         {picked.map((p, i) => (
-          <button key={i} onClick={() => setColor(p)} className="w-10 h-10 border " style={{ background: p }} title={p} />
+          <button key={i} onClick={() => setColor(p)} className={`w-9 h-9 rounded-full transition-transform duration-200 hover:scale-110 ${color === p ? 'ring-2 ring-offset-2 ring-indigo-500 dark:ring-offset-zinc-900' : ''}`} style={{ background: p, boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.12)' }} title={p} />
         ))}
       </div>
       <div>

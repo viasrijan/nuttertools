@@ -44,10 +44,11 @@ export default function CopyButton({
   const sizes = size === 'sm' ? 'h-8 px-3 text-xs gap-1.5' : 'h-10 px-4 text-sm gap-2'
   const variants = {
     subtle:
-      'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-indigo-50 dark:hover:bg-indigo-500/15 hover:text-indigo-600 dark:hover:text-indigo-300 ring-1 ring-zinc-200/80 dark:ring-zinc-700/80 hover:ring-indigo-300 dark:hover:ring-indigo-500/50',
-    ghost: 'text-zinc-500 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-500/10',
+      'text-white bg-gradient-to-b from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(79,70,229,0.55)]',
+    ghost:
+      'text-white bg-zinc-800 hover:bg-zinc-700 dark:bg-zinc-600 dark:hover:bg-zinc-500 shadow-[0_1px_2px_rgba(0,0,0,0.2),0_6px_16px_-8px_rgba(0,0,0,0.5)]',
     outline:
-      'border border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-200 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 bg-white/60 dark:bg-zinc-900/50',
+      'text-white bg-gradient-to-b from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(14,165,233,0.55)]',
   }
 
   return (
@@ -56,8 +57,10 @@ export default function CopyButton({
       onClick={copy}
       disabled={!value}
       aria-label={copied ? 'Copied' : `Copy ${label.toLowerCase()}`}
-      className={`no-lift inline-flex items-center justify-center font-bold  transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:pointer-events-none ${
-        copied ? 'bg-emerald-50 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 ring-1 ring-emerald-300/60 dark:ring-emerald-500/40' : variants[variant]
+      className={`inline-flex items-center justify-center font-bold transition-all duration-200 hover:-translate-y-0.5 active:scale-95 disabled:opacity-40 disabled:pointer-events-none ${
+        copied
+          ? 'text-white bg-gradient-to-b from-emerald-500 to-emerald-600 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(5,150,105,0.55)]'
+          : variants[variant]
       } ${sizes} ${className}`}
     >
       {copied ? (

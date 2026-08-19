@@ -29,7 +29,7 @@ export default function PoemGenerator() {
     <div className="space-y-5 max-w-xl omni-rise">
       <input value={topic} onChange={e => setTopic(e.target.value)} className="w-full border px-3 h-10 text-sm" placeholder="Topic, e.g. the sea at midnight" />
       <div className="flex flex-wrap gap-2.5">
-        {STYLES.map(s => <Button variant="outline" key={s} onClick={() => setStyle(s)} className={`px-3 h-9 text-sm border ${style === s ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>{s}</Button>)}
+        {STYLES.map(s => <Button variant="outline" key={s} onClick={() => setStyle(s)} className={`px-3 h-9 text-sm  ${style === s ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>{s}</Button>)}
       </div>
       <Button variant="secondary" onClick={run} disabled={busy} isLoading={busy}>Write poem</Button>
       {error && <p className="text-xs text-zinc-500">{error}</p>}

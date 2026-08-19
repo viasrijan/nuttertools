@@ -72,8 +72,8 @@ export default function CsvJson() {
   return (
     <div className="space-y-5 max-w-xl omni-rise">
       <div className="flex gap-2.5">
-        <Button variant="outline" onClick={() => setDir('csv-json')} className={`px-4 h-9 text-sm border ${dir === 'csv-json' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>CSV → JSON</Button>
-        <Button variant="outline" onClick={() => setDir('json-csv')} className={`px-4 h-9 text-sm border ${dir === 'json-csv' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>JSON → CSV</Button>
+        <Button variant="outline" onClick={() => setDir('csv-json')} className={`px-4 h-9 text-sm  ${dir === 'csv-json' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>CSV → JSON</Button>
+        <Button variant="outline" onClick={() => setDir('json-csv')} className={`px-4 h-9 text-sm  ${dir === 'json-csv' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>JSON → CSV</Button>
       </div>
       <DropZone onFiles={onFile} accept=".csv,.json,.txt" multiple={false} label="Or drop a .csv / .json file" />
       <textarea value={input} onChange={e => setInput(e.target.value)} placeholder={dir === 'csv-json' ? 'name,age\nAlice,30' : '{"name":"Alice","age":30}'} className="w-full border p-3 h-36 font-mono text-sm" />

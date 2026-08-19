@@ -45,7 +45,7 @@ export default function SpeedPitch() {
         </div>
         <div className="flex flex-wrap gap-2.5">
           {[['Original', 1, 0], ['1.25×', 1.25, 0], ['1.5×', 1.5, 0], ['2×', 2, 0], ['+1 st', 1, 1], ['+4 st', 1, 4], ['-1 st', 1, -1], ['-4 st', 1, -4]].map(([l, s, p]) => (
-            <button key={String(l)} onClick={() => { setSpeed(s as number); setPitch(p as number) }} className="px-3 h-9 text-xs border">{l}</button>
+            <button key={String(l)} onClick={() => { setSpeed(s as number); setPitch(p as number) }} className="px-3 h-9 text-xs font-bold text-white bg-gradient-to-b from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(14,165,233,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95">{l}</button>
           ))}
         </div>
       </div>

@@ -28,8 +28,8 @@ export default function BulkRenamer() {
       {files.length > 0 && (
         <>
           <div className="flex flex-wrap gap-2.5">
-            <Button variant="outline" onClick={() => setMode('prefix')} className={`px-3 h-9 text-sm border ${mode === 'prefix' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Prefix name</Button>
-            <Button variant="outline" onClick={() => setMode('number')} className={`px-3 h-9 text-sm border ${mode === 'number' ? 'bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600' : ''}`}>Numbered</Button>
+            <Button variant="outline" onClick={() => setMode('prefix')} className={`px-3 h-9 text-sm  ${mode === 'prefix' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Prefix name</Button>
+            <Button variant="outline" onClick={() => setMode('number')} className={`px-3 h-9 text-sm  ${mode === 'number' ? 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]' : ''}`}>Numbered</Button>
           </div>
           {mode === 'prefix' ? (
             <input value={prefix} onChange={e => setPrefix(e.target.value)} className="w-full border px-3 h-10 text-sm" placeholder="Prefix" />

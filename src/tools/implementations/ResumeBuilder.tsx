@@ -61,7 +61,7 @@ export default function ResumeBuilder() {
             <textarea value={j.points} onChange={e => { const n = [...data.jobs]; n[i] = { ...j, points: e.target.value }; set('jobs', n) }} className="w-full border p-2 h-16 text-sm" placeholder="Achievements" />
           </div>
         ))}
-        <button onClick={() => set('jobs', [...data.jobs, { role: '', company: '', years: '', points: '' }])} className="px-3 h-8 border text-sm">+ Add job</button>
+        <button onClick={() => set('jobs', [...data.jobs, { role: '', company: '', years: '', points: '' }])} className="px-4 h-9 text-sm font-bold text-white bg-gradient-to-b from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(5,150,105,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95">+ Add job</button>
       </div>
       <input value={data.edu} onChange={e => set('edu', e.target.value)} className="w-full border px-3 h-9 text-sm" placeholder="Education" />
       <Button variant="secondary" onClick={gen}>Download PDF</Button>

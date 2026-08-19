@@ -22,7 +22,7 @@ export default function QRGenerator(){
       </div>
       <div className="text-center border p-4 bg-white">
         {url && <img src={url} className="mx-auto w-[280px] h-[280px]"/>}
-        {url && <a href={url} download="qr.png" className="mt-3 inline-block px-4 py-2 bg-white text-zinc-900 ring-1 ring-zinc-300 dark:ring-zinc-600 text-sm">Download PNG</a>}
+        {url && <a href={url} download="qr.png" className="mt-3 inline-block px-5 py-2.5 text-sm font-bold text-white bg-gradient-to-b from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(14,165,233,0.5)] transition-all duration-200 hover:-translate-y-0.5">Download PNG</a>}
       </div>
     </div>
   )

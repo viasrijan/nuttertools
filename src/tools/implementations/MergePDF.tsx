@@ -35,9 +35,7 @@ export default function MergePDF(){
       <div className="flex flex-wrap items-center gap-3">
         <Button variant="primary" size="lg" onClick={merge} disabled={files.length<2} className="w-full uppercase tracking-wider font-bold">Merge {files.length} PDFs</Button>
         {files.length > 0 && (
-          <button onClick={()=>{setFiles([]); setOut("")}} className="px-4 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold text-xs uppercase tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
-            Clear all
-          </button>
+          <Button variant="danger" onClick={()=>{setFiles([]); setOut("")}} className="w-full uppercase tracking-wider font-bold">Clear all</Button>
         )}
       </div>
       {out && (
