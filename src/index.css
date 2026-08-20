@@ -329,6 +329,18 @@ button:disabled { cursor: not-allowed; }
   border-radius: 0;
 }
 
+/* Tool-page buttons: flat, no lift, no drop shadow */
+.tool-page button,
+.tool-page a {
+  box-shadow: none !important;
+}
+.tool-page button:hover,
+.tool-page button:active,
+.tool-page a:hover,
+.tool-page a:active {
+  transform: none !important;
+}
+
 button:focus-visible, a:focus-visible {
   outline: none;
 }
