@@ -1,0 +1,10 @@
+import{r,j as e}from"./index-Do83dEV8.js";import{F as c}from"./Field-CK7Vkrqi.js";import{a as g}from"./Result-Bm2q2hx8.js";function b(){const[l,d]=r.useState(`/old-page-1 /new-page-1
+/old-page-2 /new-page-2
+/special-article`),[o,p]=r.useState("301"),[n,x]=r.useState("https://example.com"),i=l.split(`
+`).map(t=>t.trim()).filter(Boolean).map(t=>{const[a,s]=t.split(/\s+/);if(!(a!=null&&a.startsWith("/")))return null;const u=s?s.startsWith("http")?s:n.replace(/\/$/,"")+s:n.replace(/\/$/,"")+a;return`location ${a} {
+    return ${o} ${u};
+}`}).filter(Boolean);return e.jsxs("div",{className:"space-y-6 max-w-2xl",children:[e.jsxs("div",{className:"grid grid-cols-1 sm:grid-cols-2 gap-4",children:[e.jsx(c,{label:"Redirect code",value:o,onChange:t=>p(t.target.value),hint:"301 = permanent, 302 = temporary"}),e.jsx(c,{label:"Destination base URL",value:n,onChange:t=>x(t.target.value),hint:"Used for paths without a destination"})]}),e.jsxs("div",{className:"space-y-1.5",children:[e.jsx("span",{className:"block text-[12px] font-bold uppercase tracking-wide text-zinc-700 dark:text-zinc-300",children:'Redirects — one per line: "old-path new-path" (or just old-path)'}),e.jsx("textarea",{value:l,onChange:t=>d(t.target.value),rows:8,className:"w-full p-3 font-mono text-[13px] bg-zinc-100 dark:bg-zinc-800 rounded-none outline-none focus:shadow-[0_0_0_3px_rgba(99,102,241,0.2)]"})]}),e.jsxs("div",{className:"space-y-1.5",children:[e.jsxs("div",{className:"flex items-center justify-between",children:[e.jsx("span",{className:"text-[12px] font-bold uppercase tracking-wide text-zinc-700 dark:text-zinc-300",children:"nginx configuration"}),e.jsx("button",{onClick:()=>{var t;return(t=navigator.clipboard)==null?void 0:t.writeText(i.join(`
+
+`))},className:"text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 hover:underline",children:"Copy all"})]}),e.jsx("pre",{className:"p-3 bg-zinc-100 dark:bg-zinc-800 font-mono text-[12px] leading-relaxed overflow-auto whitespace-pre-wrap",children:i.join(`
+
+`)||"Add at least one redirect."})]}),e.jsx(g,{label:"Rules generated",value:i.length})]})}export{b as default};
