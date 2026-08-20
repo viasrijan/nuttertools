@@ -337,6 +337,11 @@ button:disabled { cursor: not-allowed; }
   transform: none !important;
 }
 
+/* Tool-page buttons share one height (square icon swatches keep their size) */
+.tool-page button:not([class*='w-5']):not([class*='w-6']):not([class*='w-7']):not([class*='w-8']):not([class*='w-9']):not([class*='w-10']):not([class*='w-11']):not([class*='w-12']):not([class*='w-14']):not([class*='w-16']) {
+  height: 2.5rem !important;
+}
+
 button:focus-visible, a:focus-visible {
   outline: none;
 }
