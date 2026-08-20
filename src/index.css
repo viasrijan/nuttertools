@@ -33,6 +33,7 @@ p { text-wrap: pretty; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #c7c7cc, #a1a1aa);
+  border-radius: 999px;
   border: 2px solid transparent;
   background-clip: padding-box;
 }

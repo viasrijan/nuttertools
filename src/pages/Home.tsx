@@ -68,9 +68,9 @@ export default function Home() {
               {CATEGORIES.map((c) => (
                 <Link key={c.slug} to={`/tools/${c.slug}`}
                   className={`group relative overflow-hidden p-5 ${tileGrad(c.hue)} soft-shadow transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.35)] flex flex-col items-center text-center`}>
-                  <div aria-hidden className="absolute -top-10 -right-10 w-32 h-32 bg-white/15 blur-2xl group-hover:bg-white/30 group-hover:scale-125 transition-all duration-500" />
+                  <div aria-hidden className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/15 blur-2xl group-hover:bg-white/30 group-hover:scale-125 transition-all duration-500" />
                   <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-white/25" />
-                  <span className="relative w-11 h-11 bg-white/25 backdrop-blur-sm grid place-items-center text-[16px] font-bold text-white tabular-nums shadow-sm transition-transform duration-300 group-hover:scale-110">{c.count}</span>
+                  <span className="relative w-11 h-11 rounded-full bg-white/25 backdrop-blur-sm grid place-items-center text-[16px] font-bold text-white tabular-nums shadow-sm transition-transform duration-300 group-hover:scale-110">{c.count}</span>
                   <h3 className="relative mt-3 font-bold text-[16px] tracking-[-0.01em] text-white">{c.name}</h3>
                 </Link>
               ))}
@@ -96,7 +96,7 @@ export default function Home() {
                   ['Fresh tools, always', 'New utilities added all the time.'],
                 ].map(([t, d]) => (
                   <li key={t} className="flex gap-3.5 text-left">
-                      <span className="w-6 h-6 bg-green-500 grid place-items-center shrink-0 mt-0.5 shadow-sm">
+                      <span className="w-6 h-6 rounded-full bg-green-500 grid place-items-center shrink-0 mt-0.5 shadow-sm">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
                     </span>
                     <div className="min-w-0">
@@ -116,10 +116,10 @@ export default function Home() {
                     <div className="w-full h-full bg-[conic-gradient(from_0deg_at_50%_50%,#ef4444_0%,#f43f5e_25%,#fb7185_45%,#ec4899_65%,#fda4af_85%,#ef4444_100%)] blur-2xl mix-blend-screen" />
                   </div>
                   <div className="absolute -top-1/3 -left-1/3 w-[80%] h-[160%]">
-                    <div className="w-full h-full bg-[radial-gradient(circle,rgba(255,255,255,0.4),transparent_60%)] blur-2xl mix-blend-screen animate-[omni-aurora-a_16s_ease-in-out_infinite]" />
+                    <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.4),transparent_60%)] blur-2xl mix-blend-screen animate-[omni-aurora-a_16s_ease-in-out_infinite]" />
                   </div>
                   <div className="absolute -bottom-1/3 -right-1/3 w-[80%] h-[160%]">
-                    <div className="w-full h-full bg-[radial-gradient(circle,rgba(244,114,182,0.5),transparent_60%)] blur-2xl mix-blend-screen animate-[omni-aurora-b_20s_ease-in-out_infinite]" />
+                    <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(244,114,182,0.5),transparent_60%)] blur-2xl mix-blend-screen animate-[omni-aurora-b_20s_ease-in-out_infinite]" />
                   </div>
                 </div>
                 <div className="relative flex flex-col items-center text-center">
@@ -130,7 +130,7 @@ export default function Home() {
                   A small donation helps keep the lights on.
                 </p>
                 <a href="https://www.paypal.me/iSrijan" target="_blank" rel="noreferrer"
-                  className="inline-flex items-center gap-2 mt-8 px-8 h-11 bg-white text-pink-600 font-bold text-[15px] soft-shadow hover:scale-105 active:scale-95 transition-transform">
+                  className="inline-flex items-center gap-2 mt-8 px-8 h-11 bg-white text-pink-600 font-bold text-[15px] rounded-lg soft-shadow hover:scale-105 active:scale-95 transition-transform">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z" />
                   </svg>

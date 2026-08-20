@@ -36,7 +36,7 @@ export default function App() {
       <footer className="bg-gradient-to-b from-white to-[#ececec] dark:bg-gradient-to-b dark:from-black dark:to-[#1a1a1a]">
         <div className="max-w-[1200px] mx-auto px-5 sm:px-6 pt-4 md:pt-5 pb-4 sm:pb-5">
           <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-6">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-1.5">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-1.5">
               {CATEGORIES.map((c) => (
                 <LinkFooter key={c.slug} to={`/tools/${c.slug}`} className={hoverTextAccent(c.hue)}>{c.name}</LinkFooter>
               ))}
@@ -70,6 +70,6 @@ export default function App() {
 
 function LinkFooter({ to, children, className }: { to: string, children: React.ReactNode, className?: string }) {
   return (
-    <Link to={to} className={`text-[13px] font-semibold text-zinc-900 dark:text-white ${className} transition-colors`}>{children}</Link>
+    <Link to={to} className={`text-[12px] font-normal text-zinc-500 dark:text-zinc-400 ${className} transition-colors`}>{children}</Link>
   )
 }
