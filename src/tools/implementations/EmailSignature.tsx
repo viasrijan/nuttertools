@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 export default function EmailSignature() {
   const [name, setName] = useState('Nutter Dev')
@@ -47,7 +49,7 @@ export default function EmailSignature() {
       <div className="border p-4 overflow-x-auto" dangerouslySetInnerHTML={{ __html: sig }} />
       <div className="flex gap-2.5">
         <Button variant="secondary" onClick={() => navigator.clipboard.writeText(sig)}>Copy HTML signature</Button>
-        <a href={`data:text/html;charset=utf-8,${encodeURIComponent(sig)}`} download="signature.html" className="px-5 h-10 border text-sm inline-flex items-center">Download .html</a>
+        <DownloadButton onClick={() => saveDataUrl(`data:text/html;charset=utf-8,${encodeURIComponent(sig)}`, 'signature.html')} className="px-5 h-10">Download .html</DownloadButton>
       </div>
       <p className="text-[11px] text-zinc-500">In Gmail: Settings → Signature → paste with formatting. In Outlook: insert signature as HTML file.</p>
     </div>

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 function blobPath(points: number, jitter: number, seed = 1) {
   const rnd = mulberry(seed)
@@ -71,7 +73,7 @@ export default function BlobMaker() {
       <div className="flex gap-2.5">
         <Button variant="secondary" size="sm" onClick={() => setSeed(Math.floor(Math.random() * 10000))}>Shuffle</Button>
         <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(svg)}>Copy SVG</Button>
-        <a href={`data:image/svg+xml;utf8,${encodeURIComponent(svg)}`} download={`${kind}.svg`} className="px-4 h-9 border text-sm inline-flex items-center">Download SVG</a>
+        <DownloadButton onClick={() => saveDataUrl(`data:image/svg+xml;utf8,${encodeURIComponent(svg)}`, `${kind}.svg`)} className="px-4 h-9">Download SVG</DownloadButton>
       </div>
     </div>
   )

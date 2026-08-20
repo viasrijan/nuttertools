@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 import DropZone from '../../components/DropZone'
 import type { DropFile } from '../../components/DropZone'
@@ -40,9 +42,9 @@ export default function MergePDF(){
       </div>
       {out && (
         <div className="pt-2">
-          <a href={out} download="merged.pdf" className="inline-flex items-center justify-center px-6 h-12 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm uppercase tracking-wider  shadow-md transition-all">
+          <DownloadButton onClick={() => saveDataUrl(out, 'merged.pdf')} className="px-6 h-12 uppercase tracking-wider">
             Download Merged PDF
-          </a>
+          </DownloadButton>
         </div>
       )}
     </div>

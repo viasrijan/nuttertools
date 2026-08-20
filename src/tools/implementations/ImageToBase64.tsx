@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 export default function ImageToBase64() {
   const [dataUrl, setDataUrl] = useState('')
@@ -58,7 +59,7 @@ export default function ImageToBase64() {
             className="w-full border bg-transparent p-3 font-mono text-[12px] text-zinc-900 dark:text-white outline-none break-all" />
           <div className="flex flex-wrap gap-2.5">
             <Button variant="secondary" onClick={copy}>{copied ? 'Copied!' : 'Copy data URL'}</Button>
-            <Button variant="secondary" onClick={download}>Download as .txt</Button>
+            <DownloadButton onClick={download}>Download as .txt</DownloadButton>
           </div>
         </div>
       )}

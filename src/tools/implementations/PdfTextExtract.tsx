@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
@@ -40,7 +42,7 @@ export default function PdfTextExtract() {
         <>
           <div className="flex gap-2.5">
             <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(all)}>Copy all</Button>
-            <a href={`data:text/plain;charset=utf-8,${encodeURIComponent(all)}`} download="extracted.txt" className="px-4 h-9 border text-sm inline-flex items-center">Download .txt</a>
+            <DownloadButton onClick={() => saveDataUrl(`data:text/plain;charset=utf-8,${encodeURIComponent(all)}`, 'extracted.txt')} className="px-4 h-9">Download .txt</DownloadButton>
           </div>
           <p className="text-sm font-medium text-zinc-500">{pages.length} pages · {all.split(/\s+/).filter(Boolean).length} words</p>
           <div className="space-y-3 max-h-[420px] overflow-auto pr-1">

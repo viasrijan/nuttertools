@@ -6,6 +6,7 @@ import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import { encodeWav } from '../../lib/wav'
 import { saveBlob } from '../../lib/download'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 const MODEL_URL = 'https://huggingface.co/StemSplitio/htdemucs-ft-vocals-onnx/resolve/main/htdemucs_ft_vocals_fp16weights.onnx'
 const N_SAMPLES = 343980
@@ -131,7 +132,7 @@ export default function StemSplitter() {
                 <div className="text-[11px] text-zinc-500">{r.size}</div>
               </div>
               <audio controls src={r.url} className="h-9 flex-1 min-w-[220px]" />
-              <button onClick={() => { const a = document.createElement('a'); a.href = r.url; a.download = `${file?.name.replace(/\.[^.]+$/, '')}-${r.name.toLowerCase()}.wav`; a.click() }} className="px-4 h-9 text-xs font-bold text-white bg-gradient-to-b from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(14,165,233,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95">Download</button>
+              <DownloadButton onClick={() => { const a = document.createElement('a'); a.href = r.url; a.download = `${file?.name.replace(/\.[^.]+$/, '')}-${r.name.toLowerCase()}.wav`; a.click() }}>Download</DownloadButton>
             </div>
           ))}
         </div>

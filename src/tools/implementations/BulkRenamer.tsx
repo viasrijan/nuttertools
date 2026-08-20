@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import DropZone from '../../components/DropZone'
 import { saveBlob } from '../../lib/download'
@@ -48,7 +49,7 @@ export default function BulkRenamer() {
               </div>
             ))}
           </div>
-          <Button variant="secondary" onClick={downloadAll}>Download {files.length} renamed files</Button>
+          <DownloadButton onClick={downloadAll}>Download {files.length} renamed files</DownloadButton>
           <p className="text-[11px] font-medium text-zinc-500">The browser will trigger one download per file.</p>
         </>
       )}

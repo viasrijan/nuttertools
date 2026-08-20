@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 import { saveBlob, bytesToBlob } from '../../lib/download'
@@ -75,7 +76,7 @@ export default function InvoiceGenerator() {
       </div>
       <label className="block text-sm"><span className="font-semibold">Notes</span><input value={note} onChange={e => setNote(e.target.value)} className="w-full border px-3 h-9 mt-1 text-sm" /></label>
       <div className="flex items-center gap-3">
-        <Button variant="secondary" onClick={gen}>Download PDF</Button>
+        <DownloadButton onClick={gen}>Download PDF</DownloadButton>
         <span className="text-lg font-bold">Total: ${total.toFixed(2)}</span>
       </div>
     </div>

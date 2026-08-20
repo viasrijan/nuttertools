@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import DropZone from '../../components/DropZone'
 import { saveBlob } from '../../lib/download'
@@ -101,7 +102,7 @@ export default function FaceBlur() {
       {img && (
         <>
           <canvas ref={canvasRef} className="max-w-full border cursor-crosshair" onMouseDown={onDown} onMouseMove={onMove} onMouseUp={onUp} onMouseLeave={onUp} />
-          <Button variant="secondary" onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, file?.name.replace(/\.[^.]+$/, '') + '-blurred.png'), 'image/png')}>Download PNG</Button>
+          <DownloadButton onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, file?.name.replace(/\.[^.]+$/, '') + '-blurred.png'), 'image/png')}>Download PNG</DownloadButton>
         </>
       )}
       <p className="text-[11px] text-zinc-500">Everything runs locally in your browser — no photo leaves your device.</p>

@@ -3,6 +3,8 @@ import DropZone from '../../components/DropZone'
 import type { DropFile } from '../../components/DropZone'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 export default function ImageCompressor() {
   const [items, setItems] = useState<{ file: File, url: string, out?: string, size: number }[]>([])
@@ -71,7 +73,7 @@ export default function ImageCompressor() {
               <input type="range" min={0.1} max={1} step={0.05} value={quality} onChange={(e) => setQuality(parseFloat(e.target.value))} className="w-44" />
             </label>
             <button onClick={compressAll} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">Compress</button>
-            {done && <button onClick={downloadZip} className="px-5 h-10 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-xs font-bold uppercase tracking-wider transition-colors">Download ZIP</button>}
+            {done && <DownloadButton onClick={downloadZip}>Download ZIP</DownloadButton>}
           </div>
           {done && (
             <p className={`text-[13px] font-bold ${totalOut < totalIn ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}`}>
@@ -84,7 +86,7 @@ export default function ImageCompressor() {
                 <img src={f.out || f.url} className="w-full h-28 object-contain" alt="" />
                 <p className="text-[11px] font-bold mt-1.5 truncate">{f.file.name}</p>
                 <p className="text-[10.5px] font-semibold text-zinc-500 dark:text-zinc-400">{(f.file.size / 1024).toFixed(0)} KB → {f.out ? (f.size / 1024).toFixed(0) + ' KB' : '…'}</p>
-                {f.out && <a href={f.out} download={`compressed-${f.file.name.replace(/\.[^.]+$/, '')}.jpg`} className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline">Download</a>}
+                {f.out && <DownloadButton onClick={() => saveDataUrl(f.out, `compressed-${f.file.name.replace(/\.[^.]+$/, '')}.jpg`)}>Download</DownloadButton>}
               </div>
             ))}
           </div>

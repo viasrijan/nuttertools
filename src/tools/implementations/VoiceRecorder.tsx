@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import { ffmpegRun } from '../../lib/ffmpeg'
 import { saveBlob } from '../../lib/download'
@@ -59,8 +60,8 @@ export default function VoiceRecorder() {
         <div className="space-y-5">
           <audio controls src={url} className="w-full" />
           <div className="flex gap-2.5">
-            <Button variant="outline" size="sm" onClick={() => blob && saveBlob(blob, 'recording.webm')}>Download WebM</Button>
-            <Button variant="secondary" size="sm" disabled={converting} onClick={toMp3}>{converting ? 'Converting…' : 'Download MP3'}</Button>
+            <DownloadButton onClick={() => blob && saveBlob(blob, 'recording.webm')}>Download WebM</DownloadButton>
+            <DownloadButton disabled={converting} onClick={toMp3}>{converting ? 'Converting…' : 'Download MP3'}</DownloadButton>
           </div>
         </div>
       )}

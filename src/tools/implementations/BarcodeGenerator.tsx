@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import { saveBlob } from '../../lib/download'
 
@@ -113,7 +114,7 @@ export default function BarcodeGenerator() {
         <>
           <canvas ref={canvasRef} className="border bg-white max-w-full" />
           <Button variant="outline" size="sm" onClick={draw}>Redraw</Button>
-          <button onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, `barcode-${format}.png`))} className="px-5 h-10 text-sm font-bold text-white bg-gradient-to-b from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(14,165,233,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95">Download PNG</button>
+          <DownloadButton onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, `barcode-${format}.png`))}>Download PNG</DownloadButton>
         </>
       ) : (
         <p className="text-sm text-red-600">{format === 'code39' ? 'Only A–Z, 0–9 and - . space $ / + % allowed.' : `Enter ${format === 'ean8' ? '7 or 8' : format === 'upca' ? '11 or 12' : '12 or 13'} digits — check digit is added automatically.`}</p>

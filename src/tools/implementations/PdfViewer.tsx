@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import DropZone from '../../components/DropZone'
 import Progress from '../../components/Progress'
@@ -84,7 +84,7 @@ export default function PdfViewer() {
       {error && <p className="text-xs text-red-500">{error}</p>}
       <div id="pdfviewer-layers" className="space-y-3 max-h-[70vh] overflow-auto border p-3" />
       {layersRef.current.length > 0 && (
-        <Button variant="secondary" onClick={download}>Download annotated PDF</Button>
+        <DownloadButton onClick={download}>Download annotated PDF</DownloadButton>
       )}
       <p className="text-[11px] font-medium text-zinc-500">Drag on the pages to highlight. Drawing is baked into the downloaded PDF.</p>
     </div>

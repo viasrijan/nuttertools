@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 export default function OgGenerator() {
   const [title, setTitle] = useState('NutterTools')
@@ -69,7 +70,7 @@ export default function OgGenerator() {
       </div>
       <div className="flex gap-2.5">
         <Button variant="secondary" size="sm" onClick={draw}>Preview</Button>
-        <Button variant="outline" size="sm" onClick={download}>Download PNG (1200×630)</Button>
+        <DownloadButton onClick={download}>Download PNG (1200×630)</DownloadButton>
       </div>
       <canvas ref={canvasRef} className="w-full border  shadow" />
     </div>

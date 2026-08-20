@@ -2,6 +2,8 @@ import { useState } from 'react'
 import DropZone from '../../components/DropZone'
 import type { DropFile } from '../../components/DropZone'
 import { PDFDocument } from 'pdf-lib'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 export default function SplitPDF() {
   const [file, setFile] = useState<File | null>(null)
@@ -44,7 +46,7 @@ export default function SplitPDF() {
             <button onClick={split} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">Split</button>
           </div>
           <p className="text-[12px] font-semibold text-zinc-500 dark:text-zinc-400">Pages are 1-indexed. Example: 1-3,5,8-10</p>
-          {out && <a href={out} download="split.pdf" className="inline-block px-5 h-10 leading-10 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">Download Split PDF</a>}
+          {out && <DownloadButton onClick={() => saveDataUrl(out, 'split.pdf')}>Download Split PDF</DownloadButton>}
         </>
       )}
     </div>

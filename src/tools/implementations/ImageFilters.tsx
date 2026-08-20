@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import DropZone from '../../components/DropZone'
 import type { DropFile } from '../../components/DropZone'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 const INIT = { brightness: 100, contrast: 100, saturate: 100, blur: 0, grayscale: 0, sepia: 0, invert: 0, hue: 0 }
 
@@ -107,11 +108,11 @@ export default function ImageFilters() {
       {img && (
         <>
           <div className="flex flex-wrap gap-2">
-            <button onClick={download} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">Download</button>
+            <DownloadButton onClick={download}>Download</DownloadButton>
             {batch.length > 0 && (
-              <button onClick={downloadAll} disabled={busy} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-bold text-xs uppercase tracking-wider transition-colors">
+              <DownloadButton onClick={downloadAll} disabled={busy}>
                 {busy ? 'Applying…' : `Download selected (${batch.filter((b) => b.checked).length})`}
-              </button>
+              </DownloadButton>
             )}
             <button onClick={() => setF(INIT)} className="px-4 h-10 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-xs font-bold uppercase tracking-wider transition-colors">Reset</button>
           </div>

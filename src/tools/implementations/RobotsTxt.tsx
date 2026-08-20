@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 export default function RobotsTxt() {
   const [site, setSite] = useState('https://example.com')
@@ -35,7 +37,7 @@ export default function RobotsTxt() {
         <label className="text-sm">Crawl delay (optional)
           <input value={crawlDelay} onChange={e => setCrawlDelay(e.target.value)} className="border px-3 h-9 ml-2 w-20 text-sm" /></label>
         <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(gen())} className="ml-auto">Copy</Button>
-        <a href={`data:text/plain;charset=utf-8,${encodeURIComponent(gen())}`} download="robots.txt" className="px-4 h-9 border text-sm inline-flex items-center">Download</a>
+        <DownloadButton onClick={() => saveDataUrl(`data:text/plain;charset=utf-8,${encodeURIComponent(gen())}`, 'robots.txt')} className="px-4 h-9">Download</DownloadButton>
       </div>
       <textarea value={gen()} readOnly className="w-full h-48 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />
     </div>

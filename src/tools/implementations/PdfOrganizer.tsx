@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import { PDFDocument, degrees } from 'pdf-lib'
 
@@ -123,7 +124,7 @@ export default function PdfOrganizer() {
             ))}
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <Button variant="secondary" onClick={save} disabled={working || pages.length === 0} isLoading={working} className="font-semibold">Download PDF ({pages.length} pages)</Button>
+            <DownloadButton onClick={save} disabled={working || pages.length === 0} className="font-semibold">Download PDF ({pages.length} pages)</DownloadButton>
             <Button variant="subtle" onClick={() => { setSrcDoc(null); setPages([]); setThumbs([]); setError('') }} className="font-semibold">Choose another file</Button>
           </div>
           <p className="text-xs text-zinc-500 dark:text-zinc-400">All processing happens in your browser. Files are never uploaded.</p>

@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import { saveBlob } from '../../lib/download'
 
@@ -91,7 +92,7 @@ export default function ToneGenerator() {
       <div className="flex gap-2.5">
         <Button variant="secondary" onClick={play}>Play</Button>
         <Button variant="outline" onClick={stop} className="px-6 h-10  text-sm">Stop</Button>
-        <Button variant="outline" disabled={exporting} onClick={exportWav}>{exporting ? 'Rendering…' : 'Download WAV'}</Button>
+        <DownloadButton disabled={exporting} onClick={exportWav}>{exporting ? 'Rendering…' : 'Download WAV'}</DownloadButton>
       </div>
     </div>
   )

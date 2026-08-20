@@ -3,6 +3,8 @@ import DropZone from '../../components/DropZone'
 import type { DropFile } from '../../components/DropZone'
 import Progress from '../../components/Progress'
 import * as pdfjs from 'pdfjs-dist'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 export default function PDFToImages() {
   const [file, setFile] = useState<{ name: string, size: number } | null>(null)
@@ -52,14 +54,14 @@ export default function PDFToImages() {
       {loading && <Progress label="Rendering PDF pages…" />}
       {imgs.length > 0 && (
         <>
-          <button onClick={() => { imgs.forEach((src, i) => { const a = document.createElement('a'); a.href = src; a.download = `page-${i + 1}.jpg`; a.click() }) }} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">
+          <DownloadButton onClick={() => { imgs.forEach((src, i) => { const a = document.createElement('a'); a.href = src; a.download = `page-${i + 1}.jpg`; a.click() }) }}>
             Download all ({imgs.length})
-          </button>
+          </DownloadButton>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {imgs.map((src, i) => (
               <div key={i} className="bg-zinc-100 dark:bg-zinc-800 p-2">
                 <img src={src} className="w-full object-contain" alt="" />
-                <a href={src} download={`page-${i + 1}.jpg`} className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline mt-1 block">Download page {i + 1}</a>
+                <DownloadButton onClick={() => saveDataUrl(src, `page-${i + 1}.jpg`)}>Download page {i + 1}</DownloadButton>
               </div>
             ))}
           </div>

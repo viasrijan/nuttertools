@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react'
 import DropZone from '../../components/DropZone'
 import type { DropFile } from '../../components/DropZone'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 export default function ImageCropper() {
   const [img, setImg] = useState<{ url: string, w: number, h: number } | null>(null)
@@ -96,7 +98,7 @@ export default function ImageCropper() {
               <option value="1.25">5:4</option>
             </select>
             <button onClick={apply} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">Apply crop</button>
-            {out && <a href={out} download="cropped.png" className="text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:underline">Download PNG</a>}
+            {out && <DownloadButton onClick={() => saveDataUrl(out, 'cropped.png')}>Download PNG</DownloadButton>}
           </div>
           <div
             ref={stageRef}

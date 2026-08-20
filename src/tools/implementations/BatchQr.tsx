@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import QRCode from 'qrcode'
 import JSZip from 'jszip'
@@ -55,7 +56,7 @@ export default function BatchQr() {
           {[256, 512, 1024].map(s => <option key={s} value={s}>{s}px</option>)}
         </select>
         <Button variant="secondary" onClick={gen} disabled={busy || !items.length}>{busy ? 'Generating…' : `Generate ${items.length || ''} QR codes`}</Button>
-        {generated && <Button variant="outline" onClick={downloadZip}>Download ZIP</Button>}
+        {generated && <DownloadButton onClick={downloadZip}>Download ZIP</DownloadButton>}
       </div>
       {busy && <Progress label="Generating QR codes…" />}
       <div ref={containerRef} className="grid grid-cols-2 md:grid-cols-4 gap-3" />

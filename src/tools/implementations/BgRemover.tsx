@@ -2,6 +2,8 @@ import { useState } from 'react'
 import DropZone from '../../components/DropZone'
 import type { DropFile } from '../../components/DropZone'
 import Progress from '../../components/Progress'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 const PROXY = '/api/proxy?service=removebg'
 
@@ -81,7 +83,7 @@ export default function BgRemover() {
           <div>
             <p className="text-[12px] font-bold uppercase tracking-wide text-emerald-600 dark:text-emerald-400 mb-1">No background</p>
             <div className="bg-[repeating-conic-gradient(#f4f4f5_0%_25%,#fff_0%_50%)] dark:bg-[repeating-conic-gradient(#27272a_0%_25%,#18181b_0%_50%)] bg-[length:16px_16px]"><img src={out} alt="" /></div>
-            <a href={out} download="no-bg.png" className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline mt-2 block">Download PNG</a>
+            <DownloadButton onClick={() => saveDataUrl(out, 'no-bg.png')} className="mt-2">Download PNG</DownloadButton>
           </div>
         )}
       </div>

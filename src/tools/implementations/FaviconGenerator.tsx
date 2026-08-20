@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { FileImage, Type } from 'lucide-react'
 
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import { saveBlob } from '../../lib/download'
 
@@ -221,9 +222,9 @@ export default function FaviconGenerator() {
         </label>
 
         <div className="flex flex-wrap gap-2.5">
-          <Button variant="primary" onClick={() => download(256, 'favicon-256.png')}>Download PNG 256px</Button>
-          <Button variant="accent" onClick={() => saveBlob(icoBlob([16, 32, 48, 64].map((s) => ({ size: s, url: draw(s) }))), 'favicon.ico')}>Download .ico pack</Button>
-          <Button variant="outline" onClick={() => download(180, 'apple-touch-icon.png')}>Download 180px</Button>
+          <DownloadButton onClick={() => download(256, 'favicon-256.png')}>Download PNG 256px</DownloadButton>
+          <DownloadButton onClick={() => saveBlob(icoBlob([16, 32, 48, 64].map((s) => ({ size: s, url: draw(s) }))), 'favicon.ico')}>Download .ico pack</DownloadButton>
+          <DownloadButton onClick={() => download(180, 'apple-touch-icon.png')}>Download 180px</DownloadButton>
         </div>
       </div>
 

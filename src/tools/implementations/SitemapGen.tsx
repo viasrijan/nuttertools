@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 export default function SitemapGen() {
   const [domain, setDomain] = useState('https://example.com')
@@ -45,7 +47,7 @@ export default function SitemapGen() {
       </div>
       <div className="flex gap-2.5">
         <Button variant="secondary" size="sm" onClick={() => navigator.clipboard.writeText(gen())}>Copy sitemap</Button>
-        <a href={`data:text/xml;charset=utf-8,${encodeURIComponent(gen())}`} download="sitemap.xml" className="px-4 h-9 border text-sm inline-flex items-center">Download sitemap.xml</a>
+        <DownloadButton onClick={() => saveDataUrl(`data:text/xml;charset=utf-8,${encodeURIComponent(gen())}`, 'sitemap.xml')} className="px-4 h-9">Download sitemap.xml</DownloadButton>
       </div>
       <textarea value={gen()} readOnly className="w-full h-64 border p-3 font-mono text-xs bg-zinc-50 dark:bg-zinc-800" />
     </div>

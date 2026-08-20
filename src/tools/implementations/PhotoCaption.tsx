@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import DropZone from '../../components/DropZone'
 import { saveBlob } from '../../lib/download'
@@ -63,7 +64,7 @@ export default function PhotoCaption() {
       {img && (
         <>
           <canvas ref={canvasRef} className="max-w-full border" />
-          <Button variant="secondary" onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, file?.name.replace(/\.[^.]+$/, '') + '-captioned.png'), 'image/png')}>Download PNG</Button>
+          <DownloadButton onClick={() => canvasRef.current?.toBlob(b => b && saveBlob(b, file?.name.replace(/\.[^.]+$/, '') + '-captioned.png'), 'image/png')}>Download PNG</DownloadButton>
         </>
       )}
     </div>

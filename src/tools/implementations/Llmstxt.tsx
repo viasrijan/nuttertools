@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 export default function Llmstxt() {
   const [title, setTitle] = useState('NutterTools')
@@ -27,7 +29,7 @@ export default function Llmstxt() {
       <pre className="border p-3 text-xs max-h-[260px] overflow-auto whitespace-pre-wrap">{out}</pre>
       <div className="flex gap-2.5">
         <Button variant="secondary" onClick={() => navigator.clipboard.writeText(out)}>Copy llms.txt</Button>
-        <a href={`data:text/plain;charset=utf-8,${encodeURIComponent(out)}`} download="llms.txt" className="px-5 h-10 border text-sm inline-flex items-center">Download</a>
+        <DownloadButton onClick={() => saveDataUrl(`data:text/plain;charset=utf-8,${encodeURIComponent(out)}`, 'llms.txt')} className="px-5 h-10">Download</DownloadButton>
       </div>
       <p className="text-[11px] text-zinc-500">llms.txt tells AI crawlers (ChatGPT, Claude, Perplexity…) what your site is about. Host the file at the root of your domain.</p>
     </div>

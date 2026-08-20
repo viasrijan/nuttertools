@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import DropZone from '../../components/DropZone'
 import type { DropFile } from '../../components/DropZone'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 export default function HeicToJpg() {
   const [items, setItems] = useState<any[]>([])
@@ -45,7 +47,7 @@ export default function HeicToJpg() {
             {it.url ? (
               <>
                 <img src={it.url} className="w-full h-32 object-contain" alt="" />
-                <a href={it.url} download={it.name} className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline mt-1.5 block">{it.name} — Download</a>
+                <DownloadButton onClick={() => saveDataUrl(it.url, it.name)} className="mt-1.5">Download {it.name}</DownloadButton>
               </>
             ) : (
               <p className="text-xs font-semibold text-rose-600 p-2">{it.name}: {it.error}</p>

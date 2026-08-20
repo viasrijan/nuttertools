@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import DropZone from '../../components/DropZone'
 import * as pdfjs from 'pdfjs-dist'
@@ -129,7 +130,7 @@ export default function PdfAnnotator() {
             <span className="text-xs text-zinc-500 mx-2">Page {pageNum}/{numPages}</span>
             <Button variant="outline" onClick={() => setPageNum(p => Math.max(1, p - 1))} className="px-3 h-9  text-sm">←</Button>
             <Button variant="outline" onClick={() => setPageNum(p => Math.min(numPages, p + 1))} className="px-3 h-9  text-sm">→</Button>
-            <Button variant="secondary" onClick={exportPdf} className="ml-auto">Download annotated PDF</Button>
+            <DownloadButton onClick={exportPdf} className="ml-auto">Download annotated PDF</DownloadButton>
           </div>
           <canvas ref={canvasRef} className="max-w-full border bg-white" onMouseDown={onDown} onMouseMove={onMove} onMouseUp={onUp} onMouseLeave={onUp} />
         </>

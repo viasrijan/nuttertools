@@ -194,9 +194,10 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
                           <div className="flex flex-col gap-0.5">
                             {tools.slice(0, 8).map((t) => (
                               <Link key={t.id} to={`/tool/${t.id}`} onClick={() => go(`/tool/${t.id}`)}
-                                className="flex items-center gap-3 px-3 py-2  hover:bg-indigo-50/80 dark:hover:bg-indigo-500/10 transition-all duration-150 group">
-                                <span className="w-[18px] h-[18px] shrink-0 transition-transform duration-200 group-hover:scale-110">
-                                  <CutoutToolIcon id={t.id} className="w-full h-full" tone={textAccent(hueFor(t.category))} />
+                                className="flex items-center gap-3 px-3 py-2 transition-colors duration-150 group">
+                                <span className="relative w-[18px] h-[18px] shrink-0">
+                                  <CutoutToolIcon id={t.id} className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-150" tone="#4f46e5" />
+                                  <CutoutToolIcon id={t.id} className="w-full h-full opacity-100 group-hover:opacity-0 transition-opacity duration-150" tone={textAccent(hueFor(t.category))} />
                                 </span>
                                 <span className="flex-1 min-w-0">
                                   <span className="block text-[13px] font-semibold leading-tight truncate text-zinc-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">{t.name}</span>

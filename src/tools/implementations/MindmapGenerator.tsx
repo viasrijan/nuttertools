@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import { saveBlob } from '../../lib/download'
 
@@ -112,7 +112,7 @@ export default function MindmapGenerator() {
         </div>
         <div>
           <canvas ref={canvasRef} width={1100} height={600} className="border max-w-full" />
-          <Button variant="secondary" onClick={download} className="mt-2">Download PNG</Button>
+          <DownloadButton onClick={download} className="mt-2">Download PNG</DownloadButton>
         </div>
       </div>
     </div>

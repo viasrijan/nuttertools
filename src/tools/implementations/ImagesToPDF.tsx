@@ -2,6 +2,8 @@ import { useState } from 'react'
 import DropZone from '../../components/DropZone'
 import type { DropFile } from '../../components/DropZone'
 import { PDFDocument } from 'pdf-lib'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 export default function ImagesToPDF() {
   const [files, setFiles] = useState<File[]>([])
@@ -49,7 +51,7 @@ export default function ImagesToPDF() {
             <button onClick={convert} disabled={!files.length || busy} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white font-bold text-xs uppercase tracking-wider transition-colors">
               {busy ? 'Converting…' : `Convert ${files.length} image${files.length > 1 ? 's' : ''} to PDF`}
             </button>
-            {out && <a href={out} download="images.pdf" className="inline-block px-5 h-10 leading-10 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">Download PDF</a>}
+            {out && <DownloadButton onClick={() => saveDataUrl(out, 'images.pdf')}>Download PDF</DownloadButton>}
           </div>
           <div className="flex flex-wrap gap-2">
             {files.map((f, i) => (

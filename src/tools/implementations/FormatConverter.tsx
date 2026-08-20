@@ -6,6 +6,8 @@ import JSZip from 'jszip'
 import { saveAs } from 'file-saver'
 import { Select } from '../../components/ui/Select'
 import { Slider } from '../../components/ui/Slider'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 type Item = { file: File, url: string, w: number, h: number, out?: string, outSize?: number, outName?: string, ow?: number, oh?: number }
 type CropBox = { nx: number, ny: number, nw: number, nh: number }
@@ -512,9 +514,9 @@ export default function FormatConverter() {
               {busy ? 'Processing…' : `Convert all images (${items.length})`}
             </button>
             {items.some((it) => it.out) && (
-              <button onClick={downloadZip} className="px-6 h-12 text-white font-bold text-sm uppercase tracking-wider bg-gradient-to-b from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_8px_20px_-6px_rgba(5,150,105,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
+              <DownloadButton onClick={downloadZip}>
                 Download ZIP archive
-              </button>
+              </DownloadButton>
             )}
           </div>
 
@@ -531,9 +533,9 @@ export default function FormatConverter() {
                   </p>
                 </div>
                 {it.out && it.outName && (
-                  <a href={it.out} download={it.outName} className="inline-flex items-center justify-center w-full h-9 text-white text-xs font-bold uppercase tracking-wider bg-gradient-to-b from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 shadow-[0_1px_2px_rgba(0,0,0,0.15),0_6px_16px_-6px_rgba(14,165,233,0.5)] transition-all duration-200 hover:-translate-y-0.5">
+                  <DownloadButton onClick={() => saveDataUrl(it.out, it.outName)} className="w-full h-9">
                     Download {active.ext.toUpperCase()}
-                  </a>
+                  </DownloadButton>
                 )}
               </div>
             ))}

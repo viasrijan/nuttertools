@@ -48,7 +48,7 @@ export default function ScreenRecorder() {
         <div className="space-y-3">
           <video src={url} controls className="w-full border " />
           <div className="flex gap-2.5">
-            <Button variant="secondary" size="sm" onClick={async () => saveBlob(await awaitBlob(url), `recording-${Date.now()}.webm`)}>Download</Button>
+            <DownloadButton onClick={async () => saveBlob(await awaitBlob(url), `recording-${Date.now()}.webm`)}>Download</DownloadButton>
             <a href={url} download="recording.webm" className="px-4 h-9 border text-sm inline-flex items-center">Save</a>
           </div>
         </div>

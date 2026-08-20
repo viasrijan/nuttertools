@@ -3,6 +3,8 @@ import DropZone from '../../components/DropZone'
 import type { DropFile } from '../../components/DropZone'
 import { Select } from '../../components/ui/Select'
 import Progress from '../../components/Progress'
+import { DownloadButton } from '../../components/ui/DownloadButton'
+import { saveDataUrl } from '../../lib/download'
 
 const PRESETS = [
   { label: 'Icon 256px', w: 256, h: 256 },
@@ -159,7 +161,7 @@ export default function ImageResizer() {
           </div>
           <div className="flex items-center gap-3">
             <button onClick={resize} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">Resize</button>
-            {out && <a href={out} download="resized.jpg" className="text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:underline">Download JPG</a>}
+            {out && <DownloadButton onClick={() => saveDataUrl(out, 'resized.jpg')}>Download JPG</DownloadButton>}
           </div>
           {out && <img src={out} className="max-h-[280px] bg-zinc-100 dark:bg-zinc-800" alt="Result" />}
         </div>
@@ -169,14 +171,14 @@ export default function ImageResizer() {
           <div className="flex items-center gap-3">
             <button onClick={resize} disabled={busy} className="px-5 h-10 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-bold text-xs uppercase tracking-wider transition-colors">Resize all ({batch.length})</button>
             {batch.every((b) => b.url.startsWith('data:')) && (
-              <button onClick={() => {
+              <DownloadButton onClick={() => {
                 batch.forEach((b) => {
                   const a = document.createElement('a')
                   a.href = b.url
                   a.download = b.name.replace(/\.[^.]+$/, '') + '-resized.jpg'
                   a.click()
                 })
-              }} className="px-5 h-10 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-xs font-bold uppercase tracking-wider transition-colors">Download all</button>
+              }}>Download all</DownloadButton>
             )}
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -184,7 +186,7 @@ export default function ImageResizer() {
               <div key={i} className="bg-zinc-100 dark:bg-zinc-800 p-2">
                 <img src={b.url} className="max-h-[140px] mx-auto object-contain" alt={b.name} />
                 <p className="text-[11px] font-bold truncate mt-1.5">{b.name}</p>
-                {b.url.startsWith('data:') && <a href={b.url} download={b.name.replace(/\.[^.]+$/, '') + '-resized.jpg'} className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline">Download</a>}
+                {b.url.startsWith('data:') && <DownloadButton onClick={() => saveDataUrl(b.url, b.name.replace(/\.[^.]+$/, '') + '-resized.jpg')}>Download</DownloadButton>}
               </div>
             ))}
           </div>

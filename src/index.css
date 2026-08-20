@@ -254,21 +254,20 @@ input[type='range']::-webkit-slider-thumb {
   height: 18px;
   margin-top: -6px;
   border-radius: 999px;
-  background: #fff;
-  border: 3px solid #4f46e5;
+  background: linear-gradient(180deg, #6366f1, #4f46e5);
+  border: none;
   box-shadow: 0 2px 8px rgba(79, 70, 229, 0.45);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
   cursor: grab;
 }
 
-input[type='range']:hover::-webkit-slider-thumb {
-  transform: scale(1.12);
-}
-
-input[type='range']:active::-webkit-slider-thumb {
-  transform: scale(1.2);
-  box-shadow: 0 0 0 8px rgba(79, 70, 229, 0.15);
-  cursor: grabbing;
+input[type='range']::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #6366f1, #4f46e5);
+  border: none;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.45);
+  cursor: grab;
 }
 
 input[type='range']::-moz-range-track {
@@ -292,8 +291,8 @@ input[type='range']::-moz-range-thumb {
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  background: #fff;
-  border: 3px solid #4f46e5;
+  background: linear-gradient(180deg, #6366f1, #4f46e5);
+  border: none;
   box-shadow: 0 2px 8px rgba(79, 70, 229, 0.45);
   cursor: grab;
 }
@@ -329,15 +328,12 @@ button:disabled { cursor: not-allowed; }
   border-radius: 0;
 }
 
-/* Tool-page buttons: flat, no lift, no drop shadow */
-.tool-page button,
-.tool-page a {
+/* Tool-page buttons: flat, no lift, no drop shadow (links/cards keep their effects) */
+.tool-page button {
   box-shadow: none !important;
 }
 .tool-page button:hover,
-.tool-page button:active,
-.tool-page a:hover,
-.tool-page a:active {
+.tool-page button:active {
   transform: none !important;
 }
 
@@ -419,10 +415,8 @@ input[type='color'] {
   cursor: pointer;
   padding: 0;
   background: transparent;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease;
 }
-
-input[type='color']:hover { transform: scale(1.06); }
 
 input[type='color']::-webkit-color-swatch-wrapper { padding: 3px; }
 input[type='color']::-webkit-color-swatch { border: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12); }

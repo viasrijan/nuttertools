@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { Button } from '../../components/ui/Button'
+import { DownloadButton } from '../../components/ui/DownloadButton'
 
 import DropZone from '../../components/DropZone'
 import { saveBlob } from '../../lib/download'
@@ -82,7 +83,7 @@ export default function CsvJson() {
       {output && (
         <div className="space-y-3">
           <textarea readOnly value={output} className="w-full border p-3 h-44 font-mono text-sm" />
-          <Button variant="outline" onClick={download}>Download</Button>
+          <DownloadButton onClick={download}>Download</DownloadButton>
         </div>
       )}
     </div>
