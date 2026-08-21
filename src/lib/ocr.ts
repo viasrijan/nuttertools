@@ -6,20 +6,19 @@ export const fileToBase64 = (file: File): Promise<string> =>
     r.readAsDataURL(file)
   })
 
+// Open-source Tesseract.js OCR — runs fully in the browser, no servers, keys or quotas.
 export const ocrText = async (file: File): Promise<string | null> => {
+  let worker: any = null
   try {
-    const image = await fileToBase64(file)
-    const res = await fetch('/api/proxy?service=ocrspace', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ image, mime: file.type }),
-    })
-    if (!res.ok) return null
-    const data = await res.json()
-    const text = (data?.ParsedResults?.map((r: { ParsedText?: string }) => r.ParsedText || '').join(' ') || '').trim()
+    const { createWorker } = await import('tesseract.js')
+    worker = await createWorker('eng')
+    const ret = await worker.recognize(file)
+    const text = String(ret?.data?.text || '').trim()
     return text || null
   } catch {
     return null
+  } finally {
+    try { await worker?.terminate() } catch { /* ignore */ }
   }
 }
 

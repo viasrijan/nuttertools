@@ -5,6 +5,7 @@ import { Button } from '../../components/ui/Button'
 import CopyButton from '../../components/ui/CopyButton'
 import { Field } from '../../components/ui/Field'
 import { Select } from '../../components/ui/Select'
+import { ocrText } from '../../lib/ocr'
 
 const FIRST = ['Aria', 'Borin', 'Caelum', 'Draven', 'Elowen', 'Fenris', 'Gwendol', 'Haldir', 'Isolde', 'Jorvan', 'Kael', 'Lyra', 'Morrigan', 'Nyx', 'Orin', 'Prydwen', 'Quinn', 'Riven', 'Sylas', 'Thorne', 'Ursa', 'Vael', 'Wren', 'Xander', 'Ysmir', 'Zephyr']
 const LAST = ['Ashvale', 'Blackthorn', 'Copperfield', 'Duskbane', 'Emberfall', 'Frostwood', 'Grimsbane', 'Hollowmere', 'Ironheart', 'Jadecrest', 'Kestrel', 'Lunara', 'Mistborne', 'Nightwind', 'Oakenfeld', 'Palehoof', 'Quicksilver', 'Ravenshade', 'Silverbark', 'Thunderpeak', 'Umbra', 'Vexley', 'Wildmere', 'Xenith', 'Yewholm', 'Zephyra']
@@ -15,31 +16,6 @@ const TITLE = ['the Bold', 'the Cursed', 'of the North', 'the Swift', 'the Unbro
 
 const pick = <T,>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)]
 const cap = (w: string): string => w.charAt(0).toUpperCase() + w.slice(1)
-
-const fileToBase64 = (file: File): Promise<string> =>
-  new Promise((resolve, reject) => {
-    const r = new FileReader()
-    r.onload = () => resolve(String(r.result).split(',')[1])
-    r.onerror = reject
-    r.readAsDataURL(file)
-  })
-
-const ocrText = async (file: File): Promise<string | null> => {
-  try {
-    const image = await fileToBase64(file)
-    const res = await fetch('/api/proxy?service=ocrspace', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ image, mime: file.type }),
-    })
-    if (!res.ok) return null
-    const data = await res.json()
-    const text = (data?.ParsedResults?.map((r: { ParsedText?: string }) => r.ParsedText || '').join(' ') || '').trim()
-    return text || null
-  } catch {
-    return null
-  }
-}
 
 export default function DndNameGenerator() {
   const [keywords, setKeywords] = useState('')

@@ -38,24 +38,22 @@ export default function BgRemover() {
     setError('')
     setEngine('')
     try {
-      setEngine('server')
-      const b64 = await fileToBase64(f)
-      const res = await fetch(PROXY, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ image: b64, size: 'auto' }),
-      })
-      if (res.ok) {
-        const blob = await res.blob()
-        setOut(URL.createObjectURL(blob))
-      } else {
-        throw new Error(`server (${res.status})`)
-      }
+      // Open-source on-device model first — no keys, no quotas
+      setEngine('local')
+      const blob = await localRemove(f)
+      setOut(URL.createObjectURL(blob))
     } catch (e) {
-      console.log('proxy bg removal failed, falling back to local AI', e)
+      console.log('local bg removal failed, falling back to server', e)
       try {
-        setEngine('local')
-        const blob = await localRemove(f)
+        setEngine('server')
+        const b64 = await fileToBase64(f)
+        const res = await fetch(PROXY, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ image: b64, size: 'auto' }),
+        })
+        if (!res.ok) throw new Error(`server (${res.status})`)
+        const blob = await res.blob()
         setOut(URL.createObjectURL(blob))
       } catch (e2) {
         console.log(e2)
@@ -75,7 +73,7 @@ export default function BgRemover() {
         onClear={() => { setFile(null); setOut('') }}
         label="Drop a photo to remove its background"
       />
-      {loading && <Progress label={engine === 'server' ? 'Removing background…' : 'Removing background with local AI… first run downloads the model (~40 MB)'} />}
+      {loading && <Progress label={engine === 'local' ? 'Removing background with on-device AI… first run downloads the open-source model (~40 MB)' : 'Removing background…'} />}
       {error && <p className="text-sm font-semibold text-rose-600">{error}</p>}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {file && <div><p className="text-[12px] font-bold uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-1">Original</p><img src={file.url} className="bg-zinc-100 dark:bg-zinc-800" alt="" /></div>}
