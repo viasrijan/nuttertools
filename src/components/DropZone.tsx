@@ -7,11 +7,11 @@ export interface DropFile {
 }
 
 const TRAIL_LAYERS = [
-  { size: 300, color: 'rgba(139, 92, 246, 0.10)', blur: 16, dur: 0.5 },
-  { size: 260, color: 'rgba(217, 70, 239, 0.07)', blur: 14, dur: 0.65 },
-  { size: 220, color: 'rgba(251, 146, 60, 0.06)', blur: 12, dur: 0.8 },
-  { size: 190, color: 'rgba(52, 211, 153, 0.05)', blur: 10, dur: 0.95 },
-  { size: 160, color: 'rgba(56, 189, 248, 0.04)', blur: 8, dur: 1.1 },
+  { size: 150, color: 'rgba(250, 204, 21, 0.10)', blur: 8, dur: 0.5 },
+  { size: 130, color: 'rgba(251, 191, 36, 0.07)', blur: 7, dur: 0.65 },
+  { size: 110, color: 'rgba(251, 146, 60, 0.06)', blur: 6, dur: 0.8 },
+  { size: 95, color: 'rgba(249, 115, 22, 0.05)', blur: 5, dur: 0.95 },
+  { size: 80, color: 'rgba(245, 158, 11, 0.04)', blur: 4, dur: 1.1 },
 ]
 
 export default function DropZone({
