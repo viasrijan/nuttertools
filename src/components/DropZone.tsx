@@ -6,6 +6,14 @@ export interface DropFile {
   url?: string
 }
 
+const TRAIL_LAYERS = [
+  { size: 300, color: 'rgba(139, 92, 246, 0.10)', blur: 16, dur: 0.5 },
+  { size: 260, color: 'rgba(217, 70, 239, 0.07)', blur: 14, dur: 0.65 },
+  { size: 220, color: 'rgba(251, 146, 60, 0.06)', blur: 12, dur: 0.8 },
+  { size: 190, color: 'rgba(52, 211, 153, 0.05)', blur: 10, dur: 0.95 },
+  { size: 160, color: 'rgba(56, 189, 248, 0.04)', blur: 8, dur: 1.1 },
+]
+
 export default function DropZone({
   onFiles,
   accept,
@@ -28,11 +36,15 @@ export default function DropZone({
   const [isDragging, setIsDragging] = useState(false)
 
   const moveGlow = (clientX: number, clientY: number, el: HTMLElement) => {
-    const glow = glowRef.current
-    if (!glow) return
+    const wrap = glowRef.current
+    if (!wrap) return
     const r = el.getBoundingClientRect()
-    glow.style.transform = `translate(${clientX - r.left - 160}px, ${clientY - r.top - 160}px)`
-    glow.style.opacity = '1'
+    const x = clientX - r.left
+    const y = clientY - r.top
+    for (const child of Array.from(wrap.children) as HTMLElement[]) {
+      child.style.transform = `translate(${x}px, ${y}px)`
+    }
+    wrap.style.opacity = '1'
   }
   const hideGlow = () => { if (glowRef.current && !isDragging) glowRef.current.style.opacity = '0' }
 
@@ -92,14 +104,25 @@ export default function DropZone({
       <div
         ref={glowRef}
         aria-hidden
-        className="pointer-events-none absolute top-0 left-0 w-[320px] h-[320px] rounded-full will-change-transform"
-        style={{
-          background: 'radial-gradient(circle, rgba(99,102,241,0.20) 0%, rgba(99,102,241,0.07) 45%, transparent 70%)',
-          filter: 'blur(18px)',
-          opacity: 0,
-          transition: 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease',
-        }}
-      />
+        className="pointer-events-none absolute inset-0"
+        style={{ opacity: 0, transition: 'opacity 0.4s ease' }}
+      >
+        {TRAIL_LAYERS.map((t, i) => (
+          <div
+            key={i}
+            className="absolute top-0 left-0 rounded-full will-change-transform"
+            style={{
+              width: t.size,
+              height: t.size,
+              marginLeft: -t.size / 2,
+              marginTop: -t.size / 2,
+              background: `radial-gradient(circle, ${t.color} 0%, transparent 70%)`,
+              filter: `blur(${t.blur}px)`,
+              transition: `transform ${t.dur}s cubic-bezier(0.22, 1, 0.36, 1)`,
+            }}
+          />
+        ))}
+      </div>
       {files.length > 0 && (
         <div className="relative w-full mb-4 text-left animate-[omni-fade_0.2s_ease-out]">
           <div className="flex items-center justify-between mb-2">
