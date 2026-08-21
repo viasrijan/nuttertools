@@ -26,7 +26,7 @@ import {
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
-const TOOL_ICONS: Record<string, LucideIcon> = {
+export const TOOL_ICONS: Record<string, LucideIcon> = {
   'image-compressor': Minimize2,
   'heic-to-jpg': Apple,
   'format-converter': Repeat,

@@ -1,29 +1,28 @@
-import { lazy, Suspense, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { Wrench } from 'lucide-react'
 import { CATEGORIES, TOTAL_TOOLS } from '../data/categories'
 import { tileGrad } from '../lib/style'
 import ToolCard from '../components/ToolCard'
 import { POPULAR_TOOLS } from '../data/popular'
-import { toolIconUrl } from '../components/Icon'
+import { TOOL_ICONS } from '../components/Icon'
 
-const ThreeBackground = lazy(() => import('../components/ThreeBackground'))
-
-const SECTION_LABEL_BASE = 'text-[24px] md:text-[35px] font-extrabold tracking-[-0.02em] text-center'
-const SECTION_LABEL = `${SECTION_LABEL_BASE} text-black dark:text-white`
-const SECTION_LABEL_WHY = `${SECTION_LABEL_BASE} text-green-600 dark:text-green-400`
-const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} text-[#f97316]`
+const SECTION_LABEL_BASE = 'text-[27px] md:text-[40px] font-extrabold tracking-[-0.02em] text-center'
+const SECTION_LABEL = `${SECTION_LABEL_BASE} text-black dark:text-white mt-8 md:mt-12 mb-8 md:mb-12`
+const SECTION_LABEL_WHY = `${SECTION_LABEL_BASE} text-green-600 dark:text-green-400 mt-8 md:mt-12 mb-8 md:mb-12`
+const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} text-[#f97316] mt-8 md:mt-12 mb-8 md:mb-12`
 
 const HERO_FLOATERS = [
-  { id: 'qr-generator', pos: 'left-[2%] top-[16%]', size: 'w-10 h-10 md:w-12 md:h-12', depth: 30, anim: 'animate-[omni-drift-a_9s_ease-in-out_infinite]' },
-  { id: 'image-compressor', pos: 'right-[3%] top-[10%]', size: 'w-11 h-11 md:w-14 md:h-14', depth: -24, anim: 'animate-[omni-drift-b_11s_ease-in-out_infinite]' },
-  { id: 'pdf-to-word', pos: 'left-[6%] bottom-[8%]', size: 'w-9 h-9 md:w-11 md:h-11', depth: 36, anim: 'animate-[omni-drift-c_12s_ease-in-out_infinite]' },
-  { id: 'video-to-gif', pos: 'right-[8%] bottom-[18%]', size: 'w-10 h-10 md:w-12 md:h-12', depth: -30, anim: 'animate-[omni-drift-a_10s_ease-in-out_infinite_0.5s]' },
-  { id: 'json-formatter', pos: 'left-[16%] top-[34%]', size: 'w-8 h-8 md:w-10 md:h-10', depth: 20, anim: 'animate-[omni-drift-b_13s_ease-in-out_infinite_0.8s]' },
-  { id: 'palette-extractor', pos: 'right-[15%] top-[38%]', size: 'w-8 h-8 md:w-10 md:h-10', depth: -34, anim: 'animate-[omni-drift-c_9s_ease-in-out_infinite_0.3s]' },
-  { id: 'audio-converter', pos: 'left-[10%] top-[64%]', size: 'w-9 h-9 md:w-11 md:h-11', depth: 28, anim: 'animate-[omni-drift-a_12s_ease-in-out_infinite_1.2s]' },
-  { id: 'merge-pdf', pos: 'right-[4%] bottom-[6%]', size: 'w-9 h-9 md:w-11 md:h-11', depth: -20, anim: 'animate-[omni-drift-b_10s_ease-in-out_infinite_1.5s]' },
-  { id: 'uuid-generator', pos: 'left-[28%] top-[8%]', size: 'w-8 h-8 md:w-9 md:h-9', depth: 40, anim: 'animate-[omni-drift-c_11s_ease-in-out_infinite_2s]' },
-  { id: 'password-generator', pos: 'right-[26%] bottom-[6%]', size: 'w-8 h-8 md:w-9 md:h-9', depth: -38, anim: 'animate-[omni-drift-a_12s_ease-in-out_infinite_0.9s]' },
+  { id: 'qr-generator', pos: 'left-[5%] top-[18%]', size: 'w-10 h-10 md:w-12 md:h-12', tone: 'text-indigo-400', depth: 26, anim: 'animate-[omni-float-a_12s_ease-in-out_infinite]' },
+  { id: 'image-compressor', pos: 'right-[6%] top-[12%]', size: 'w-11 h-11 md:w-14 md:h-14', tone: 'text-rose-400', depth: -22, anim: 'animate-[omni-float-b_14s_ease-in-out_infinite]' },
+  { id: 'pdf-to-word', pos: 'left-[8%] bottom-[10%]', size: 'w-9 h-9 md:w-11 md:h-11', tone: 'text-emerald-400', depth: 30, anim: 'animate-[omni-float-c_13s_ease-in-out_infinite]' },
+  { id: 'video-to-gif', pos: 'right-[9%] bottom-[20%]', size: 'w-10 h-10 md:w-12 md:h-12', tone: 'text-amber-400', depth: -26, anim: 'animate-[omni-float-a_15s_ease-in-out_infinite_0.5s]' },
+  { id: 'json-formatter', pos: 'left-[17%] top-[36%]', size: 'w-8 h-8 md:w-10 md:h-10', tone: 'text-sky-400', depth: 18, anim: 'animate-[omni-float-b_12s_ease-in-out_infinite_0.8s]' },
+  { id: 'palette-extractor', pos: 'right-[16%] top-[40%]', size: 'w-8 h-8 md:w-10 md:h-10', tone: 'text-violet-400', depth: -28, anim: 'animate-[omni-float-c_11s_ease-in-out_infinite_0.3s]' },
+  { id: 'audio-converter', pos: 'left-[12%] top-[62%]', size: 'w-9 h-9 md:w-11 md:h-11', tone: 'text-orange-400', depth: 24, anim: 'animate-[omni-float-a_14s_ease-in-out_infinite_1.2s]' },
+  { id: 'merge-pdf', pos: 'right-[6%] bottom-[8%]', size: 'w-9 h-9 md:w-11 md:h-11', tone: 'text-teal-400', depth: -18, anim: 'animate-[omni-float-b_13s_ease-in-out_infinite_1.5s]' },
+  { id: 'uuid-generator', pos: 'left-[28%] top-[10%]', size: 'w-8 h-8 md:w-9 md:h-9', tone: 'text-fuchsia-400', depth: 30, anim: 'animate-[omni-float-c_12s_ease-in-out_infinite_2s]' },
+  { id: 'password-generator', pos: 'right-[27%] bottom-[8%]', size: 'w-8 h-8 md:w-9 md:h-9', tone: 'text-cyan-400', depth: -30, anim: 'animate-[omni-float-a_16s_ease-in-out_infinite_0.9s]' },
 ]
 
 export default function Home() {
@@ -66,21 +65,24 @@ export default function Home() {
 
   return (
     <div className="max-w-[1200px] mx-auto px-5 sm:px-6 animate-[omni-fade_0.3s_ease-out]">
-      <section ref={heroRef} className="relative pt-8 pb-8 md:pt-16 md:pb-14 text-center overflow-hidden">
-        <Suspense fallback={null}><ThreeBackground /></Suspense>
+      <section ref={heroRef} className="relative pt-8 md:pt-16 text-center overflow-hidden">
+        <div aria-hidden className="absolute inset-0 pointer-events-none [background-image:radial-gradient(circle,rgba(0,0,0,0.055)_1px,transparent_1.5px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_65%_60%_at_50%_38%,black,transparent_78%)] dark:[background-image:radial-gradient(circle,rgba(255,255,255,0.07)_1px,transparent_1.5px)]" />
         <div aria-hidden className="absolute -top-20 left-[8%] w-72 h-72 rounded-full bg-zinc-400/10 blur-3xl animate-[omni-aurora-a_18s_ease-in-out_infinite] pointer-events-none" />
         <div aria-hidden className="absolute -bottom-24 right-[6%] w-80 h-80 rounded-full bg-zinc-400/[0.07] blur-3xl animate-[omni-aurora-b_22s_ease-in-out_infinite] pointer-events-none" />
         <div aria-hidden className="absolute inset-0 pointer-events-none select-none">
-          {HERO_FLOATERS.map((f, i) => (
-            <div
-              key={f.id}
-              ref={el => { floaterRefs.current[i] = el }}
-              className={`hidden md:block absolute ${f.pos}`}
-              style={{ willChange: 'transform' }}
-            >
-              <img src={toolIconUrl(f.id)} alt="" draggable={false} className={`${f.size} opacity-20 drop-shadow-[0_4px_10px_rgba(0,0,0,0.12)] ${f.anim}`} />
-            </div>
-          ))}
+          {HERO_FLOATERS.map((f, i) => {
+            const C = TOOL_ICONS[f.id] || Wrench
+            return (
+              <div
+                key={f.id}
+                ref={el => { floaterRefs.current[i] = el }}
+                className={`hidden md:block absolute ${f.pos} ${f.tone}`}
+                style={{ willChange: 'transform' }}
+              >
+                <C className={`${f.size} opacity-[0.13] ${f.anim}`} strokeWidth={1.7} aria-hidden="true" />
+              </div>
+            )
+          })}
         </div>
         <div className="relative">
           <p className="mb-6 text-[17px] font-semibold text-zinc-900 dark:text-white animate-[omni-fade_0.5s_ease-out_both]">
@@ -110,8 +112,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pb-12 md:pb-16">
-        <p className={`${SECTION_LABEL} mb-5 md:mb-6 text-center`}>Browse by Categories</p>
+      <section>
+        <p className={`${SECTION_LABEL}`}>Browse by Categories</p>
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {CATEGORIES.map((c) => (
                 <Link key={c.slug} to={`/tools/${c.slug}`}
@@ -125,15 +127,15 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="pb-12 md:pb-16">
-            <p className={`${SECTION_LABEL} mb-5 md:mb-6 text-center`}>Popular Tools</p>
+          <section>
+            <p className={`${SECTION_LABEL}`}>Popular Tools</p>
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {POPULAR_TOOLS.slice(0, 12).map((t) => <ToolCard key={t.id} tool={t} />)}
             </div>
           </section>
 
-          <section className="pb-12 md:pb-16">
-            <p className={`${SECTION_LABEL_WHY} mb-4 md:mb-5 text-center`}>Why NutterTools?</p>
+          <section>
+            <p className={`${SECTION_LABEL_WHY}`}>Why NutterTools?</p>
             <div className="relative overflow-hidden bg-white dark:bg-[#242424]/90 border border-zinc-200/70 dark:border-zinc-800 px-6 md:px-12 py-8 md:py-10 flex flex-col justify-center soft-shadow">
               <h2 className="text-[30px] md:text-[40px] font-[800] tracking-[-0.03em] text-balance text-center leading-[1.08] text-zinc-900 dark:text-white">Free. Private. No sign-up.</h2>
               <ul className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -157,18 +159,12 @@ export default function Home() {
               </div>
             </section>
             <section className="pb-12 md:pb-16">
-              <p className={`${SECTION_LABEL_SUPPORT} mb-4 md:mb-5 text-center`}>Support Us</p>
-              <div className="relative overflow-hidden bg-gradient-to-br from-red-800 via-rose-800 to-pink-700 px-6 md:px-12 py-10 md:py-12 soft-shadow flex flex-col justify-center transition-transform duration-300 hover:scale-[1.005]">
+              <p className={`${SECTION_LABEL_SUPPORT}`}>Support Us</p>
+              <div className="relative overflow-hidden bg-gradient-to-br from-red-600 via-rose-600 to-pink-500 px-6 md:px-12 py-10 md:py-12 soft-shadow flex flex-col justify-center transition-transform duration-300 hover:scale-[1.005]">
                 <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
-                  <div className="absolute left-1/2 top-1/2 w-[240%] h-[360%] animate-[omni-rotate_24s_linear_infinite]">
-                    <div className="w-full h-full bg-[conic-gradient(from_0deg_at_50%_50%,#ef4444_0%,#f43f5e_25%,#fb7185_45%,#ec4899_65%,#fda4af_85%,#ef4444_100%)] blur-2xl mix-blend-screen" />
-                  </div>
-                  <div className="absolute -top-1/3 -left-1/3 w-[80%] h-[160%]">
-                    <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.4),transparent_60%)] blur-2xl mix-blend-screen animate-[omni-aurora-a_16s_ease-in-out_infinite]" />
-                  </div>
-                  <div className="absolute -bottom-1/3 -right-1/3 w-[80%] h-[160%]">
-                    <div className="w-full h-full rounded-full bg-[radial-gradient(circle,rgba(244,114,182,0.5),transparent_60%)] blur-2xl mix-blend-screen animate-[omni-aurora-b_20s_ease-in-out_infinite]" />
-                  </div>
+                  <div className="absolute -top-1/2 -left-[15%] w-[65%] h-[200%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.28),transparent_65%)] blur-2xl animate-[omni-aurora-a_10s_ease-in-out_infinite]" />
+                  <div className="absolute -bottom-1/2 -right-[15%] w-[65%] h-[200%] rounded-full bg-[radial-gradient(circle,rgba(253,186,116,0.4),transparent_65%)] blur-2xl animate-[omni-aurora-b_13s_ease-in-out_infinite]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(115deg,transparent_35%,rgba(255,255,255,0.12)_50%,transparent_65%)] bg-[length:250%_100%] animate-[omni-shimmer_8s_linear_infinite]" />
                 </div>
                 <div className="relative flex flex-col items-center text-center">
                   <h2 className="text-[30px] md:text-[40px] font-[800] tracking-[-0.03em] text-white text-balance leading-[1.08]">Love ❤️ NutterTools?</h2>
