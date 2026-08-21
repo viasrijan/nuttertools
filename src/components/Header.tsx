@@ -144,16 +144,16 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
         <div className="rounded-none sm:rounded-full border border-transparent bg-[#ececec] lg:bg-white soft-shadow max-lg:dark:bg-[#1a1a1a]">
           <div className="px-4 sm:px-6 pt-3 sm:pt-4 lg:pt-0 lg:h-[68px] lg:flex lg:items-center lg:gap-3">
             <div className="flex items-center justify-between gap-3 lg:contents">
-              <Link to="/" onClick={() => setMOpen(false)}
+              <a href="/" onClick={() => setMOpen(false)}
                 className="flex items-center gap-2.5 sm:gap-3 shrink-0">
                 <Logo size={30} className="w-[30px] h-[30px] lg:w-8 lg:h-8" />
                 <span className={`text-[23px] sm:text-[25px] font-extrabold tracking-[-0.03em] ${TITLE_GRAD}`}>
                   NutterTools
                 </span>
-              </Link>
+              </a>
               <div className="flex items-center gap-1">
                 <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-                  className="lg:hidden w-[30px] h-[30px] shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
+                  className="lg:hidden w-[30px] h-[30px] shrink-0 rounded-full bg-[#f97316] text-white dark:bg-black dark:text-white grid place-items-center transition-colors">
                   <Lightbulb className="w-3.5 h-3.5" strokeWidth={2.4} />
                 </button>
                 <button onClick={() => setMOpen(!mOpen)} aria-label="Menu"
@@ -294,7 +294,7 @@ export default function Header({ dark, toggle }: { dark: boolean, toggle: () => 
             </div>
 
             <button onClick={toggle} aria-label="Toggle theme" aria-pressed={dark}
-              className="hidden lg:grid w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-yellow-400 text-white dark:bg-black dark:text-white place-items-center transition-colors">
+              className="hidden lg:grid w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-full bg-[#f97316] text-white dark:bg-black dark:text-white place-items-center transition-colors">
               <Lightbulb className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2.4} />
             </button>
           </div>

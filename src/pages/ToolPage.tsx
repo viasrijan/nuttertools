@@ -75,7 +75,7 @@ export default function ToolPage() {
       </div>
 
       <div className="relative  bg-white dark:bg-zinc-900/90 border border-zinc-200/80 dark:border-zinc-800 p-6 md:p-10 min-h-[400px] soft-shadow mb-12 overflow-hidden omni-rise">
-        <div aria-hidden className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[560px] h-48 rounded-full bg-indigo-400/[0.07] blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[560px] h-48 rounded-full bg-zinc-400/[0.035] blur-3xl" />
         <div className="relative">
           {Comp ? (
             <Suspense fallback={
@@ -126,7 +126,7 @@ export default function ToolPage() {
                   <ol className="space-y-3">
                     {info.howTo.map((step, i) => (
                       <li key={i} className="flex items-start gap-3 text-[16px] font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                        <span className="shrink-0 w-5 h-5 mt-[3px] rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white grid place-items-center text-[10px] font-bold shadow-[0_2px_8px_-2px_rgba(249,115,22,0.6)]">{i + 1}</span>
+                        <span className="shrink-0 w-5 h-5 mt-[3px] rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-black grid place-items-center text-[10px] font-bold leading-none">{i + 1}</span>
                         <span className="pt-0.5">{step}</span>
                       </li>
                     ))}
@@ -171,8 +171,8 @@ export default function ToolPage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
             {CATEGORIES.map((c) => (
               <Link key={c.slug} to={`/tools/${c.slug}`}
-                className={`group relative overflow-hidden p-4 md:p-5 ${tileGrad(c.hue)} soft-shadow transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.35)] flex flex-col items-center text-center ${c.slug === cat.slug ? 'ring-2 ring-white dark:ring-white/70' : ''}`}>
-                <div aria-hidden className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/15 blur-2xl group-hover:bg-white/30 group-hover:scale-125 transition-all duration-500" />
+                className={`group relative overflow-hidden p-4 md:p-5 ${tileGrad(c.hue)} soft-shadow transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_10px_28px_-16px_rgba(0,0,0,0.18)] flex flex-col items-center text-center ${c.slug === cat.slug ? 'ring-2 ring-white dark:ring-white/70' : ''}`}>
+                <div aria-hidden className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-zinc-400/[0.07] blur-2xl group-hover:bg-zinc-400/[0.15] group-hover:scale-125 transition-all duration-500" />
                 <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-white/25" />
                 <span className="relative w-10 h-10 rounded-full bg-white/25 backdrop-blur-sm grid place-items-center text-[15px] font-bold text-white tabular-nums shadow-sm transition-transform duration-300 group-hover:scale-110">{c.count}</span>
                 <h3 className="relative mt-3 font-bold text-[15px] tracking-[-0.01em] text-white">{c.name}</h3>

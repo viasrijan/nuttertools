@@ -32,10 +32,10 @@ export default function ThreeBackground() {
     geo.setAttribute('size', new THREE.BufferAttribute(sizes, 1))
 
     const mat = new THREE.PointsMaterial({
-      color: 0x818cf8,
+      color: 0xa1a1aa,
       size: 0.09,
       transparent: true,
-      opacity: 0.4,
+      opacity: 0.28,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
       sizeAttenuation: true,
@@ -44,7 +44,7 @@ export default function ThreeBackground() {
     scene.add(points)
 
     const ringGeo = new THREE.TorusGeometry(14, 0.06, 8, 120)
-    const ringMat = new THREE.MeshBasicMaterial({ color: 0x4f46e5, transparent: true, opacity: 0.22 })
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0x71717a, transparent: true, opacity: 0.14 })
     const ring = new THREE.Mesh(ringGeo, ringMat)
     ring.rotation.x = Math.PI / 2.4
     ring.rotation.z = 0.5
@@ -54,14 +54,24 @@ export default function ThreeBackground() {
     ring2.scale.setScalar(1.35)
     ring2.rotation.x = Math.PI / 1.9
     ring2.rotation.y = 0.6
-    ;(ring2.material as THREE.MeshBasicMaterial).opacity = 0.1
+    ;(ring2.material as THREE.MeshBasicMaterial).opacity = 0.07
     scene.add(ring2)
+
+    const mouse = { x: 0, y: 0 }
+    const onMouse = (e: MouseEvent) => {
+      mouse.x = (e.clientX / window.innerWidth) * 2 - 1
+      mouse.y = (e.clientY / window.innerHeight) * 2 - 1
+    }
+    window.addEventListener('mousemove', onMouse)
 
     let raf = 0
     const tick = () => {
       points.rotation.y += 0.0005
       ring.rotation.z += 0.0006
       ring2.rotation.z -= 0.0004
+      camera.position.x += (mouse.x * 1.6 - camera.position.x) * 0.03
+      camera.position.y += (-mouse.y * 1.0 - camera.position.y) * 0.03
+      camera.lookAt(0, 0, 0)
       renderer.render(scene, camera)
       raf = requestAnimationFrame(tick)
     }
@@ -78,6 +88,7 @@ export default function ThreeBackground() {
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('resize', onResize)
+      window.removeEventListener('mousemove', onMouse)
       renderer.dispose()
       geo.dispose()
       mat.dispose()

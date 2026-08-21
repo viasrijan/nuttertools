@@ -7,11 +7,11 @@ export interface DropFile {
 }
 
 const TRAIL_LAYERS = [
-  { size: 150, color: 'rgba(250, 204, 21, 0.10)', blur: 8, dur: 0.5 },
-  { size: 130, color: 'rgba(251, 191, 36, 0.07)', blur: 7, dur: 0.65 },
-  { size: 110, color: 'rgba(251, 146, 60, 0.06)', blur: 6, dur: 0.8 },
-  { size: 95, color: 'rgba(249, 115, 22, 0.05)', blur: 5, dur: 0.95 },
-  { size: 80, color: 'rgba(245, 158, 11, 0.04)', blur: 4, dur: 1.1 },
+  { size: 150, color: 'rgba(161, 161, 170, 0.05)', blur: 8, dur: 0.5 },
+  { size: 130, color: 'rgba(161, 161, 170, 0.035)', blur: 7, dur: 0.65 },
+  { size: 110, color: 'rgba(161, 161, 170, 0.03)', blur: 6, dur: 0.8 },
+  { size: 95, color: 'rgba(161, 161, 170, 0.025)', blur: 5, dur: 0.95 },
+  { size: 80, color: 'rgba(161, 161, 170, 0.02)', blur: 4, dur: 1.1 },
 ]
 
 export default function DropZone({
@@ -97,9 +97,9 @@ export default function DropZone({
       onPaste={handlePaste}
       className={`group relative w-full min-h-[260px] flex flex-col items-center justify-center p-8 text-center cursor-pointer outline-none transition-all duration-300 ease-out border-2 border-dashed overflow-hidden ${
         isDragging
-          ? 'border-indigo-500 bg-indigo-50/70 dark:bg-indigo-500/10 scale-[1.01] shadow-[0_0_0_6px_rgba(99,102,241,0.12),0_20px_50px_-20px_rgba(99,102,241,0.45)]'
-          : 'border-zinc-300/90 dark:border-zinc-700 bg-gradient-to-b from-zinc-50/80 to-white dark:from-zinc-900/50 dark:to-zinc-900/20 hover:border-indigo-400 dark:hover:border-indigo-500/70 hover:bg-indigo-50/30 dark:hover:bg-indigo-500/[0.06] hover:shadow-[0_10px_36px_-16px_rgba(99,102,241,0.35)]'
-      } focus-visible:border-indigo-500 focus-visible:ring-4 focus-visible:ring-indigo-500/20`}
+          ? 'border-zinc-400 dark:border-zinc-600 bg-zinc-50/80 dark:bg-zinc-800/40 scale-[1.01] shadow-[0_0_0_4px_rgba(0,0,0,0.03),0_12px_32px_-20px_rgba(0,0,0,0.15)]'
+          : 'border-zinc-300/90 dark:border-zinc-700 bg-gradient-to-b from-zinc-50/80 to-white dark:from-zinc-900/50 dark:to-zinc-900/20 hover:border-zinc-400 dark:hover:border-zinc-600 hover:bg-zinc-50/60 dark:hover:bg-zinc-800/20 hover:shadow-[0_8px_24px_-16px_rgba(0,0,0,0.10)]'
+      } focus-visible:border-zinc-400 focus-visible:ring-4 focus-visible:ring-zinc-400/20`}
     >
       <div
         ref={glowRef}
