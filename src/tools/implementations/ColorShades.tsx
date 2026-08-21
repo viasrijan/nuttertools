@@ -42,7 +42,7 @@ export default function ColorShades() {
       <div className="flex items-center gap-3">
         <input type="color" value={base} onChange={e => setBase(e.target.value)} className="w-14 h-12 border" />
         <input value={base} onChange={e => setBase(e.target.value)} className="border px-3 h-10 font-mono text-sm flex-1" />
-        <label className="text-sm">Shades ({count})
+        <label className="text-sm whitespace-nowrap">Shades (<span className="inline-block w-5 text-right tabular-nums">{count}</span>)
           <input type="range" min={5} max={20} value={count} onChange={e => setCount(parseInt(e.target.value))} className="w-32 ml-2" /></label>
       </div>
       {row('Tints (mix with white)', tints)}

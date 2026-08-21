@@ -103,7 +103,7 @@ export default function ToolPage() {
             <section className="pb-14 max-w-3xl">
               <div className="space-y-8">
                 <div>
-<h4 className="text-[19px] md:text-[28px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">What is <span className="bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent">{tool.name}?</span></h4>
+<h4 className="text-[24px] md:text-[35px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">What is <span className="bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent">{tool.name}?</span></h4>
                 <p className="text-[16px] font-medium text-zinc-900 dark:text-white leading-relaxed">{tool.desc}</p>
                   <p className="mt-3 text-[15px] font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed">
                     {tool.name} runs entirely in your browser — your files and text never leave your device, no sign-up required, and it is free forever.
@@ -117,12 +117,12 @@ export default function ToolPage() {
           <section className="pb-14 max-w-3xl">
             <div className="space-y-8">
               <div>
-                <h4 className="text-[19px] md:text-[28px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">What is <span className="bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent">{tool.name}?</span></h4>
+                <h4 className="text-[24px] md:text-[35px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">What is <span className="bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent">{tool.name}?</span></h4>
                 <p className="text-[16px] font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">{info.whatIs}</p>
               </div>
               {info.howTo.length > 0 && (
                 <div>
-                  <h4 className="text-[19px] md:text-[28px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">How to use <span className="bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent">{tool.name}:</span></h4>
+                  <h4 className="text-[24px] md:text-[35px] font-extrabold tracking-[-0.02em] text-zinc-900 dark:text-white mb-4">How to use <span className="bg-gradient-to-br from-indigo-500 to-indigo-800 bg-clip-text text-transparent">{tool.name}:</span></h4>
                   <ol className="space-y-3">
                     {info.howTo.map((step, i) => (
                       <li key={i} className="flex items-start gap-3 text-[16px] font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">

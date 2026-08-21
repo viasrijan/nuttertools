@@ -56,8 +56,8 @@ export default function TtsStt() {
             <option value="hi-IN">Hindi</option><option value="es-ES">Spanish</option><option value="fr-FR">French</option>
             <option value="de-DE">German</option><option value="ja-JP">Japanese</option><option value="zh-CN">Chinese</option>
           </select>
-          <label className="text-sm">Rate <b>{rate}</b></label><input type="range" min={0.5} max={2} step={0.1} value={rate} onChange={e => setRate(parseFloat(e.target.value))} />
-          <label className="text-sm">Pitch <b>{pitch}</b></label><input type="range" min={0} max={2} step={0.1} value={pitch} onChange={e => setPitch(parseFloat(e.target.value))} />
+          <label className="text-sm whitespace-nowrap">Rate <b className="inline-block w-8 tabular-nums">{rate}</b></label><input type="range" min={0.5} max={2} step={0.1} value={rate} onChange={e => setRate(parseFloat(e.target.value))} />
+          <label className="text-sm whitespace-nowrap">Pitch <b className="inline-block w-8 tabular-nums">{pitch}</b></label><input type="range" min={0} max={2} step={0.1} value={pitch} onChange={e => setPitch(parseFloat(e.target.value))} />
           <Button variant="outline" onClick={speak} className={`px-5 h-10 text-sm ${speaking ? 'bg-red-600 text-white' : 'bg-indigo-600 text-white shadow-[0_4px_14px_-4px_rgba(79,70,229,0.6)]'}`}>{speaking ? 'Stop' : 'Speak'}</Button>
         </div>
       </div>

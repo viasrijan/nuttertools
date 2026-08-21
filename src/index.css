@@ -342,6 +342,11 @@ button:disabled { cursor: not-allowed; }
   height: 2.5rem !important;
 }
 
+/* Numeric readouts keep a fixed width so changing values never shift surrounding layout */
+.tool-page {
+  font-variant-numeric: tabular-nums;
+}
+
 button:focus-visible, a:focus-visible {
   outline: none;
 }

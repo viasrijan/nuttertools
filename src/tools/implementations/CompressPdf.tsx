@@ -13,7 +13,7 @@ export default function CompressPdf() {
   const [quality, setQuality] = useState(0.6)
   const [scale, setScale] = useState(1.5)
   const [busy, setBusy] = useState(false)
-  const [stats, setStats] = useState<{ before: number, after: number } | null>(null)
+  const [stats, setStats] = useState<{ before: number, after: number, kept?: boolean } | null>(null)
 
   const dropFiles: DropFile[] = file ? [{ name: file.name, size: file.size }] : []
 
@@ -38,8 +38,14 @@ export default function CompressPdf() {
         p.drawImage(img, { x: 0, y: 0, width: viewport.width, height: viewport.height })
       }
       const data = await out.save()
-      setStats({ before: file.size, after: data.length })
-      saveBlob(bytesToBlob(data, 'application/pdf'), 'compressed.pdf')
+      // Never hand back a file bigger than the original — keep the source instead
+      if (data.length >= file.size) {
+        setStats({ before: file.size, after: file.size, kept: true })
+        saveBlob(file, file.name)
+      } else {
+        setStats({ before: file.size, after: data.length })
+        saveBlob(bytesToBlob(data, 'application/pdf'), 'compressed.pdf')
+      }
     } catch (e: any) { alert('Error: ' + e.message) }
     setBusy(false)
   }
@@ -62,8 +68,14 @@ export default function CompressPdf() {
       {busy && <Progress label="Compressing pages…" />}
       {stats && (
         <div className="p-4 bg-zinc-100 dark:bg-zinc-800 text-sm font-semibold">
-          <b>{Math.round(stats.before / 1024)} KB</b> → <b className="text-emerald-600">{Math.round(stats.after / 1024)} KB</b>
-          {' '}(saved {Math.max(0, Math.round((1 - stats.after / stats.before) * 100))}%)
+          {stats.kept ? (
+            <span>Couldn&apos;t compress further — the original ({Math.round(stats.before / 1024)} KB) was kept.</span>
+          ) : (
+            <>
+              <b>{Math.round(stats.before / 1024)} KB</b> → <b className="text-emerald-600">{Math.round(stats.after / 1024)} KB</b>
+              {' '}(saved {Math.max(0, Math.round((1 - stats.after / stats.before) * 100))}%)
+            </>
+          )}
         </div>
       )}
       <p className="text-[11px] font-medium text-zinc-500">Renders pages to images then rebuilds PDF — great for scanned documents.</p>

@@ -26,7 +26,7 @@ export default function PasswordGen(){
         <CopyButton value={pwd} />
       </div>
       <div className="space-y-5">
-        <div className="flex items-center justify-between"><label className="text-sm">Length {len}</label><input type="range" min={6} max={64} value={len} onChange={e=>setLen(parseInt(e.target.value))}/></div>
+        <div className="flex items-center justify-between"><label className="text-sm whitespace-nowrap">Length <span className="inline-block w-7 text-right tabular-nums">{len}</span></label><input type="range" min={6} max={64} value={len} onChange={e=>setLen(parseInt(e.target.value))}/></div>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={upper} onChange={e=>setUpper(e.target.checked)}/>Uppercase</label>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={numbers} onChange={e=>setNumbers(e.target.checked)}/>Numbers</label>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={symbols} onChange={e=>setSymbols(e.target.checked)}/>Symbols</label>

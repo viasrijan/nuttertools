@@ -24,7 +24,17 @@ export default function DropZone({
   onClear?: () => void
 }) {
   const ref = useRef<HTMLInputElement>(null)
+  const glowRef = useRef<HTMLDivElement>(null)
   const [isDragging, setIsDragging] = useState(false)
+
+  const moveGlow = (clientX: number, clientY: number, el: HTMLElement) => {
+    const glow = glowRef.current
+    if (!glow) return
+    const r = el.getBoundingClientRect()
+    glow.style.transform = `translate(${clientX - r.left - 160}px, ${clientY - r.top - 160}px)`
+    glow.style.opacity = '1'
+  }
+  const hideGlow = () => { if (glowRef.current && !isDragging) glowRef.current.style.opacity = '0' }
 
   const handlePaste = (e: React.ClipboardEvent) => {
     const items = e.clipboardData?.items
@@ -61,13 +71,17 @@ export default function DropZone({
       onDragOver={(e) => {
         e.preventDefault()
         setIsDragging(true)
+        moveGlow(e.clientX, e.clientY, e.currentTarget)
       }}
-      onDragLeave={() => setIsDragging(false)}
+      onDragLeave={() => { setIsDragging(false); hideGlow() }}
       onDrop={(e) => {
         e.preventDefault()
         setIsDragging(false)
+        hideGlow()
         if (e.dataTransfer.files) onFiles(e.dataTransfer.files)
       }}
+      onMouseMove={(e) => moveGlow(e.clientX, e.clientY, e.currentTarget)}
+      onMouseLeave={hideGlow}
       onPaste={handlePaste}
       className={`group relative w-full min-h-[260px] flex flex-col items-center justify-center p-8 text-center cursor-pointer outline-none transition-all duration-300 ease-out border-2 border-dashed overflow-hidden ${
         isDragging
@@ -76,10 +90,15 @@ export default function DropZone({
       } focus-visible:border-indigo-500 focus-visible:ring-4 focus-visible:ring-indigo-500/20`}
     >
       <div
+        ref={glowRef}
         aria-hidden
-        className={`pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-72 h-48 blur-3xl transition-all duration-500 ${
-          isDragging ? 'bg-indigo-400/25' : 'bg-indigo-400/0 group-hover:bg-indigo-400/10'
-        }`}
+        className="pointer-events-none absolute top-0 left-0 w-[320px] h-[320px] rounded-full will-change-transform"
+        style={{
+          background: 'radial-gradient(circle, rgba(99,102,241,0.20) 0%, rgba(99,102,241,0.07) 45%, transparent 70%)',
+          filter: 'blur(18px)',
+          opacity: 0,
+          transition: 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease',
+        }}
       />
       {files.length > 0 && (
         <div className="relative w-full mb-4 text-left animate-[omni-fade_0.2s_ease-out]">

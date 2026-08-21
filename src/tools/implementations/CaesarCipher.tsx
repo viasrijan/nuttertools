@@ -23,7 +23,7 @@ export default function CaesarCipher() {
       <div className="flex items-center gap-3">
         <label className="text-sm">Shift</label>
         <input type="range" min={-25} max={25} value={shift} onChange={e => setShift(parseInt(e.target.value))} className="flex-1" />
-        <span className="font-mono text-sm font-bold">{shift >= 0 ? `+${shift}` : shift}</span>
+        <span className="font-mono text-sm font-bold w-10 text-right tabular-nums">{shift >= 0 ? `+${shift}` : shift}</span>
         <Button variant="secondary" size="sm" onClick={() => { setOut(cipher(text, shift)); setText(cipher(text, shift)) }}>Apply</Button>
         <CopyButton value={out} />
       </div>
