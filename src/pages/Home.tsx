@@ -13,16 +13,16 @@ const SECTION_LABEL_WHY = `${SECTION_LABEL_BASE} text-green-600 dark:text-green-
 const SECTION_LABEL_SUPPORT = `${SECTION_LABEL_BASE} text-[#f97316] mt-8 md:mt-12 mb-8 md:mb-12`
 
 const HERO_FLOATERS = [
-  { id: 'qr-generator', pos: 'left-[5%] top-[18%]', size: 'w-10 h-10 md:w-12 md:h-12', tone: 'text-indigo-400', depth: 26, anim: 'animate-[omni-float-a_12s_ease-in-out_infinite]' },
-  { id: 'image-compressor', pos: 'right-[6%] top-[12%]', size: 'w-11 h-11 md:w-14 md:h-14', tone: 'text-rose-400', depth: -22, anim: 'animate-[omni-float-b_14s_ease-in-out_infinite]' },
-  { id: 'pdf-to-word', pos: 'left-[8%] bottom-[10%]', size: 'w-9 h-9 md:w-11 md:h-11', tone: 'text-emerald-400', depth: 30, anim: 'animate-[omni-float-c_13s_ease-in-out_infinite]' },
-  { id: 'video-to-gif', pos: 'right-[9%] bottom-[20%]', size: 'w-10 h-10 md:w-12 md:h-12', tone: 'text-amber-400', depth: -26, anim: 'animate-[omni-float-a_15s_ease-in-out_infinite_0.5s]' },
-  { id: 'json-formatter', pos: 'left-[17%] top-[36%]', size: 'w-8 h-8 md:w-10 md:h-10', tone: 'text-sky-400', depth: 18, anim: 'animate-[omni-float-b_12s_ease-in-out_infinite_0.8s]' },
-  { id: 'palette-extractor', pos: 'right-[16%] top-[40%]', size: 'w-8 h-8 md:w-10 md:h-10', tone: 'text-violet-400', depth: -28, anim: 'animate-[omni-float-c_11s_ease-in-out_infinite_0.3s]' },
-  { id: 'audio-converter', pos: 'left-[12%] top-[62%]', size: 'w-9 h-9 md:w-11 md:h-11', tone: 'text-orange-400', depth: 24, anim: 'animate-[omni-float-a_14s_ease-in-out_infinite_1.2s]' },
-  { id: 'merge-pdf', pos: 'right-[6%] bottom-[8%]', size: 'w-9 h-9 md:w-11 md:h-11', tone: 'text-teal-400', depth: -18, anim: 'animate-[omni-float-b_13s_ease-in-out_infinite_1.5s]' },
-  { id: 'uuid-generator', pos: 'left-[28%] top-[10%]', size: 'w-8 h-8 md:w-9 md:h-9', tone: 'text-fuchsia-400', depth: 30, anim: 'animate-[omni-float-c_12s_ease-in-out_infinite_2s]' },
-  { id: 'password-generator', pos: 'right-[27%] bottom-[8%]', size: 'w-8 h-8 md:w-9 md:h-9', tone: 'text-cyan-400', depth: -30, anim: 'animate-[omni-float-a_16s_ease-in-out_infinite_0.9s]' },
+  { id: 'qr-generator', pos: 'left-[2%] top-[10%]', size: 'w-10 h-10 md:w-12 md:h-12', tone: 'text-indigo-400', depth: 26, anim: 'animate-[omni-float-fast-a_5.2s_ease-in-out_infinite]' },
+  { id: 'image-compressor', pos: 'right-[2%] top-[6%]', size: 'w-11 h-11 md:w-14 md:h-14', tone: 'text-rose-400', depth: -22, anim: 'animate-[omni-float-fast-b_6.7s_ease-in-out_infinite_0.4s]' },
+  { id: 'pdf-to-word', pos: 'left-[3%] bottom-[8%]', size: 'w-9 h-9 md:w-11 md:h-11', tone: 'text-emerald-400', depth: 30, anim: 'animate-[omni-float-fast-c_5.9s_ease-in-out_infinite_1.1s]' },
+  { id: 'video-to-gif', pos: 'right-[4%] bottom-[16%]', size: 'w-10 h-10 md:w-12 md:h-12', tone: 'text-amber-400', depth: -26, anim: 'animate-[omni-float-fast-a_7.3s_ease-in-out_infinite_0.7s]' },
+  { id: 'json-formatter', pos: 'left-[21%] top-[4%]', size: 'w-8 h-8 md:w-10 md:h-10', tone: 'text-sky-400', depth: 18, anim: 'animate-[omni-float-fast-b_4.6s_ease-in-out_infinite_1.6s]' },
+  { id: 'palette-extractor', pos: 'right-[22%] top-[46%]', size: 'w-8 h-8 md:w-10 md:h-10', tone: 'text-violet-400', depth: -28, anim: 'animate-[omni-float-fast-c_6.1s_ease-in-out_infinite_2.2s]' },
+  { id: 'audio-converter', pos: 'left-[7%] top-[56%]', size: 'w-9 h-9 md:w-11 md:h-11', tone: 'text-orange-400', depth: 24, anim: 'animate-[omni-float-fast-a_5.5s_ease-in-out_infinite_0.2s]' },
+  { id: 'merge-pdf', pos: 'right-[8%] bottom-[2%]', size: 'w-9 h-9 md:w-11 md:h-11', tone: 'text-teal-400', depth: -18, anim: 'animate-[omni-float-fast-b_6.9s_ease-in-out_infinite_1.3s]' },
+  { id: 'uuid-generator', pos: 'left-[36%] top-[72%]', size: 'w-8 h-8 md:w-9 md:h-9', tone: 'text-fuchsia-400', depth: 30, anim: 'animate-[omni-float-fast-c_4.9s_ease-in-out_infinite_2.8s]' },
+  { id: 'password-generator', pos: 'right-[38%] top-[2%]', size: 'w-8 h-8 md:w-9 md:h-9', tone: 'text-cyan-400', depth: -30, anim: 'animate-[omni-float-fast-a_6.4s_ease-in-out_infinite_3.1s]' },
 ]
 
 export default function Home() {
@@ -66,9 +66,6 @@ export default function Home() {
   return (
     <div className="max-w-[1200px] mx-auto px-5 sm:px-6 animate-[omni-fade_0.3s_ease-out]">
       <section ref={heroRef} className="relative pt-8 md:pt-16 text-center overflow-hidden">
-        <div aria-hidden className="absolute inset-0 pointer-events-none [background-image:radial-gradient(circle,rgba(0,0,0,0.055)_1px,transparent_1.5px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_65%_60%_at_50%_38%,black,transparent_78%)] dark:[background-image:radial-gradient(circle,rgba(255,255,255,0.07)_1px,transparent_1.5px)]" />
-        <div aria-hidden className="absolute -top-20 left-[8%] w-72 h-72 rounded-full bg-zinc-400/10 blur-3xl animate-[omni-aurora-a_18s_ease-in-out_infinite] pointer-events-none" />
-        <div aria-hidden className="absolute -bottom-24 right-[6%] w-80 h-80 rounded-full bg-zinc-400/[0.07] blur-3xl animate-[omni-aurora-b_22s_ease-in-out_infinite] pointer-events-none" />
         <div aria-hidden className="absolute inset-0 pointer-events-none select-none">
           {HERO_FLOATERS.map((f, i) => {
             const C = TOOL_ICONS[f.id] || Wrench
@@ -79,7 +76,7 @@ export default function Home() {
                 className={`hidden md:block absolute ${f.pos} ${f.tone}`}
                 style={{ willChange: 'transform' }}
               >
-                <C className={`${f.size} opacity-[0.13] ${f.anim}`} strokeWidth={1.7} aria-hidden="true" />
+                <C className={`${f.size} opacity-[0.25] ${f.anim}`} strokeWidth={1.7} aria-hidden="true" />
               </div>
             )
           })}

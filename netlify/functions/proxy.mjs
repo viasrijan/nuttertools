@@ -56,5 +56,61 @@ export default async (req) => {
     return { statusCode: 200, body: JSON.stringify({ ParsedResults: data.ParsedResults }) }
   }
 
-  return { statusCode: 400, body: 'Unknown service. Use ?service=removebg or ?service=ocrspace' }
+  if (service === 'gemini') {
+    const key = process.env.GEMINI_API_KEY
+    if (!key) return { statusCode: 503, body: JSON.stringify({ error: 'GEMINI_API_KEY is not configured on the server.' }) }
+    let payload
+    try { payload = JSON.parse(req.body || '{}') } catch { return { statusCode: 400, body: 'Invalid JSON body.' } }
+    const body = {
+      contents: [{ role: 'user', parts: [{ text: payload.prompt || '' }] }],
+      generationConfig: {},
+    }
+    if (payload.system) body.systemInstruction = { parts: [{ text: payload.system }] }
+    if (payload.json) body.generationConfig.responseMimeType = 'application/json'
+    const upstream = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+    const data = await upstream.json().catch(() => null)
+    if (!upstream.ok || !data) {
+      return { statusCode: 502, body: JSON.stringify({ error: data?.error?.message || 'Gemini request failed' }) }
+    }
+    const text = (data?.candidates?.[0]?.content?.parts || []).map(p => p.text).filter(Boolean).join('')
+    return { statusCode: 200, body: JSON.stringify({ text }) }
+  }
+
+  if (service === 'gemini-image') {
+    const key = process.env.GEMINI_API_KEY
+    if (!key) return { statusCode: 503, body: JSON.stringify({ error: 'GEMINI_API_KEY is not configured on the server.' }) }
+    let payload
+    try { payload = JSON.parse(req.body || '{}') } catch { return { statusCode: 400, body: 'Invalid JSON body.' } }
+    if (!payload.image) return { statusCode: 400, body: 'Missing "image" (base64).' }
+    const body = {
+      contents: [{
+        role: 'user',
+        parts: [
+          { text: payload.prompt || 'Enhance this image.' },
+          { inline_data: { mime_type: payload.mime || 'image/png', data: payload.image } },
+        ],
+      }],
+      generationConfig: { responseModalities: ['TEXT', 'IMAGE'] },
+    }
+    const upstream = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${key}`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+    const data = await upstream.json().catch(() => null)
+    if (!upstream.ok || !data) {
+      return { statusCode: 502, body: JSON.stringify({ error: data?.error?.message || 'Gemini image request failed' }) }
+    }
+    const parts = data?.candidates?.[0]?.content?.parts || []
+    const imgPart = parts.find(p => p.inlineData || p.inline_data)
+    if (!imgPart) return { statusCode: 502, body: JSON.stringify({ error: 'Gemini returned no image' }) }
+    const inline = imgPart.inlineData || imgPart.inline_data
+    return { statusCode: 200, body: JSON.stringify({ data: inline.data, mime: inline.mimeType || inline.mime_type || 'image/png' }) }
+  }
+
+  return { statusCode: 400, body: 'Unknown service. Use ?service=removebg, ?service=ocrspace, ?service=gemini or ?service=gemini-image' }
 }
